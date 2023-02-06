@@ -107,7 +107,7 @@ public class Enemy : MonoBehaviour
     RaycastHit hit;
     private void FixedUpdate()
     {
-        //usiamo overload 15/16, con out dei dati in variabile RaycastHit
+        //usiamo overload 15/16, con out dei dati in variabile Raycast "hit"
         if(Physics.Raycast(transform.position, Vector3.down, out hit, 100,1<<7))
         {
             hit.collider.GetComponent<MainCharacter>().OnHitSuffered();

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MainCharacter : MonoBehaviour
 {
-    int hp=100;
+    public int hp=4;
     public Projectile myProjectile;
     float moveSpeed = 6;
     // Start is called before the first frame update
@@ -31,9 +31,14 @@ public class MainCharacter : MonoBehaviour
             //alternativa
             //Instantiate(myProjectile, transform.position, transform.rotation).Shoot(Vector3.up);
             //Alternativa:
-            Projectile tempProjectile = Instantiate(myProjectile, transform.position, transform.rotation);
-            tempProjectile.Shoot(Vector3.up*6.6f);
+            Shoot();
         }
+    }
+
+    public void Shoot ()
+    {
+        Projectile tempProjectile = Instantiate(myProjectile, transform.position, transform.rotation);
+        tempProjectile.Shoot(Vector3.up * 6.6f);
     }
     public void OnHitSuffered(int damage = 1)
     {
@@ -47,6 +52,7 @@ public class MainCharacter : MonoBehaviour
             //come dire transform.localScale*2
             //transform.localScale *= 2;
             //hp--;
+            UIManager.instance.OnPlayerHitSuffered();
         }
     }
 }

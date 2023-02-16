@@ -15,6 +15,9 @@ public class Enemy : MonoBehaviour
     public Material myMaterial, myHitTakenMaterial;
     Vector3 goalPosition;
 
+    float shootCooldown = 0.5f;
+    float shootTimer = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +29,6 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         switch (currentState)
         {
             case EnemyState.IDLE:
@@ -45,7 +47,6 @@ public class Enemy : MonoBehaviour
                 Update_DESTROYED();
                 break;
         }
-
     }
 
     void Update_IDLE()
@@ -108,12 +109,27 @@ public class Enemy : MonoBehaviour
     private void FixedUpdate()
     {
         //usiamo overload 15/16, con out dei dati in variabile Raycast "hit"
-        if(Physics.Raycast(transform.position, Vector3.down, out hit, 100,1<<7))
-        {
-            hit.collider.GetComponent<MainCharacter>().OnHitSuffered();
-        }
+        //if(Physics.Raycast(transform.position, Vector3.down, out hit, 100,1<<7))
+        //{
+        //    hit.collider.GetComponent<MainCharacter>().OnHitSuffered();
+        //}
 
+        //ogni 0.5 secondi spara reycast
+        shootTimer += Time.fixedDeltaTime;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 100, 1 << 7))
+        {
+            if (shootTimer >= shootCooldown)
+            {
+                //hit.collider.GetComponent<CharacterController>().OnHitSuffered();
+                Enemy_Projectile tempProjectile = Instantiate(myProjectile, transform.position + Vector3.down, transform.rotation);
+                tempProjectile.Shoot(Vector3.down * 4f);
+
+                shootTimer = 0;
+            }
+        }
     }
+    
+
 
     public void OnHitSuffered(int damage = 1)
     {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Enemy : MonoBehaviour
 {
@@ -8,15 +9,19 @@ public class Enemy : MonoBehaviour
     public EnemyState currentState = EnemyState.IDLE;
     public Enemy_Projectile myProjectile;
     //public MainCharacter character;
+    public ParticleSystem ExplosionTemplate;
 
 
     public int hp = 3;
     public float enemySpeed = 6;
     public Material myMaterial, myHitTakenMaterial;
     Vector3 goalPosition;
+    float hitFxDuration = 0.25f;
+    public Color hitFxColor;
 
     float shootCooldown = 0.5f;
     float shootTimer = 0;
+    Tweener twScale;
 
     // Start is called before the first frame update
     void Start()
@@ -137,6 +142,11 @@ public class Enemy : MonoBehaviour
         if (hp<=0)
         {
             //FX MORTE
+            ParticleSystem ps = Instantiate(ExplosionTemplate, transform.position, Quaternion.identity);
+            //controllo particella da codice
+            ps.Emit(60);
+            Destroy(ps.gameObject,.5f);
+
             Destroy(gameObject);
         }
         else
@@ -146,8 +156,29 @@ public class Enemy : MonoBehaviour
             //chiama funzione per tot tempo dichiarato come numero, in pratica cambia materiale per .25 sec
             //la funzione va chiamata come stringa
             Invoke("SetNormalMaterial", 0.25f);
+            //se il tween esiste ed è attivo, killa il tween precedente sennò si sovrappongono
+            if (twScale == null && twScale.IsActive())
+            {
+                twScale.Kill();
+                //risistema a dim originale se tween spento a metà
+                transform.localScale = Vector3.one; //new vector3 (1,1,1);
+            }
+            transform.DOPunchPosition(Vector3.up, .25f, 2);
+            twScale = transform.DOPunchScale(Vector3.one * 0.2f, hitFxDuration, 2);
+            StartCoroutine(HitColorCoroutine());
+            //anche la coroutine si sovrappone se viene chiamata più volte, quindi va checkato se è già attiva e nel caso spegnerla
+
+            
 
         }
+    }
+
+    IEnumerator HitColorCoroutine()
+    {
+        SpriteRenderer tsprite = GetComponentInChildren<SpriteRenderer>();
+        tsprite.DOColor(hitFxColor, hitFxDuration / 2);
+        yield return new WaitForSeconds(hitFxDuration / 2);
+        tsprite.DOColor(Color.white, hitFxDuration / 2);
     }
     public void SetNormalMaterial()
     {

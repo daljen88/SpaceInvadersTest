@@ -1,0 +1,3193 @@
+fileFormatVersion: 2
+guid: 47b3571f81083c145a685126584007ea
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_1
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 160
+        width: 41
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b370f9b42ea733e42b609902e4c6ecc9
+      internalID: 669549441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_0
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 230
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a9b6ebb82f55eb4c94de8943b7bd53e
+      internalID: 278982556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_2
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 228
+        width: 24
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 602a4175b09bfe04d940e66a419b852f
+      internalID: 2118193144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_3
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 230
+        width: 22
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1c0002b0d7e37f4ab697762249c2d92
+      internalID: -526429081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_4
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 227
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d7ce9a393db32f4aa790557972cb553
+      internalID: 1969923065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_5
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 226
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8bc1c6186398d24a914af62907bf9ee
+      internalID: 1089390264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_6
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 226
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef333b8234a5fe541829ceea20363c08
+      internalID: 804632802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_7
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 226
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04a53f1f31e696f4c88288f275085523
+      internalID: -849353176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_8
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 225
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0ad718c03726bf4c96e88c4f93610b4
+      internalID: 275190608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_9
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 225
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 762ea85e6edb4734295e5bab39484281
+      internalID: 869274300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_10
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 225
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82e5e70b992dfbb48b8714bd38a28b43
+      internalID: 1553563682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_11
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 228
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32a922b0e7248204c974eaa4d6612d52
+      internalID: -1607094968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_12
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 228
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d8c415bb3508a94da77f5ebed6a5435
+      internalID: 2098680258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_13
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 228
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b10be61475eebb941ada7961b949a64d
+      internalID: -1483688530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_14
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 228
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6ebc97ae56e1664da553fe8992a889a
+      internalID: 1434141490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_15
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 226
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9448906c7a63f24a95a28e63cbf83ad
+      internalID: 661957195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_16
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 226
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13472f1142993084eb87377f3a88620f
+      internalID: 1451119068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_17
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 226
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48bed878b00d5a349816a24234205ebd
+      internalID: -1070490575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_18
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 189
+        width: 8
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7ef924c5d39ddc45a05785a992349d0
+      internalID: -1845163501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_19
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 189
+        width: 7
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b9c4fdb5e9a58d428619472718e6353
+      internalID: -2073594689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_20
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 189
+        width: 8
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7af96166fd6fbb645a0505c71314bbbd
+      internalID: 1067418636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_21
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 189
+        width: 7
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10ed1554acfe67c4790740e6cd3538a4
+      internalID: -1204751168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_22
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 189
+        width: 8
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1da8fa32fb757b941af28ab4187184e4
+      internalID: 427650270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_23
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 198
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53e561a494d45164e868b3306e702780
+      internalID: -22473096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_24
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 199
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b55236a18711ab749ab74de26f95f216
+      internalID: -2010404580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_25
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 198
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc4338ec644e9784b8f0b8adc1099524
+      internalID: 699968212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_26
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 199
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7be8f209be937704fba1aa99bcc89b60
+      internalID: 220085208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_27
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 193
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 932af35ac52c2394f8685b710a9247c4
+      internalID: -1822447294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_28
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 193
+        width: 22
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef9ef3d2babbfed45b49c1d09cda6bc7
+      internalID: -1481646875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_29
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 194
+        width: 23
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1e1b68b3d4f32e4db598d66d7bb5e5d
+      internalID: -1324860336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_30
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 193
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e308ce01823ff854fae3ee9a80d2b7cd
+      internalID: -383312435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_31
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 193
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35253c13a66a72544ae8781769e29835
+      internalID: 91379311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_32
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 193
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a79b533f94e15f4694c5e4c2d37c8cf
+      internalID: -905664205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_33
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 196
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b34de8faecf172344836702e6c545fe2
+      internalID: -2082211101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_34
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 196
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8b2633ccc308644b8b4ec501b3e7d36
+      internalID: 1119768013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_35
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 194
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b44ef7fc74de9af45bc316bd319a79db
+      internalID: -1618601302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_36
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 185
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f8ddc3a753fbb644ab045d32a844b08
+      internalID: 515666912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_37
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 185
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a6722d7ddba3b8458d96212e6e0ebb9
+      internalID: -767094974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_38
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 185
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 709ed08fa5c939042874ca87e78de3e3
+      internalID: -833815107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_39
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 189
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7508f544b9724b438791dcb4a0401db
+      internalID: 1366376888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_40
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 189
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc37ff3068bcebe40a313dddf3bfedde
+      internalID: -811971538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_41
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 163
+        width: 43
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d99c063be0cbc034b8893ed0cdd12684
+      internalID: -912930340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_42
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 163
+        width: 54
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfb031502cb18a94fa2a5f07a735a171
+      internalID: 2083465407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_43
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 168
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9112e8219c03da40baa9782b7caab3d
+      internalID: 1162182617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_44
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 164
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1de994aca335d294a96cc76d6cdf20cf
+      internalID: -819459541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_45
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 165
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b8c14cbb420422409b198482b89d7e8
+      internalID: 718090212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_46
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 165
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e39da9cca7842942bd3493e78e58f40
+      internalID: -1265343294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_47
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 163
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccf4cd61b626166488d499a4ccf135c5
+      internalID: 912657067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_48
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 161
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8817b21c0ba8b654ba70085b38f6318d
+      internalID: -73805132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_49
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 164
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d82bac882d03c0a488da78586ff9e5cd
+      internalID: -139745347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_50
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 164
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71b4e411504a8934a988b206c5e1b908
+      internalID: -97918336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_51
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 162
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77ff26c03f5d6244e8a7993932930eec
+      internalID: -7748675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_52
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 163
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16a1726d2c0b3b44cafeec31f40809b6
+      internalID: 761071948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_53
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 162
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b49c0ffbfa03b64c8ef0fe6ca1bd63f
+      internalID: -287162534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_54
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 163
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4feb31265fa9f47499e9290adb554c80
+      internalID: -45641527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_55
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 163
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7260292e47913648a59c27af1091420
+      internalID: -1384779208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_56
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 139
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae7515404ed5ae549936ec25cabda52f
+      internalID: 1127279815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_57
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 141
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f046f79d67d2ae44a2cf5c064f642d6
+      internalID: -1115688811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_58
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 139
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 857a77d901b8c73409d5d4595f580b50
+      internalID: 1348802317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_59
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 142
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0df7ca277ab284944a1777c28d931675
+      internalID: 1468345723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_60
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 142
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e03e42118ff048047bf3f0d472d33b42
+      internalID: 451922410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_61
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 142
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8f48828588fc354295228bc6fa9f6ce
+      internalID: -59432294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_62
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 140
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8da630a15d1cd28468cf70ab275425c3
+      internalID: -957307407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_63
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 140
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dace46b2f58e3b47be0c27b50042d9d
+      internalID: 664898049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_64
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 140
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 160e772ab769b4e4eaa0ac489c96ace7
+      internalID: -1294266055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_65
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 143
+        width: 25
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2f4e689f18fb1a4591c24db2f800a8d
+      internalID: -46738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_66
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 141
+        width: 22
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ddcab718510f924899d16bf8376cedd
+      internalID: 650115121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_67
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 143
+        width: 21
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dbfa728c8ddb814dbf884114b8d1a91
+      internalID: 63053596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_68
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 143
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a68632a9a661d3c4eac18527bde96ba9
+      internalID: 1504637909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_69
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 126
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f10c29143cded04ebe2e18e3bbe5973
+      internalID: 1002638490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_70
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 126
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7adea4cca50849c4fb8abdf8aa127ab0
+      internalID: -2085610944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_71
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 128
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0140fee9e12d794f92c49ce1777c236
+      internalID: -567319763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_72
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 128
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7d9c70861be4b14fbca5ea45ddc1b67
+      internalID: -206309738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_73
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 129
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49eaa2244ff4091438f173127fa2382b
+      internalID: -1286524960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_74
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 133
+        width: 8
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c480fab9542d3d40aace4a3afcabf00
+      internalID: -175966245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_75
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 133
+        width: 8
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5899c51fafcaa6449b9598a7619cd2b4
+      internalID: 1988713624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_76
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 127
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4964070b29b6252419dab33304e80161
+      internalID: -530159997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_77
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 127
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b48d7cfe6d49f94f8eb1f5c69ef53fc
+      internalID: -367192887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_78
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 127
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f62e00553bda2784289ee558967853c0
+      internalID: 158345155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_79
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 127
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35d8dd1b12a650647bef1165476e4bab
+      internalID: -1054549279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_80
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 126
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee7ead5e5b2fd3141a4f5c687d06d2f4
+      internalID: 1754676473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_81
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 126
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f90985cdc760eb1498841288141813a5
+      internalID: 1202418275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_82
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 122
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8baa7784186e84439e2a01d0e49ca74
+      internalID: 1296109385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_83
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 122
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45dfdef8cc3451c4eacd7d5f5ae052be
+      internalID: -1967799253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_84
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 124
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1634167dca1fbfb4698de00e76860d7a
+      internalID: -456290568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_85
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 121
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c6fbd2802a3e3f42bb4e21c9dd0eb25
+      internalID: -1639240500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_86
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 124
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63b4adeda1abe4546acfafb76465c028
+      internalID: 508751628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_87
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 98
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54f992b39fee07c4ab9692153435fc48
+      internalID: 1405602553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_88
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 98
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca9f5b6c97b31b14199b793a68197fe1
+      internalID: 1621140822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_89
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 99
+        width: 23
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bae2eb24f291d64396e6b5d34b5ca51
+      internalID: -1259704093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_90
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 99
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5e866348a98dea4abb8e3704f5044f2
+      internalID: 1334970569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_91
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 98
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae34a292d224487419fc2b91bde45822
+      internalID: -227204175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_92
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 100
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd425c8f49af58548b46efafc9541a46
+      internalID: -1514621865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_93
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 100
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c76b9efa18e713b4cac017ce9f6345a2
+      internalID: -1987387656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_94
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 99
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c11e2c9017ff004c844526df4985e54
+      internalID: 2107056931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_95
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 99
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4656ff83d5502bc40b8d9fc997835c62
+      internalID: 532724792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_96
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 103
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ecdee0ad758e6348b7b74e06e093fa7
+      internalID: -1711558357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_97
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 102
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e525ad0a1efc5a243be9749672d8a841
+      internalID: -1380953841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_98
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 100
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 966f2f694c2dd124ca1957d491693ef7
+      internalID: 2138435748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_99
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 98
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fba9fb71bfc70144fbb4eb6ffea52acf
+      internalID: 1463695300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_100
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 98
+        width: 23
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f29d2150113d5ca409ec39de04759707
+      internalID: -1238090158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_101
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 98
+        width: 23
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74f33156d3ce99845a2ce25c707078a8
+      internalID: 1927964232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_102
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 98
+        width: 23
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02ee44e63fd9d5c4e82c5cd5c2d95ed8
+      internalID: 712701257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_103
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 98
+        width: 23
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e54245eae55ab3f43afe8a5234a8651e
+      internalID: -1012656228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_104
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 69
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c997ec5189ace4488cca2cc28b925b1
+      internalID: -1911281753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_105
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 70
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95388fd445cc215438da0baa6689823f
+      internalID: 656471520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_106
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 71
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01c7fbaffbcbcfd47a049cde253916a9
+      internalID: -18811930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_107
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 66
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44ccfa517ea226446964e2b5d7f3831c
+      internalID: -576952048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_108
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 63
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8878b02e24fb6fe419b1dcf67b3770f3
+      internalID: -1785937248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_109
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 62
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c036ba52f0b2e0545bbb15244ddb76f4
+      internalID: -860128882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_110
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 62
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa600383bdd70cf468cfba98ab34d0eb
+      internalID: -196236547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_111
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 62
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 934ea728bc0231645835751eeec09a85
+      internalID: 2140503641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_112
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 66
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91e565a54df867944a99ed2cd085a13a
+      internalID: -1639841240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_113
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 68
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7adbf66fa77b8fa4fac387ee136ffd6d
+      internalID: -577657589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_114
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 66
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24bea721435f3cc4e8734dc069534a7c
+      internalID: -145699922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_115
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 65
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c38ab23dcd6574341b97d5460e2870d1
+      internalID: -327888435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_116
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 66
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08d8d2e9d05e9b54996f0980d96669c9
+      internalID: 687999725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_117
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 67
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eca6656516bd35b4cb2724dd2312a1e4
+      internalID: -1176125543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_118
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 66
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a26a1eb9f859764a8105d1b174c5784
+      internalID: -1289384305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_119
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 65
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73a2ec550370f1346b7b93b2df72fda2
+      internalID: 1766634760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_120
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 66
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc827bf25fc09d34bb6452a57fba2097
+      internalID: 956333601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_121
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 67
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa30461d3148427438e7c7113255cfc0
+      internalID: -1137913548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_122
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 66
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da777918a16846444b94a08d39f64468
+      internalID: -1485707468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_123
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 65
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 080725915d497f74a846b402903ca83f
+      internalID: -555413226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_124
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 18
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d624ee0d5182eab4abb19ce8ff8f79c9
+      internalID: -242524127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_125
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 19
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92b1a89e02df69447914511278ed0de7
+      internalID: -1435443607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_126
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 20
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcdf419ad920950488167bb78b4afe9b
+      internalID: -1013931580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_127
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 27
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29e2a3ae4157f744d8de4d99087d6215
+      internalID: 240348911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_128
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 27
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6fedafce2bd3924aab62c76b0c1218b
+      internalID: -1246360181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_129
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 30
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cf3e9dd4686ee841813cee0938f6b7b
+      internalID: 230753346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_130
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 36
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71c27a7bb1138094a8ce87c98b3145ec
+      internalID: -688034678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_131
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 33
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41d33ad65cf7bb84991ad0742f28e467
+      internalID: -183402186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_132
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 29
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15a28f721dbf4c449b2930c6dc3e50a6
+      internalID: -330262420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_133
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 30
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31bd20dcf1deb2f4c88a64cce5048d61
+      internalID: 1953729962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_134
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 31
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1d3486b5208f134cb047028d2118bfe
+      internalID: -224216942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_135
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 30
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24fa03365c187004b87c60aa86ccdc52
+      internalID: 923657808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_136
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 17
+        width: 26
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4545ff8466074044ba129d6e251cc642
+      internalID: 1968836623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_137
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 18
+        width: 21
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da2c7a07c62f31f469f83a8314038051
+      internalID: -1935230646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_138
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 18
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a15fa27063a9ee4daeeded8812fe089
+      internalID: 1783884269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_81: 1202418275
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_92: -1514621865
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_117: -1176125543
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_61: -59432294
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_88: 1621140822
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_133: 1953729962
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_115: -327888435
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_82: 1296109385
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_136: 1968836623
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_79: -1054549279
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_97: -1380953841
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_113: -577657589
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_131: -183402186
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_94: 2107056931
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_22: 427650270
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_71: -567319763
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_0: 278982556
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_44: -819459541
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_75: 1988713624
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_54: -45641527
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_93: -1987387656
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_60: 451922410
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_72: -206309738
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_49: -139745347
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_23: -22473096
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_119: 1766634760
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_63: 664898049
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_37: -767094974
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_74: -175966245
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_137: -1935230646
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_62: -957307407
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_47: 912657067
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_2: 2118193144
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_28: -1481646875
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_46: -1265343294
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_127: 240348911
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_15: 661957195
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_24: -2010404580
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_30: -383312435
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_80: 1754676473
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_33: -2082211101
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_39: 1366376888
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_21: -1204751168
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_14: 1434141490
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_32: -905664205
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_17: -1070490575
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_86: 508751628
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_73: -1286524960
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_85: -1639240500
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_134: -224216942
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_99: 1463695300
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_89: -1259704093
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_109: -860128882
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_104: -1911281753
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_125: -1435443607
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_41: -912930340
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_106: -18811930
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_98: 2138435748
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_110: -196236547
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_118: -1289384305
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_114: -145699922
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_5: 1089390264
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_103: -1012656228
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_66: 650115121
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_95: 532724792
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_108: -1785937248
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_76: -530159997
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_84: -456290568
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_50: -97918336
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_100: -1238090158
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_77: -367192887
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_1: 669549441
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_9: 869274300
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_35: -1618601302
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_122: -1485707468
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_123: -555413226
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_19: -2073594689
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_8: 275190608
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_56: 1127279815
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_12: 2098680258
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_102: 712701257
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_51: -7748675
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_124: -242524127
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_52: 761071948
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_65: -46738
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_116: 687999725
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_7: -849353176
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_68: 1504637909
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_138: 1783884269
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_101: 1927964232
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_64: -1294266055
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_111: 2140503641
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_107: -576952048
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_129: 230753346
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_53: -287162534
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_67: 63053596
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_11: -1607094968
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_87: 1405602553
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_128: -1246360181
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_34: 1119768013
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_6: 804632802
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_13: -1483688530
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_10: 1553563682
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_38: -833815107
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_26: 220085208
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_58: 1348802317
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_36: 515666912
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_120: 956333601
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_31: 91379311
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_83: -1967799253
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_25: 699968212
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_130: -688034678
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_42: 2083465407
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_45: 718090212
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_29: -1324860336
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_59: 1468345723
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_78: 158345155
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_43: 1162182617
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_16: 1451119068
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_27: -1822447294
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_96: -1711558357
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_121: -1137913548
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_69: 1002638490
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_90: 1334970569
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_126: -1013931580
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_70: -2085610944
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_18: -1845163501
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_20: 1067418636
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_48: -73805132
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_112: -1639841240
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_105: 656471520
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_40: -811971538
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_3: -526429081
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_55: -1384779208
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_4: 1969923065
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_135: 923657808
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_91: -227204175
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_57: -1115688811
+      dapoxrp-d55277ac-2f49-42ea-ad4f-ba305b67c706_132: -330262420
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -113,10 +113,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   myProjectile: {fileID: 8750200123865715329, guid: 85c367d27b7046e4b85e97aac0855222, type: 3}
+  ExplosionTemplate: {fileID: 7995845328165520501, guid: 6d41d6442e13a3c4f9f5a9add98a25e2, type: 3}
   hp: 3
   enemySpeed: 6
   myMaterial: {fileID: 2100000, guid: 98c4b1214e27d2942b656d4de9a0ebd0, type: 2}
   myHitTakenMaterial: {fileID: 2100000, guid: f14f623b4a38fcb45a01911d8465573d, type: 2}
+  hitFxColor: {r: 0.7921569, g: 0.4404946, b: 0, a: 1}
 --- !u!1 &6741887997043296298
 GameObject:
   m_ObjectHideFlags: 0

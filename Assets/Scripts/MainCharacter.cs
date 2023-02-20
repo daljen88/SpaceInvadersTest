@@ -49,6 +49,7 @@ public class MainCharacter : MonoBehaviour
     }
     public void OnHitSuffered(int damage = 1)
     {
+        if (isInvulnerable) { return; }
         if(--hp<=0) //fa decremento e poi valuta se minore o uguale a 0// hp--<=0 guarda se hp minore o uguale a 0 e poi fa decremento
         {
             //morte
@@ -66,11 +67,12 @@ public class MainCharacter : MonoBehaviour
     }
     IEnumerator HitSufferedCoroutine()
     {
-        Time.timeScale = 0;
+        Time.timeScale = 0.1f;
         isInvulnerable = true;
 
         SpriteRenderer tsprite = GetComponentInChildren<SpriteRenderer>();
-        tsprite.DOColor(Color.red, .05f)/*.timeScale=1*/;
+        tsprite.DOColor(Color.red, .05f).SetUpdate(true)/*.timeScale=1*/;
+        tsprite.transform.DOPunchScale(Vector3.one * .5f, 0.10f).SetUpdate(true);
 
         yield return new WaitForSecondsRealtime(0.05f); //con 0 aspetta 1 frame
         //yield return new WaitForSecondsRealtime(0);
@@ -79,7 +81,7 @@ public class MainCharacter : MonoBehaviour
         //yield return new WaitForSecondsRealtime(0);
         tsprite.DOColor(Color.white, .05f);
         Time.timeScale = 1;
-        yield return new WaitForSecondsRealtime(.15f);
+        yield return new WaitForSecondsRealtime(.10f);
 
         isInvulnerable = false;
 

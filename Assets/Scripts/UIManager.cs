@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
+
 public class UIManager : MonoBehaviour
 {
 
@@ -9,8 +11,10 @@ public class UIManager : MonoBehaviour
     public SpriteRenderer hpTemplate;
     public List<SpriteRenderer> hpSpritesList;
     public MainCharacter character;
+    public TextMeshPro scoreText;
+    public int scorePoints;
 
-    public float hpOffset=1.4f;
+    public float hpOffset=1.2f;
     private void Awake()
     {
         instance = this; 
@@ -22,10 +26,11 @@ public class UIManager : MonoBehaviour
     }
     public void InitUI()
     {
+        scorePoints = 0;
         //instanzia oggetto, in posizione, rotazione e parent oggetto spawnato
         for (int i =0; i< character.hp; i++)
         {
-            SpriteRenderer tsprite = Instantiate(hpTemplate, hpTemplate.transform.position + Vector3.right * hpOffset * i, hpTemplate.transform.rotation, hpTemplate.transform.parent);
+            SpriteRenderer tsprite = Instantiate(hpTemplate, gameObject.transform.GetChild(0).position + Vector3.right * hpOffset * (i+1), gameObject.transform.GetChild(0).rotation, gameObject.transform.GetChild(0));
             hpSpritesList.Add(tsprite); 
         }
     }
@@ -41,14 +46,18 @@ public class UIManager : MonoBehaviour
         //do scale a 0
         
     }
+    public void PointsScoredEnemyKilled()
+    {
+        StartCoroutine(pointsscoredcoroutine());
+    }
 
     public IEnumerator HitsufferesCoroutine()
     {
         //esegue codice
         //salvo lo sprite da distruggere
-        SpriteRenderer tsprite = hpSpritesList[hpSpritesList.Count - 1];
+        SpriteRenderer tsprite = hpSpritesList[hpSpritesList.Count-1];
         //rimuovo dalla lista degli hp correnti
-        hpSpritesList.RemoveAt(hpSpritesList.Count - 1);
+        hpSpritesList.RemoveAt(hpSpritesList.Count-1);
         tsprite.transform.DOShakePosition(.25f);
         tsprite.DOColor(Color.red, .25f);
 
@@ -60,6 +69,12 @@ public class UIManager : MonoBehaviour
         Destroy(tsprite.gameObject);
 
 
+    }
+    public IEnumerator pointsscoredcoroutine()
+    {
+        scorePoints += 666;
+        scoreText.text = scorePoints.ToString();
+        yield return null;
     }
 
 

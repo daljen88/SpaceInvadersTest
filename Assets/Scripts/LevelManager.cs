@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
     public Enemy_Spawner spawner;
     public UIManager uiManager;
     public TextMeshPro introText;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +24,9 @@ public class LevelManager : MonoBehaviour
     }
     IEnumerator IntroCoroutine()
     {
+        
         character.transform.position = new Vector3(0, -6, 0);
-        character.transform.DOMoveY(-4,5);
+        character.transform.DOMoveY(-4,4);
         introText.transform.localScale = Vector3.zero;
         yield return new WaitForSeconds(1);
         //compare scritta READY
@@ -34,7 +36,7 @@ public class LevelManager : MonoBehaviour
         introText.transform.DOScale(Vector3.one,.5f).SetEase(Ease.InElastic); 
         yield return new WaitForSeconds(.5f);
         //compare scritta Fight
-        introText.text = "FIGHT!";
+        introText.text = "KEEP YOUR EYES ON THE ENEMY!";
         introText.transform.DOScale(Vector3.one, .5f).SetEase(Ease.OutElastic);
 
         yield return new WaitForSeconds(.5f);

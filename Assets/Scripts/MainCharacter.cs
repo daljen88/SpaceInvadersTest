@@ -7,10 +7,11 @@ using DG.Tweening;
 public class MainCharacter : MonoBehaviour
 {
     public Sprite[] gooseleft;
-    public int hp=4;
+    public int hp=5;
     public Projectile myProjectile;
     float moveSpeed = 6;
     bool isInvulnerable = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +55,8 @@ public class MainCharacter : MonoBehaviour
         {
             //morte
             Destroy(gameObject);
+            UIManager.instance.OnPlayerHitSuffered();
+
         }
         else
         {

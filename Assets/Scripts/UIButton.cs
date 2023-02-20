@@ -14,7 +14,7 @@ public class UIButton : MonoBehaviour
         //transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
 
         //DOTWEEN LIBRERIE: SCALA e tempo di transizione
-        transform.DOScale(Vector3.one * 2.7f, .15f).SetEase(Ease.InBounce);
+        transform.DOScale(Vector3.one * 3.7f, .15f).SetEase(Ease.InBounce);
 
     }
     private void OnMouseExit()
@@ -22,17 +22,17 @@ public class UIButton : MonoBehaviour
         //transform.localScale = Vector3.one * 3.5f;
 
         //DOTWEEN: animazione uscita è più velcoe di quella di entrata
-        transform.DOScale(Vector3.one * 2.5f, .05f);
+        transform.DOScale(Vector3.one * 3.5f, .05f);
 
     }
     private void OnMouseDown()
     {
-        transform.localScale = Vector3.one * 2f;
+        transform.DOScale(Vector3.one * 3f, .01f);
         onMouseDown.Invoke();
     }
     private void OnMouseUp()
     {
-        transform.DOScale(Vector3.one * 2.7f, .05f);
+        transform.DOScale(Vector3.one * 3.7f, .05f);
 
         //transform.localScale = Vector3.one * 3.5f;
     }

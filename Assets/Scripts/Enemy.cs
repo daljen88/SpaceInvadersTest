@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class Enemy : MonoBehaviour
 {
     public enum EnemyState { IDLE, MOVE_DOWN, MOVE_RIGHT, MOVE_LEFT, DESTROYED}
     public EnemyState currentState = EnemyState.IDLE;
     public Enemy_Projectile myProjectile;
-    //public MainCharacter character;
+    public MainCharacter character;
     public ParticleSystem ExplosionTemplate;
 
 
@@ -141,6 +142,8 @@ public class Enemy : MonoBehaviour
         hp -= damage;
         if (hp<=0)
         {
+            UIManager.instance.PointsScoredEnemyKilled();
+           
             //FX MORTE
             ParticleSystem ps = Instantiate(ExplosionTemplate, transform.position, Quaternion.identity);
             //controllo particella da codice

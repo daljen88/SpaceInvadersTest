@@ -4,13 +4,16 @@ using UnityEditor.TextCore.Text;
 using UnityEngine;
 using DG.Tweening;
 
-public class MainCharacter : MonoBehaviour
+public class MainCharacter : MonoBehaviour, IHittable
 {
     public Sprite[] gooseleft;
     public int hp=5;
     public Projectile myProjectile;
     float moveSpeed = 6;
     bool isInvulnerable = false;
+    public AudioSource audioSrc;
+    //public List<AudioClip> audioClips;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -51,8 +54,14 @@ public class MainCharacter : MonoBehaviour
     public void OnHitSuffered(int damage = 1)
     {
         if (isInvulnerable) { return; }
-        if(--hp<=0) //fa decremento e poi valuta se minore o uguale a 0// hp--<=0 guarda se hp minore o uguale a 0 e poi fa decremento
+
+        //audioSrc.clip = audioClips[Random.Range(0, audioClips.Count)];
+        audioSrc.Play();
+
+        if (--hp<=0) //fa decremento e poi valuta se minore o uguale a 0// hp--<=0 guarda se hp minore o uguale a 0 e poi fa decremento
         {
+            //se giocatore viene distrutto, sposta audio src fuori così non viene distrutto:
+            audioSrc.transform.parent = transform.parent;
             //morte
             Destroy(gameObject);
             UIManager.instance.OnPlayerHitSuffered();

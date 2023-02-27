@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using TMPro;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IHittable
 {
     public enum EnemyState { IDLE, MOVE_DOWN, MOVE_RIGHT, MOVE_LEFT, DESTROYED}
     public EnemyState currentState = EnemyState.IDLE;
@@ -19,10 +19,13 @@ public class Enemy : MonoBehaviour
     Vector3 goalPosition;
     float hitFxDuration = 0.25f;
     public Color hitFxColor;
+    public AudioSource audioSrc;
+    public List<AudioClip> audioClips;
 
     float shootCooldown = 0.5f;
     float shootTimer = 0;
     Tweener twScale;
+    public int enemyPointsValue=666;
 
     // Start is called before the first frame update
     void Start()
@@ -140,14 +143,18 @@ public class Enemy : MonoBehaviour
     public void OnHitSuffered(int damage = 1)
     {
         hp -= damage;
+        audioSrc.clip = audioClips[Random.Range(0, audioClips.Count)];
+        audioSrc.Play();
         if (hp<=0)
         {
-            UIManager.instance.PointsScoredEnemyKilled();
+            //SCORE OK
+            //UIManager.instance.PointsScoredEnemyKilled();
            
             //FX MORTE
             ParticleSystem ps = Instantiate(ExplosionTemplate, transform.position, Quaternion.identity);
             //controllo particella da codice
             ps.Emit(60);
+            LevelManager.instance.AddScore(enemyPointsValue);
             Destroy(ps.gameObject,.5f);
 
             Destroy(gameObject);

@@ -7,6 +7,7 @@ public class Enemy_Spawner : MonoBehaviour
     public Enemy enemyTemplate;
     public float spawnTime = 2;
     public int maxEnemies = 10;
+    public List<Enemy> enemyList;
 
     //private List<Enemy> enemies;
     
@@ -24,7 +25,8 @@ public class Enemy_Spawner : MonoBehaviour
         if (maxEnemies > 0)
         {
             maxEnemies--;
-            /*enemies.Add(*/Instantiate(enemyTemplate, transform.position, transform.rotation)/*)*/;
+            /*enemies.Add(*/
+            enemyList.Add( Instantiate(enemyTemplate, transform.position, transform.rotation))/*)*/;
 
         }
         else
@@ -32,6 +34,25 @@ public class Enemy_Spawner : MonoBehaviour
             CancelInvoke("SpawnEnemy");
         }
     }
+
+    public bool CheckPlayerVictory()
+    {
+        if (maxEnemies > 0)
+        {
+            return false;
+        }
+        else
+        {
+            foreach (Enemy enemy in enemyList)
+            {//se trovo un nemico vivo, return false
+                if (enemy/* && enemy.hp > 0 && enemy.isActiveAndEnabled*/) 
+                { return false; }
+            }
+        }
+        //arrivati qua nel controllo tutti i nemici sono morti
+        return true;
+    }
+
     //private void Update()
     //{
     //    for (int i = 0; i < enemies.Count; i++)

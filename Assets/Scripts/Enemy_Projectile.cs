@@ -6,6 +6,9 @@ public class Enemy_Projectile : MonoBehaviour
 {
     public Vector3 shootDirection;
     bool shooted = false;
+    public AudioSource audioEnemyShot;
+    public List<AudioClip> audioClips;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +19,10 @@ public class Enemy_Projectile : MonoBehaviour
     {
         shooted = true;
         shootDirection = direction;
+        audioEnemyShot.clip = audioClips[Random.Range(0, audioClips.Count)];
+        audioEnemyShot.Play();
 
-        
+
         //distrugge dopo 10 secondi
         //Destroy(gameObject, 10);
     }
@@ -31,11 +36,11 @@ public class Enemy_Projectile : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("eh la madòna, go tocào " + other.name);
-        MainCharacter tPlayer = other.GetComponent<MainCharacter>();
-        if (tPlayer)
+        IHittable tPlayer = other.GetComponent<IHittable>();
+        if (tPlayer!=null)
         {
             //HO COLPITO
-            tPlayer.OnHitSuffered();
+            tPlayer.OnHitSuffered(1);
             Destroy(gameObject);
         }
     }

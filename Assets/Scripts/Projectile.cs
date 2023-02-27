@@ -7,6 +7,11 @@ public class Projectile : MonoBehaviour
 {
     public Vector3 shootDirection;
     bool shooted = false;
+    public AudioSource audioPlayShot;
+    public List<AudioClip> audioClips;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,10 +22,13 @@ public class Projectile : MonoBehaviour
     {
         shooted= true;
         shootDirection= direction;
+        //audioClips.Clear();
+        audioPlayShot.clip = audioClips[Random.Range(0,audioClips.Count)];
+        audioPlayShot.Play();
 
 
         //distrugge dopo 10 secondi
-        //Destroy(gameObject, 10);
+        Destroy(gameObject, 10);
     }
 
     // Update is called once per frame
@@ -32,11 +40,11 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("eh la madòna, go tocào "+other.name);
-        Enemy tEnemy = other.GetComponent<Enemy>();
-        if (tEnemy)
+        IHittable tEnemy = other.GetComponent<IHittable>();
+        if (tEnemy!=null)
         {
             //HO COLPITO
-            tEnemy.OnHitSuffered();
+            tEnemy.OnHitSuffered(1);
             //cambia parent al particle system
             ParticleSystem tParticle = GetComponentInChildren<ParticleSystem>();
             SpriteRenderer trenderer = GetComponentInChildren<SpriteRenderer>();

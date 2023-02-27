@@ -13,8 +13,16 @@ public class UIManager : MonoBehaviour
     public MainCharacter character;
     public TextMeshPro scoreText;
     public int scorePoints;
+    public GameObject playerUI;
+    public GameObject pauseGO;
 
     public float hpOffset=1.2f;
+
+    public void Show(bool show)
+    {
+        playerUI.SetActive(show);
+    }
+
     private void Awake()
     {
         instance = this; 
@@ -26,11 +34,12 @@ public class UIManager : MonoBehaviour
     }
     public void InitUI()
     {
-        scorePoints = 0;
+        //scorePoints = 0;
         //instanzia oggetto, in posizione, rotazione e parent oggetto spawnato
         for (int i =0; i< character.hp; i++)
         {
             SpriteRenderer tsprite = Instantiate(hpTemplate, gameObject.transform.GetChild(0).position + Vector3.right * hpOffset * (i+1), gameObject.transform.GetChild(0).rotation, gameObject.transform.GetChild(0));
+            tsprite.gameObject.SetActive(true);
             hpSpritesList.Add(tsprite); 
         }
     }
@@ -38,7 +47,7 @@ public class UIManager : MonoBehaviour
     {
         //Destroy(hpSpritesList[hpSpritesList.Count - 1].gameObject);
         //hpSpritesList.RemoveAt(hpSpritesList.Count - 1);
-        StartCoroutine(HitsufferesCoroutine());
+        StartCoroutine(HitsufferedCoroutine());
 
         //rimuoviamo dalal lista della vite hpSpriteList
         //Doshake sulla sprite
@@ -51,7 +60,7 @@ public class UIManager : MonoBehaviour
         StartCoroutine(pointsscoredcoroutine());
     }
 
-    public IEnumerator HitsufferesCoroutine()
+    public IEnumerator HitsufferedCoroutine()
     {
         //esegue codice
         //salvo lo sprite da distruggere
@@ -81,6 +90,23 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(LevelManager.instance.TogglePause())
+            {
+                pauseGO.SetActive(true);
+
+            }
+            else
+            {
+                pauseGO.SetActive(false);
+            }
+        }
+
+    }
+    public void SetScore(int scorePoints)
+    {
+        scoreText.text = scorePoints.ToString();
+        scoreText.transform.DOPunchScale(Vector3.one*.5f,.333f);
     }
 }

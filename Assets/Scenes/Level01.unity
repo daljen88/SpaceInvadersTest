@@ -905,6 +905,7 @@ MonoBehaviour:
   hp: 5
   myProjectile: {fileID: 3912386554682083789, guid: b64412e30a328534d8fb7c791f3881e6, type: 3}
   audioSrc: {fileID: 1221024412}
+  Animator: {fileID: 2036642578}
 --- !u!1 &890149573
 GameObject:
   m_ObjectHideFlags: 0
@@ -2250,6 +2251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2036642576}
   - component: {fileID: 2036642577}
+  - component: {fileID: 2036642578}
   m_Layer: 7
   m_Name: Square
   m_TagString: Untagged
@@ -2324,6 +2326,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2036642578
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036642575}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ffe37ab4c7679cf49a9c27beaa2c0720, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &2075333116
 GameObject:
   m_ObjectHideFlags: 0

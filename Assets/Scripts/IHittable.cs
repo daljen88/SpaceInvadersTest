@@ -7,7 +7,6 @@ public interface IHittable
     void OnHitSuffered(int damage);
     
 
-
     void Update()
     {
         

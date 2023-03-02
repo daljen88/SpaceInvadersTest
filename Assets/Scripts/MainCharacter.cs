@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.TextCore.Text;
 using UnityEngine;
 using DG.Tweening;
 
@@ -12,27 +11,34 @@ public class MainCharacter : MonoBehaviour, IHittable
     float moveSpeed = 6;
     bool isInvulnerable = false;
     public AudioSource audioSrc;
+    public Animator Animator;
     //public List<AudioClip> audioClips;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-            SpriteRenderer tsprite = GetComponentInChildren<SpriteRenderer>();
+        string animationName = "playerIdleAnimation";
+
+        SpriteRenderer tsprite = GetComponentInChildren<SpriteRenderer>();
         if (Input.GetKey(KeyCode.A))
         {
-            tsprite.sprite = gooseleft[1];
+            animationName = "playerWalkAnimation";
+            transform.localScale = new Vector3(-1, 1, 1);
+            //tsprite.sprite = gooseleft[1];
             transform.position += Vector3.left * moveSpeed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            tsprite.sprite = gooseleft[0];
+            animationName = "playerWalkAnimation";
+            transform.localScale = Vector3.one;
+
+            //tsprite.sprite = gooseleft[0];
             transform.position += Vector3.right * moveSpeed * Time.deltaTime;
         }
 
@@ -44,6 +50,7 @@ public class MainCharacter : MonoBehaviour, IHittable
             //Alternativa:
             Shoot();
         }
+        Animator.Play(animationName);
     }
 
     public void Shoot ()

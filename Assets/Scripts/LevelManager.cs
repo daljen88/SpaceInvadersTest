@@ -55,9 +55,16 @@ public class LevelManager : MonoBehaviour
         introText.transform.DOScale(Vector3.one, .5f).SetEase(Ease.OutElastic);
         character.transform.DOMoveX(0, 2.5f);
         yield return new WaitForSeconds(2.5f);
-        //scompare Fight
-        introText.transform.DOScale(Vector3.zero, .5f).SetEase(Ease.InElastic);
+        //scompare victory message
         character.transform.DOMoveY(8, 2.5f);
+
+        yield return new WaitForSeconds(3f);
+        introText.transform.DOScale(Vector3.zero, .5f).SetEase(Ease.InElastic);
+        state= LogicState.END;
+        yield return new WaitForSeconds(3f);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MAIN MENU");
+
+
     }
 
     IEnumerator IntroCoroutine()

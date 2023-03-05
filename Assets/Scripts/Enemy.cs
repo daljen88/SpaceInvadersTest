@@ -89,6 +89,7 @@ public class Enemy : MonoBehaviour, IHittable
         if (transform.position.x > goalPosition.x)
         {
             transform.position += Vector3.left * enemySpeed * Time.deltaTime;
+            //RotationCoroutine();
         }
         else
         {
@@ -96,6 +97,19 @@ public class Enemy : MonoBehaviour, IHittable
             goalPosition = transform.position + Vector3.down;
         }
     }
+
+    //IEnumerator RotationCoroutine()
+    //{
+    //    //SpriteRenderer tsprite = GetComponentInChildren<SpriteRenderer>();
+    //    //tsprite.
+    //    //transform.position += Vector3.left * enemySpeed * Time.deltaTime;
+    //    gameObject.transform.DORotate(new Vector3(5, 5, 0), 0.25f, RotateMode.Fast);
+    //    yield return new WaitForSeconds(.25f);
+    //    gameObject.transform.DORotate(new Vector3(5, 5, 0), 0.25f, RotateMode.Fast);
+    //    yield return new WaitForSeconds(.25f);
+
+    //}
+
     void Update_MOVE_RIGHT()
     {
         if(transform.position.x < goalPosition.x)

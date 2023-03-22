@@ -62,7 +62,7 @@ public class LevelManager : MonoBehaviour
         introText.transform.DOScale(Vector3.zero, .5f).SetEase(Ease.InElastic);
         state= LogicState.END;
         yield return new WaitForSeconds(3f);
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MAIN MENU");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MAIN_MENU");
 
 
     }

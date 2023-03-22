@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
     }
     public void StartGame()
     {
-        SceneManager.LoadScene("Level01");
+        SceneManager.LoadScene("SpaceInvaders_GameScene");
     }
     public void QuitGame()
     {

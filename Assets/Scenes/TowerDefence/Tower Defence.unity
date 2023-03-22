@@ -171,6 +171,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &39314775
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -282,6 +290,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &50202340
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -393,6 +409,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &51010601
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -456,37 +480,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 51010598}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &63575347
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 63575348}
-  m_Layer: 0
-  m_Name: EnemySpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &63575348
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 63575347}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &74419948
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,6 +528,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &74419951
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -646,6 +647,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &133081430
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -757,6 +766,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 1
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &135213314
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -868,6 +885,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &239253230
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -979,6 +1004,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &248105515
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1090,6 +1123,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &272036401
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1221,7 +1262,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 75a647ee1e79f224f9eb95471ba6a319, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1364,7 +1405,7 @@ Transform:
   m_GameObject: {fileID: 347066119}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4, y: 0, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1254216266}
@@ -1383,6 +1424,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 1
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &347066122
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1416,7 +1465,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 39d370470c2b3384193c46ea2f5de623, type: 2}
+  - {fileID: 2100000, guid: c5f5ea4dfefa6cc4f97f5a0069e1449b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1494,6 +1543,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &354880175
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1605,6 +1662,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &368119702
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1716,6 +1781,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &372568495
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1847,7 +1920,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 75a647ee1e79f224f9eb95471ba6a319, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1927,7 +2000,7 @@ Transform:
   - {fileID: 1246324618}
   - {fileID: 309646541}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &451328168
 GameObject:
@@ -1977,6 +2050,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &451328171
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2088,6 +2169,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &485341595
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2180,7 +2269,7 @@ Transform:
   m_GameObject: {fileID: 506204788}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4, y: 0, z: 2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1254216266}
@@ -2199,6 +2288,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 1
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &506204791
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2232,7 +2329,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 39d370470c2b3384193c46ea2f5de623, type: 2}
+  - {fileID: 2100000, guid: c5f5ea4dfefa6cc4f97f5a0069e1449b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2310,6 +2407,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &508277624
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2421,6 +2526,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &672728927
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2532,6 +2645,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &695241028
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2643,6 +2764,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &721492032
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2754,6 +2883,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &750430757
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2865,6 +3002,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &769476843
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2976,6 +3121,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &773248757
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3087,6 +3240,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &789114331
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3198,6 +3359,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &813975358
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3309,6 +3478,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &824237827
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3420,6 +3597,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &835287247
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3531,6 +3716,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &857661989
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3642,6 +3835,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &859289791
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3753,6 +3954,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &864475447
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3864,6 +4073,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &918829256
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3975,6 +4192,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &938228902
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4086,6 +4311,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &938542489
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4197,6 +4430,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &941484783
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4308,6 +4549,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &1005427532
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4419,6 +4668,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 1
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &1056504323
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4511,7 +4768,7 @@ Transform:
   m_GameObject: {fileID: 1061287421}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4, y: 0, z: 4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1254216266}
@@ -4530,6 +4787,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 1
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &1061287424
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4563,7 +4828,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 39d370470c2b3384193c46ea2f5de623, type: 2}
+  - {fileID: 2100000, guid: c5f5ea4dfefa6cc4f97f5a0069e1449b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4641,6 +4906,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &1092693006
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4752,6 +5025,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &1099724645
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4863,6 +5144,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &1181341543
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4974,6 +5263,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &1223066579
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5105,7 +5402,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 75a647ee1e79f224f9eb95471ba6a319, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5164,7 +5461,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c935bc2f76f391d46af9cf2b2d679bdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myMaterial: {fileID: 0}
+  myMaterial: {fileID: 2100000, guid: 39d370470c2b3384193c46ea2f5de623, type: 2}
+  narutoNodeList: []
+  testNarutoStart: {fileID: 938542488}
+  narutoPath: []
+  narutedNodes: []
 --- !u!4 &1254216266
 Transform:
   m_ObjectHideFlags: 0
@@ -5308,7 +5609,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 75a647ee1e79f224f9eb95471ba6a319, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5386,6 +5687,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 1
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &1292110821
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5497,6 +5806,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &1358133707
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5608,6 +5925,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 1
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &1377885474
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10575,7 +10900,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &1430107213
 GameObject:
@@ -10625,6 +10950,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &1430107216
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10736,6 +11069,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 1
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &1437144967
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10847,6 +11188,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &1523526746
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11010,6 +11359,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &1669867557
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11121,6 +11478,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &1676995183
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11232,6 +11597,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &1683904019
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11343,6 +11716,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &1710749917
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11454,6 +11835,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &1743037876
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11565,6 +11954,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &1769334529
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11676,6 +12073,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 1
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &1804261684
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11769,7 +12174,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1806272183
 MonoBehaviour:
@@ -11843,6 +12248,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &1813855127
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11954,6 +12367,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &1868623693
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12065,6 +12486,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &1868902803
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12157,7 +12586,7 @@ Transform:
   m_GameObject: {fileID: 1971493804}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4, y: 0, z: 3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1254216266}
@@ -12176,6 +12605,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 1
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &1971493807
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12209,7 +12646,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 39d370470c2b3384193c46ea2f5de623, type: 2}
+  - {fileID: 2100000, guid: c5f5ea4dfefa6cc4f97f5a0069e1449b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12287,6 +12724,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &1984836595
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12398,6 +12843,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoal: 0
+  isObstacle: 0
+  narutoLeft: {fileID: 0}
+  narutoTop: {fileID: 0}
+  narutoRight: {fileID: 0}
+  narutoBot: {fileID: 0}
+  narutoAllDirections: []
+  row: 0
+  column: 0
 --- !u!65 &2110394075
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -26,9 +26,11 @@ public class EndlessRunnerPlayer : MonoBehaviour
 
     private float groundedDistance;
     private float isFallDistance;
+    public float CONTATORE_MORTE;
+
     #endregion
 
-   
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +49,10 @@ public class EndlessRunnerPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         switch (state)
+        //speed aumenta col tempo di gioco
+        CONTATORE_MORTE += Time.deltaTime;
+
+        switch (state)
          {
             case EndlessRuneerPlayerState.IDLE: Update_IDLE(); break;
             case EndlessRuneerPlayerState.RUN: Update_RUN(); break;
@@ -75,7 +80,8 @@ public class EndlessRunnerPlayer : MonoBehaviour
 
     public float GetRunSpeed()
     {
-        return speed*Time.deltaTime;
+        //speed aumenta con tempo di gioco
+        return (speed + CONTATORE_MORTE) * Time.deltaTime;
     }
     void Update_RUN()
     {

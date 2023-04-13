@@ -23,7 +23,7 @@ public class UIButton : MonoBehaviour
 
         //DOTWEEN: animazione uscita è più velcoe di quella di entrata
         transform.DOScale(Vector3.one * 3.5f, .05f);
-
+        
     }
     private void OnMouseDown()
     {

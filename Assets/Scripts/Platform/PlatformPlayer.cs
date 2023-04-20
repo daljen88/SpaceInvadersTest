@@ -42,8 +42,8 @@ public class PlatformPlayer : MonoBehaviour
 
     #endregion
 
+    #region INIT
 
-    // Start is called before the first frame update
     void Start()
     {
         startingSpriteDirection = spriteRenderer.transform.localScale;
@@ -66,7 +66,8 @@ public class PlatformPlayer : MonoBehaviour
 
     }
 
-    #region INIT
+    #endregion
+
     // Update is called once per frame
     void Update()
     {
@@ -101,7 +102,6 @@ public class PlatformPlayer : MonoBehaviour
 
         }
     }
-    #endregion
 
     #region ||>>UPDATES<<||
     //IDLE, RUN, JUMP, FALL, LAND, DEATH
@@ -350,7 +350,6 @@ public class PlatformPlayer : MonoBehaviour
         //spegnere componenti giocatore
     }
 
-
     #endregion
 
     #region PHYSICS
@@ -430,6 +429,7 @@ public class PlatformPlayer : MonoBehaviour
 
     void SaveSafePosition()
     {
+        //controlla se ci sono damagere nelle vicinanze e in caso contrario salva al posizione del player per il respawn
         Collider2D nearObstacle = Physics2D.OverlapCircle(transform.position, 2, 1 << 12);
         if(onGround&&!nearObstacle)
         {

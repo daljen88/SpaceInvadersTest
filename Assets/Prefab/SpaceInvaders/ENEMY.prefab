@@ -52,7 +52,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.45122337
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 2515414618375621288}
   - component: {fileID: 2515414618375621291}
   - component: {fileID: 2515414618375621303}
+  - component: {fileID: -5780585211012120273}
   m_Layer: 9
   m_Name: ENEMY
   m_TagString: Untagged
@@ -240,22 +241,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b4688845684554cb80e1b31fc5ce32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 0
-  myProjectile: {fileID: 8750200123865715329, guid: 85c367d27b7046e4b85e97aac0855222, type: 3}
-  character: {fileID: 0}
+  myProjectile: {fileID: 8297015083679601677, guid: 85c367d27b7046e4b85e97aac0855222, type: 3}
   ExplosionTemplate: {fileID: 7995845328165520501, guid: 6d41d6442e13a3c4f9f5a9add98a25e2, type: 3}
-  hp: 3
-  enemySpeed: 6
-  myMaterial: {fileID: 2100000, guid: 98c4b1214e27d2942b656d4de9a0ebd0, type: 2}
-  myHitTakenMaterial: {fileID: 2100000, guid: f14f623b4a38fcb45a01911d8465573d, type: 2}
-  hitFxColor: {r: 0.7921569, g: 0.4404946, b: 0, a: 1}
-  audioSrc: {fileID: 3036990157780442339}
   audioClips:
   - {fileID: 8300000, guid: 0202b4524d979ab43bd2f5caf8959f9a, type: 3}
   - {fileID: 8300000, guid: 23b996802e4066049943b78633493062, type: 3}
   - {fileID: 8300000, guid: 73daf7b17b69ac647a2e1055a392851b, type: 3}
   - {fileID: 8300000, guid: 6924edcf47efb5341b3ac6707884b95d, type: 3}
+  myMaterial: {fileID: 2100000, guid: 98c4b1214e27d2942b656d4de9a0ebd0, type: 2}
+  myHitTakenMaterial: {fileID: 2100000, guid: f14f623b4a38fcb45a01911d8465573d, type: 2}
+  audioSrc: {fileID: 3036990157780442339}
+  hitFxColor: {r: 0.7921569, g: 0.4404946, b: 0, a: 1}
+  shootCooldown: 0.5
+  enemySpeed: 3
+  hp: 3
   enemyPointsValue: 666
+--- !u!54 &-5780585211012120273
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2515414618375621290}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &6741887997043296298
 GameObject:
   m_ObjectHideFlags: 0

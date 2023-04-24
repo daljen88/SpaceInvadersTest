@@ -9,7 +9,8 @@ public class MainCharacter : MonoBehaviour, IHittable
     public int hp=5;
     public Projectile myProjectile;
     float moveSpeed = 6;
-    bool isInvulnerable = false;
+    private bool isInvulnerable = false;
+    public bool IsInvulnerable { get; set; }
     public AudioSource audioSrc;
     public Animator Animator;
     //public List<AudioClip> audioClips;
@@ -24,6 +25,11 @@ public class MainCharacter : MonoBehaviour, IHittable
     void Update()
     {
         string animationName = "playerIdleAnimation";
+
+        if (transform.position.x < -8f)
+            transform.position = new Vector3(-8f, transform.position.y);
+        if (transform.position.x > 8f)
+            transform.position = new Vector3(8f, transform.position.y);
 
         SpriteRenderer tsprite = GetComponentInChildren<SpriteRenderer>();
         if (Input.GetKey(KeyCode.A))

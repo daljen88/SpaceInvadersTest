@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
 
         //SaveData("EndlessRunner_Score", 666);
-        //SaveData("SpaceInvaders_Score", 6666);
+        //SaveData("SpaceInvaders_Score",UIManager.instance.scorePoints);
         //SaveData("TowerDefence_Score", 66666);
 
     }

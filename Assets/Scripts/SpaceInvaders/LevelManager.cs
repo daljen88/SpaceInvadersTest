@@ -42,13 +42,16 @@ public class LevelManager : MonoBehaviour
                 character.enabled = false;
                 spawner.enabled = false;
                 //uiManager.enabled = false;
-                uiManager.Show(false);
+                //spegne UI player
+                //uiManager.Show(false);
             }
          }
     }
 
     IEnumerator OutroCoroutine() 
     {
+        character.IsInvulnerable = true;
+
         victoryAudioSource.Play();
         yield return new WaitForSeconds(1);
         introText.text = "YOU GOT THOSE EYES SHUT!!";
@@ -60,8 +63,11 @@ public class LevelManager : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
         introText.transform.DOScale(Vector3.zero, .5f).SetEase(Ease.InElastic);
-        state= LogicState.END;
-        yield return new WaitForSeconds(3f);
+        character.IsInvulnerable = false;
+        uiManager.Show(false);
+        state = LogicState.END;
+        GameManager.Instance?.SaveData("SpaceInvaders_Score", playerScore);
+        yield return new WaitForSeconds(2f);
         UnityEngine.SceneManagement.SceneManager.LoadScene("MAIN_MENU");
 
 

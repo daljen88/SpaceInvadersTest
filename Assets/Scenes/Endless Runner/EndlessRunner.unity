@@ -175,7 +175,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 69
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -201,7 +201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 323812188}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.177243, y: -0.41847825, z: -9.499475}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -468,10 +468,11 @@ MonoBehaviour:
   state: 0
   jumpPower: 10
   jumpMaxHeight: 5
-  speed: 8
+  speed: 6
   onGround: 0
   nearGround: 0
   myGround: {fileID: 0}
+  CONTATORE_MORTE: 0
 --- !u!136 &1027054914
 CapsuleCollider:
   m_ObjectHideFlags: 0

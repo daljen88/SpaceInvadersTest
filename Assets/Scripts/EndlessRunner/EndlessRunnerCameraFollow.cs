@@ -31,6 +31,7 @@ public class EndlessRunnerCameraFollow : MonoBehaviour
         {
             cameraPos.x = transform.position.x;
         }
-            transform.position = cameraPos;
+
+        transform.position = cameraPos;
     }
 }

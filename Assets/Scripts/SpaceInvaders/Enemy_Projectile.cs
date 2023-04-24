@@ -9,10 +9,8 @@ public class Enemy_Projectile : MonoBehaviour
     public AudioSource audioEnemyShot;
     public List<AudioClip> audioClips;
 
-    // Start is called before the first frame update
     void Start()
     {
-
     }
 
     public void Shoot(Vector3 direction)
@@ -21,7 +19,6 @@ public class Enemy_Projectile : MonoBehaviour
         shootDirection = direction;
         audioEnemyShot.clip = audioClips[Random.Range(0, audioClips.Count)];
         audioEnemyShot.Play();
-
 
         //distrugge dopo 10 secondi
         //Destroy(gameObject, 10);
@@ -32,6 +29,9 @@ public class Enemy_Projectile : MonoBehaviour
     {
         if (shooted)
             transform.position += shootDirection * Time.deltaTime;
+
+        if (transform.position.y < -6)
+            Destroy(gameObject);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -44,10 +44,10 @@ public class Enemy_Projectile : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-    }
+    //void OnBecameInvisible()
+    //{
+    //    Destroy(gameObject);
+    //}
 
 }
 

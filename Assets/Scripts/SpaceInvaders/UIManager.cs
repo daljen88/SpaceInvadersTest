@@ -106,7 +106,7 @@ public class UIManager : MonoBehaviour
     }
     public void SetScore(int scorePoints)
     {
-        scoreText.text = scorePoints.ToString();
         scoreText.transform.DOPunchScale(Vector3.one*.5f,.333f);
+        scoreText.text = scorePoints.ToString();
     }
 }

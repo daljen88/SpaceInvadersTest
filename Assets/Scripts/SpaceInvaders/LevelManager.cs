@@ -67,7 +67,7 @@ public class LevelManager : MonoBehaviour
         uiManager.Show(false);
         state = LogicState.END;
         GameManager.Instance?.SaveData("SpaceInvaders_Score", playerScore);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2.2f);
         UnityEngine.SceneManagement.SceneManager.LoadScene("MAIN_MENU");
 
 
@@ -76,8 +76,8 @@ public class LevelManager : MonoBehaviour
     IEnumerator IntroCoroutine()
     {
         
-        character.transform.position = new Vector3(0, -6, 0);
-        character.transform.DOMoveY(-4,4);
+        character.transform.position = new Vector3(0, -8, 0);
+        character.transform.DOMoveY(-3.5f,4);
         introText.transform.localScale = Vector3.zero;
         yield return new WaitForSeconds(1);
         //compare scritta READY

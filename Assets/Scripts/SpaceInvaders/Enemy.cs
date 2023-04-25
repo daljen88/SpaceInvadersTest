@@ -146,7 +146,7 @@ public class Enemy : MonoBehaviour, IHittable
             }
         }
         //Mathf.Log10(transform.position+5)
-        //transform.localScale = startingScale/2 * (1+(5-transform.position.y)/10);
+        transform.localScale = startingScale*.6f * (1+(5-transform.position.y)/10);
 
     }
 

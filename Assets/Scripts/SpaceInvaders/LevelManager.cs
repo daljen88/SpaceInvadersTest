@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
     public TextMeshPro introText;
     public AudioSource fightAudioSource;
     public AudioSource victoryAudioSource;
-    public enum LogicState { INTRO, RUNNING, OUTRO, END}
+    public enum LogicState { INTRO, RUNNING, OUTRO, DEAD, END}
     public LogicState state = LogicState.INTRO;
     public int playerScore;
     static public LevelManager instance;
@@ -35,9 +35,15 @@ public class LevelManager : MonoBehaviour
     {
         if (state == LogicState.RUNNING) 
         {
+            if(character.IsDead == true)
+            {
+                state = LogicState.DEAD;
+                StartCoroutine(DeathCoroutine());
+            }
             if (spawner.CheckPlayerVictory())
             {
-                state= LogicState.OUTRO;
+                character.IsInvulnerable = true;
+                state = LogicState.OUTRO;
                 StartCoroutine(OutroCoroutine());
                 character.enabled = false;
                 spawner.enabled = false;
@@ -45,12 +51,11 @@ public class LevelManager : MonoBehaviour
                 //spegne UI player
                 //uiManager.Show(false);
             }
-         }
+        }
     }
 
     IEnumerator OutroCoroutine() 
     {
-        character.IsInvulnerable = true;
 
         victoryAudioSource.Play();
         yield return new WaitForSeconds(1);
@@ -66,10 +71,9 @@ public class LevelManager : MonoBehaviour
         character.IsInvulnerable = false;
         uiManager.Show(false);
         state = LogicState.END;
-        GameManager.Instance?.SaveData("SpaceInvaders_Score", playerScore);
+        GameManager.Instance?.SaveData("SpaceInvaders_Score", UIManager.instance.scorePoints);
         yield return new WaitForSeconds(2.2f);
         UnityEngine.SceneManagement.SceneManager.LoadScene("MAIN_MENU");
-
 
     }
 
@@ -93,9 +97,7 @@ public class LevelManager : MonoBehaviour
         //metti qua eventuale delay: yield return new WaitForSeconds
         fightAudioSource.Play();
 
-
         yield return new WaitForSeconds(.5f);
-
 
         character.enabled= true;
         spawner.enabled= true;
@@ -108,11 +110,32 @@ public class LevelManager : MonoBehaviour
         //character.gameObject.SetActive(true); così accende tutto object e non solo script
 
     }
-    public void AddScore(int score)
+
+    IEnumerator DeathCoroutine()
     {
-        playerScore += score;
-        uiManager.SetScore(playerScore);
+        introText.text = "ROASTED.";
+        introText.transform.DOScale(Vector3.one, .5f).SetEase(Ease.OutElastic);
+        yield return new WaitForSeconds(2.5f);
+        uiManager.transform.DOScale(Vector3.zero, .5f).SetEase(Ease.InElastic);
+        foreach (Enemy enemy in Enemy_Spawner.Instance.enemyList)
+        {
+            enemy.gameObject.transform.DOScale(Vector3.zero, .5f).SetEase(Ease.InElastic);
+            Destroy(enemy.gameObject,.5f);  
+        }
+        yield return new WaitForSeconds(.8f);
+        introText.transform.DOScale(Vector3.zero, .5f).SetEase(Ease.InElastic);
+
+
+        state = LogicState.END;
+        GameManager.Instance?.SaveData("SpaceInvaders_Score", UIManager.instance.scorePoints);
+        yield return new WaitForSeconds(.7f);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MAIN_MENU");
+
+
     }
+
+
+
 
     public bool TogglePause()
     {

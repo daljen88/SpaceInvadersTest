@@ -175,7 +175,7 @@ public class Enemy : MonoBehaviour, IHittable
             ParticleSystem ps = Instantiate(ExplosionTemplate, transform.position, Quaternion.identity);
             //controllo particella da codice
             ps.Emit(60);
-            LevelManager.instance.AddScore(enemyPointsValue);
+            UIManager.instance.PointsScoredEnemyKilled(enemyPointsValue);
             Destroy(ps.gameObject,.5f);
 
             Destroy(gameObject);

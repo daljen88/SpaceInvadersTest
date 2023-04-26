@@ -13,6 +13,8 @@ public class MainCharacter : MonoBehaviour, IHittable
     public bool IsInvulnerable { get; set; }
     public AudioSource audioSrc;
     public Animator Animator;
+    private bool isDead=false;
+    public bool IsDead { get { return isDead; } set { isDead = value; } }
     //public List<AudioClip> audioClips;
     
 
@@ -75,9 +77,10 @@ public class MainCharacter : MonoBehaviour, IHittable
         {
             //se giocatore viene distrutto, sposta audio src fuori così non viene distrutto:
             audioSrc.transform.parent = transform.parent;
+            UIManager.instance.OnPlayerHitUpdateLives();
             //morte
+            IsDead = true;
             Destroy(gameObject);
-            UIManager.instance.OnPlayerHitSuffered();
 
         }
         else
@@ -87,18 +90,16 @@ public class MainCharacter : MonoBehaviour, IHittable
             //come dire transform.localScale*2
             //transform.localScale *= 2;
             //hp--;
-            UIManager.instance.OnPlayerHitSuffered();
+            UIManager.instance.OnPlayerHitUpdateLives();
         }
     }
     IEnumerator HitSufferedCoroutine()
     {
         Time.timeScale = 0.1f;
         isInvulnerable = true;
-
         SpriteRenderer tsprite = GetComponentInChildren<SpriteRenderer>();
         tsprite.DOColor(Color.red, .05f).SetUpdate(true)/*.timeScale=1*/;
         tsprite.transform.DOPunchScale(Vector3.one * .5f, 0.10f).SetUpdate(true);
-
         yield return new WaitForSecondsRealtime(0.05f); //con 0 aspetta 1 frame
         //yield return new WaitForSecondsRealtime(0);
         //yield return new WaitForSecondsRealtime(0);
@@ -107,9 +108,7 @@ public class MainCharacter : MonoBehaviour, IHittable
         tsprite.DOColor(Color.white, .05f);
         Time.timeScale = 1;
         yield return new WaitForSecondsRealtime(.10f);
-
         isInvulnerable = false;
-
 
     }
 }

@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class Enemy_Spawner : MonoBehaviour
 {
+    public static Enemy_Spawner Instance;
     public Enemy enemyTemplate;
     public float spawnTime = 2;
     public int maxEnemies = 10;
     public List<Enemy> enemyList;
 
     //private List<Enemy> enemies;
-    
+
+    private void Awake()
+    {
+        Instance=this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +55,7 @@ public class Enemy_Spawner : MonoBehaviour
             }
         }
         //arrivati qua nel controllo tutti i nemici sono morti
+
         return true;
     }
 

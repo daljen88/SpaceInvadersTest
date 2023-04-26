@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class UIManager : MonoBehaviour
 {
@@ -27,7 +28,6 @@ public class UIManager : MonoBehaviour
     {
         instance = this; 
     }
-    // Start is called before the first frame update
     void Start()
     {
         InitUI();
@@ -43,26 +43,19 @@ public class UIManager : MonoBehaviour
             hpSpritesList.Add(tsprite); 
         }
     }
-    public void OnPlayerHitSuffered()
+    public void OnPlayerHitUpdateLives()
     {
-        //Destroy(hpSpritesList[hpSpritesList.Count - 1].gameObject);
-        //hpSpritesList.RemoveAt(hpSpritesList.Count - 1);
-        StartCoroutine(HitsufferedCoroutine());
+        StartCoroutine(UpdatelivesOnHitCoroutine());
 
-        //rimuoviamo dalal lista della vite hpSpriteList
-        //Doshake sulla sprite
-        //cambiamo colore sprite a rosso
-        //do scale a 0
-        
     }
-    public void PointsScoredEnemyKilled()
+    public void PointsScoredEnemyKilled(int score)
     {
-        StartCoroutine(pointsscoredcoroutine());
+        StartCoroutine(ScoredPointsCoroutine(score));
     }
 
-    public IEnumerator HitsufferedCoroutine()
+    public IEnumerator UpdatelivesOnHitCoroutine()
     {
-        //esegue codice
+        //TOGLIE CUORE DA NUMERO VITE
         //salvo lo sprite da distruggere
         SpriteRenderer tsprite = hpSpritesList[hpSpritesList.Count-1];
         //rimuovo dalla lista degli hp correnti
@@ -70,7 +63,6 @@ public class UIManager : MonoBehaviour
         tsprite.transform.DOShakePosition(.25f);
         tsprite.DOColor(Color.red, .25f);
 
-        //poi aspetta tot secondi e poi fa le righe successive
         yield return new WaitForSeconds(.25f);
 
         tsprite.transform.DOScale(Vector3.zero, .25f);
@@ -79,9 +71,13 @@ public class UIManager : MonoBehaviour
 
 
     }
-    public IEnumerator pointsscoredcoroutine()
+    public IEnumerator ScoredPointsCoroutine(int score)
     {
-        scorePoints += 666;
+        //scorePoints += 666;
+        //scoreText.text = scorePoints.ToString();
+
+        scorePoints += score;
+        scoreText.transform.DOPunchScale(Vector3.one * .5f, .333f);
         scoreText.text = scorePoints.ToString();
         yield return null;
     }
@@ -104,9 +100,15 @@ public class UIManager : MonoBehaviour
         }
 
     }
-    public void SetScore(int scorePoints)
-    {
-        scoreText.transform.DOPunchScale(Vector3.one*.5f,.333f);
-        scoreText.text = scorePoints.ToString();
-    }
+
+    //public void AddScore(int score)
+    //{
+    //    scorePoints += score;
+    //    UpdateScoreText(scorePoints);
+    //}
+    //public void UpdateScoreText(int scorePoints)
+    //{
+    //    scoreText.transform.DOPunchScale(Vector3.one*.5f,.333f);
+    //    scoreText.text = scorePoints.ToString();
+    //}
 }

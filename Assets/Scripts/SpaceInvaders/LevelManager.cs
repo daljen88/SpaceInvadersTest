@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour
     public bool isPaused = false;
     public List<AudioClip> menuAudioClips;
     private int playerHp;
-    public int levelCount = 1;
+    //public int levelCount = 1;
 
 
     //public AudioSource readyAudioSource;
@@ -28,16 +28,16 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
+        //if (instance != null)
+        //{
+        //    Destroy(gameObject);
+        //}
+        //else
+        //{
             //this distrugge lo script attaccato al game object
             instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        //    DontDestroyOnLoad(gameObject);
+        //}
     }
 
     void Start()
@@ -92,11 +92,12 @@ public class LevelManager : MonoBehaviour
     IEnumerator IntroCoroutine()
     {
         spawner.win = false;
-        spawner.maxEnemies = 1 + levelCount;
-        character.hp = playerHp + 1 + levelCount / 3;
+        spawner.maxEnemies = 1 + GameManager.Instance.levelCount;
+        character.gameObject.SetActive(true);
+        character.hp = playerHp + 1 + GameManager.Instance.levelCount / 3;
         playerHp = character.hp;
         uiManager.Show(true);
-        if (levelCount == 1) 
+        if (GameManager.Instance.levelCount == 1) 
             uiManager.InitUI();
         else
             uiManager.SetUI();
@@ -158,7 +159,9 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(2.2f);
         spawner.enabled = false;
         //UnityEngine.SceneManagement.SceneManager.LoadScene("MAIN_MENU");
-        levelCount++;
+        GameManager.Instance.levelCount++;
+        GameManager.Instance.currentScore = uiManager.scorePoints;
+        //levelCount++;
         character.IsInvulnerable = false;
         state = LogicState.END;
         UnityEngine.SceneManagement.SceneManager.LoadScene("SpaceInvaders_GameScene");
@@ -173,16 +176,17 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         victoryAudioSource.Play();
         yield return new WaitForSeconds(.5f);
-        uiManager.transform.DOScale(Vector3.zero, .5f).SetEase(Ease.InElastic);
-        yield return new WaitForSeconds(.5f);
+        //uiManager.transform.DOScale(Vector3.zero, .5f).SetEase(Ease.InElastic);
+        uiManager.Show(false);
+        yield return new WaitForSeconds(.3f);
         Enemy[] enemyInScene= FindObjectsOfType<Enemy>();
         foreach (Enemy enemy in enemyInScene)
         {
         //    //GameObject enemyObj= enemy.gameObject;
         //    if (enemy.gameObject != null)
         //    {
-               enemy.gameObject.transform.DOScale(Vector3.zero, .5f).SetEase(Ease.InElastic);
-               Destroy(enemy.gameObject,.5f);
+               enemy.gameObject.transform.DOScale(Vector3.zero, .3f).SetEase(Ease.InElastic);
+               Destroy(enemy.gameObject,.3f);
         //        //spawner.enemyList.Remove(enemy);
         //        Destroy(enemy.gameObject, .5f);
         //        //enemy.DestroyThisEnemy();
@@ -190,20 +194,21 @@ public class LevelManager : MonoBehaviour
         //    //Destroy(enemy?.gameObject,.5f);  
         }
         introText.transform.DOScale(Vector3.zero, .5f).SetEase(Ease.InElastic);
-        state = LogicState.END;
         if (uiManager.scorePoints > GameManager.Instance?.LoadData("SpaceInvaders_Score"))
         {
             GameManager.Instance?.SaveData("SpaceInvaders_Score", uiManager.scorePoints);
             MainMenu.instance.hiScoreText.text = uiManager.scorePoints.ToString();
         }
         //GameManager.Instance?.SaveData("SpaceInvaders_Score", uiManager.scorePoints);
-        yield return new WaitForSeconds(.6f);
+        yield return new WaitForSeconds(.5f);
         introText.text = "HONK";
         introText.transform.DOScale(Vector3.one, .3f).SetEase(Ease.OutElastic);
         introText.transform.DOScale(Vector3.zero, .3f).SetEase(Ease.InElastic);
         yield return new WaitForSeconds(.6f);
         //Application.Quit();
-
+        GameManager.Instance.currentScore= 0;
+        GameManager.Instance.levelCount = 1;
+        state = LogicState.END;
         UnityEngine.SceneManagement.SceneManager.LoadScene("MAIN_MENU");
         //UnityEngine.SceneManagement.SceneManager.UnloadScene("SpaceInvaders_GameScene");
         //Destroy(gameObject);

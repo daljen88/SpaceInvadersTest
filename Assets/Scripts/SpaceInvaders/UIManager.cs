@@ -31,16 +31,16 @@ public class UIManager : MonoBehaviour
     }
     private void Awake()
     {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
+        //if (instance != null)
+        //{
+        //    Destroy(gameObject);
+        //}
+        //else
+        //{
             //this distrugge lo script attaccato al game object
             instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        //    DontDestroyOnLoad(gameObject);
+        //}
     }
     void Start()
     {
@@ -48,7 +48,7 @@ public class UIManager : MonoBehaviour
     }
     public void InitUI()
     {
-        levelText.text = $"LEVEL {LevelManager.instance.levelCount.ToString()}";
+        levelText.text = $"LEVEL {GameManager.Instance.levelCount.ToString()}";
         //scorePoints = 0;
         //instanzia oggetto, in posizione, rotazione e parent oggetto spawnato
         for (int i =0; i< character.hp; i++)
@@ -61,7 +61,7 @@ public class UIManager : MonoBehaviour
     }
     public void SetUI()
     {
-        levelText.text = $"LEVEL {LevelManager.instance.levelCount.ToString()}";
+        levelText.text = $"LEVEL {GameManager.Instance.levelCount.ToString()}";
         if (hpSpritesList.Count < character.hp)
         {
             int hpRemained = hpSpritesList.Count;

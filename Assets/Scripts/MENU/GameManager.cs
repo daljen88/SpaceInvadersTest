@@ -6,6 +6,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public int levelCount = 1;
+    public int currentScore = 0;
 
 
     private void Awake()
@@ -25,6 +27,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        //currentScore= 0;
+        //levelCount= 1;
         Debug.Log($"EndlessRunner_Score {LoadData("EndlessRunner_Score")}");
         Debug.Log($"SpaceInvaders_Score {LoadData("SpaceInvaders_Score")}");
         Debug.Log($"TowerDefence_Score {LoadData("TowerDefence_Score")}");

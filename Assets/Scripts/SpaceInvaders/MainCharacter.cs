@@ -101,7 +101,8 @@ public class MainCharacter : MonoBehaviour, IHittable
                 //morte
                 IsDead = true;
                 //Enemy_Spawner.Instance.StopSpawner();
-                Destroy(gameObject);
+                gameObject.SetActive(false);
+                //Destroy(gameObject);
                 GameObject playExplosion = Instantiate(playerExplosion, transform.position, transform.rotation);
                 string animationName2 = "Explosion";
                 //playerExplosion.GetComponent<AudioSource>().enabled = true;

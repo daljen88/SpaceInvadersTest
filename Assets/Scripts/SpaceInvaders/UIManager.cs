@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
 {
 
     static public UIManager instance;
+    public TextMeshPro levelText;
     public SpriteRenderer hpTemplate;
     public List<SpriteRenderer> hpSpritesList;
     public MainCharacter character;
@@ -17,23 +18,37 @@ public class UIManager : MonoBehaviour
     public GameObject playerUI;
     public GameObject pauseGO;
 
-    public float hpOffset=1.2f;
+    public float hpOffset=.4f;
 
     public void Show(bool show)
     {
         playerUI.SetActive(show);
     }
+    private void OnEnable()
+    {
+        //InitUI();
 
+    }
     private void Awake()
     {
-        instance = this; 
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            //this distrugge lo script attaccato al game object
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
     void Start()
     {
-        InitUI();
+        //InitUI();
     }
     public void InitUI()
     {
+        levelText.text = $"LEVEL {LevelManager.instance.levelCount.ToString()}";
         //scorePoints = 0;
         //instanzia oggetto, in posizione, rotazione e parent oggetto spawnato
         for (int i =0; i< character.hp; i++)
@@ -41,6 +56,21 @@ public class UIManager : MonoBehaviour
             SpriteRenderer tsprite = Instantiate(hpTemplate, gameObject.transform.GetChild(0).position + Vector3.right * hpOffset * (i+1), gameObject.transform.GetChild(0).rotation, gameObject.transform.GetChild(0));
             tsprite.gameObject.SetActive(true);
             hpSpritesList.Add(tsprite); 
+        }
+
+    }
+    public void SetUI()
+    {
+        levelText.text = $"LEVEL {LevelManager.instance.levelCount.ToString()}";
+        if (hpSpritesList.Count < character.hp)
+        {
+            int hpRemained = hpSpritesList.Count;
+            for (int i = 1; i <= character.hp - hpSpritesList.Count; i++)
+            {
+                SpriteRenderer tsprite = Instantiate(hpTemplate, gameObject.transform.GetChild(0).position + Vector3.right * hpOffset * (i + hpRemained), gameObject.transform.GetChild(0).rotation, gameObject.transform.GetChild(0));
+                tsprite.gameObject.SetActive(true);
+                hpSpritesList.Add(tsprite);
+            }
         }
     }
     public void OnPlayerHitUpdateLives()

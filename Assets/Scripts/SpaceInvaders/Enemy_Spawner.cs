@@ -7,8 +7,9 @@ public class Enemy_Spawner : MonoBehaviour
     public static Enemy_Spawner Instance;
     public Enemy enemyTemplate;
     public float spawnTime = 2;
-    public int maxEnemies = 10;
+    public int maxEnemies = 6;
     public List<Enemy> enemyList;
+    public bool win = false;
 
     //private List<Enemy> enemies;
 
@@ -21,11 +22,26 @@ public class Enemy_Spawner : MonoBehaviour
     {
         //enemies.Capacity= maxEnemies;
         //invoca a ripetizione funzione: nome funz, tempo prima di avvio, cadenza
-        InvokeRepeating("SpawnEnemy", 1, spawnTime);
+        //InvokeRepeating("SpawnEnemy", 1, spawnTime);
     }
+    private void OnEnable()
+    {
+        InvokeRepeating("SpawnEnemy", 1, spawnTime);
+
+    }
+    private void OnDisable()
+    {
+        CancelInvoke("SpawnEnemy");
+
+    }
+    //private void ActivateSpawner()
+    //{
+    //    InvokeRepeating("SpawnEnemy", 1, spawnTime);
+
+    //}
 
     // Update is called once per frame
-    void SpawnEnemy()
+    public void SpawnEnemy()
     {
         if (maxEnemies > 0)
         {
@@ -37,6 +53,7 @@ public class Enemy_Spawner : MonoBehaviour
         else
         {
             CancelInvoke("SpawnEnemy");
+
         }
     }
 
@@ -44,32 +61,48 @@ public class Enemy_Spawner : MonoBehaviour
     {
         if (maxEnemies > 0)
         {
-            return false;
+            win = false;
+            return win;
         }
         else
         {
             foreach (Enemy enemy in enemyList)
             {//se trovo un nemico vivo, return false
-                if (enemy/* && enemy.hp > 0 && enemy.isActiveAndEnabled*/) 
-                { return false; }
+                if (enemy/* && enemy.hp > 0 && enemy.isActiveAndEnabled*/)
+                {
+                    win = false;
+                    return win;
+                }
             }
         }
         //arrivati qua nel controllo tutti i nemici sono morti
 
-        return true;
+        win = true;
+        return win;
+    }
+    public void StopSpawner()
+    {
+        CancelInvoke("SpawnEnemy");
+
     }
 
-    //private void Update()
-    //{
-    //    for (int i = 0; i < enemies.Count; i++)
-    //    {
-    //        if (enemies[i].transform.position.y<-4.5)
-    //        {
-    //            Destroy(enemies[i]);
-    //            maxEnemies++;
-    //        }
-    //    }
-        
+    private void Update()
+    {
+        CheckPlayerVictory();
+
+        //    for (int i = 0; i < enemies.Count; i++)
+        //    {
+        //        if (enemies[i].transform.position.y<-4.5)
+        //        {
+        //            Destroy(enemies[i]);
+        //            maxEnemies++;
+        //        }
+        //    }
+
+    }
+    //IEnumerator SpawnEnemyCoroutine()
+    //{ 
+    
     //}
 
 }

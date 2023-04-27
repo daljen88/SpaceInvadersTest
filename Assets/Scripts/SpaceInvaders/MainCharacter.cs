@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System.ComponentModel.Design;
 
 public class MainCharacter : MonoBehaviour, IHittable
 {
+    //public static MainCharacter instance;
     public Sprite[] gooseleft;
-    public int hp=5;
+    public GameObject playerExplosion;
+    //public Animator explosionAniamtor;
+    //public Animation 
+    public int hp=4;
     public Projectile myProjectile;
     float moveSpeed = 6;
     private bool isInvulnerable = false;
@@ -16,7 +21,20 @@ public class MainCharacter : MonoBehaviour, IHittable
     private bool isDead=false;
     public bool IsDead { get { return isDead; } set { isDead = value; } }
     //public List<AudioClip> audioClips;
-    
+
+    //private void Awake()
+    //{
+    //    if (instance != null)
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //    else
+    //    {
+    //        //this distrugge lo script attaccato al game object
+    //        instance = this;
+    //        DontDestroyOnLoad(gameObject);
+    //    }
+    //}
 
     // Start is called before the first frame update
     void Start()
@@ -68,29 +86,38 @@ public class MainCharacter : MonoBehaviour, IHittable
     }
     public void OnHitSuffered(int damage = 1)
     {
-        if (isInvulnerable) { return; }
-
+        if (IsInvulnerable)
+            return;
         //audioSrc.clip = audioClips[Random.Range(0, audioClips.Count)];
-        audioSrc.Play();
-
-        if (--hp<=0) //fa decremento e poi valuta se minore o uguale a 0// hp--<=0 guarda se hp minore o uguale a 0 e poi fa decremento
-        {
-            //se giocatore viene distrutto, sposta audio src fuori così non viene distrutto:
-            audioSrc.transform.parent = transform.parent;
-            UIManager.instance.OnPlayerHitUpdateLives();
-            //morte
-            IsDead = true;
-            Destroy(gameObject);
-
-        }
         else
         {
-            //fx colpo subito
-            StartCoroutine(HitSufferedCoroutine());
-            //come dire transform.localScale*2
-            //transform.localScale *= 2;
-            //hp--;
-            UIManager.instance.OnPlayerHitUpdateLives();
+            audioSrc.Play();
+
+            if (--hp <= 0) //fa decremento e poi valuta se minore o uguale a 0// hp--<=0 guarda se hp minore o uguale a 0 e poi fa decremento
+            {
+                //se giocatore viene distrutto, sposta audio src fuori così non viene distrutto:
+                audioSrc.transform.parent = transform.parent;
+                UIManager.instance.OnPlayerHitUpdateLives();
+                //morte
+                IsDead = true;
+                //Enemy_Spawner.Instance.StopSpawner();
+                Destroy(gameObject);
+                GameObject playExplosion = Instantiate(playerExplosion, transform.position, transform.rotation);
+                string animationName2 = "Explosion";
+                //playerExplosion.GetComponent<AudioSource>().enabled = true;
+                playExplosion.GetComponent<AudioSource>().Play();
+                playExplosion.GetComponent<Animator>().Play(animationName2);
+
+            }
+            else
+            {
+                //fx colpo subito
+                StartCoroutine(HitSufferedCoroutine());
+                //come dire transform.localScale*2
+                //transform.localScale *= 2;
+                //hp--;
+                UIManager.instance.OnPlayerHitUpdateLives();
+            }
         }
     }
     IEnumerator HitSufferedCoroutine()

@@ -114,7 +114,8 @@ public class Enemy : MonoBehaviour, IHittable
 
     public void DestroyThisEnemy()
     {
-        Destroy(gameObject);
+        Enemy_Spawner.Instance.enemyList.Remove(gameObject.GetComponent<Enemy>());
+        Destroy(gameObject,.5f);
     }
 
     RaycastHit hit;

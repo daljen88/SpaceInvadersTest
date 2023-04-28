@@ -7,7 +7,7 @@ public class Enemy_Spawner : MonoBehaviour
     public static Enemy_Spawner Instance;
     public Enemy enemyTemplate;
     public float spawnTime = 2;
-    public int maxEnemies = 6;
+    public int maxEnemies = 3;
     public List<Enemy> enemyList;
     public bool win = false;
 

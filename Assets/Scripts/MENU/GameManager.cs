@@ -8,6 +8,15 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public int levelCount = 1;
     public int currentScore = 0;
+    [SerializeField] private int playerHp = 4;
+    public int PlayerHp 
+    { 
+        get { return playerHp; } 
+        set 
+        { 
+            playerHp = value>9?9:value;
+        } 
+    }
 
 
     private void Awake()
@@ -39,6 +48,14 @@ public class GameManager : MonoBehaviour
         //SaveData("TowerDefence_Score", 66666);
 
     }
+
+    public void ResetRun()
+    {
+        levelCount = 1;
+        currentScore = 0;
+        playerHp = 4;
+    }
+
 
     // Update is called once per frame
     void Update()

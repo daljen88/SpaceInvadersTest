@@ -15,10 +15,11 @@ public class UIManager : MonoBehaviour
     public MainCharacter character;
     public TextMeshPro scoreText;
     public int scorePoints;
+    public int lives;
     public GameObject playerUI;
     public GameObject pauseGO;
 
-    public float hpOffset=.4f;
+    public float hpOffset=.3f;
 
     public void Show(bool show)
     {
@@ -44,6 +45,8 @@ public class UIManager : MonoBehaviour
     }
     void Start()
     {
+        scorePoints = GameManager.Instance? GameManager.Instance.currentScore:0;
+        scoreText.text = scorePoints.ToString();
         //InitUI();
     }
     public void InitUI()
@@ -65,9 +68,9 @@ public class UIManager : MonoBehaviour
         if (hpSpritesList.Count < character.hp)
         {
             int hpRemained = hpSpritesList.Count;
-            for (int i = 1; i <= character.hp - hpSpritesList.Count; i++)
+            for (int i = hpSpritesList.Count; i < character.hp; i++)
             {
-                SpriteRenderer tsprite = Instantiate(hpTemplate, gameObject.transform.GetChild(0).position + Vector3.right * hpOffset * (i + hpRemained), gameObject.transform.GetChild(0).rotation, gameObject.transform.GetChild(0));
+                SpriteRenderer tsprite = Instantiate(hpTemplate, gameObject.transform.GetChild(0).position + Vector3.right * hpOffset * (i + 1), gameObject.transform.GetChild(0).rotation, gameObject.transform.GetChild(0));
                 tsprite.gameObject.SetActive(true);
                 hpSpritesList.Add(tsprite);
             }

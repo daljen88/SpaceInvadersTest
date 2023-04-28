@@ -11,7 +11,8 @@ public class MainCharacter : MonoBehaviour, IHittable
     public GameObject playerExplosion;
     //public Animator explosionAniamtor;
     //public Animation 
-    public int hp=4;
+    public int hp;
+    public int startingHp=4;
     public Projectile myProjectile;
     float moveSpeed = 6;
     private bool isInvulnerable = false;
@@ -22,8 +23,9 @@ public class MainCharacter : MonoBehaviour, IHittable
     public bool IsDead { get { return isDead; } set { isDead = value; } }
     //public List<AudioClip> audioClips;
 
-    //private void Awake()
-    //{
+    private void Awake()
+    {
+        //hp = GameManager.Instance? GameManager.Instance.playerHp: startingHp;
     //    if (instance != null)
     //    {
     //        Destroy(gameObject);
@@ -31,10 +33,10 @@ public class MainCharacter : MonoBehaviour, IHittable
     //    else
     //    {
     //        //this distrugge lo script attaccato al game object
-    //        instance = this;
+            //instance = this;
     //        DontDestroyOnLoad(gameObject);
     //    }
-    //}
+    }
 
     // Start is called before the first frame update
     void Start()

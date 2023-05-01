@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public int levelCount = 1;
     public int currentScore = 0;
+    public int enemiesKilledInRun = 0;
     [SerializeField] private int playerHp = 4;
     public int PlayerHp 
     { 
@@ -17,7 +18,16 @@ public class GameManager : MonoBehaviour
             playerHp = value>9?9:value;
         } 
     }
+    public WeaponsClass gunPossessed;
+    public GameObject activeGunPossessed;
 
+    public void SetGameManagerGunPossessed(GameObject gun)
+    {
+        GameObject actGun = gun;
+        WeaponsClass actGunScript = gun.GetComponent<WeaponsClass>();
+        gunPossessed = actGunScript;
+        activeGunPossessed = actGun;
+    }
 
     private void Awake()
     {
@@ -54,6 +64,7 @@ public class GameManager : MonoBehaviour
         levelCount = 1;
         currentScore = 0;
         playerHp = 4;
+        enemiesKilledInRun = 0;
     }
 
 

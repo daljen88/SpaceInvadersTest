@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     public TextMeshPro scoreText;
     public int scorePoints;
     public int lives;
+    public int enemiesKilled;
     public GameObject playerUI;
     public GameObject pauseGO;
 
@@ -108,7 +109,7 @@ public class UIManager : MonoBehaviour
     {
         //scorePoints += 666;
         //scoreText.text = scorePoints.ToString();
-
+        enemiesKilled++;
         scorePoints += score;
         scoreText.transform.DOPunchScale(Vector3.one * .5f, .333f);
         scoreText.text = scorePoints.ToString();

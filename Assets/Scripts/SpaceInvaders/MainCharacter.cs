@@ -22,20 +22,15 @@ public class MainCharacter : MonoBehaviour, IHittable
     private bool isDead=false;
     public bool IsDead { get { return isDead; } set { isDead = value; } }
     //public List<AudioClip> audioClips;
+    public WeaponsClass gunPossesed;
+    public GameObject activeGunPrefab;
+    private Vector3 vectorScaleLeft = new Vector3(-1, 1, 1);
+    private Vector3 vectorScaleRight=Vector3.one;
+    public bool goingRight=true;
 
     private void Awake()
     {
-        //hp = GameManager.Instance? GameManager.Instance.playerHp: startingHp;
-    //    if (instance != null)
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //    else
-    //    {
-    //        //this distrugge lo script attaccato al game object
-            //instance = this;
-    //        DontDestroyOnLoad(gameObject);
-    //    }
+        
     }
 
     // Start is called before the first frame update
@@ -56,15 +51,20 @@ public class MainCharacter : MonoBehaviour, IHittable
         SpriteRenderer tsprite = GetComponentInChildren<SpriteRenderer>();
         if (Input.GetKey(KeyCode.A))
         {
+            goingRight = false;
             animationName = "playerWalkAnimation";
-            transform.localScale = new Vector3(-1, 1, 1);
+            tsprite.flipX = true;
+            //transform.localScale = vectorScaleLeft;
             //tsprite.sprite = gooseleft[1];
             transform.position += Vector3.left * moveSpeed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.D))
         {
+            goingRight = true;
             animationName = "playerWalkAnimation";
-            transform.localScale = Vector3.one;
+            tsprite.flipX = false;
+
+            //transform.localScale = vectorScaleRight;
 
             //tsprite.sprite = gooseleft[0];
             transform.position += Vector3.right * moveSpeed * Time.deltaTime;
@@ -81,10 +81,25 @@ public class MainCharacter : MonoBehaviour, IHittable
         Animator.Play(animationName);
     }
 
-    public void Shoot ()
+    //public weaponclass gunPosseses;
+    public void Shoot (/*weapon class gun possessed*/)
     {
-        Projectile tempProjectile = Instantiate(myProjectile, transform.position, transform.rotation);
-        tempProjectile.Shoot(Vector3.up * 6.6f);
+        //cambio in shootProjectile
+        //if(gunpossessed==null)
+        if (activeGunPrefab == null)
+        {
+            Projectile tempProjectile = Instantiate(myProjectile, transform.position, transform.rotation);
+            tempProjectile.Shoot(Vector3.up * 6.6f);
+        }
+        else /*if (gunPossesed.GetComponent<BigGun>() != null)*/
+        {
+
+            WeaponsClass activeWeapon = activeGunPrefab.GetComponent<WeaponsClass>();
+            gunPossesed = activeWeapon;
+            gunPossesed.ShootProjectile();
+            //gunPossesed.ShootProjectile(/*eventuale shootDirection controllata da player*/);
+        }
+        //gun possesses.shoot
     }
     public void OnHitSuffered(int damage = 1)
     {
@@ -94,32 +109,47 @@ public class MainCharacter : MonoBehaviour, IHittable
         else
         {
             audioSrc.Play();
-
-            if (--hp <= 0) //fa decremento e poi valuta se minore o uguale a 0// hp--<=0 guarda se hp minore o uguale a 0 e poi fa decremento
+            if (activeGunPrefab == null)
             {
-                //se giocatore viene distrutto, sposta audio src fuori così non viene distrutto:
-                audioSrc.transform.parent = transform.parent;
-                UIManager.instance.OnPlayerHitUpdateLives();
-                //morte
-                IsDead = true;
-                //Enemy_Spawner.Instance.StopSpawner();
-                gameObject.SetActive(false);
-                //Destroy(gameObject);
-                GameObject playExplosion = Instantiate(playerExplosion, transform.position, transform.rotation);
-                string animationName2 = "Explosion";
-                //playerExplosion.GetComponent<AudioSource>().enabled = true;
-                playExplosion.GetComponent<AudioSource>().Play();
-                playExplosion.GetComponent<Animator>().Play(animationName2);
+                if (--hp <= 0) //fa decremento e poi valuta se minore o uguale a 0// hp--<=0 guarda se hp minore o uguale a 0 e poi fa decremento
+                {
+                    //se giocatore viene distrutto, sposta audio src fuori così non viene distrutto:
+                    audioSrc.transform.parent = transform.parent;
+                    UIManager.instance.OnPlayerHitUpdateLives();
+                    //morte
+                    IsDead = true;
+                    //Enemy_Spawner.Instance.StopSpawner();
+                    gameObject.SetActive(false);
+                    //Destroy(gameObject);
+                    GameObject playExplosion = Instantiate(playerExplosion, transform.position, transform.rotation);
+                    string animationName2 = "Explosion";
+                    //playerExplosion.GetComponent<AudioSource>().enabled = true;
+                    playExplosion.GetComponent<AudioSource>().Play();
+                    playExplosion.GetComponent<Animator>().Play(animationName2);
 
+                }
+                else
+                {
+                    //fx colpo subito
+                    StartCoroutine(HitSufferedCoroutine());
+                    //come dire transform.localScale*2
+                    //transform.localScale *= 2;
+                    //hp--;
+                    UIManager.instance.OnPlayerHitUpdateLives();
+                }
             }
             else
             {
-                //fx colpo subito
-                StartCoroutine(HitSufferedCoroutine());
-                //come dire transform.localScale*2
-                //transform.localScale *= 2;
-                //hp--;
-                UIManager.instance.OnPlayerHitUpdateLives();
+                if(--gunPossesed.Defence<=0)
+                {
+                    Debug.Log($"arma distrutta! difesa= {gunPossesed.Defence} ");
+                    Destroy(gunPossesed.gameObject);
+
+                }
+                else
+                {
+                    Debug.Log($"arma colpita! difesa= {gunPossesed.Defence} ");
+                }
             }
         }
     }

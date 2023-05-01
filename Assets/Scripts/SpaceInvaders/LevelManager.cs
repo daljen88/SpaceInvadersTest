@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.TextCore.Text;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class LevelManager : MonoBehaviour
 {
@@ -84,10 +86,36 @@ public class LevelManager : MonoBehaviour
         spawner.win = false;
         spawner.maxEnemies = 3 + GameManager.Instance.levelCount;
         character.gameObject.SetActive(true);
+        if (GameManager.Instance.activeGunPossessed != null)
+        {
+
+            GameObject actWeap = Instantiate(GameManager.Instance.activeGunPossessed, character.transform.position, Quaternion.Euler(0, 0, 45));
+            WeaponsClass actWeapp = actWeap.GetComponent<WeaponsClass>();
+
+            character.activeGunPrefab = actWeap;
+            character.gunPossesed = actWeapp;
+
+            //character.activeGunPrefab = GameManager.Instance.activeGunPossessed;
+            ////character.gunPossesed = GameManager.Instance.gunPossessed;
+            ///*GameObject bigGunz =*/ Instantiate(character.activeGunPrefab, character.gameObject.transform.position, Quaternion.Euler(0,0,45));
+            ////BigGun bigGunDropping = bigGunz.GetComponent<BigGun>();
+            ////bigGunDropping.Drop(Vector3.down * 3f);
+
+
+            //character.gunPossesed = Instantiate(GameManager.Instance.gunPossessed, character.gameObject.transform.position, Quaternion.Euler(0, 0, 45));
+
+
+            //character.activeGunPrefab = GameManager.Instance.activeGunPossessed;
+            //WeaponsClass activeWeap = Instantiate(character.activeGunPrefab.GetComponent<WeaponsClass>(), character.gameObject.transform.position, Quaternion.Euler(0, 0, 45));
+
+            //character.activeGunPrefab = Instantiate(character.activeGunPrefab, character.gameObject.transform.position, Quaternion.Euler(0, 0, 45));
+
+        }
         playerHp = GameManager.Instance.PlayerHp + 1 + GameManager.Instance.levelCount / 3;
         character.hp = playerHp > 9 ? 9 : playerHp;
         //playerHp = character.hp;
         uiManager.scorePoints = GameManager.Instance.currentScore;
+        uiManager.enemiesKilled = GameManager.Instance.enemiesKilledInRun;
         uiManager.Show(true);
         if (GameManager.Instance.levelCount == 1)
             uiManager.InitUI();
@@ -133,6 +161,12 @@ public class LevelManager : MonoBehaviour
     {
         //spawner.enabled = false;
         //playerHp = character.hp;
+        if(character.activeGunPrefab!=null)
+        GameManager.Instance.SetGameManagerGunPossessed(character.activeGunPrefab);
+        //GameObject collectedGunPref= character.activeGunPrefab;
+        //GameManager.Instance.activeGunPossessed = collectedGunPref;
+        //WeaponsClass collectedGunScript = character.gunPossesed;
+        //GameManager.Instance.gunPossessed = collectedGunScript;
         character.enabled = false;
         victoryDefeatAudioSource.clip = menuAudioClips[0];
         victoryDefeatAudioSource.Play();
@@ -159,9 +193,11 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(2.2f);
         spawner.enabled = false;
         //UnityEngine.SceneManagement.SceneManager.LoadScene("MAIN_MENU");
+
         GameManager.Instance.levelCount++;
         GameManager.Instance.currentScore = uiManager.scorePoints;
         GameManager.Instance.PlayerHp = character.hp;
+        GameManager.Instance.enemiesKilledInRun = uiManager.enemiesKilled;
         //levelCount++;
         character.IsInvulnerable = false;
         state = LogicState.END;

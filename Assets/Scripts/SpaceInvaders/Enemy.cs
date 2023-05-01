@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour, IHittable
 {
     //public MainCharacter character;
     public GameObject myProjectile;
+    public GameObject bigGun;
     public ParticleSystem ExplosionTemplate;
     public List<AudioClip> audioClips;
     public Material myMaterial, myHitTakenMaterial;
@@ -166,18 +167,25 @@ public class Enemy : MonoBehaviour, IHittable
         hp -= damage;
         audioSrc.clip = audioClips[Random.Range(0, audioClips.Count)];
         audioSrc.Play();
-        if (hp<=0)
+        if (hp <= 0)
         {
             //SCORE OK
             //UIManager.instance.PointsScoredEnemyKilled();
-           
+
             //FX MORTE
             ParticleSystem ps = Instantiate(ExplosionTemplate, transform.position, Quaternion.identity);
             //controllo particella da codice
             ps.Emit(60);
             UIManager.instance.PointsScoredEnemyKilled(enemyPointsValue);
-            Destroy(ps.gameObject,.5f);
+            Destroy(ps.gameObject, .5f);
+            if (UIManager.instance.enemiesKilled%3==0&&UIManager.instance.enemiesKilled!=0)
+            {
+                GameObject bigGunz = Instantiate(bigGun, transform.position, Quaternion.identity);
+                BigGun bigGunDropping = bigGunz.GetComponent<BigGun>();
+                bigGunDropping.Drop(Vector3.down * 3f);
+            } 
 
+            shootTimer = 0;
             Destroy(gameObject);
         }
         else

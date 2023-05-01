@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Projectile : MonoBehaviour
+public class Enemy_Projectile : MonoBehaviour, IShootable
 {
     public Vector3 shootDirection;
     bool shooted = false;

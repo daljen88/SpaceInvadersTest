@@ -46,8 +46,7 @@ public class Enemy_Spawner : MonoBehaviour
         if (maxEnemies > 0)
         {
             maxEnemies--;
-            /*enemies.Add(*/
-            enemyList.Add( Instantiate(enemyTemplate, transform.position, transform.rotation))/*)*/;
+            enemyList.Add( Instantiate(enemyTemplate, transform.position, transform.rotation));
 
         }
         else

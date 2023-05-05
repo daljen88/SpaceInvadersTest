@@ -4,7 +4,8 @@ using UnityEngine;
 
 public interface IShootable
 {
-    void Shoot(Vector3 direction);
+    void Shoot(int damage);
+    void Shoot(Vector3 direction, int damage);
 
 
 

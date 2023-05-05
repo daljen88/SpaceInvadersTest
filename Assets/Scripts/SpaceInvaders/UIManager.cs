@@ -33,17 +33,9 @@ public class UIManager : MonoBehaviour
     }
     private void Awake()
     {
-        //if (instance != null)
-        //{
-        //    Destroy(gameObject);
-        //}
-        //else
-        //{
-            //this distrugge lo script attaccato al game object
             instance = this;
-        //    DontDestroyOnLoad(gameObject);
-        //}
     }
+
     void Start()
     {
         scorePoints = GameManager.Instance? GameManager.Instance.currentScore:0;
@@ -55,7 +47,7 @@ public class UIManager : MonoBehaviour
         levelText.text = $"LEVEL {GameManager.Instance.levelCount.ToString()}";
         //scorePoints = 0;
         //instanzia oggetto, in posizione, rotazione e parent oggetto spawnato
-        for (int i =0; i< character.hp; i++)
+        for (int i =0; i< character.Hp; i++)
         {
             SpriteRenderer tsprite = Instantiate(hpTemplate, gameObject.transform.GetChild(0).position + Vector3.right * hpOffset * (i+1), gameObject.transform.GetChild(0).rotation, gameObject.transform.GetChild(0));
             tsprite.gameObject.SetActive(true);
@@ -66,10 +58,10 @@ public class UIManager : MonoBehaviour
     public void SetUI()
     {
         levelText.text = $"LEVEL {GameManager.Instance.levelCount.ToString()}";
-        if (hpSpritesList.Count < character.hp)
+        if (hpSpritesList.Count < character.Hp)
         {
             int hpRemained = hpSpritesList.Count;
-            for (int i = hpSpritesList.Count; i < character.hp; i++)
+            for (int i = hpSpritesList.Count; i < character.Hp; i++)
             {
                 SpriteRenderer tsprite = Instantiate(hpTemplate, gameObject.transform.GetChild(0).position + Vector3.right * hpOffset * (i + 1), gameObject.transform.GetChild(0).rotation, gameObject.transform.GetChild(0));
                 tsprite.gameObject.SetActive(true);

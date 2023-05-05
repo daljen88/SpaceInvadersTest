@@ -4,66 +4,138 @@ using UnityEngine;
 
 public abstract class WeaponsClass : MonoBehaviour, IDroppable
 {
-    public MainCharacter tPlayer;
 
-    public bool isDropped = false;
-    public /*abstract*/ bool IsDropped { get { return isDropped; } set { isDropped = value; } }
-    public bool isCollected = false;
-    //public bool IsCollected { get; set; }
+    protected bool isDropped = false;
+    public bool IsDropped { get { return isDropped; } set { isDropped = value; } }
+
+    protected bool isCollected = false;
     public bool IsCollected { get { return isCollected; } set { isCollected = value; } }
 
-
-    public float dropSpeed = 2f;
+    protected float dropSpeed = 2f;
     public abstract float DropSpeed { get; }
 
-    public float dropTimer = 0;
-    public float dropLifeTime = 10;
+    protected float dropTimer;
+    protected float coolDown;
+
+    protected float dropLifeTime = 10;
     public abstract float DropLifeTime { get; /*set; */}
 
-    //public float dropDuration = 10f;
-    //public abstract float DropDuration { get; }
-
-    public float fireRate = .5f;
+    protected float fireRate = 1f;
     public abstract float FireRate { get; }
 
-    public int damage=1;
+    protected int damage=1;
     public abstract int Damage { get; }
 
-    //public float defence;
     //serve set perche cambia coi colpi presi
     protected float defence = 1f;
     public abstract float Defence { get; set ; }
 
+    protected Vector3 projMovementVector=Vector3.up;
+    public abstract Vector3 ProjMovementVector { get; }
+
+    public MainCharacter tPlayer;
     public AudioSource dropWeaponSound;
     public List<AudioClip> dropSounds;
-    public Vector3 fallDirection;
-    public WeaponProjectile myProjectile;
     public GameObject gunShotTemplate;
+    private Vector3 fallingVector;
+    private WeaponProjectile myProjectile;
+    private SpriteRenderer gunSpriteRenderer;
+    protected Vector3 gunOffset;
 
-    public Vector3 projMovementVector=Vector3.up;
-    public abstract Vector3 ProjMovementVector { get; }
-        /*{ get { return projMovementVector; } set { projMovementVector = value; } }*/
+    //{ get { return projMovementVector; } set { projMovementVector = value; } }
 
     public WeaponsClass()
     {
-
+        dropTimer = DropLifeTime;
+        coolDown = 0;
     }
 
-    public void Drop(Vector3 direction)
+    public void Start()
+    {
+        StartRoutine();
+    }
+
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        //METTO TUTTO IN UNA FUZNIONA DA DARE A WEAPONSCLASS
+        tPlayer = other.GetComponent<MainCharacter>();
+        WeaponsClass oldWeapon = tPlayer.gameObject.GetComponentInChildren<WeaponsClass>();
+        if (tPlayer != null)
+        {
+            if (oldWeapon != null)
+            { Destroy(oldWeapon.gameObject); }
+            dropTimer = -1;
+            IsCollected = true;
+            tPlayer.activeGunPrefab = gameObject;
+            tPlayer.gunPossesed = gameObject.GetComponent<WeaponsClass>();
+            GameManager.Instance.SetGameManagerGunPossessed(gameObject);
+            gameObject.transform.parent = tPlayer.gameObject.transform;
+            //tPlayer.gunPossesed=this;
+        }
+    }
+    protected virtual void StartRoutine()
+    {
+        gunSpriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
+
+    }
+    void Update()
+    {
+        UpdateRoutine();
+    }
+
+    protected virtual void UpdateRoutine()
+    {
+        if (dropTimer > 0)
+            dropTimer -= Time.deltaTime;
+        if (coolDown > 0)
+            coolDown -= Time.deltaTime;
+
+        //debug
+        Debug.LogWarning(dropTimer);
+        Debug.LogWarning(coolDown);
+
+
+        if (IsDropped && IsCollected == false && transform.position.y > -4.1f)
+            transform.position += fallingVector * Time.deltaTime;
+        else if (IsCollected == true)
+        {
+            //cambia questa logica settande posizione arma in un empty object dentro player
+            int bigGunRotation = tPlayer.goingRight ? -15 : 15;
+            gunSpriteRenderer.flipX = !tPlayer.goingRight;
+
+            //transform.position = transform.position - bigGunOffset;
+
+            transform.position = tPlayer.gameObject.transform.position - gunOffset;
+            transform.rotation = Quaternion.Euler(0, 0, bigGunRotation);
+
+        }
+        if (dropTimer <= 0 && !isCollected)
+            Destroy(gameObject);
+    }
+
+    public virtual void Drop(Vector3 direction)
     {
         IsDropped= true;
-        fallDirection = direction;
+        fallingVector = direction*DropSpeed;
         dropWeaponSound.clip = dropSounds[0/*Random.Range(0, dropSounds.Count)*/];
         dropWeaponSound.Play();
 
         //distrugge dopo 10 secondi
-        //Destroy(gameObject, DropLifeTime);
+        
     }
-    public void ShootProjectile(/*Vector3 direction*/)
+    public virtual void ShootProjectile(/*Vector3 direction*/)
     {
-        GameObject tempProjectile = Instantiate(gunShotTemplate, transform.position, Quaternion.Euler(0,0,90));
-        myProjectile = tempProjectile.GetComponent<WeaponProjectile>();
-        myProjectile.Shoot(ProjMovementVector, Damage);
+        if (coolDown <= 0)
+        {
+            GameObject tempProjectile = Instantiate(gunShotTemplate, transform.position, Quaternion.Euler(0, 0, 90));
+            myProjectile = tempProjectile.GetComponent<WeaponProjectile>();
+            myProjectile.Shoot(ProjMovementVector, Damage);
+            coolDown = FireRate;
+        }
+        else
+        {
+            return;
+        }
     }
 
 

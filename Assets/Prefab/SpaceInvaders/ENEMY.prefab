@@ -242,7 +242,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myProjectile: {fileID: 8297015083679601677, guid: 85c367d27b7046e4b85e97aac0855222, type: 3}
-  bigGun: {fileID: 2984454448563473827, guid: f47154aebf3fd0d44a0799f9b9d01c02, type: 3}
+  guns:
+  - {fileID: 2984454448563473827, guid: f47154aebf3fd0d44a0799f9b9d01c02, type: 3}
+  drops:
+  - {fileID: 2678455731497475791, guid: 3aa99d2f70321a843b2c85bce3a8ad7b, type: 3}
   ExplosionTemplate: {fileID: 7995845328165520501, guid: 6d41d6442e13a3c4f9f5a9add98a25e2, type: 3}
   audioClips:
   - {fileID: 8300000, guid: 0202b4524d979ab43bd2f5caf8959f9a, type: 3}

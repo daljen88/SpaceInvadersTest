@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class UIButton : MonoBehaviour
 {
+    //La funzione dove è presente l'Event APPARIRA' NELL'INTERFACCIA DEL BUTTON come trigger di altra funzione
     public UnityEvent onMouseDown;
 
     private void OnMouseEnter()

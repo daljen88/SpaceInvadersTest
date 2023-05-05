@@ -14,7 +14,8 @@ public class Enemy : MonoBehaviour, IHittable
 {
     //public MainCharacter character;
     public GameObject myProjectile;
-    public GameObject bigGun;
+    public List<GameObject> guns;
+    public List<GameObject> drops;
     public ParticleSystem ExplosionTemplate;
     public List<AudioClip> audioClips;
     public Material myMaterial, myHitTakenMaterial;
@@ -78,8 +79,6 @@ public class Enemy : MonoBehaviour, IHittable
 
     }
 
-
-    // Update is called once per frame
     void Update()
     {
         SM.Execute();
@@ -110,7 +109,6 @@ public class Enemy : MonoBehaviour, IHittable
         #endregion
 
     }
-
 
     public void DestroyThisEnemy()
     {
@@ -178,12 +176,18 @@ public class Enemy : MonoBehaviour, IHittable
             ps.Emit(60);
             UIManager.instance.PointsScoredEnemyKilled(enemyPointsValue);
             Destroy(ps.gameObject, .5f);
-            if (UIManager.instance.enemiesKilled%3==0&&UIManager.instance.enemiesKilled!=0)
+            if (UIManager.instance.enemiesKilled%6==0&&UIManager.instance.enemiesKilled!=0/*&&GameManager.Instance.typeGunPossessed.name!="BigGun"*/)
             {
-                GameObject bigGunz = Instantiate(bigGun, transform.position, Quaternion.identity);
+                GameObject bigGunz = Instantiate(guns[0], transform.position, Quaternion.identity);
                 BigGun bigGunDropping = bigGunz.GetComponent<BigGun>();
-                bigGunDropping.Drop(Vector3.down * 3f);
+                bigGunDropping.Drop(Vector3.down);
             } 
+            if(UIManager.instance.enemiesKilled % 5 == 0 && UIManager.instance.enemiesKilled != 0&&GameManager.Instance.musicRadioCollected==false)
+            {
+                GameObject musicRadio = Instantiate(drops[0], transform.position, Quaternion.identity);
+                RadioDrop radioScript = musicRadio.GetComponent<RadioDrop>();
+                radioScript.Drop(Vector3.down);
+            }
 
             shootTimer = 0;
             Destroy(gameObject);

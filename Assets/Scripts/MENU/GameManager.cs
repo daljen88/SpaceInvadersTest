@@ -18,27 +18,26 @@ public class GameManager : MonoBehaviour
             playerHp = value>9?9:value;
         } 
     }
-    public WeaponsClass gunPossessed;
-    public GameObject activeGunPossessed;
+    public bool musicRadioCollected = false;
+    private bool musicPlaying = false;
+
+    public WeaponsClass typeGunPossessed;
+    public GameObject objectGunPossessed;
 
     public void SetGameManagerGunPossessed(GameObject gun)
     {
-        GameObject actGun = gun;
-        WeaponsClass actGunScript = gun.GetComponent<WeaponsClass>();
-        gunPossessed = actGunScript;
-        activeGunPossessed = actGun;
+        objectGunPossessed = gun;
+        typeGunPossessed = gun.GetComponent<WeaponsClass>();
     }
 
     private void Awake()
     {
-       // if(Instance)
         if (Instance != null)
         {
             Destroy(gameObject);
         }
         else
         {
-            //this distrugge lo script attaccato al game object
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
@@ -46,12 +45,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        //currentScore= 0;
-        //levelCount= 1;
         Debug.Log($"EndlessRunner_Score {LoadData("EndlessRunner_Score")}");
         Debug.Log($"SpaceInvaders_Score {LoadData("SpaceInvaders_Score")}");
         Debug.Log($"TowerDefence_Score {LoadData("TowerDefence_Score")}");
-
 
         //SaveData("EndlessRunner_Score", 666);
         //SaveData("SpaceInvaders_Score",UIManager.instance.scorePoints);
@@ -65,22 +61,29 @@ public class GameManager : MonoBehaviour
         currentScore = 0;
         playerHp = 4;
         enemiesKilledInRun = 0;
+        musicRadioCollected = false;
+        musicPlaying=false;
+        //GetComponent<AudioSource>().loop = false;
+        GetComponent<AudioSource>().Stop();
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void SaveData(string key, int value)
     {
         PlayerPrefs.SetInt(key, value);
         PlayerPrefs.Save();
-
     }
+
     public int LoadData(string key)
     {
         return PlayerPrefs.GetInt(key);
+    }
+
+    void Update()
+    {
+        if (musicRadioCollected && !musicPlaying)
+        {
+            GetComponent<AudioSource>().Play();
+            musicPlaying = true;
+        }
     }
 }

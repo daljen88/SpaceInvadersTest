@@ -624,7 +624,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4055
+    m_Bits: 20439
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1119,12 +1119,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 703b7a93cd8d3334d8f0db4676c381d3, type: 3}
   - {fileID: 21300000, guid: 5cd6e090ca3b5854b8bb7ae6e55a4b3a, type: 3}
   playerExplosion: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
-  hp: 4
   startingHp: 4
   myProjectile: {fileID: 3912386554682083789, guid: b64412e30a328534d8fb7c791f3881e6, type: 3}
   audioSrc: {fileID: 1221024412}
   Animator: {fileID: 2036642578}
   gunPossesed: {fileID: 0}
+  activeGunPrefab: {fileID: 0}
+  goingRight: 1
 --- !u!54 &744026565
 Rigidbody:
   m_ObjectHideFlags: 0

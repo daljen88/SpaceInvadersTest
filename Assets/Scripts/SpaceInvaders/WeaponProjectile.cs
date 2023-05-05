@@ -3,50 +3,69 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class WeaponProjectile : MonoBehaviour
+public abstract class WeaponProjectile : MonoBehaviour, IShootable
 {
 
-    public Vector3 movementVector;
-    public bool shooted = false;
-    public int shotDamage;
-    public bool hit = false;
+    protected Vector3 movementVector;
+    protected bool shooted = false;
+    protected int shotDamage=1;
+    protected bool hit = false;
+    //public List<AudioClip> audioClips;
+    IHittable tEnterEnemy;
+    IHittable tExitEnemy;
 
-
-    public void Shoot(Vector3 moveVector, int damage)
-    {
-        shotDamage = damage;
-        shooted = true;
-        movementVector = moveVector;
-        ////audioClips.Clear();
-        //audioPlayShot.clip = audioClips[Random.Range(0, audioClips.Count)];
-        //audioPlayShot.Play();
-
-
-        ////distrugge dopo 20 secondi
-        Destroy(gameObject, 20);
-    }
-
-    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
+    {
+        UpdateMovement();
+    }
+
+    private void OnTriggerEnter(Collider entering)
+    {
+        OnTriggerLogic(entering);
+    }
+   
+    private void OnTriggerExit(Collider exiting)
+    {
+        tExitEnemy= exiting.GetComponent<IHittable>();
+        //if (other.GetComponent<Enemy>()!=enemy)
+        //if (tExitEnemy!= tEnterEnemy)
+        hit = false;
+    }
+
+    public virtual void UpdateMovement()
     {
         if (shooted)
             transform.position += movementVector * Time.deltaTime;
     }
-    IHittable tEnterEnemy;
-    IHittable tExitEnemy;
-    //Enemy enemy;
-    private void OnTriggerEnter(Collider other)
+    public virtual void Shoot(int damage)
     {
-        Debug.Log("eh la madòna, go tocào " + other.name);
-        /*IHittable */tEnterEnemy = other.GetComponent<IHittable>();
+        shotDamage = damage * shotDamage;
+        shooted = true;
+    }
+    public virtual void Shoot(Vector3 moveVector, int damage)
+    {
+        shotDamage = damage*shotDamage;
+        shooted = true;
+        movementVector = moveVector;
+        //audioClips.Clear();
+        //audioPlayShot.clip = audioClips[Random.Range(0, audioClips.Count)];
+        //audioPlayShot.Play();
+        //distrugge dopo 10 secondi
+        //Destroy(gameObject, 10);
+    }
+
+    public virtual void OnTriggerLogic(Collider entering)
+    {
+        Debug.Log("eh la madòna, go tocào " + entering.name);
+        /*IHittable */
+        tEnterEnemy = entering.GetComponent<IHittable>();
         //enemy = other.GetComponent<Enemy>();
-        if (tEnterEnemy != null&& tEnterEnemy != tExitEnemy && hit==false)
+        if (tEnterEnemy != null && tEnterEnemy != tExitEnemy /*&& !hit*/)
         {
             //HO COLPITO
             hit = true;
@@ -67,15 +86,5 @@ public class WeaponProjectile : MonoBehaviour
             //Destroy(gameObject);
             //shooted = false;
         }
-        
     }
-   
-    private void OnTriggerExit(Collider other)
-    {
-        tExitEnemy= other.GetComponent<IHittable>();
-        //if (other.GetComponent<Enemy>()!=enemy)
-        //if (tExitEnemy!= tEnterEnemy)
-        hit = false;
-    }
-
 }

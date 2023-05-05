@@ -13,7 +13,10 @@ public class Enemy_Projectile : MonoBehaviour, IShootable
     {
     }
 
-    public void Shoot(Vector3 direction)
+    public void Shoot(int damage=1)
+    { }
+
+    public void Shoot(Vector3 direction, int damage=1)
     {
         shooted = true;
         shootDirection = direction;

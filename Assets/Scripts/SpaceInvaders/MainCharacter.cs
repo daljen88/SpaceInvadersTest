@@ -9,9 +9,10 @@ public class MainCharacter : MonoBehaviour, IHittable
     //public static MainCharacter instance;
     public Sprite[] gooseleft;
     public GameObject playerExplosion;
-    //public Animator explosionAniamtor;
+    //public Animator explosionAnimator;
     //public Animation 
-    public int hp;
+    private int hp;
+    public int Hp { get { return hp; } set { hp = value; } }
     public int startingHp=4;
     public Projectile myProjectile;
     float moveSpeed = 6;
@@ -22,26 +23,28 @@ public class MainCharacter : MonoBehaviour, IHittable
     private bool isDead=false;
     public bool IsDead { get { return isDead; } set { isDead = value; } }
     //public List<AudioClip> audioClips;
-    public WeaponsClass gunPossesed;
     public GameObject activeGunPrefab;
+    public WeaponsClass gunPossesed;
     private Vector3 vectorScaleLeft = new Vector3(-1, 1, 1);
     private Vector3 vectorScaleRight=Vector3.one;
     public bool goingRight=true;
+    public float baseFireRate = 0.2f;
+    private float coolDown=0;
 
     private void Awake()
     {
-        
     }
 
-    // Start is called before the first frame update
     void Start()
     {
     }
 
-    // Update is called once per frame
     void Update()
     {
         string animationName = "playerIdleAnimation";
+
+        if (coolDown > 0)
+            coolDown -= Time.deltaTime;
 
         if (transform.position.x < -8f)
             transform.position = new Vector3(-8f, transform.position.y);
@@ -53,49 +56,46 @@ public class MainCharacter : MonoBehaviour, IHittable
         {
             goingRight = false;
             animationName = "playerWalkAnimation";
-            tsprite.flipX = true;
+            tsprite.flipX = !goingRight;
+            transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+
             //transform.localScale = vectorScaleLeft;
             //tsprite.sprite = gooseleft[1];
-            transform.position += Vector3.left * moveSpeed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.D))
         {
             goingRight = true;
             animationName = "playerWalkAnimation";
-            tsprite.flipX = false;
+            tsprite.flipX = !goingRight;
+            transform.position += Vector3.right * moveSpeed * Time.deltaTime;
 
             //transform.localScale = vectorScaleRight;
-
             //tsprite.sprite = gooseleft[0];
-            transform.position += Vector3.right * moveSpeed * Time.deltaTime;
         }
 
         //SPARO
         if(Input.GetKeyDown(KeyCode.Space)) 
         {
-            //alternativa
-            //Instantiate(myProjectile, transform.position, transform.rotation).Shoot(Vector3.up);
-            //Alternativa:
             Shoot();
         }
         Animator.Play(animationName);
     }
 
     //public weaponclass gunPosseses;
-    public void Shoot (/*weapon class gun possessed*/)
+    public void Shoot (/*weaponclass gunpossessed*/)
     {
         //cambio in shootProjectile
         //if(gunpossessed==null)
-        if (activeGunPrefab == null)
+        if (activeGunPrefab == null&&coolDown<=0)
         {
+            //WeaponProjectile tempProjectile = Instantiate(myProjectile, transform.position, transform.rotation);
             Projectile tempProjectile = Instantiate(myProjectile, transform.position, transform.rotation);
-            tempProjectile.Shoot(Vector3.up * 6.6f);
+            tempProjectile.Shoot(1);
+            coolDown = baseFireRate;
+
         }
         else /*if (gunPossesed.GetComponent<BigGun>() != null)*/
         {
-
-            WeaponsClass activeWeapon = activeGunPrefab.GetComponent<WeaponsClass>();
-            gunPossesed = activeWeapon;
             gunPossesed.ShootProjectile();
             //gunPossesed.ShootProjectile(/*eventuale shootDirection controllata da player*/);
         }
@@ -132,9 +132,6 @@ public class MainCharacter : MonoBehaviour, IHittable
                 {
                     //fx colpo subito
                     StartCoroutine(HitSufferedCoroutine());
-                    //come dire transform.localScale*2
-                    //transform.localScale *= 2;
-                    //hp--;
                     UIManager.instance.OnPlayerHitUpdateLives();
                 }
             }
@@ -144,7 +141,9 @@ public class MainCharacter : MonoBehaviour, IHittable
                 {
                     Debug.Log($"arma distrutta! difesa= {gunPossesed.Defence} ");
                     Destroy(gunPossesed.gameObject);
-
+                    gunPossesed=null;
+                    activeGunPrefab=null;
+                    GameManager.Instance.SetGameManagerGunPossessed(null);
                 }
                 else
                 {
@@ -153,6 +152,7 @@ public class MainCharacter : MonoBehaviour, IHittable
             }
         }
     }
+
     IEnumerator HitSufferedCoroutine()
     {
         Time.timeScale = 0.1f;
@@ -162,13 +162,9 @@ public class MainCharacter : MonoBehaviour, IHittable
         tsprite.transform.DOPunchScale(Vector3.one * .5f, 0.10f).SetUpdate(true);
         yield return new WaitForSecondsRealtime(0.05f); //con 0 aspetta 1 frame
         //yield return new WaitForSecondsRealtime(0);
-        //yield return new WaitForSecondsRealtime(0);
-        //yield return new WaitForSecondsRealtime(0);
-        //yield return new WaitForSecondsRealtime(0);
         tsprite.DOColor(Color.white, .05f);
         Time.timeScale = 1;
         yield return new WaitForSecondsRealtime(.10f);
         isInvulnerable = false;
-
     }
 }

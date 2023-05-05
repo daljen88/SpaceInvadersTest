@@ -3,48 +3,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour, IShootable
+public class Projectile : WeaponProjectile
 {
-    public Vector3 shootDirection;
-    bool shooted = false;
     public AudioSource audioPlayShot;
     public List<AudioClip> audioClips;
+    public float speed = 6.6f;
 
-
-
-    // Start is called before the first frame update
-    void Start()
+    public override void Shoot(int damage=1)
     {
-        
-    }
+        base.Shoot(damage);
+        movementVector = Vector3.up*speed;
 
-    public void Shoot(Vector3 direction)
-    {
-        shooted= true;
-        shootDirection= direction;
         //audioClips.Clear();
-        audioPlayShot.clip = audioClips[Random.Range(0,audioClips.Count)];
+        audioPlayShot.clip = audioClips[Random.Range(0, audioClips.Count)];
         audioPlayShot.Play();
-
-
         //distrugge dopo 10 secondi
         Destroy(gameObject, 10);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void UpdateMovement()
     {
-        if(shooted)
-        transform.position += shootDirection * Time.deltaTime;   
+        base.UpdateMovement();
     }
-    private void OnTriggerEnter(Collider other)
+
+    public override void OnTriggerLogic(Collider entering)
     {
-        Debug.Log("eh la madòna, go tocào "+other.name);
-        IHittable tEnemy = other.GetComponent<IHittable>();
-        if (tEnemy!=null)
+        //base.OnTriggerLogic(entering);
+        Debug.Log("eh la madòna, go tocào " + entering.name);
+        IHittable tEnemy = entering.GetComponent<IHittable>();
+        if (tEnemy != null)
         {
             //HO COLPITO
-            tEnemy.OnHitSuffered(1);
+            tEnemy.OnHitSuffered(shotDamage);
             //cambia parent al particle system
             ParticleSystem tParticle = GetComponentInChildren<ParticleSystem>();
             SpriteRenderer trenderer = GetComponentInChildren<SpriteRenderer>();
@@ -53,12 +43,13 @@ public class Projectile : MonoBehaviour, IShootable
             //distrugge 1 secondo dopo, metti tempo della coda particellare
             Destroy(gameObject);
             Destroy(trenderer);
-            Destroy(tParticle.gameObject,4);
+            Destroy(tParticle.gameObject, 4);
             //GetComponent<MeshRenderer>().enabled = false;
             //GetComponent<Collider>().enabled = false;
             //si muove grazie a shoot, allora lo metto false
-            shooted=false;
+            shooted = false;
         }
+
     }
     void OnBecameInvisible()
     {

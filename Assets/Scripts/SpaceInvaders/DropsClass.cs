@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -23,6 +24,7 @@ public abstract class DropsClass : MonoBehaviour, IDroppable
 
     protected Vector3 fallingVector;
     public MainCharacter tPlayer;
+    Tween shake;
 
     public DropsClass()
     {
@@ -63,11 +65,22 @@ public abstract class DropsClass : MonoBehaviour, IDroppable
 
         if (IsDropped && !IsCollected && transform.position.y > -4.1f)
             transform.position += fallingVector * Time.deltaTime;
-        else if (IsCollected == true)
+        else
         {
-            //cambia questa logica settande posizione arma in un empty object dentro player
-            //transform.position = transform.position - bigGunOffset;
+            shake.Kill(false);
+        }
 
+
+        //else if (IsCollected == true)
+        //{
+        //    //cambia questa logica settande posizione arma in un empty object dentro player
+        //    //transform.position = transform.position - bigGunOffset;
+
+        //}
+        if (transform.position.y <-3.8f&& transform.position.y > -4f)
+        {
+            shake= transform.DOShakeRotation(.3f, 20, 3, 20, true, ShakeRandomnessMode.Harmonic);
+            transform.DORotate(Vector3.zero, .4f, RotateMode.Fast);
         }
         if (dropTimer <= 0 && !isCollected)
             Destroy(gameObject);

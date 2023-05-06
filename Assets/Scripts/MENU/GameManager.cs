@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     public void SetGameManagerGunPossessed(GameObject gun)
     {
         objectGunPossessed = gun;
-        typeGunPossessed = gun.GetComponent<WeaponsClass>();
+        typeGunPossessed = gun?.GetComponent<WeaponsClass>();
     }
 
     private void Awake()

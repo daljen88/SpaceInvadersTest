@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour, IHittable
 
     private StateMachine SM;
     public List<EnemyState> enemyStates = new List<EnemyState>();
+
     float hitFxDuration = 0.25f;
     float shootTimer = 0;
 
@@ -40,6 +41,7 @@ public class Enemy : MonoBehaviour, IHittable
     //public EnemyState.State currentState = EnemyState.State.IDLE;
     //Vector3 goalPosition;
 
+    #region INIT
     private void Awake()
     {
         startingScale = transform.localScale;
@@ -50,7 +52,9 @@ public class Enemy : MonoBehaviour, IHittable
         InizializeStateMachine();
         ChangeState(EnemyState.State.IDLE);
     }
+    #endregion
 
+    #region STATE MACHINE
     private void InizializeStateMachine()
     {
         SM = new StateMachine();
@@ -78,7 +82,9 @@ public class Enemy : MonoBehaviour, IHittable
         return newState=EnemyState.State.IDLE;
 
     }
+    #endregion
 
+    #region UPDATE SM
     void Update()
     {
         SM.Execute();
@@ -109,12 +115,7 @@ public class Enemy : MonoBehaviour, IHittable
         #endregion
 
     }
-
-    public void DestroyThisEnemy()
-    {
-        Enemy_Spawner.Instance.enemyList.Remove(gameObject.GetComponent<Enemy>());
-        Destroy(gameObject,.5f);
-    }
+    #endregion
 
     RaycastHit hit;
 
@@ -167,29 +168,26 @@ public class Enemy : MonoBehaviour, IHittable
         audioSrc.Play();
         if (hp <= 0)
         {
-            //SCORE OK
-            //UIManager.instance.PointsScoredEnemyKilled();
-
             //FX MORTE
             ParticleSystem ps = Instantiate(ExplosionTemplate, transform.position, Quaternion.identity);
             //controllo particella da codice
             ps.Emit(60);
-            UIManager.instance.PointsScoredEnemyKilled(enemyPointsValue);
+            UIManager.instance.PointsScoredEnemyKilled(enemyPointsValue, "enemy");
             Destroy(ps.gameObject, .5f);
-            if (UIManager.instance.enemiesKilled%6==0&&UIManager.instance.enemiesKilled!=0/*&&GameManager.Instance.typeGunPossessed.name!="BigGun"*/)
+            if (UIManager.instance.totalEnemiesKilled%3==0&&UIManager.instance.totalEnemiesKilled!=0&&Random.Range(0,11)<7 /*&&GameManager.Instance.typeGunPossessed.name!="BigGun"*/)
             {
                 GameObject bigGunz = Instantiate(guns[0], transform.position, Quaternion.identity);
-                BigGun bigGunDropping = bigGunz.GetComponent<BigGun>();
+                WeaponsClass bigGunDropping = bigGunz.GetComponent<BigGun>();
                 bigGunDropping.Drop(Vector3.down);
             } 
-            if(UIManager.instance.enemiesKilled % 5 == 0 && UIManager.instance.enemiesKilled != 0&&GameManager.Instance.musicRadioCollected==false)
-            {
-                GameObject musicRadio = Instantiate(drops[0], transform.position, Quaternion.identity);
-                RadioDrop radioScript = musicRadio.GetComponent<RadioDrop>();
-                radioScript.Drop(Vector3.down);
-            }
+            //if(UIManager.instance.totalEnemiesKilled % 5 == 0 && UIManager.instance.totalEnemiesKilled != 0&&GameManager.Instance.musicRadioCollected==false)
+            //{
+            //    GameObject musicRadio = Instantiate(drops[0], transform.position, Quaternion.identity);
+            //    RadioDrop radioScript = musicRadio.GetComponent<RadioDrop>();
+            //    radioScript.Drop(Vector3.down);
+            //}
 
-            shootTimer = 0;
+            //shootTimer = 0;
             Destroy(gameObject);
         }
         else
@@ -225,7 +223,13 @@ public class Enemy : MonoBehaviour, IHittable
     {
         GetComponent<MeshRenderer>().material = myMaterial;
     }
-    
+
+    public void DestroyThisEnemy()
+    {
+        Enemy_Spawner.Instance.enemyList.Remove(gameObject.GetComponent<Enemy>());
+        Destroy(gameObject, .5f);
+    }
+
     #region OLD UPDATES MACHINE FUNCTIONS
     //void Update_IDLE()
     //{

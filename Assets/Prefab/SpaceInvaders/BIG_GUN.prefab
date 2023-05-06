@@ -24,8 +24,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 135650613811515177}
-  m_LocalRotation: {x: -0, y: -0, z: -0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: -0.16142932, y: 0.0058018677, z: -0.012559463}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -156,7 +156,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2984454448563473827}
-  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -165,7 +165,7 @@ Transform:
   - {fileID: 3453623288889707810}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!33 &4522763984696532815
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -227,8 +227,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.41704684
-  m_Center: {x: -0.17468624, y: 0.04318833, z: 0}
+  m_Radius: 0.5050574
+  m_Center: {x: -0.24758756, y: -0.029352248, z: 0}
 --- !u!54 &-1822970769209171504
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -262,7 +262,23 @@ MonoBehaviour:
   dropSounds:
   - {fileID: 8300000, guid: 0afa5196e60ff7149a5844e493e3833f, type: 3}
   gunShotTemplate: {fileID: 2543589591953216310, guid: 6f5a055f9f28501498842a7ec2fb7d55, type: 3}
-  bigGunOffset: {x: 0.275, y: 0.215, z: 0}
+  dropEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2515414618375621290, guid: 9030a21f2265b44428862b0211b3e673, type: 3}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  bigGunOffsetR: {x: 0, y: 0.11, z: 0}
+  bigGunOffsetS: {x: 0.175, y: 0.11, z: 0}
 --- !u!1 &4002864223921592886
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,7 +305,7 @@ Transform:
   m_GameObject: {fileID: 4002864223921592886}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.66, y: 1.66, z: 1.66}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4733226077795435145}
@@ -336,7 +352,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -6432436, guid: a863284a0a5cce849ab60932b00f1baf, type: 3}
+  m_Sprite: {fileID: -2058974319, guid: cfe3efc9758bd234382deaf411e5b9ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

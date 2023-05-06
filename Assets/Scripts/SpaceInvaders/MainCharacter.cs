@@ -86,12 +86,16 @@ public class MainCharacter : MonoBehaviour, IHittable
     {
         //cambio in shootProjectile
         //if(gunpossessed==null)
-        if (activeGunPrefab == null&&coolDown<=0)
+        if (activeGunPrefab == null)
         {
-            //WeaponProjectile tempProjectile = Instantiate(myProjectile, transform.position, transform.rotation);
-            Projectile tempProjectile = Instantiate(myProjectile, transform.position, transform.rotation);
-            tempProjectile.Shoot(1);
-            coolDown = baseFireRate;
+            if (coolDown <= 0)
+            {
+                //WeaponProjectile tempProjectile = Instantiate(myProjectile, transform.position, transform.rotation);
+                Projectile tempProjectile = Instantiate(myProjectile, transform.position, transform.rotation);
+                tempProjectile.Shoot(1);
+                coolDown = baseFireRate;
+            }
+            else { return; }
 
         }
         else /*if (gunPossesed.GetComponent<BigGun>() != null)*/

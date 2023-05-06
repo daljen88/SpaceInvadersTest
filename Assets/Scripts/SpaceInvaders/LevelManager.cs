@@ -12,9 +12,10 @@ public class LevelManager : MonoBehaviour
     public Enemy_Spawner spawner;
     public UIManager uiManager;
     public TextMeshPro introText;
+    public AudioSource readyAudioSource;
     public AudioSource fightAudioSource;
     public AudioSource victoryDefeatAudioSource;
-    public enum LogicState { START, INTRO, RUNNING, OUTRO, DEAD, END }
+    public enum LogicState { STORY, START, INTRO, RUNNING, OUTRO, DEAD, END }
     public LogicState state = LogicState.START;
     public int playerScore;
     public bool isPaused = false;
@@ -25,6 +26,14 @@ public class LevelManager : MonoBehaviour
     private string[] fightText = new string[] { "DUCK!!!", "EYES UP, OLD DUCK", "KEEP YOUR EYES ON THE ENEMY!", "WATCH YOUR NECK!", "ACTION IS GO!", "TIME TO GO HONKERS!" };
     private string quitText = "GODSPEED YOU, GEEZ";
 
+    private string storyText = "Aliens from another galaxy have invaded Earth space-time frame and stole some valuable technology from the 80s,"+
+        " now the continuum is breaking apart! You, as a member of the GUTSS (Galactic Union for Time-Space Stability), have to bring those devices back to the" +
+        " earthlings and fix the stability of life as we know it!";
+    private char[] storyTextByChar;
+    public TextMeshPro uiStoryText;
+    public bool storyOver = false;
+    public bool story2Over = false;
+
     //public AudioSource readyAudioSource;
 
     private void Awake()
@@ -34,6 +43,11 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        introText.transform.localScale = Vector3.zero;
+        uiStoryText.enabled = true;
+
+        //Time.timeScale = 0;
+
         #region old variables setting
         //character=new MainCharacter();  
         //character.hp=playerHp;
@@ -50,10 +64,16 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
+        //if(state==LogicState.STORY)
+        //{
+        //    uiStoryText.enabled = true;
+        //    StartCoroutine(WriteByLetterCoroutine());
+        //}
+
         if (state == LogicState.END&&character!=null)
             state = LogicState.START;
 
-        if (state == LogicState.START)
+        if (state == LogicState.START && storyOver)
         {
             state = LogicState.INTRO;
             StartCoroutine(IntroCoroutine());
@@ -75,40 +95,36 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    IEnumerator WriteByLetterCoroutine()
+    {
+        yield return new WaitForSeconds(.2f);
+        foreach (char c in storyTextByChar)
+        {
+            uiStoryText.text += c;
+            yield return new WaitForSecondsRealtime(.02f);
+        }
+
+    }
+
     IEnumerator IntroCoroutine()
     {
-        //ATTIVA PLAYER E ASSEGNA GAME OBJECT, SCRIPT ARMA E VALORI PLAYER PRESI DAL GAMAE MANAGER
+        //ATTIVA PLAYER E SETTA VALORI HP
         character.gameObject.SetActive(true);
-        //if (GameManager.Instance.activeGunPossessed != null)
-        //{
-        //    GameObject actWeap = Instantiate(GameManager.Instance.activeGunPossessed, character.transform.position, Quaternion.Euler(0, 0, 45));
-        //    WeaponsClass actWeapp = actWeap.GetComponent<WeaponsClass>();
-
-        //    character.activeGunPrefab = actWeap;
-        //    character.gunPossesed = actWeapp;
-
-              #region test
-        //    //character.activeGunPrefab = GameManager.Instance.activeGunPossessed;
-        //    ////character.gunPossesed = GameManager.Instance.gunPossessed;
-        //    ///*GameObject bigGunz =*/ Instantiate(character.activeGunPrefab, character.gameObject.transform.position, Quaternion.Euler(0,0,45));
-        //    ////BigGun bigGunDropping = bigGunz.GetComponent<BigGun>();
-        //    ////bigGunDropping.Drop(Vector3.down * 3f);
-
-
-        //    //character.gunPossesed = Instantiate(GameManager.Instance.gunPossessed, character.gameObject.transform.position, Quaternion.Euler(0, 0, 45));
-
-
-        //    //character.activeGunPrefab = GameManager.Instance.activeGunPossessed;
-        //    //WeaponsClass activeWeap = Instantiate(character.activeGunPrefab.GetComponent<WeaponsClass>(), character.gameObject.transform.position, Quaternion.Euler(0, 0, 45));
-
-        //    //character.activeGunPrefab = Instantiate(character.activeGunPrefab, character.gameObject.transform.position, Quaternion.Euler(0, 0, 45));
-              #endregion
-        //}
         playerHp = GameManager.Instance.PlayerHp + 1 + GameManager.Instance.levelCount / 3;
         character.Hp = playerHp > 9 ? 9 : playerHp;
+
+        #region assegna gun e script al player
+        //ASSEGNA GAME OBJECT E SCRIPT ARMA PRESI DAL GAMAE MANAGER
+        //if (GameManager.Instance.activeGunPossessed != null)
+        //{
+        //    character.activeGunPrefab = GameManager.Instance.activeGunPossessed;
+        //    character.gunPossesed = GameManager.Instance.typeGunPossessed;
+        //}
+        #endregion
+
         //SETTA VALORI UI
         uiManager.scorePoints = GameManager.Instance.currentScore;
-        uiManager.enemiesKilled = GameManager.Instance.enemiesKilledInRun;
+        uiManager.totalEnemiesKilled = GameManager.Instance.enemiesKilledInRun;
         uiManager.Show(true);
         if (GameManager.Instance.levelCount == 1)
             uiManager.InitUI();
@@ -117,11 +133,18 @@ public class LevelManager : MonoBehaviour
         //SETTA VALORI SPAWNER
         spawner.win = false;
         spawner.maxEnemies = 3 + GameManager.Instance.levelCount;
+        SecondEnemySpawner.Instance.maxBonusEnemies = 4;
+        SecondEnemySpawner.Instance.bringerMaxEnemies = 4;
         //SPOSTA PLAYER IN GIOCO
-        character.transform.position = new Vector3(0, -8, 0);
-        character.transform.DOMoveY(-3.5f, 4);
+        if (character.transform.position.y > -3)
+        {
+            character.transform.position = new Vector3(0, -8, 0);
+            character.transform.DOMoveY(-3.5f, 3);
+        }
         introText.transform.localScale = Vector3.zero;
-        yield return new WaitForSeconds(1);
+
+        readyAudioSource.Play();
+        yield return new WaitForSeconds(1f);
 
         //compare scritta READY
         introText.text = "GEEZ. READY?";
@@ -129,7 +152,7 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         //scompare scritta ready
-        introText.transform.DOScale(Vector3.one, .5f).SetEase(Ease.InElastic);
+        introText.transform.DOScale(Vector3.zero, .5f).SetEase(Ease.InElastic);
         yield return new WaitForSeconds(.5f);
 
         //compare scritta Fight
@@ -144,6 +167,8 @@ public class LevelManager : MonoBehaviour
         //STATE RUNNING: PLAYER AND SPAWNER ENABLE
         character.enabled = true;
         spawner.enabled = true;
+        SecondEnemySpawner.Instance.enabled = true;
+
         state = LogicState.RUNNING;
         yield return new WaitForSeconds(.5f);
 
@@ -157,16 +182,10 @@ public class LevelManager : MonoBehaviour
         //if(character.activeGunPrefab!=null)
         //GameManager.Instance.SetGameManagerGunPossessed(character.activeGunPrefab);
 
-        #region test
-        //GameObject collectedGunPref= character.activeGunPrefab;
-        //GameManager.Instance.activeGunPossessed = collectedGunPref;
-        //WeaponsClass collectedGunScript = character.gunPossesed;
-        //GameManager.Instance.gunPossessed = collectedGunScript;
-        #endregion
-
         //DISATTIVA PLAYER E SPAWNER
         character.enabled = false;
         spawner.enabled = false;
+        SecondEnemySpawner.Instance.enabled = false;
 
         //AUDIO VITTORIA
         victoryDefeatAudioSource.clip = menuAudioClips[0];
@@ -203,7 +222,7 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.levelCount++;
         GameManager.Instance.currentScore = uiManager.scorePoints;
         GameManager.Instance.PlayerHp = character.Hp;
-        GameManager.Instance.enemiesKilledInRun = uiManager.enemiesKilled;
+        GameManager.Instance.enemiesKilledInRun = uiManager.totalEnemiesKilled;
         //toglie invulerabilità al player
         character.IsInvulnerable = false;
         //END STATE

@@ -21,13 +21,16 @@ public class BigGun : WeaponsClass
     //public override float Defence => defence+1;
 
     //public GameObject bigGunShotTemplate;
-    [SerializeField] private Vector3 bigGunOffset = new Vector3(0.275f , 0.215f);
+    [SerializeField] private Vector3 bigGunOffsetR = new Vector3(-0.166f , 0.11f);//offset y=0.155
+    [SerializeField] private Vector3 bigGunOffsetS = new Vector3(0.166f, 0.11f);
+
     //private SpriteRenderer gunSpriteRenderer;
-    
+
     public BigGun(): base()
     {
         Defence=Defence+1;
-        gunOffset = bigGunOffset;
+        gunOffsetR = bigGunOffsetR;
+        gunOffsetS = bigGunOffsetS;
 
         //myProjectile = gunShotTemplate.GetComponent<WeaponProjectile>();
     }

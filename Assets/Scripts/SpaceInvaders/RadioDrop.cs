@@ -21,4 +21,10 @@ public class RadioDrop : DropsClass
         base.CollectionLogic(); 
         GameManager.Instance.musicRadioCollected = true;
     }
+    IEnumerator PlayMusicCoroutine()
+    {
+        Time.timeScale = 0;
+        yield return null;  
+
+    }
 }

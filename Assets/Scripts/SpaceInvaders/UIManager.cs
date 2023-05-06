@@ -16,7 +16,10 @@ public class UIManager : MonoBehaviour
     public TextMeshPro scoreText;
     public int scorePoints;
     public int lives;
-    public int enemiesKilled;
+    public int totalEnemiesKilled;
+    public int normalEnemyKIlled;
+    public int bonusEnemyKilled;
+    public int bringerEnemyKilled;
     public GameObject playerUI;
     public GameObject pauseGO;
 
@@ -74,9 +77,9 @@ public class UIManager : MonoBehaviour
         StartCoroutine(UpdatelivesOnHitCoroutine());
 
     }
-    public void PointsScoredEnemyKilled(int score)
+    public void PointsScoredEnemyKilled(int score=666, string enemy="enemy")
     {
-        StartCoroutine(ScoredPointsCoroutine(score));
+        StartCoroutine(ScoredPointsCoroutine(score, enemy));
     }
 
     public IEnumerator UpdatelivesOnHitCoroutine()
@@ -97,11 +100,23 @@ public class UIManager : MonoBehaviour
 
 
     }
-    public IEnumerator ScoredPointsCoroutine(int score)
+    public IEnumerator ScoredPointsCoroutine(int score, string enemy)
     {
         //scorePoints += 666;
         //scoreText.text = scorePoints.ToString();
-        enemiesKilled++;
+        totalEnemiesKilled++;
+        switch (enemy)
+        {
+            case "enemy":
+                normalEnemyKIlled++;
+                break;
+            case "bomusEnemy":
+                bonusEnemyKilled++;
+                break;
+            case "bringerEnemy":
+                bringerEnemyKilled++;
+                break;
+        }
         scorePoints += score;
         scoreText.transform.DOPunchScale(Vector3.one * .5f, .333f);
         scoreText.text = scorePoints.ToString();

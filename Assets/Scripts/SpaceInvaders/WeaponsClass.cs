@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class WeaponsClass : MonoBehaviour, IDroppable
 {
@@ -40,7 +41,10 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
     private Vector3 fallingVector;
     private WeaponProjectile myProjectile;
     private SpriteRenderer gunSpriteRenderer;
-    protected Vector3 gunOffset;
+    protected Vector3 gunOffsetR;
+    protected Vector3 gunOffsetS;
+
+    public UnityEvent dropEvent;
 
     //{ get { return projMovementVector; } set { projMovementVector = value; } }
 
@@ -100,12 +104,13 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
         else if (IsCollected == true)
         {
             //cambia questa logica settande posizione arma in un empty object dentro player
-            int bigGunRotation = tPlayer.goingRight ? -15 : 15;
+            int bigGunRotation = tPlayer.goingRight ? 15 : -15;
             gunSpriteRenderer.flipX = !tPlayer.goingRight;
 
             //transform.position = transform.position - bigGunOffset;
+            transform.position = tPlayer.goingRight? tPlayer.gameObject.transform.position - gunOffsetR: tPlayer.gameObject.transform.position - gunOffsetS;
 
-            transform.position = tPlayer.gameObject.transform.position - gunOffset;
+            //transform.position = tPlayer.gameObject.transform.position - gunOffset;
             transform.rotation = Quaternion.Euler(0, 0, bigGunRotation);
 
         }
@@ -113,12 +118,19 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
             Destroy(gameObject);
     }
 
+    //public void DropEvent()
+    //{
+    //    IsDropped = true;
+
+    //}
     public virtual void Drop(Vector3 direction)
     {
-        IsDropped= true;
+        IsDropped = true;
         fallingVector = direction*DropSpeed;
         dropWeaponSound.clip = dropSounds[0/*Random.Range(0, dropSounds.Count)*/];
         dropWeaponSound.Play();
+        dropEvent.Invoke();
+        //tPlayer.gameObject.GetComponentInChildren<PlayerTextLogic>().FoundNewGun();
 
         //distrugge dopo 10 secondi
         
@@ -127,7 +139,8 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
     {
         if (coolDown <= 0)
         {
-            GameObject tempProjectile = Instantiate(gunShotTemplate, transform.position, Quaternion.Euler(0, 0, 90));
+            //float shootOffset=
+            GameObject tempProjectile = Instantiate(gunShotTemplate, new Vector3 (tPlayer.goingRight? transform.position.x+0.7f: transform.position.x - 0.7f, transform.position.y), Quaternion.Euler(0, 0, 90));
             myProjectile = tempProjectile.GetComponent<WeaponProjectile>();
             myProjectile.Shoot(ProjMovementVector, Damage);
             coolDown = FireRate;

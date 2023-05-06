@@ -16,15 +16,17 @@ public class SecondEnemy : MonoBehaviour, IHittable
     float hitFxDuration = 0.25f;
     Tweener twScale;
 
-
-
-    // Start is called before the first frame update
     void Start()
     {
         enemySpeed = 4 + Mathf.Pow(Mathf.Log10(GameManager.Instance.levelCount + 10), 2);
+        Invoke("DestroyEnemy",15f);
     }
 
-    // Update is called once per frame
+    public void DestroyEnemy()
+    {
+        SecondEnemySpawner.Instance.bonusEnemyList.Remove(this);
+        Destroy(gameObject);
+    }
     void Update()
     {
         transform.position += Vector3.right * enemySpeed * Time.deltaTime;
@@ -44,10 +46,11 @@ public class SecondEnemy : MonoBehaviour, IHittable
             ParticleSystem ps = Instantiate(ExplosionTemplate, transform.position, Quaternion.identity);
             //controllo particella da codice
             ps.Emit(30);
-            UIManager.instance.PointsScoredEnemyKilled(enemyPointsValue);
+            UIManager.instance.PointsScoredEnemyKilled(enemyPointsValue, "bonusEnemy");
             Destroy(ps.gameObject, .5f);
 
-            Destroy(gameObject);
+            DestroyEnemy();
+            //Destroy(gameObject);
         }
         else
         {

@@ -1198,7 +1198,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 888
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -1261,7 +1261,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.21663547, y: 0.10251074, z: 0.13905191, w: 0.11333871}
+  m_margin: {x: 0.24217772, y: 0.10251074, z: 0.13905191, w: 0.11333871}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -3944,7 +3944,7 @@ MonoBehaviour:
   bringerEnemyKilled: 0
   playerUI: {fileID: 1232537793}
   pauseGO: {fileID: 1643768942}
-  hpOffset: 1.2
+  hpOffset: 1
 --- !u!1001 &787985896125972273
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Projectile : MonoBehaviour, IShootable
+public class Enemy_fireProjectile : MonoBehaviour, IShootable
 {
     public Vector3 shootDirection;
     bool shooted = false;
     public AudioSource audioEnemyShot;
     public List<AudioClip> audioClips;
-    public int projectileDamage = 1;
+    public int projectileDamage = 3;
 
     void Start()
     {
@@ -17,13 +17,13 @@ public class Enemy_Projectile : MonoBehaviour, IShootable
     public void Shoot(int enemyDamageMulti = 1)
     { }
 
-    public void Shoot(Vector3 direction, int enemyDamageMulti=1)
+    public void Shoot(Vector3 direction, int enemyDamageMulti = 1)
     {
         shooted = true;
         shootDirection = direction;
         projectileDamage *= enemyDamageMulti;
-        audioEnemyShot.clip = audioClips[Random.Range(0, audioClips.Count)];
-        audioEnemyShot.Play();
+        //audioEnemyShot.clip = audioClips[Random.Range(0, audioClips.Count)];
+        //audioEnemyShot.Play();
 
         //distrugge dopo 10 secondi
         //Destroy(gameObject, 10);
@@ -42,7 +42,7 @@ public class Enemy_Projectile : MonoBehaviour, IShootable
     {
         Debug.Log("eh la madòna, go tocào " + other.name);
         IHittable tPlayer = other.GetComponent<IHittable>();
-        if (tPlayer!=null)
+        if (tPlayer != null)
         {
             //HO COLPITO
             tPlayer.OnHitSuffered(projectileDamage);
@@ -55,4 +55,5 @@ public class Enemy_Projectile : MonoBehaviour, IShootable
     //}
 
 }
+
 

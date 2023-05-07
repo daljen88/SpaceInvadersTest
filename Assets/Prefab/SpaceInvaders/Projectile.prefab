@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3912386554543917359}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 0.28, z: -0.33}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
   m_LocalScale: {x: 3.333333, y: 3.333333, z: 3.333333}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -213,7 +213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 428fe484447ea4a429858177d66df9cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootDirection: {x: 0, y: 0, z: 0}
   audioPlayShot: {fileID: 1373835653790715958}
   audioClips:
   - {fileID: 8300000, guid: d7cad924889ec0047ab8910d257351dc, type: 3}
@@ -225,6 +224,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d9e8f329e67a5db4b8946e68eaed0df6, type: 3}
   - {fileID: 8300000, guid: ea54e34d6f5e7ee48a05a8ea23e39dfe, type: 3}
   - {fileID: 8300000, guid: 67f6ca0e66bff4c43932c3216521ffc1, type: 3}
+  speed: 6.6
 --- !u!54 &-4117828486510409134
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -351,7 +351,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5395181253853592995}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1.19, z: 0}
+  m_LocalPosition: {x: 0, y: -1.2, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []

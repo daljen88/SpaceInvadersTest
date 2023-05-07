@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour, IHittable
     public float enemySpeed = 6f;
     public int hp = 3;
     public int enemyPointsValue=666;
+    public int enemyDamageMultiplyer=1;
 
     //public enum EnemyState { IDLE, MOVE_DOWN, MOVE_RIGHT, MOVE_LEFT, DESTROYED}
     //public EnemyState.State currentState = EnemyState.State.IDLE;
@@ -139,7 +140,7 @@ public class Enemy : MonoBehaviour, IHittable
                 //hit.collider.GetComponent<CharacterController>().OnHitSuffered();
                 GameObject tempProjectile = Instantiate(myProjectile, transform.position + Vector3.down, transform.rotation);
                 Enemy_Projectile tempProj = tempProjectile.GetComponent<Enemy_Projectile>();
-                tempProj.Shoot(Vector3.down * 4f);
+                tempProj.Shoot(Vector3.down * 4f, enemyDamageMultiplyer);
 
                 shootTimer = 0;
                 //Debug.Break();

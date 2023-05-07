@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
     public GameObject playerUI;
     public GameObject pauseGO;
 
-    public float hpOffset=.3f;
+    public float hpOffset=1f;
 
     public void Show(bool show)
     {
@@ -72,9 +72,9 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-    public void OnPlayerHitUpdateLives()
+    public void OnPlayerHitUpdateLives(int damage)
     {
-        StartCoroutine(UpdatelivesOnHitCoroutine());
+        StartCoroutine(UpdatelivesOnHitCoroutine(damage));
 
     }
     public void PointsScoredEnemyKilled(int score=666, string enemy="enemy")
@@ -82,22 +82,24 @@ public class UIManager : MonoBehaviour
         StartCoroutine(ScoredPointsCoroutine(score, enemy));
     }
 
-    public IEnumerator UpdatelivesOnHitCoroutine()
+    public IEnumerator UpdatelivesOnHitCoroutine(int _damage)
     {
-        //TOGLIE CUORE DA NUMERO VITE
-        //salvo lo sprite da distruggere
-        SpriteRenderer tsprite = hpSpritesList[hpSpritesList.Count-1];
-        //rimuovo dalla lista degli hp correnti
-        hpSpritesList.RemoveAt(hpSpritesList.Count-1);
-        tsprite.transform.DOShakePosition(.25f);
-        tsprite.DOColor(Color.red, .25f);
+        for (int i = 0; i < _damage; i++)
+        {
+            //TOGLIE CUORE DA NUMERO VITE
+            //salvo lo sprite da distruggere
+            SpriteRenderer tsprite = hpSpritesList[hpSpritesList.Count - 1];
+            //rimuovo dalla lista degli hp correnti
+            hpSpritesList.RemoveAt(hpSpritesList.Count - 1);
+            tsprite.transform.DOShakePosition(.25f);
+            tsprite.DOColor(Color.red, .25f);
+            yield return new WaitForSeconds(.25f);
 
-        yield return new WaitForSeconds(.25f);
+            tsprite.transform.DOScale(Vector3.zero, .25f);
+            yield return new WaitForSeconds(.25f);
 
-        tsprite.transform.DOScale(Vector3.zero, .25f);
-        yield return new WaitForSeconds(.25f);
-        Destroy(tsprite.gameObject);
-
+            Destroy(tsprite.gameObject);
+        }
 
     }
     public IEnumerator ScoredPointsCoroutine(int score, string enemy)

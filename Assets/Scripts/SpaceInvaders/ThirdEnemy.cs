@@ -25,6 +25,7 @@ public class ThirdEnemy : MonoBehaviour, IHittable
     public int hp = 4;
     public int enemyPointsValue = 4999;
     float hitFxDuration = 0.25f;
+    public int enemyDamageMultiplyer = 1;
 
 
     void Start()
@@ -34,6 +35,7 @@ public class ThirdEnemy : MonoBehaviour, IHittable
     }
     public void DestroyEnemy()
     {
+        this.bringingDrop = null;
         SecondEnemySpawner.Instance.bringerEnemyList.Remove(this);
         Destroy(gameObject);
     }
@@ -79,8 +81,9 @@ public class ThirdEnemy : MonoBehaviour, IHittable
             //    RadioDrop radioScript = musicRadio.GetComponent<RadioDrop>();
             //    radioScript.Drop(Vector3.down);
             //}
+            if(bringingDrop!=null)
             bringingDrop.gameObject.transform.parent = transform.parent;
-            bringingDrop.Drop(Vector3.down);
+            bringingDrop?.Drop(Vector3.down);
 
             //DropsClass dropping = GetComponentInChildren<DropsClass>();
             //dropping.gameObject.transform.parent = transform.parent;
@@ -145,8 +148,8 @@ public class ThirdEnemy : MonoBehaviour, IHittable
                 //Debug.Log("Shoot");
                 //hit.collider.GetComponent<CharacterController>().OnHitSuffered();
                 GameObject tempProjectile = Instantiate(myProjectile, transform.position + Vector3.down, transform.rotation);
-                Enemy_Projectile tempProj = tempProjectile.GetComponent<Enemy_Projectile>();
-                tempProj.Shoot(Vector3.down * 4f);
+                Enemy_fireProjectile tempProj = tempProjectile.GetComponent<Enemy_fireProjectile>();
+                tempProj.Shoot(Vector3.down * 4f, enemyDamageMultiplyer);
 
                 shootTimer = 0;
                 //Debug.Break();

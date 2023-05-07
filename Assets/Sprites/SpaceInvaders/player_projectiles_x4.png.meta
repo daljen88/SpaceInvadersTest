@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,9 +113,1050 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: player_projectiles_x4_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 476
+        width: 24
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ad06398e17c1a74294912a165f980b8
+      internalID: -1527679235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_1
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 476
+        width: 200
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3fa3fec180e22747ae2188065bac888
+      internalID: 2079453920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_2
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 456
+        width: 16
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cb9c6dcef5865f4db621259eb13d0ca
+      internalID: 299974763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_3
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 456
+        width: 72
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9919cc9ee2f50d6469a61a78d0782266
+      internalID: -1169137496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_4
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 456
+        width: 16
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2313c3bdf8e3b4f4db849ea61f9ee95f
+      internalID: -134582595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 436
+        width: 136
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 964fb9cf5d57bf741abebb010f47bbb8
+      internalID: 109310301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_6
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 436
+        width: 24
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 911b1751da394954ea9ac9f8d3ef38b2
+      internalID: 194986643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_7
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 436
+        width: 48
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f92964c5a4291134cb339bf2cd967566
+      internalID: 1587807417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_8
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 416
+        width: 48
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b160f69356f34be4b9ca9a68e8d3c22e
+      internalID: 1334132955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_9
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 412
+        width: 16
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b488677d2863b34e8df67c7d9491d23
+      internalID: -1442906307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_10
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 412
+        width: 16
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e8af461bb60de043a7aa6f04fe382d4
+      internalID: -27749406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_11
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 408
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fa6da15832735f48a0826927116a6d9
+      internalID: 1510411001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_12
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 408
+        width: 24
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 019dc52d831c879448031e18156f3a30
+      internalID: -810268019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_13
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 408
+        width: 24
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbdd1889d366b774396bd91d316a8db0
+      internalID: 695825672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_14
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 380
+        width: 28
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dac621bfc49bfca428cb1071b8378151
+      internalID: 1791609964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_15
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 380
+        width: 24
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56a308a7f2f81d244a6e09aad5c12c7f
+      internalID: -1440106185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_16
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 380
+        width: 28
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8b45ed6aa5f97845b29e00b2da3aef0
+      internalID: -1977377187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_17
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 380
+        width: 24
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 955ef224cb4987f47a2a60661647e521
+      internalID: -474560197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_18
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 380
+        width: 28
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 719ee24e3dce016479d8fb600c968f86
+      internalID: 2053905667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_19
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 380
+        width: 24
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cad5f7662314cdf4d9e0ade3ac3cb8c5
+      internalID: 1101357797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_20
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 352
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c15f7fdd4db2674bb97327f0a44fcee
+      internalID: -2128396470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_21
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 352
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 132b2ce119039d1428dbcb8605f470e7
+      internalID: -255445578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_22
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 352
+        width: 24
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81264ec775d70014fa631c8a237f7c3a
+      internalID: 129424942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_23
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 352
+        width: 28
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73bd5a92c4d255347808b398cc5e4a85
+      internalID: 1681994848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_24
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 348
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1ed2a8f5ad454e4ca7ba2a2dbdbb2ea
+      internalID: 1989395389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_25
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 348
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e169404e277e1a4db012f47e485890f
+      internalID: 526002945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_26
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 348
+        width: 28
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe955b7e6b12e1f4e9baf2ac6d5dd7a7
+      internalID: 443006357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_27
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 316
+        width: 28
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8d09338632d24c489d087b4e424bafb
+      internalID: -815475391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_28
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 312
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb54f16bba10f59468c00fd84c1f7f07
+      internalID: 433544222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_29
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 312
+        width: 52
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb9f7edb7032a164f89c7c6423c7c2d8
+      internalID: -2080612216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_30
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 312
+        width: 52
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 429e41539b7148442aa0cce72fd5a87e
+      internalID: -259227939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_31
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 312
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68ec764c7d5edf2418bde6b95f4340a7
+      internalID: -268446079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_32
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 276
+        width: 52
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3191e102a28cbf40a241436a19f2071
+      internalID: -1585613846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_33
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 276
+        width: 32
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a94882ffd24f6844a3daecd7714f22a
+      internalID: 542176566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_34
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 276
+        width: 52
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cb067fc11fad4c4a9482e66cccf01bc
+      internalID: -1952991884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_35
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 268
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c0041ffa1b19c145849e09339d21c2d
+      internalID: 1753190719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_38
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 208
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dda4e0aef2b3394c98dd177d63b18b8
+      internalID: -1492300959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_40
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 208
+        width: 40
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57863248c305368488621368cf800c3c
+      internalID: 1321730577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_42
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 208
+        width: 36
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83495e6cc4b301740809bbaf61e3ca2d
+      internalID: -762683870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_45
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 208
+        width: 48
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 400a5efc92309e34fa8e2d7fdba8d9c3
+      internalID: 1761717475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_46
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 144
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52f2124af505b084fb3bd6d4bddd8af3
+      internalID: 573599134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_47
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 144
+        width: 72
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72abfa960a3154f4fb9b811731c02ddb
+      internalID: -44790093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_48
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 80
+        width: 72
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f8a87f8d154edf41816199e9d73e245
+      internalID: 682995737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_49
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 144
+        width: 72
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5af0d60f2273b5647b8bcff650b32cc0
+      internalID: -561805675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_50
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 76
+        width: 44
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea7f4737c9d3e534ca14d61cb6586758
+      internalID: 1543999997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_53
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8
+        width: 56
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1db8d90fcbe833545b9168b3a58a84ed
+      internalID: -467436446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_56
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 8
+        width: 56
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74f1a13b0b42e524d87cc4742c99efcb
+      internalID: -505913864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_57
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 72
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce884f24bd305da4c87c8f324729c731
+      internalID: 225651327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_projectiles_x4_58
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 8
+        width: 48
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a733ab99ef8f043458039725e0277da1
+      internalID: -842495349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -126,7 +1167,66 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      player_projectiles_x4_55: 2039181235
+      player_projectiles_x4_6: 194986643
+      player_projectiles_x4_12: -810268019
+      player_projectiles_x4_39: -1192986166
+      player_projectiles_x4_21: -255445578
+      player_projectiles_x4_44: 1967379416
+      player_projectiles_x4_56: -505913864
+      player_projectiles_x4_54: 936041791
+      player_projectiles_x4_26: 443006357
+      player_projectiles_x4_40: 1321730577
+      player_projectiles_x4_2: 299974763
+      player_projectiles_x4_45: 1761717475
+      player_projectiles_x4_14: 1791609964
+      player_projectiles_x4_18: 2053905667
+      player_projectiles_x4_41: 905701902
+      player_projectiles_x4_43: -560423495
+      player_projectiles_x4_48: 682995737
+      player_projectiles_x4_9: -1442906307
+      player_projectiles_x4_7: 1587807417
+      player_projectiles_x4_23: 1681994848
+      player_projectiles_x4_25: 526002945
+      player_projectiles_x4_32: -1585613846
+      player_projectiles_x4_33: 542176566
+      player_projectiles_x4_51: -1249386407
+      player_projectiles_x4_35: 1753190719
+      player_projectiles_x4_34: -1952991884
+      player_projectiles_x4_31: -268446079
+      player_projectiles_x4_37: -1825109948
+      player_projectiles_x4_50: 1543999997
+      player_projectiles_x4_58: -842495349
+      player_projectiles_x4_46: 573599134
+      player_projectiles_x4_15: -1440106185
+      player_projectiles_x4_16: -1977377187
+      player_projectiles_x4_19: 1101357797
+      player_projectiles_x4_20: -2128396470
+      player_projectiles_x4_29: -2080612216
+      player_projectiles_x4_53: -467436446
+      player_projectiles_x4_38: -1492300959
+      player_projectiles_x4_4: -134582595
+      player_projectiles_x4_24: 1989395389
+      player_projectiles_x4_27: -815475391
+      player_projectiles_x4_42: -762683870
+      player_projectiles_x4_57: 225651327
+      player_projectiles_x4_17: -474560197
+      player_projectiles_x4_3: -1169137496
+      player_projectiles_x4_36: -846736027
+      player_projectiles_x4_0: -1527679235
+      player_projectiles_x4_49: -561805675
+      player_projectiles_x4_5: 109310301
+      player_projectiles_x4_10: -27749406
+      player_projectiles_x4_52: 773221463
+      player_projectiles_x4_30: -259227939
+      player_projectiles_x4_1: 2079453920
+      player_projectiles_x4_28: 433544222
+      player_projectiles_x4_47: -44790093
+      player_projectiles_x4_22: 129424942
+      player_projectiles_x4_13: 695825672
+      player_projectiles_x4_11: 1510411001
+      player_projectiles_x4_8: 1334132955
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

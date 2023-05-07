@@ -115,11 +115,12 @@ public class MainCharacter : MonoBehaviour, IHittable
             audioSrc.Play();
             if (activeGunPrefab == null)
             {
-                if (--hp <= 0) //fa decremento e poi valuta se minore o uguale a 0// hp--<=0 guarda se hp minore o uguale a 0 e poi fa decremento
+                hp -= damage;
+                if (hp<= 0) //fa decremento e poi valuta se minore o uguale a 0// hp--<=0 guarda se hp minore o uguale a 0 e poi fa decremento
                 {
                     //se giocatore viene distrutto, sposta audio src fuori così non viene distrutto:
                     audioSrc.transform.parent = transform.parent;
-                    UIManager.instance.OnPlayerHitUpdateLives();
+                    UIManager.instance.OnPlayerHitUpdateLives(damage);
                     //morte
                     IsDead = true;
                     //Enemy_Spawner.Instance.StopSpawner();
@@ -136,12 +137,12 @@ public class MainCharacter : MonoBehaviour, IHittable
                 {
                     //fx colpo subito
                     StartCoroutine(HitSufferedCoroutine());
-                    UIManager.instance.OnPlayerHitUpdateLives();
+                    UIManager.instance.OnPlayerHitUpdateLives(damage);
                 }
             }
             else
             {
-                if(--gunPossesed.Defence<=0)
+                if(/*--gunPossesed.Defence*/gunPossesed.Defence-damage<=0)
                 {
                     Debug.Log($"arma distrutta! difesa= {gunPossesed.Defence} ");
                     Destroy(gunPossesed.gameObject);
@@ -151,6 +152,7 @@ public class MainCharacter : MonoBehaviour, IHittable
                 }
                 else
                 {
+                    gunPossesed.Defence -= damage;
                     Debug.Log($"arma colpita! difesa= {gunPossesed.Defence} ");
                 }
             }

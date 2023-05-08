@@ -7,8 +7,17 @@ public abstract class WeaponProjectile : MonoBehaviour, IShootable
 {
 
     protected Vector3 movementVector;
-    protected bool shooted = false;
+
+    protected Vector3 directionVector=Vector3.up;
+    public abstract Vector3 DirectionVector { get; }
+
+    protected float speed = 1;
+    public abstract float Speed { get; }
+
     protected int shotDamage=1;
+    public abstract int ShotDamage { get; set; }
+
+    protected bool shooted = false;
     protected bool hit = false;
     //public List<AudioClip> audioClips;
     IHittable tEnterEnemy;
@@ -42,16 +51,19 @@ public abstract class WeaponProjectile : MonoBehaviour, IShootable
         if (shooted)
             transform.position += movementVector * Time.deltaTime;
     }
-    public virtual void Shoot(int damage)
+
+    public virtual void Shoot(int weaponMulti=1)
     {
-        shotDamage = damage * shotDamage;
+        ShotDamage = weaponMulti * ShotDamage;
         shooted = true;
+        movementVector=DirectionVector*Speed;
     }
-    public virtual void Shoot(Vector3 moveVector, int damage)
+
+    public virtual void Shoot(Vector3 dirVector, int weaponMulti = 1)
     {
-        shotDamage = damage*shotDamage;
+        ShotDamage = weaponMulti * ShotDamage;
         shooted = true;
-        movementVector = moveVector;
+        movementVector = dirVector*Speed;
         //audioClips.Clear();
         //audioPlayShot.clip = audioClips[Random.Range(0, audioClips.Count)];
         //audioPlayShot.Play();
@@ -69,7 +81,7 @@ public abstract class WeaponProjectile : MonoBehaviour, IShootable
         {
             //HO COLPITO
             hit = true;
-            tEnterEnemy.OnHitSuffered(shotDamage);
+            tEnterEnemy.OnHitSuffered(ShotDamage);
             //cambia parent al particle system
             //ParticleSystem tParticle = GetComponentInChildren<ParticleSystem>();
             //SpriteRenderer trenderer = GetComponentInChildren<SpriteRenderer>();

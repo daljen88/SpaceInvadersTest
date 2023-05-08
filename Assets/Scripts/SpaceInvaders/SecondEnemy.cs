@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class SecondEnemy : MonoBehaviour, IHittable
 {
     public float shootCooldown = 0.5f;
-    public float enemySpeed = 5f;
+    public float enemySpeed = 5;
     public int hp = 1;
     public int enemyPointsValue = 6666;
     public ParticleSystem ExplosionTemplate;
@@ -40,27 +40,23 @@ public class SecondEnemy : MonoBehaviour, IHittable
         if (hp <= 0)
         {
             //SCORE OK
-            //UIManager.instance.PointsScoredEnemyKilled();
-
+            UIManager.instance.PointsScoredEnemyKilled(enemyPointsValue, "bonusEnemy");
             //FX MORTE
             ParticleSystem ps = Instantiate(ExplosionTemplate, transform.position, Quaternion.identity);
             //controllo particella da codice
             ps.Emit(30);
-            UIManager.instance.PointsScoredEnemyKilled(enemyPointsValue, "bonusEnemy");
             Destroy(ps.gameObject, .5f);
-
+            //Distrugge enemy
             DestroyEnemy();
-            //Destroy(gameObject);
         }
         else
         {
             //FX COLPO SUBITO
             GetComponent<MeshRenderer>().material = myHitTakenMaterial;
-            //chiama funzione per tot tempo dichiarato come numero, in pratica cambia materiale per .25 sec
             //la funzione va chiamata come stringa
             Invoke("SetNormalMaterial", 0.25f);
             //se il tween esiste ed è attivo, killa il tween precedente sennò si sovrappongono
-            if (twScale == null && twScale.IsActive())
+            if (twScale != null && twScale.IsActive())
             {
                 twScale.Kill();
                 //risistema a dim originale se tween spento a metà

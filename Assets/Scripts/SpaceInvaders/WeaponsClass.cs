@@ -24,15 +24,15 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
     protected float fireRate = 1f;
     public abstract float FireRate { get; }
 
-    protected int damage=1;
-    public abstract int Damage { get; }
+    protected int damageMultiplyer=1;
+    public abstract int DamageMultiplyer { get; }
 
     //serve set perche cambia coi colpi presi
     protected float defence = 1f;
     public abstract float Defence { get; set ; }
 
-    protected Vector3 projMovementVector=Vector3.up;
-    public abstract Vector3 ProjMovementVector { get; }
+    protected Vector3 projDirectionVector=Vector3.up;
+    public abstract Vector3 ProjDirectionVector { get; }
 
     public MainCharacter tPlayer;
     public AudioSource dropWeaponSound;
@@ -142,7 +142,7 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
             //float shootOffset=
             GameObject tempProjectile = Instantiate(gunShotTemplate, new Vector3 (tPlayer.goingRight? transform.position.x+0.7f: transform.position.x - 0.7f, transform.position.y), Quaternion.Euler(0, 0, 90));
             myProjectile = tempProjectile.GetComponent<WeaponProjectile>();
-            myProjectile.Shoot(ProjMovementVector, Damage);
+            myProjectile.Shoot(ProjDirectionVector, DamageMultiplyer);
             coolDown = FireRate;
         }
         else

@@ -3783,8 +3783,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyHitSounds:
-  - {fileID: 8300000, guid: cfc7d7fefa15b6d4fa65bec3105c080f, type: 3}
   - {fileID: 8300000, guid: 202301104331b6b43a5ea0bf401d79e3, type: 3}
+  - {fileID: 8300000, guid: 4ed5c42d4852d0747b0bdb44e812e474, type: 3}
 --- !u!82 &2044502615
 AudioSource:
   m_ObjectHideFlags: 0

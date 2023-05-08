@@ -12,10 +12,10 @@ public class BigGun : WeaponsClass
     //lo stesso vale per le variabili: se sono definite nella classe padre quando istanzi la figli si creano
 
     public override float DropLifeTime => dropLifeTime+1;
-    public override float DropSpeed => dropSpeed+1;
+    public override float DropSpeed => dropSpeed+2;
     public override float FireRate => fireRate*.5f;
-    public override int Damage => damage*2;
-    public override Vector3 ProjMovementVector => projMovementVector*5;
+    public override int DamageMultiplyer => damageMultiplyer*1;
+    public override Vector3 ProjDirectionVector => projDirectionVector *1/*speedMultiplyer*/;
 
     public override float Defence { get { return defence; } set{ defence = value; } }
     //public override float Defence => defence+1;

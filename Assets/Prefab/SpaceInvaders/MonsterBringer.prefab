@@ -142,10 +142,11 @@ MonoBehaviour:
   myMaterial: {fileID: 2100000, guid: 98c4b1214e27d2942b656d4de9a0ebd0, type: 2}
   myHitTakenMaterial: {fileID: 2100000, guid: f14f623b4a38fcb45a01911d8465573d, type: 2}
   hitFxColor: {r: 1, g: 0.3275637, b: 0, a: 1}
-  shootCooldown: 1.5
-  enemySpeed: 2
+  shootCooldown: 1.33
+  enemySpeed: 3
   hp: 4
-  enemyPointsValue: 4999
+  enemyPointsValue: 4996
+  enemyDamageMultiplyer: 1
 --- !u!1 &2676047769025116565
 GameObject:
   m_ObjectHideFlags: 0

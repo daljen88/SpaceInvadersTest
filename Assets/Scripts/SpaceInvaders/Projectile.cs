@@ -7,12 +7,22 @@ public class Projectile : WeaponProjectile
 {
     public AudioSource audioPlayShot;
     public List<AudioClip> audioClips;
-    public float speed = 6.6f;
+    public override float Speed => speed* 6.6f;
+    //public override int ShotDamage => shotDamage * 1;
+    public override int ShotDamage { get { return shotDamage; } set { shotDamage = value; } }
 
-    public override void Shoot(int damage=1)
+    public override Vector3 DirectionVector => directionVector * 1f;
+
+    //public Vector3 directionVector = Vector3.up;
+
+    public Projectile()
     {
-        base.Shoot(damage);
-        movementVector = Vector3.up*speed;
+        ShotDamage = ShotDamage * 1;
+    }
+
+    public override void Shoot(int damageMulti)
+    {
+        base.Shoot(damageMulti);
 
         //audioClips.Clear();
         audioPlayShot.clip = audioClips[Random.Range(0, audioClips.Count)];
@@ -41,11 +51,9 @@ public class Projectile : WeaponProjectile
             //così lo sposto al di fuori del parent
             tParticle.gameObject.transform.parent = transform.parent;
             //distrugge 1 secondo dopo, metti tempo della coda particellare
-            Destroy(gameObject);
             Destroy(trenderer);
             Destroy(tParticle.gameObject, 4);
-            //GetComponent<MeshRenderer>().enabled = false;
-            //GetComponent<Collider>().enabled = false;
+            Destroy(gameObject);
             //si muove grazie a shoot, allora lo metto false
             shooted = false;
         }

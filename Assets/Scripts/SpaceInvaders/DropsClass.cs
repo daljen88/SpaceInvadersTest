@@ -35,6 +35,7 @@ public abstract class DropsClass : MonoBehaviour, IDroppable
     {
         IsDropped = true;
         fallingVector = direction*DropSpeed;
+        GetComponentInChildren<AudioSource>().Play();
         //dropWeaponSound.clip = dropSounds[0/*Random.Range(0, dropSounds.Count)*/];
         //dropWeaponSound.Play();
     }

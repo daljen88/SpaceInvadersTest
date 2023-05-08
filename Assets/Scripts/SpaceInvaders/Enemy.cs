@@ -12,7 +12,6 @@ using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour, IHittable
 {
-    //public MainCharacter character;
     public GameObject myProjectile;
     public List<GameObject> guns;
     public List<GameObject> drops;
@@ -37,10 +36,6 @@ public class Enemy : MonoBehaviour, IHittable
     public int hp = 3;
     public int enemyPointsValue=666;
     public int enemyDamageMultiplyer=1;
-
-    //public enum EnemyState { IDLE, MOVE_DOWN, MOVE_RIGHT, MOVE_LEFT, DESTROYED}
-    //public EnemyState.State currentState = EnemyState.State.IDLE;
-    //Vector3 goalPosition;
 
     #region INIT
     private void Awake()
@@ -137,7 +132,6 @@ public class Enemy : MonoBehaviour, IHittable
             if (shootTimer >= shootCooldown)
             {
                 //Debug.Log("Shoot");
-                //hit.collider.GetComponent<CharacterController>().OnHitSuffered();
                 GameObject tempProjectile = Instantiate(myProjectile, transform.position + Vector3.down, transform.rotation);
                 Enemy_Projectile tempProj = tempProjectile.GetComponent<Enemy_Projectile>();
                 tempProj.Shoot(Vector3.down * 4f, enemyDamageMultiplyer);
@@ -158,7 +152,8 @@ public class Enemy : MonoBehaviour, IHittable
         {
             //HO COLPITO
             tPlayer.OnHitSuffered(1);
-            Destroy(this.gameObject);
+            //Destroy(gameObject);
+            DestroyThisEnemy();
         }
     }
 
@@ -169,11 +164,12 @@ public class Enemy : MonoBehaviour, IHittable
         audioSrc.Play();
         if (hp <= 0)
         {
+            //SCORE
+            UIManager.instance.PointsScoredEnemyKilled(enemyPointsValue, "enemy");
             //FX MORTE
             ParticleSystem ps = Instantiate(ExplosionTemplate, transform.position, Quaternion.identity);
             //controllo particella da codice
             ps.Emit(60);
-            UIManager.instance.PointsScoredEnemyKilled(enemyPointsValue, "enemy");
             Destroy(ps.gameObject, .5f);
             if (UIManager.instance.totalEnemiesKilled%3==0&&UIManager.instance.totalEnemiesKilled!=0&&Random.Range(0,11)<7 /*&&GameManager.Instance.typeGunPossessed.name!="BigGun"*/)
             {
@@ -188,18 +184,17 @@ public class Enemy : MonoBehaviour, IHittable
             //    radioScript.Drop(Vector3.down);
             //}
 
-            //shootTimer = 0;
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            DestroyThisEnemy();
         }
         else
         {
             //FX COLPO SUBITO
             GetComponent<MeshRenderer>().material = myHitTakenMaterial;
-            //chiama funzione per tot tempo dichiarato come numero, in pratica cambia materiale per .25 sec
             //la funzione va chiamata come stringa
             Invoke("SetNormalMaterial", 0.25f);
             //se il tween esiste ed è attivo, killa il tween precedente sennò si sovrappongono
-            if (twScale == null && twScale.IsActive())
+            if (twScale != null && twScale.IsActive())
             {
                 twScale.Kill();
                 //risistema a dim originale se tween spento a metà
@@ -231,47 +226,7 @@ public class Enemy : MonoBehaviour, IHittable
         Destroy(gameObject, .5f);
     }
 
-    #region OLD UPDATES MACHINE FUNCTIONS
-    //void Update_IDLE()
-    //{
-    //    currentState = EnemyState.MOVE_DOWN;
-    //    goalPosition = transform.position + Vector3.down;
-    //}
-    //void Update_MOVE_DOWN()
-    //{
-    //    if(transform.position.y>goalPosition.y)
-    //    {
-    //        transform.position += Vector3.down*enemySpeed*Time.deltaTime;
-    //    }
-    //    else
-    //    {
-    //        //cambio stato
-    //        if(transform.position.x<0)
-    //        {
-    //            currentState= EnemyState.MOVE_RIGHT;
-    //            goalPosition.x = 8;
-    //        }
-    //        else 
-    //        {
-    //            currentState= EnemyState.MOVE_LEFT;
-    //            goalPosition.x = -8;
-    //        }
-    //    }
-    //}
-    //void Update_MOVE_LEFT() 
-    //{
-    //    if (transform.position.x > goalPosition.x)
-    //    {
-    //        transform.position += Vector3.left * enemySpeed * Time.deltaTime;
-    //        //RotationCoroutine();
-    //    }
-    //    else
-    //    {
-    //        currentState = EnemyState.MOVE_DOWN;
-    //        goalPosition = transform.position + Vector3.down;
-    //    }
-    //}
-
+    #region OLD FUNCTIONS
     ////IEnumerator RotationCoroutine()
     ////{
     ////    //SpriteRenderer tsprite = GetComponentInChildren<SpriteRenderer>();
@@ -281,29 +236,7 @@ public class Enemy : MonoBehaviour, IHittable
     ////    yield return new WaitForSeconds(.25f);
     ////    gameObject.transform.DORotate(new Vector3(5, 5, 0), 0.25f, RotateMode.Fast);
     ////    yield return new WaitForSeconds(.25f);
-
     ////}
-
-    //void Update_MOVE_RIGHT()
-    //{
-    //    if(transform.position.x < goalPosition.x)
-    //    {
-    //        transform.position += Vector3.right * enemySpeed * Time.deltaTime;
-    //    }
-    //    else
-    //    {
-    //        currentState = EnemyState.MOVE_DOWN;
-    //        goalPosition =transform.position + Vector3.down;
-    //    }
-    //}
-    //void Update_DESTROYED()
-    //{
-    //    //if(transform.position.y<screenLowerLimit)
-    //    //{
-    //        Destroy(gameObject);
-    //    //}
-
-    //}
     #endregion
 
 }

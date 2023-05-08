@@ -31,7 +31,6 @@ public class ThirdEnemy : MonoBehaviour, IHittable
     void Start()
     {
         Invoke("DestroyEnemy", 15f);
-
     }
     public void DestroyEnemy()
     {
@@ -42,7 +41,6 @@ public class ThirdEnemy : MonoBehaviour, IHittable
     void Update()
     {
         transform.position += Vector3.right * enemySpeed * Time.deltaTime;
-
     }
 
     //private void OnCollisionEnter(Collision collision)
@@ -75,21 +73,17 @@ public class ThirdEnemy : MonoBehaviour, IHittable
                 WeaponsClass bigGunDropping = bigGunz.GetComponent<BigGun>();
                 bigGunDropping.Drop(Vector3.down);
             }
+            if(bringingDrop!=null)
+            bringingDrop.gameObject.transform.parent = transform.parent;
+            bringingDrop?.Drop(Vector3.down);
+
             //if (UIManager.instance.totalEnemiesKilled % 5 == 0 && UIManager.instance.totalEnemiesKilled != 0 && GameManager.Instance.musicRadioCollected == false)
             //{
             //    GameObject musicRadio = Instantiate(drops[0], transform.position, Quaternion.identity);
             //    RadioDrop radioScript = musicRadio.GetComponent<RadioDrop>();
             //    radioScript.Drop(Vector3.down);
             //}
-            if(bringingDrop!=null)
-            bringingDrop.gameObject.transform.parent = transform.parent;
-            bringingDrop?.Drop(Vector3.down);
 
-            //DropsClass dropping = GetComponentInChildren<DropsClass>();
-            //dropping.gameObject.transform.parent = transform.parent;
-            //dropping.Drop(Vector3.down);
-            //GetComponentInChildren<IDroppable>().Drop(Vector3.down);
-            //shootTimer = 0;
             DestroyEnemy();
             //Destroy(gameObject);
         }
@@ -97,11 +91,10 @@ public class ThirdEnemy : MonoBehaviour, IHittable
         {
             //FX COLPO SUBITO
             GetComponent<MeshRenderer>().material = myHitTakenMaterial;
-            //chiama funzione per tot tempo dichiarato come numero, in pratica cambia materiale per .25 sec
             //la funzione va chiamata come stringa
             Invoke("SetNormalMaterial", 0.25f);
             //se il tween esiste ed è attivo, killa il tween precedente sennò si sovrappongono
-            if (twScale == null && twScale.IsActive())
+            if (twScale != null && twScale.IsActive())
             {
                 twScale.Kill();
                 //risistema a dim originale se tween spento a metà
@@ -111,7 +104,6 @@ public class ThirdEnemy : MonoBehaviour, IHittable
             twScale = transform.DOPunchScale(Vector3.one * 0.2f, hitFxDuration, 2);
             StartCoroutine(HitColorCoroutine());
             //anche la coroutine si sovrappone se viene chiamata più volte, quindi va checkato se è già attiva e nel caso spegnerla
-
         }
     }
 
@@ -131,12 +123,6 @@ public class ThirdEnemy : MonoBehaviour, IHittable
 
     private void FixedUpdate()
     {
-        //usiamo overload 15/16, con out dei dati in variabile Raycast "hit"
-        //if(Physics.Raycast(transform.position, Vector3.down, out hit, 100,1<<7))
-        //{
-        //    hit.collider.GetComponent<MainCharacter>().OnHitSuffered();
-        //}
-
         //ogni 0.5 secondi spara reycast
         shootTimer += Time.fixedDeltaTime;
         //Debug.DrawLine(transform.position, transform.position + Vector3.down * 100, Color.red);
@@ -156,8 +142,6 @@ public class ThirdEnemy : MonoBehaviour, IHittable
             }
         }
         //Mathf.Log10(transform.position+5)
-        //transform.localScale = startingScale * .6f * (1 + (5 - transform.position.y) / 10);
-
     }
 
 }

@@ -254,7 +254,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 414029228}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.186318, y: -7.579112, z: 10.229681}
+  m_LocalPosition: {x: -14.5, y: -12.2, z: 10.229681}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -642,7 +642,7 @@ GameObject:
   - component: {fileID: 812245925}
   - component: {fileID: 812245924}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: HiScoreValueBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1704,7 +1704,7 @@ GameObject:
   - component: {fileID: 2096889084}
   - component: {fileID: 2096889083}
   m_Layer: 5
-  m_Name: Image
+  m_Name: HiScoreTextBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

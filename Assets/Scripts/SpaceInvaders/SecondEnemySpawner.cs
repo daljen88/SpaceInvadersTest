@@ -11,7 +11,7 @@ public class SecondEnemySpawner : MonoBehaviour
     public SecondEnemy bonusEnemyTemplate;
     public float spawnTime = 2;
     public int maxBonusEnemies = 4;
-    public int bringerMaxEnemies = 4;
+    public int maxBringerEnemies = 4;
 
     public List<SecondEnemy> bonusEnemyList;
     public List<ThirdEnemy> bringerEnemyList;
@@ -54,9 +54,9 @@ public class SecondEnemySpawner : MonoBehaviour
     }
     public void SpawnBringerEnemy()
     {
-        if (bringerMaxEnemies > 0)
+        if (maxBringerEnemies > 0)
         {
-            bringerMaxEnemies--;
+            maxBringerEnemies--;
             /*enemies.Add(*/
             ThirdEnemy activeBringerEnemy = Instantiate(bringerEnemyTemplate, transform.position, transform.rotation);
             bringerEnemyList.Add(activeBringerEnemy)/*)*/;
@@ -77,6 +77,8 @@ public class SecondEnemySpawner : MonoBehaviour
 
         //}
     }
+    private bool IsEnemyDead => bonusEnemyList.Count == 0;/*&&controlNum != UIManager.instance.scorePoints*/
+    private bool IsBringerEnemyDead => bringerEnemyList.Count == 0;
 
 
     public void SpawnOneEnemy(string enemy)
@@ -84,18 +86,19 @@ public class SecondEnemySpawner : MonoBehaviour
         //se ha già spawnato un nemico ad un determinato score, salta i successivi 
         if (enemy == "bonusEnemy")
         {
-            if (controlNum != UIManager.instance.scorePoints && bonusEnemyList.Count == 0)
+            
+            if (IsEnemyDead)
             {
                 SpawnEnemy();
-                controlNum = UIManager.instance.scorePoints;
+                //controlNum = UIManager.instance.scorePoints;
             }
         }
         else
         {
-            if (controlNum2 != UIManager.instance.scorePoints && bringerEnemyList.Count == 0)
+            if (IsBringerEnemyDead)
             {
                 SpawnBringerEnemy();
-                controlNum2 = UIManager.instance.scorePoints;
+                //controlNum2 = UIManager.instance.scorePoints;
             }
         }
     }
@@ -107,21 +110,21 @@ public class SecondEnemySpawner : MonoBehaviour
             if (UIManager.instance.scorePoints % 24 == 0 || UIManager.instance.scorePoints % 30 == 0 || UIManager.instance.scorePoints % 36 == 0)
                 if (Random.Range(0, 11) < 8)
                 {
-                    if (Enemy_Spawner.Instance.CheckPlayerVictory() == false)
+                    if (!Enemy_Spawner.Instance.CheckPlayerVictory())
                         SpawnOneEnemy("bonusEnemy");
                 }
         }
         if (UIManager.instance.totalEnemiesKilled != 0 && UIManager.instance.totalEnemiesKilled % 5 == 0)
         {
-            if (bringerMaxEnemies < 4 && Random.Range(0, 11) < 2)
+            if (true/*maxBringerEnemies < 4 && Random.Range(0, GameManager.Instance.levelCount) < 2*/)
             {
-                if (Enemy_Spawner.Instance.CheckPlayerVictory() == false)
+                if (Enemy_Spawner.Instance.CheckPlayerVictory()==false)
                     SpawnOneEnemy("bringerEnemy");
             }
             else
             {
-                if (Enemy_Spawner.Instance.CheckPlayerVictory() == false)
-                    SpawnOneEnemy("bringerEnemy");
+                //if (!Enemy_Spawner.Instance.CheckPlayerVictory())
+                //    SpawnOneEnemy("bringerEnemy");
             }
         }
         

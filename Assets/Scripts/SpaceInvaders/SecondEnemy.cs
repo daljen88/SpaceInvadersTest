@@ -19,7 +19,7 @@ public class SecondEnemy : MonoBehaviour, IHittable
     void Start()
     {
         enemySpeed = 4 + Mathf.Pow(Mathf.Log10(GameManager.Instance.levelCount + 10), 2);
-        Invoke("DestroyEnemy",15f);
+        Invoke("DestroyEnemy",10f);
     }
 
     public void DestroyEnemy()

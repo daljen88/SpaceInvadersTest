@@ -223,7 +223,7 @@ public class Enemy : MonoBehaviour, IHittable
     public void DestroyThisEnemy()
     {
         Enemy_Spawner.Instance.enemyList.Remove(gameObject.GetComponent<Enemy>());
-        Destroy(gameObject, .5f);
+        Destroy(gameObject);
     }
 
     #region OLD FUNCTIONS

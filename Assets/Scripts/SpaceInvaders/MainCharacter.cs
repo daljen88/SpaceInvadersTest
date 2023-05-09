@@ -17,7 +17,11 @@ public class MainCharacter : MonoBehaviour, IHittable
     public Projectile myProjectile;
     float moveSpeed = 6;
     private bool isInvulnerable = false;
-    public bool IsInvulnerable { get; set; }
+    public bool IsInvulnerable 
+    {
+        get=>isInvulnerable; 
+        set=>isInvulnerable=value;
+    }
     public AudioSource audioSrc;
     public Animator Animator;
     private bool isDead=false;
@@ -162,7 +166,7 @@ public class MainCharacter : MonoBehaviour, IHittable
     IEnumerator HitSufferedCoroutine()
     {
         Time.timeScale = 0.1f;
-        isInvulnerable = true;
+        IsInvulnerable = true;
         SpriteRenderer tsprite = GetComponentInChildren<SpriteRenderer>();
         tsprite.DOColor(Color.red, .05f).SetUpdate(true)/*.timeScale=1*/;
         tsprite.transform.DOPunchScale(Vector3.one * .5f, 0.10f).SetUpdate(true);
@@ -171,6 +175,6 @@ public class MainCharacter : MonoBehaviour, IHittable
         tsprite.DOColor(Color.white, .05f);
         Time.timeScale = 1;
         yield return new WaitForSecondsRealtime(.10f);
-        isInvulnerable = false;
+        IsInvulnerable = false;
     }
 }

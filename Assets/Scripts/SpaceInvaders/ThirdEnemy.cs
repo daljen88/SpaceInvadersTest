@@ -21,7 +21,7 @@ public class ThirdEnemy : MonoBehaviour, IHittable
 
     public float shootCooldown = 1.5f;
     float shootTimer = 0;
-    public float enemySpeed = 3f;
+    public float enemySpeed = 3.5f;
     public int hp = 4;
     public int enemyPointsValue = 4999;
     float hitFxDuration = 0.25f;

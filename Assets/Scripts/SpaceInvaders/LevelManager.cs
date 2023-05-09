@@ -134,7 +134,7 @@ public class LevelManager : MonoBehaviour
         spawner.win = false;
         spawner.maxEnemies = 3 + GameManager.Instance.levelCount;
         SecondEnemySpawner.Instance.maxBonusEnemies = 4;
-        SecondEnemySpawner.Instance.bringerMaxEnemies = 4;
+        SecondEnemySpawner.Instance.maxBringerEnemies = 4;
         //SPOSTA PLAYER IN GIOCO
         if (character.transform.position.y > -3)
         {

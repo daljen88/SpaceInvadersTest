@@ -20,6 +20,7 @@ public class AlarmClockDrop : DropsClass
     {
         base.CollectionLogic();
         GameManager.Instance.CollectAlarmClock();
-        FindObjectOfType<PlayerTextLogic>().FoundFirstAlarmClock();
+        if(GameManager.Instance.NumberOfAlarmsCollected==1)
+            FindObjectOfType<PlayerTextLogic>().FoundFirstAlarmClock();
     }
 }

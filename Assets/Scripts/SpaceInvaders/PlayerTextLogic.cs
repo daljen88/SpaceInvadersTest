@@ -39,7 +39,7 @@ public class PlayerTextLogic : MonoBehaviour
         else
             transform.localPosition = new Vector3(3.5f, transform.localPosition.y);
 
-        if (!openingDone&&GameManager.Instance.levelCount==2&&LevelManager.instance.state==LevelManager.LogicState.RUNNING)
+        if (!openingDone&&GameManager.Instance.levelCount==2&&LevelManager.instance.state==LevelManager.LogicState.RUNNING&&UIManager.instance.normalEnemyKilled==5)
         {
             openingDone = true;
             SecondLevelOpening();

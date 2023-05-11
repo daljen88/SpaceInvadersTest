@@ -145,7 +145,7 @@ MonoBehaviour:
   hitFxColor: {r: 1, g: 0.3275637, b: 0, a: 1}
   shootCooldown: 1
   enemySpeed: 3.5
-  hp: 4
+  hp: 5
   enemyPointsValue: 4996
   enemyDamageMultiplyer: 1
 --- !u!1 &2676047769025116565

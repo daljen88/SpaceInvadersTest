@@ -261,6 +261,8 @@ MonoBehaviour:
   dropSounds:
   - {fileID: 8300000, guid: 0afa5196e60ff7149a5844e493e3833f, type: 3}
   gunShotTemplate: {fileID: 2543589591953216310, guid: 6f5a055f9f28501498842a7ec2fb7d55, type: 3}
+  rotazR: 15
+  rotazS: -15
   bigGunOffsetR: {x: 0, y: 0.11, z: 0}
   bigGunOffsetS: {x: 0.175, y: 0.11, z: 0}
 --- !u!1 &4002864223921592886

@@ -70,6 +70,7 @@ public class SecondEnemySpawner : MonoBehaviour
                 dropToEnemy.transform.parent = activeBringerEnemy.gameObject.transform;
                 activeBringerEnemy.bringingDrop = dropToEnemy.GetComponent<DropsClass>();
             }
+            //ISTANZIA ALARM CLOCKS
             else if(/*GameManager.Instance.AlarmClockCollected == false&&*/UIManager.instance.bringerEnemyKilled>3&&UIManager.instance.bringerEnemyKilled%4==0)
             {
                 GameObject dropToEnemy = Instantiate(activeBringerEnemy.drops[1], activeBringerEnemy.dropSlot.transform.position, activeBringerEnemy.dropSlot.transform.rotation);
@@ -121,14 +122,14 @@ public class SecondEnemySpawner : MonoBehaviour
                         SpawnOneEnemy("bonusEnemy");
                 }
         }
-        if (UIManager.instance.totalEnemiesKilled != 0 && UIManager.instance.totalEnemiesKilled % 5 == 0)
+        if (UIManager.instance.totalEnemiesKilled != 0 && UIManager.instance.totalEnemiesKilled % 6 == 0)
         {
-            if (UIManager.instance.totalEnemiesKilled<6)
+            if (UIManager.instance.totalEnemiesKilled<7)
             {
                 if (Enemy_Spawner.Instance.CheckPlayerVictory()==false)
                     SpawnOneEnemy("bringerEnemy");
             }
-            else if(Random.Range(0,11)<7+MathF.Pow( MathF.Log10(GameManager.Instance.levelCount),2))
+            else if(Random.Range(0,11)<8+MathF.Pow( MathF.Log10(GameManager.Instance.levelCount),2))
             {
                 if (Enemy_Spawner.Instance.CheckPlayerVictory() == false)
                     SpawnOneEnemy("bringerEnemy");

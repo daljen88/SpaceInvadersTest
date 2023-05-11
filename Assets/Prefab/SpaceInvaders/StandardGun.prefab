@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8688207857861279430}
   - component: {fileID: 6152040456400061457}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: standardGunAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 7954841540634261937}
   - component: {fileID: 8040034051161486555}
   - component: {fileID: 8195117236361536167}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: StandardGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3610590968323633007}
   - component: {fileID: 8177943261662727825}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: standardGunSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

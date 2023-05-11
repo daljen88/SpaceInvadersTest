@@ -34,24 +34,29 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
     protected Vector3 projDirectionVector=Vector3.up;
     public abstract Vector3 ProjDirectionVector { get; }
 
-    public MainCharacter tPlayer;
+    protected float gunRotation;
+    public abstract float GunRotation { get;}
+
+    protected MainCharacter tPlayer;
     public AudioSource dropWeaponSound;
     public List<AudioClip> dropSounds;
     public GameObject gunShotTemplate;
     private Vector3 fallingVector;
-    private WeaponProjectile myProjectile;
-    private SpriteRenderer gunSpriteRenderer;
+    protected WeaponProjectile myProjectile;
+    protected SpriteRenderer gunSpriteRenderer;
     protected Vector3 gunOffsetR;
     protected Vector3 gunOffsetS;
 
-    public UnityEvent dropEvent;
+    public static UnityEvent dropEvent;
 
     //{ get { return projMovementVector; } set { projMovementVector = value; } }
 
     public WeaponsClass()
     {
+        //gunRotation=GunRotation;
         dropTimer = DropLifeTime;
         coolDown = 0;
+        //costruisco qua con v
     }
 
     public void Start()
@@ -104,14 +109,14 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
         else if (IsCollected == true)
         {
             //cambia questa logica settande posizione arma in un empty object dentro player
-            int bigGunRotation = tPlayer.goingRight ? 15 : -15;
+            //gunRotation = GunRotation/*tPlayer.goingRight ? 15 : -15*/;
             gunSpriteRenderer.flipX = !tPlayer.goingRight;
 
             //transform.position = transform.position - bigGunOffset;
             transform.position = tPlayer.goingRight? tPlayer.gameObject.transform.position - gunOffsetR: tPlayer.gameObject.transform.position - gunOffsetS;
 
             //transform.position = tPlayer.gameObject.transform.position - gunOffset;
-            transform.rotation = Quaternion.Euler(0, 0, bigGunRotation);
+            transform.rotation = Quaternion.Euler(0, 0, GunRotation);
 
         }
         if (dropTimer <= 0 && !isCollected)
@@ -125,11 +130,13 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
     //}
     public virtual void Drop(Vector3 direction)
     {
+        FindObjectOfType<PlayerTextLogic>().FoundNewGun();
+        //tPlayer.gameObject.GetComponentInChildren<PlayerTextLogic>().FoundNewGun();
+        //dropEvent.Invoke();
         IsDropped = true;
         fallingVector = direction*DropSpeed;
         dropWeaponSound.clip = dropSounds[0/*Random.Range(0, dropSounds.Count)*/];
         dropWeaponSound.Play();
-        dropEvent.Invoke();
         //tPlayer.gameObject.GetComponentInChildren<PlayerTextLogic>().FoundNewGun();
 
         //distrugge dopo 10 secondi

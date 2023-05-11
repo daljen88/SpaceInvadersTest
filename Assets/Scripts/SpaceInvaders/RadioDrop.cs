@@ -19,12 +19,7 @@ public class RadioDrop : DropsClass
     protected override void CollectionLogic()
     {
         base.CollectionLogic(); 
-        GameManager.Instance.musicRadioCollected = true;
-    }
-    IEnumerator RadioFoundCoroutine()
-    {
-        Time.timeScale = 0;
-        yield return null;  
-
+        GameManager.Instance.MusicRadioCollected = true;
+        FindObjectOfType<PlayerTextLogic>().FoundFirstRadio();
     }
 }

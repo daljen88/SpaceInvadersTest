@@ -224,7 +224,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d9e8f329e67a5db4b8946e68eaed0df6, type: 3}
   - {fileID: 8300000, guid: ea54e34d6f5e7ee48a05a8ea23e39dfe, type: 3}
   - {fileID: 8300000, guid: 67f6ca0e66bff4c43932c3216521ffc1, type: 3}
-  speed: 6.6
 --- !u!54 &-4117828486510409134
 Rigidbody:
   m_ObjectHideFlags: 0

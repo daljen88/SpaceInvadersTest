@@ -17,13 +17,13 @@ public class UIManager : MonoBehaviour
     public int scorePoints;
     public int lives;
     public int totalEnemiesKilled;
-    public int normalEnemyKIlled;
+    public int normalEnemyKilled;
     public int bonusEnemyKilled;
     public int bringerEnemyKilled;
     public GameObject playerUI;
     public GameObject pauseGO;
 
-    public float hpOffset=1f;
+    public float hpOffset=1.1f;
 
     public void Show(bool show)
     {
@@ -110,7 +110,7 @@ public class UIManager : MonoBehaviour
         switch (enemy)
         {
             case "enemy":
-                normalEnemyKIlled++;
+                normalEnemyKilled++;
                 break;
             case "bomusEnemy":
                 bonusEnemyKilled++;

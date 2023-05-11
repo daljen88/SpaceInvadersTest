@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using System.ComponentModel.Design;
+using System.Diagnostics.Tracing;
+using Unity.VisualScripting;
 
 public class MainCharacter : MonoBehaviour, IHittable
 {
@@ -14,6 +16,7 @@ public class MainCharacter : MonoBehaviour, IHittable
     private int hp;
     public int Hp { get { return hp; } set { hp = value; } }
     public int startingHp=4;
+    public GameObject startingGunPrefab;
     public Projectile myProjectile;
     float moveSpeed = 6;
     private bool isInvulnerable = false;
@@ -34,13 +37,26 @@ public class MainCharacter : MonoBehaviour, IHittable
     public bool goingRight=true;
     public float baseFireRate = 0.2f;
     private float coolDown=0;
+    public float powerCoolDown = 16f;
+    private float powerCoolDownCounter = 0;
+
+    private float maxPowerDurationCounter;
+    [SerializeField] private float maxSlowingPowerDuration = 1.8f;
+    public float MaxSlowingPowerDuration=>maxSlowingPowerDuration+.2f* GameManager.Instance.NumberOfAlarmsCollected>5?5: maxSlowingPowerDuration + .2f * GameManager.Instance.NumberOfAlarmsCollected;
+    [SerializeField] private float everyThisSecondsPowerReloadsOneSecond = 8.2f;
+    public float EveryThisSecondsPowerReloadsOneSecond => everyThisSecondsPowerReloadsOneSecond - .2f * GameManager.Instance.NumberOfAlarmsCollected < 4 ? 4 : everyThisSecondsPowerReloadsOneSecond - .2f * GameManager.Instance.NumberOfAlarmsCollected;
+    [SerializeField] private float slowingPowerSpeedBoost = 50f;
 
     private void Awake()
     {
+        
     }
 
     void Start()
     {
+        activeGunPrefab = Instantiate(startingGunPrefab, transform.position, Quaternion.identity);
+        gunPossesed = activeGunPrefab.GetComponent<StandardGun>();
+        gunPossesed.IsCollected=true;
     }
 
     void Update()
@@ -49,6 +65,9 @@ public class MainCharacter : MonoBehaviour, IHittable
 
         if (coolDown > 0)
             coolDown -= Time.deltaTime;
+
+        //if (powerCoolDownCounter > 0)
+        //    powerCoolDownCounter -= Time.deltaTime;
 
         if (transform.position.x < -8f)
             transform.position = new Vector3(-8f, transform.position.y);
@@ -83,6 +102,32 @@ public class MainCharacter : MonoBehaviour, IHittable
             Shoot();
         }
         Animator.Play(animationName);
+
+        //SLOWING POWER
+        if(GameManager.Instance.AlarmClockCollected /*&& powerCoolDownCounter <= 0*/)
+        {
+            if (Input.GetKey(KeyCode.B) && maxPowerDurationCounter >= 0)
+            {
+                Time.timeScale = 0.1f;
+                maxPowerDurationCounter -= Time.unscaledDeltaTime;
+                moveSpeed = slowingPowerSpeedBoost;
+                if(maxPowerDurationCounter<0)
+                {
+                    moveSpeed = 6;
+                    Time.timeScale = 1f;
+                    return;
+                }              
+            }
+            else if(maxPowerDurationCounter < MaxSlowingPowerDuration)
+            {
+                maxPowerDurationCounter += (Time.unscaledDeltaTime / EveryThisSecondsPowerReloadsOneSecond);
+            }
+            if (Input.GetKeyUp(KeyCode.B))
+            {
+                moveSpeed = 6;
+                Time.timeScale = 1f;
+            }
+        }
     }
 
     //public weaponclass gunPosseses;
@@ -90,24 +135,28 @@ public class MainCharacter : MonoBehaviour, IHittable
     {
         //cambio in shootProjectile
         //if(gunpossessed==null)
-        if (activeGunPrefab == null)
+        if (activeGunPrefab != null)
         {
-            if (coolDown <= 0)
+            if (activeGunPrefab.GetComponent<StandardGun>() !=null)
             {
-                //WeaponProjectile tempProjectile = Instantiate(myProjectile, transform.position, transform.rotation);
-                Projectile tempProjectile = Instantiate(myProjectile, transform.position, transform.rotation);
-                tempProjectile.Shoot(1);
-                coolDown = baseFireRate;
-            }
-            else { return; }
+                gunPossesed.ShootProjectile();
 
+                //if (coolDown <= 0)
+                //{
+                //    Projectile tempProjectile = Instantiate(myProjectile, transform.position, transform.rotation);
+                //    tempProjectile.Shoot(1);
+                //    coolDown = baseFireRate;
+                //}
+                //else { return; }
+
+            }
+            else if (gunPossesed.GetComponent<BigGun>() != null)
+            {
+                gunPossesed.ShootProjectile();
+                //gunPossesed.ShootProjectile(/*eventuale shootDirection controllata da player*/);
+            }
+            //gun possesses.shoot
         }
-        else /*if (gunPossesed.GetComponent<BigGun>() != null)*/
-        {
-            gunPossesed.ShootProjectile();
-            //gunPossesed.ShootProjectile(/*eventuale shootDirection controllata da player*/);
-        }
-        //gun possesses.shoot
     }
     public void OnHitSuffered(int damage = 1)
     {
@@ -174,6 +223,7 @@ public class MainCharacter : MonoBehaviour, IHittable
         //yield return new WaitForSecondsRealtime(0);
         tsprite.DOColor(Color.white, .05f);
         Time.timeScale = 1;
+        moveSpeed = 6f;
         yield return new WaitForSecondsRealtime(.10f);
         IsInvulnerable = false;
     }

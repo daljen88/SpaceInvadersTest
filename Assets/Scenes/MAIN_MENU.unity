@@ -278,6 +278,8 @@ MonoBehaviour:
   enemiesKilledInRun: 0
   playerHp: 4
   musicRadioCollected: 0
+  alarmClockCollected: 0
+  numberOfAlarmsCollected: 0
   typeGunPossessed: {fileID: 0}
   objectGunPossessed: {fileID: 0}
 --- !u!82 &414029231

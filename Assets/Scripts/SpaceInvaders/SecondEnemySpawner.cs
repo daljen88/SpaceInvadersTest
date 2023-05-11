@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 public class SecondEnemySpawner : MonoBehaviour
 {
@@ -62,9 +64,15 @@ public class SecondEnemySpawner : MonoBehaviour
             bringerEnemyList.Add(activeBringerEnemy)/*)*/;
             //GameObject dropToEnemy=  Instantiate(activeBringerEnemy.drops[0], activeBringerEnemy.dropSlot.transform.position, activeBringerEnemy.dropSlot.transform.rotation);
             //ISTANZIA RADIO SE NON GIA PRESA
-            if (GameManager.Instance.musicRadioCollected == false)
+            if (GameManager.Instance.MusicRadioCollected == false)
             {
                 GameObject dropToEnemy = Instantiate(activeBringerEnemy.drops[0], activeBringerEnemy.dropSlot.transform.position, activeBringerEnemy.dropSlot.transform.rotation);
+                dropToEnemy.transform.parent = activeBringerEnemy.gameObject.transform;
+                activeBringerEnemy.bringingDrop = dropToEnemy.GetComponent<DropsClass>();
+            }
+            else if(/*GameManager.Instance.AlarmClockCollected == false&&*/UIManager.instance.bringerEnemyKilled>3&&UIManager.instance.bringerEnemyKilled%4==0)
+            {
+                GameObject dropToEnemy = Instantiate(activeBringerEnemy.drops[1], activeBringerEnemy.dropSlot.transform.position, activeBringerEnemy.dropSlot.transform.rotation);
                 dropToEnemy.transform.parent = activeBringerEnemy.gameObject.transform;
                 activeBringerEnemy.bringingDrop = dropToEnemy.GetComponent<DropsClass>();
             }
@@ -79,7 +87,6 @@ public class SecondEnemySpawner : MonoBehaviour
     }
     private bool IsEnemyDead => bonusEnemyList.Count == 0;/*&&controlNum != UIManager.instance.scorePoints*/
     private bool IsBringerEnemyDead => bringerEnemyList.Count == 0;
-
 
     public void SpawnOneEnemy(string enemy)
     {
@@ -108,7 +115,7 @@ public class SecondEnemySpawner : MonoBehaviour
         if(/*UIManager.instance.scorePoints!=0&&*/UIManager.instance.totalEnemiesKilled>4/*&& UIManager.instance.scorePoints % 42==0*/)
         {
             if (UIManager.instance.scorePoints % 24 == 0 || UIManager.instance.scorePoints % 30 == 0 || UIManager.instance.scorePoints % 36 == 0)
-                if (Random.Range(0, 11) < 8)
+                if (Random.Range(0, 11) < 7)
                 {
                     if (!Enemy_Spawner.Instance.CheckPlayerVictory())
                         SpawnOneEnemy("bonusEnemy");
@@ -116,15 +123,15 @@ public class SecondEnemySpawner : MonoBehaviour
         }
         if (UIManager.instance.totalEnemiesKilled != 0 && UIManager.instance.totalEnemiesKilled % 5 == 0)
         {
-            if (true/*maxBringerEnemies < 4 && Random.Range(0, GameManager.Instance.levelCount) < 2*/)
+            if (UIManager.instance.totalEnemiesKilled<6)
             {
                 if (Enemy_Spawner.Instance.CheckPlayerVictory()==false)
                     SpawnOneEnemy("bringerEnemy");
             }
-            else
+            else if(Random.Range(0,11)<7+MathF.Pow( MathF.Log10(GameManager.Instance.levelCount),2))
             {
-                //if (!Enemy_Spawner.Instance.CheckPlayerVictory())
-                //    SpawnOneEnemy("bringerEnemy");
+                if (Enemy_Spawner.Instance.CheckPlayerVictory() == false)
+                    SpawnOneEnemy("bringerEnemy");
             }
         }
         

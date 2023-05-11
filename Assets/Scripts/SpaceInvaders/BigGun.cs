@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class BigGun : WeaponsClass
 {
@@ -16,22 +17,30 @@ public class BigGun : WeaponsClass
     public override float FireRate => fireRate*.5f;
     public override int DamageMultiplyer => damageMultiplyer*1;
     public override Vector3 ProjDirectionVector => projDirectionVector *1/*speedMultiplyer*/;
+    public override float GunRotation => tPlayer.goingRight ? rotazR : rotazS;
 
     public override float Defence { get { return defence; } set{ defence = value; } }
     //public override float Defence => defence+1;
 
+
+
     //public GameObject bigGunShotTemplate;
+    [SerializeField] private float rotazR = 15f;
+    [SerializeField] private float rotazS = -15f;
     [SerializeField] private Vector3 bigGunOffsetR = new Vector3(-0.166f , 0.11f);//offset y=0.155
     [SerializeField] private Vector3 bigGunOffsetS = new Vector3(0.166f, 0.11f);
+    //[SerializeField] private int bigGunRotation= tPlayer.goingRight ? 15 : -15;
 
     //private SpriteRenderer gunSpriteRenderer;
 
     public BigGun(): base()
     {
         Defence=Defence+1;
+        //GunRotation = bigGunRotation;
         gunOffsetR = bigGunOffsetR;
         gunOffsetS = bigGunOffsetS;
-
+        //costruisco qua tipo
+        //
         //myProjectile = gunShotTemplate.GetComponent<WeaponProjectile>();
     }
     protected override void StartRoutine()

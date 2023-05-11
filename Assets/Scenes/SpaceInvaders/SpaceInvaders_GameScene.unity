@@ -600,7 +600,7 @@ RectTransform:
   m_GameObject: {fileID: 423115263}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1679, y: 1.1679, z: 1.1679}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 744026563}
@@ -608,7 +608,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.628, y: 0.7299}
+  m_AnchoredPosition: {x: 3.5, y: 0.72465}
   m_SizeDelta: {x: 3.1248, y: 1.4578}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &423115265
@@ -631,7 +631,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Geez, man
+  m_text: GEEZ MAN, THAT SUCKS!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6942a77de4937fa48bfcc76a5593f725, type: 2}
   m_sharedMaterial: {fileID: 2632453696177545199, guid: 6942a77de4937fa48bfcc76a5593f725, type: 2}
@@ -640,8 +640,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967040
-  m_fontColor: {r: 0, g: 0.9999995, b: 1, a: 1}
+    rgba: 4294966748
+  m_fontColor: {r: 0.86226416, g: 0.9915533, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -659,14 +659,14 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontSize: 5
-  m_fontSizeBase: 36
+  m_fontSizeBase: 5
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 3
   m_fontSizeMax: 5
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -694,7 +694,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -0.7342504, y: 0, z: -0.6798949, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -855,7 +855,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foundNewGunPhrases:
   - Geez, that's a gun!
-  textStringToChar: 
+  foundRadio:
+  - 'Now THAT will tune this UP! '
+  secondLevelOpening:
+  - 'WAIT! Don''t you also feel something is missing? '
+  foundAlarmClock:
+  - Mmm, an Alarm Clock. What if I strike this B..
   playerText: {fileID: 423115265}
   keyHitSounds:
   - {fileID: 8300000, guid: 202301104331b6b43a5ea0bf401d79e3, type: 3}
@@ -1418,6 +1423,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5cd6e090ca3b5854b8bb7ae6e55a4b3a, type: 3}
   playerExplosion: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
   startingHp: 4
+  startingGunPrefab: {fileID: 3660836201623985262, guid: 0123324e6431f8e43b1679d3d6fbb4f1, type: 3}
   myProjectile: {fileID: 3912386554682083789, guid: b64412e30a328534d8fb7c791f3881e6, type: 3}
   audioSrc: {fileID: 1221024412}
   Animator: {fileID: 2036642578}
@@ -1425,6 +1431,10 @@ MonoBehaviour:
   gunPossesed: {fileID: 0}
   goingRight: 1
   baseFireRate: 0.2
+  powerCoolDown: 16
+  maxSlowingPowerDuration: 1.8
+  everyThisSecondsPowerReloadsOneSecond: 8.2
+  slowingPowerSpeedBoost: 50
 --- !u!54 &744026565
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1984,7 +1994,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1245121477}
   m_LocalRotation: {x: -0, y: -0, z: 0.2626748, w: 0.96488446}
-  m_LocalPosition: {x: 47.85, y: -23.34, z: 0}
+  m_LocalPosition: {x: 48.2, y: -24.6, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2031,7 +2041,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: bb81f3b79273bb048b1f9f18e7ad019a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3939,12 +3949,12 @@ MonoBehaviour:
   scorePoints: 0
   lives: 0
   totalEnemiesKilled: 0
-  normalEnemyKIlled: 0
+  normalEnemyKilled: 0
   bonusEnemyKilled: 0
   bringerEnemyKilled: 0
   playerUI: {fileID: 1232537793}
   pauseGO: {fileID: 1643768942}
-  hpOffset: 1
+  hpOffset: 1.1
 --- !u!1001 &787985896125972273
 PrefabInstance:
   m_ObjectHideFlags: 0

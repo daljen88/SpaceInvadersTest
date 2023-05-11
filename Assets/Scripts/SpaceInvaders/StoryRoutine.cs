@@ -33,7 +33,7 @@ public class StoryRoutine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        if (Input.GetKeyDown(KeyCode.KeypadEnter)||Input.GetKeyDown(KeyCode.J))
         {
             StopCoroutine("WriteByLetterCoroutine");
             LevelManager.instance.storyOver = true;
@@ -48,12 +48,12 @@ public class StoryRoutine : MonoBehaviour
         {
             LevelManager.instance.uiStoryText.text += c;
 
-            yield return new WaitForSeconds(.02f);
+            yield return new WaitForSeconds(.03f);
             GetComponent<AudioSource>().clip = keyHitSounds[Random.Range(0, 2)];
             GetComponent<AudioSource>().Play();
 
         }
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         LevelManager.instance.storyOver = true;
         LevelManager.instance.uiStoryText.text = "";
         LevelManager.instance.uiStoryText.gameObject.SetActive(false);

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -18,14 +20,27 @@ public class GameManager : MonoBehaviour
             playerHp = value>9?9:value;
         } 
     }
-    public bool musicRadioCollected = false;
+    [SerializeField] private bool musicRadioCollected = false;
+    public bool MusicRadioCollected { get => musicRadioCollected; set => musicRadioCollected = value; }
     private bool musicPlaying = false;
+
+    [SerializeField] private bool alarmClockCollected = false;
+    public bool AlarmClockCollected { get => alarmClockCollected; set => alarmClockCollected = value; }
+    [SerializeField] private int numberOfAlarmsCollected=0;
+    public int NumberOfAlarmsCollected { get => numberOfAlarmsCollected; set => numberOfAlarmsCollected=value; }
 
     public WeaponsClass typeGunPossessed;
     public GameObject objectGunPossessed;
+    
+    public void CollectAlarmClock()
+    {
+        AlarmClockCollected = true;
+        numberOfAlarmsCollected++;
+    }
 
     public void SetGameManagerGunPossessed(GameObject gun)
     {
+        NumberOfAlarmsCollected++;
         objectGunPossessed = gun;
         typeGunPossessed = gun?.GetComponent<WeaponsClass>();
     }
@@ -61,7 +76,8 @@ public class GameManager : MonoBehaviour
         currentScore = 0;
         playerHp = 4;
         enemiesKilledInRun = 0;
-        musicRadioCollected = false;
+        MusicRadioCollected = false;
+        AlarmClockCollected = false;
         musicPlaying=false;
         //GetComponent<AudioSource>().loop = false;
         GetComponent<AudioSource>().Stop();

@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using TMPro;
 using UnityEngine.TextCore.Text;
+using System.Linq;
 
 public class LevelManager : MonoBehaviour
 {
@@ -20,11 +21,14 @@ public class LevelManager : MonoBehaviour
     public int playerScore;
     public bool isPaused = false;
     public List<AudioClip> menuAudioClips;
-    private int playerHp;
+    private int GetStartingPlayerHp 
+    {
+        get=> GameManager.Instance.PlayerHp + 1 + GameManager.Instance.levelCount / 3;
+    }
+    private string[] fightText = new string[] { "GOOSPEED YOU!", "DUCK!!!", "EYES UP, OLD DUCK", "KEEP YOUR EYES ON THE ENEMY!", "WATCH YOUR NECK!", "ACTION IS GO!", "TIME TO GO HONKERS!" };
     private string[] victoryText = new string[] { "HONK HONK HONK!", "YOU GOT THOSE EYES SHUT!", "NICE JOB, OLD GEEZER", "GG GOOSE", "RADUCKAL", "IMPRESSIVE" };
     private string[] victoryText2;
-    private string[] fightText = new string[] { "DUCK!!!", "EYES UP, OLD DUCK", "KEEP YOUR EYES ON THE ENEMY!", "WATCH YOUR NECK!", "ACTION IS GO!", "TIME TO GO HONKERS!" };
-    private string quitText = "GODSPEED YOU, GEEZ";
+    private string quitText = "GOOSPEED YOU";
 
     private string storyText = "Aliens from another galaxy have invaded Earth space-time frame and stole some valuable technology from the 80s,"+
         " now the continuum is breaking apart! You, as a member of the GUTSS (Galactic Union for Time-Space Stability), have to bring those devices back to the" +
@@ -110,8 +114,8 @@ public class LevelManager : MonoBehaviour
     {
         //ATTIVA PLAYER E SETTA VALORI HP
         character.gameObject.SetActive(true);
-        playerHp = GameManager.Instance.PlayerHp + 1 + GameManager.Instance.levelCount / 3;
-        character.Hp = playerHp > 9 ? 9 : playerHp;
+        //playerHp = GameManager.Instance.PlayerHp + 1 + GameManager.Instance.levelCount / 3;
+        character.Hp = GetStartingPlayerHp > 9 ? 9 : GetStartingPlayerHp;
 
         #region assegna gun e script al player
         //ASSEGNA GAME OBJECT E SCRIPT ARMA PRESI DAL GAMAE MANAGER
@@ -157,9 +161,9 @@ public class LevelManager : MonoBehaviour
 
         //compare scritta Fight
         if (GameManager.Instance.levelCount < 10)
-            introText.text = fightText[Random.Range(0, 5)];
+            introText.text = fightText[Random.Range(0, fightText.Count()-2)];
         else
-            introText.text = fightText[Random.Range(0, 6)];
+            introText.text = fightText[Random.Range(0, fightText.Count()-1)];
         introText.transform.DOScale(Vector3.one, .5f).SetEase(Ease.OutElastic);
         fightAudioSource.Play();
         yield return new WaitForSeconds(.5f);
@@ -194,9 +198,9 @@ public class LevelManager : MonoBehaviour
 
         //TEXT VITTORIA
         if (GameManager.Instance.levelCount < 10)
-            introText.text = victoryText[Random.Range(0, 5)];
+            introText.text = victoryText[Random.Range(0, victoryText.Count()-2)];
         else
-            introText.text = victoryText[Random.Range(0, 6)];
+            introText.text = victoryText[Random.Range(0, victoryText.Count()-1)];
         introText.transform.DOScale(Vector3.one, .5f).SetEase(Ease.OutElastic);
         //sposta player parte1
         character.transform.DOMoveX(0, 2.5f);

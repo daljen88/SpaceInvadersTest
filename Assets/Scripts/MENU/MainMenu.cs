@@ -39,8 +39,14 @@ public class MainMenu : MonoBehaviour
     }
     public void QuitGame()
     {
+
         Application.Quit();
     }
+    //IEnumerator QuitCoroutine()
+    //{
+    //    //Time.timeScale = 0f;
+
+    //}
     public void SetResolution()
     {
         //trovare risoluzioni compatibili schermo giocatore e aggiungerle alla lista

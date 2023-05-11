@@ -23,7 +23,7 @@ public abstract class DropsClass : MonoBehaviour, IDroppable
     public abstract float DropLifeTime { get; /*set; */}
 
     protected Vector3 fallingVector;
-    public MainCharacter tPlayer;
+    private MainCharacter tPlayer;
     Tween shake;
 
     public DropsClass()

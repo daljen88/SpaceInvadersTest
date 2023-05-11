@@ -19,7 +19,7 @@ public class ThirdEnemy : MonoBehaviour, IHittable
     private Vector3 startingScale;
     Tweener twScale;
 
-    public float shootCooldown = 1.5f;
+    public float shootCooldown = 1f;
     float shootTimer = 0;
     public float enemySpeed = 3.5f;
     public int hp = 4;

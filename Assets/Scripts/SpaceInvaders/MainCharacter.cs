@@ -54,6 +54,7 @@ public class MainCharacter : MonoBehaviour, IHittable
 
     void Start()
     {
+        //ISTANZIA STANDARD GUN
         activeGunPrefab = Instantiate(startingGunPrefab, transform.position, Quaternion.identity);
         gunPossesed = activeGunPrefab.GetComponent<StandardGun>();
         gunPossesed.IsCollected=true;
@@ -166,7 +167,7 @@ public class MainCharacter : MonoBehaviour, IHittable
         else
         {
             audioSrc.Play();
-            if (activeGunPrefab == null)
+            if (/*activeGunPrefab == null|| */gunPossesed.GetComponent<StandardGun>()!=null)
             {
                 hp -= damage;
                 if (hp<= 0) //fa decremento e poi valuta se minore o uguale a 0// hp--<=0 guarda se hp minore o uguale a 0 e poi fa decremento
@@ -193,14 +194,15 @@ public class MainCharacter : MonoBehaviour, IHittable
                     UIManager.instance.OnPlayerHitUpdateLives(damage);
                 }
             }
-            else
+            else/* if(gunPossesed.GetComponent<StandardGun>() == null)*/
             {
                 if(/*--gunPossesed.Defence*/gunPossesed.Defence-damage<=0)
                 {
                     Debug.Log($"arma distrutta! difesa= {gunPossesed.Defence} ");
                     Destroy(gunPossesed.gameObject);
-                    gunPossesed=null;
-                    activeGunPrefab=null;
+                    activeGunPrefab = Instantiate(startingGunPrefab, transform.position, Quaternion.identity);
+                    gunPossesed = activeGunPrefab.GetComponent<StandardGun>();
+                    gunPossesed.IsCollected = true;
                     GameManager.Instance.SetGameManagerGunPossessed(null);
                 }
                 else

@@ -151,7 +151,7 @@ public class MainCharacter : MonoBehaviour, IHittable
                 //else { return; }
 
             }
-            else if (gunPossesed.GetComponent<BigGun>() != null)
+            else if (gunPossesed.GetComponent<WeaponsClass>() != null)
             {
                 gunPossesed.ShootProjectile();
                 //gunPossesed.ShootProjectile(/*eventuale shootDirection controllata da player*/);
@@ -207,6 +207,7 @@ public class MainCharacter : MonoBehaviour, IHittable
                 }
                 else
                 {
+                    StartCoroutine(WeaponHitSufferedCoroutine());
                     gunPossesed.Defence -= damage;
                     Debug.Log($"arma colpita! difesa= {gunPossesed.Defence} ");
                 }
@@ -224,6 +225,21 @@ public class MainCharacter : MonoBehaviour, IHittable
         yield return new WaitForSecondsRealtime(0.05f); //con 0 aspetta 1 frame
         //yield return new WaitForSecondsRealtime(0);
         tsprite.DOColor(Color.white, .05f);
+        Time.timeScale = 1;
+        moveSpeed = 6f;
+        yield return new WaitForSecondsRealtime(.10f);
+        IsInvulnerable = false;
+    }
+    IEnumerator WeaponHitSufferedCoroutine()
+    {
+        Time.timeScale = 0.1f;
+        IsInvulnerable = true;
+        SpriteRenderer tGunSprite = gunPossesed.GetComponentInChildren<SpriteRenderer>();
+        tGunSprite.DOColor(Color.red, .05f).SetUpdate(true)/*.timeScale=1*/;
+        gunPossesed.transform.DOPunchScale(Vector3.one * .5f, 0.10f).SetUpdate(true);
+        yield return new WaitForSecondsRealtime(0.05f); //con 0 aspetta 1 frame
+        //yield return new WaitForSecondsRealtime(0);
+        tGunSprite.DOColor(Color.white, .05f);
         Time.timeScale = 1;
         moveSpeed = 6f;
         yield return new WaitForSecondsRealtime(.10f);

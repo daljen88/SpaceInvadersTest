@@ -13,9 +13,10 @@ public class PlayerTextLogic : MonoBehaviour
     public string[] foundAlarmClock = { "Mmm, an Alarm Clock. What if I strike this B.." };
 
 
-    private char[] textStringToChar;
     public TextMeshPro playerText;
+    public GameObject TextWindow;
     public AudioClip[] keyHitSounds;
+    private char[] textStringToChar;
     private bool firstGun = false;
     private bool firstRadio = false;
     private bool openingDone=false;
@@ -26,7 +27,7 @@ public class PlayerTextLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startingPos = transform.localPosition;
+        startingPos = TextWindow.transform.localPosition;
         //WeaponsClass.dropEvent.AddListener(FoundNewGun);
         playerText.text = "";    
     }
@@ -34,10 +35,10 @@ public class PlayerTextLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.parent.position.x>1f)
-            transform.localPosition=new Vector3(-3.7f,transform.localPosition.y);
+        if(transform.position.x>1f)
+            TextWindow.transform.localPosition=new Vector3(-3.7f,TextWindow.transform.localPosition.y);
         else
-            transform.localPosition = new Vector3(3.5f, transform.localPosition.y);
+            TextWindow.transform.localPosition = new Vector3(3.5f, TextWindow.transform.localPosition.y);
 
         if (!openingDone&&GameManager.Instance.levelCount==2&&LevelManager.instance.state==LevelManager.LogicState.RUNNING&&UIManager.instance.normalEnemyKilled==5)
         {
@@ -87,6 +88,7 @@ public class PlayerTextLogic : MonoBehaviour
         yield return new WaitForSecondsRealtime(.2f);
         Time.timeScale = .2f;
         yield return new WaitForSecondsRealtime(.1f);
+        TextWindow.SetActive(true);
         Time.timeScale = .05f;
 
         foreach (char c in charsToStamp)
@@ -94,14 +96,15 @@ public class PlayerTextLogic : MonoBehaviour
             /*GetComponent<TextMeshPro>()*/playerText.text += c;
 
             yield return new WaitForSecondsRealtime(.04f);
-            GetComponent<AudioSource>().clip = keyHitSounds[Random.Range(0, 2)];
-            GetComponent<AudioSource>().Play();
+            TextWindow.GetComponent<AudioSource>().clip = keyHitSounds[Random.Range(0, 2)];
+            TextWindow.GetComponent<AudioSource>().Play();
 
         }
-        yield return new WaitForSecondsRealtime(.4f);
+        yield return new WaitForSecondsRealtime(.5f);
         Time.timeScale = .5f;
-        yield return new WaitForSecondsRealtime(.2f);
+        yield return new WaitForSecondsRealtime(.3f);
         Time.timeScale = 1;
+        TextWindow.SetActive(false);
         //LevelManager.instance.storyOver = true;
         playerText.text = "";
     }

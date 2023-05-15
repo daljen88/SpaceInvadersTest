@@ -1,7 +1,9 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public abstract class WeaponsClass : MonoBehaviour, IDroppable
 {
@@ -12,16 +14,16 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
     protected bool isCollected = false;
     public bool IsCollected { get { return isCollected; } set { isCollected = value; } }
 
-    protected float dropSpeed = 2f;
+    [SerializeField] protected float baseDropSpeed = 2f;
     public abstract float DropSpeed { get; }
 
     protected float dropTimer;
     protected float coolDown;
 
-    protected float dropLifeTime = 10;
+    [SerializeField] protected float baseDropLifeTime = 10;
     public abstract float DropLifeTime { get; /*set; */}
 
-    protected float fireRate = 1f;
+    protected float baseFireRate = 1f;
     public abstract float FireRate { get; }
 
     protected int damageMultiplyer=1;
@@ -45,7 +47,15 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
     protected WeaponProjectile myProjectile;
     protected SpriteRenderer gunSpriteRenderer;
     protected Vector3 gunOffsetR;
-    protected Vector3 gunOffsetS;
+    protected Vector3 gunOffsetL;
+    protected float projXOffsetR;
+    protected float projXOffsetL;
+    protected float projRotation;
+
+    //public Material myMaterial, myHitTakenMaterial;
+    public Color hitFxColor;
+    public float hitFxDuration=.3f;
+    private bool routine = false;
 
     public static UnityEvent dropEvent;
 
@@ -64,23 +74,9 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
         StartRoutine();
     }
 
-    protected virtual void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        //METTO TUTTO IN UNA FUZNIONA DA DARE A WEAPONSCLASS
-        tPlayer = other.GetComponent<MainCharacter>();
-        WeaponsClass oldWeapon = tPlayer.gameObject.GetComponentInChildren<WeaponsClass>();
-        if (tPlayer != null)
-        {
-            if (oldWeapon != null)
-            { Destroy(oldWeapon.gameObject); }
-            dropTimer = -1;
-            IsCollected = true;
-            tPlayer.activeGunPrefab = gameObject;
-            tPlayer.gunPossesed = gameObject.GetComponent<WeaponsClass>();
-            GameManager.Instance.SetGameManagerGunPossessed(gameObject);
-            gameObject.transform.parent = tPlayer.gameObject.transform;
-            //tPlayer.gunPossesed=this;
-        }
+        OnTriggerLogic(other);
     }
     protected virtual void StartRoutine()
     {
@@ -94,33 +90,58 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
 
     protected virtual void UpdateRoutine()
     {
-        if (dropTimer > 0)
-            dropTimer -= Time.deltaTime;
+        if(Defence==1&&routine==false)
+        {
+            routine = true;
+            StartCoroutine(HitColorCoroutine());
+        }
+
+
         if (coolDown > 0)
             coolDown -= Time.deltaTime;
+
+        if (dropTimer > 0)
+            dropTimer -= Time.deltaTime;
 
         //debug
         Debug.LogWarning(dropTimer);
         Debug.LogWarning(coolDown);
 
-
         if (IsDropped && IsCollected == false && transform.position.y > -4.1f)
+        {
             transform.position += fallingVector * Time.deltaTime;
+        }
         else if (IsCollected == true)
         {
-            //cambia questa logica settande posizione arma in un empty object dentro player
             //gunRotation = GunRotation/*tPlayer.goingRight ? 15 : -15*/;
             gunSpriteRenderer.flipX = !tPlayer.goingRight;
 
-            //transform.position = transform.position - bigGunOffset;
-            transform.position = tPlayer.goingRight? tPlayer.gameObject.transform.position - gunOffsetR: tPlayer.gameObject.transform.position - gunOffsetS;
+            transform.position = tPlayer.goingRight ? tPlayer.gameObject.transform.position - gunOffsetR : tPlayer.gameObject.transform.position - gunOffsetL;
 
-            //transform.position = tPlayer.gameObject.transform.position - gunOffset;
             transform.rotation = Quaternion.Euler(0, 0, GunRotation);
 
         }
         if (dropTimer <= 0 && !isCollected)
             Destroy(gameObject);
+    }
+
+    public virtual void OnTriggerLogic(Collider entering)
+    {
+        //METTO TUTTO IN UNA FUZNIONA DA DARE A WEAPONSCLASS
+        tPlayer = entering.GetComponent<MainCharacter>();
+        WeaponsClass oldWeapon = tPlayer.gameObject.GetComponentInChildren<WeaponsClass>();
+        if (tPlayer != null)
+        {
+            if (oldWeapon != null)
+            { Destroy(oldWeapon.gameObject); }
+            dropTimer = -1;
+            IsCollected = true;
+            tPlayer.activeGunPrefab = gameObject;
+            tPlayer.gunPossesed = gameObject.GetComponent<WeaponsClass>();
+            GameManager.Instance.SetGameManagerGunPossessed(gameObject);
+            gameObject.transform.parent = tPlayer.gameObject.transform;
+            //tPlayer.gunPossesed=this;
+        }
     }
 
     //public void DropEvent()
@@ -158,5 +179,26 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
         }
     }
 
+    public void WeaponDefenceGFX()
+    {
+        //    GetComponent<MeshRenderer>().material = myHitTakenMaterial;
+        //    //la funzione va chiamata come stringa
+        //    Invoke("SetNormalMaterial", 0.25f);
+        StartCoroutine(HitColorCoroutine());
+    }
+    IEnumerator HitColorCoroutine()
+    {
+        //routine = true;
+        SpriteRenderer tsprite = GetComponentInChildren<SpriteRenderer>();
+        tsprite.DOColor(hitFxColor, hitFxDuration* 2/ 3);
+        yield return new WaitForSeconds(hitFxDuration*2 / 3);
+        tsprite.DOColor(Color.white, hitFxDuration / 3);
+        yield return new WaitForSeconds(hitFxDuration/ 3);
+        routine = false;
+    }
+    //public void SetNormalMaterial()
+    //{
+    //    GetComponent<MeshRenderer>().material = myMaterial;
+    //}
 
 }

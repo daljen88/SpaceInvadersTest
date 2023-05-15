@@ -8,20 +8,22 @@ public abstract class WeaponProjectile : MonoBehaviour, IShootable
 
     protected Vector3 movementVector;
 
-    protected Vector3 directionVector=Vector3.up;
+    [SerializeField] protected Vector3 baseDirectionVector=Vector3.up;
     public abstract Vector3 DirectionVector { get; }
 
-    protected float speed = 1;
+    protected float baseSpeed = 1;
     public abstract float Speed { get; }
 
-    protected int shotDamage=1;
-    public abstract int ShotDamage { get; set; }
+    protected int baseShotDamage=1;
+    public abstract int ShotDamage { get;}
+
+    protected int hittingShotDamage;
 
     protected bool shooted = false;
     protected bool hit = false;
     //public List<AudioClip> audioClips;
-    IHittable tEnterEnemy;
-    IHittable tExitEnemy;
+    protected IHittable tEnterEnemy;
+    protected IHittable tExitEnemy;
 
     void Start()
     {
@@ -40,10 +42,7 @@ public abstract class WeaponProjectile : MonoBehaviour, IShootable
    
     private void OnTriggerExit(Collider exiting)
     {
-        tExitEnemy= exiting.GetComponent<IHittable>();
-        //if (other.GetComponent<Enemy>()!=enemy)
-        //if (tExitEnemy!= tEnterEnemy)
-        hit = false;
+        OnExitTriggerLogic(exiting);
     }
 
     public virtual void UpdateMovement()
@@ -54,16 +53,16 @@ public abstract class WeaponProjectile : MonoBehaviour, IShootable
 
     public virtual void Shoot(int weaponMulti=1)
     {
-        ShotDamage = weaponMulti * ShotDamage;
+        hittingShotDamage = weaponMulti * ShotDamage;
         shooted = true;
         movementVector=DirectionVector*Speed;
     }
 
-    public virtual void Shoot(Vector3 dirVector, int weaponMulti = 1)
+    public virtual void Shoot(Vector3 weaponDirVector, int weaponMulti = 1)
     {
-        ShotDamage = weaponMulti * ShotDamage;
+        hittingShotDamage = weaponMulti * ShotDamage;
         shooted = true;
-        movementVector = dirVector*Speed;
+        movementVector = weaponDirVector * Speed;
         //audioClips.Clear();
         //audioPlayShot.clip = audioClips[Random.Range(0, audioClips.Count)];
         //audioPlayShot.Play();
@@ -74,14 +73,13 @@ public abstract class WeaponProjectile : MonoBehaviour, IShootable
     public virtual void OnTriggerLogic(Collider entering)
     {
         Debug.Log("eh la madòna, go tocào " + entering.name);
-        /*IHittable */
         tEnterEnemy = entering.GetComponent<IHittable>();
         //enemy = other.GetComponent<Enemy>();
-        if (tEnterEnemy != null && tEnterEnemy != tExitEnemy /*&& !hit*/)
-        {
-            //HO COLPITO
-            hit = true;
-            tEnterEnemy.OnHitSuffered(ShotDamage);
+        //if (tEnterEnemy != null && tEnterEnemy != tExitEnemy /*&& !hit*/)
+        //{
+        //    //HO COLPITO
+        //    hit = true;
+        //    tEnterEnemy.OnHitSuffered(hittingShotDamage);
             //cambia parent al particle system
             //ParticleSystem tParticle = GetComponentInChildren<ParticleSystem>();
             //SpriteRenderer trenderer = GetComponentInChildren<SpriteRenderer>();
@@ -97,6 +95,10 @@ public abstract class WeaponProjectile : MonoBehaviour, IShootable
             //FACCIO CHE NON SI DITRUGGE E OLTREPASSA NEMICI FACENDO 2 DANNO
             //Destroy(gameObject);
             //shooted = false;
-        }
+        //}
+    }
+    public virtual void OnExitTriggerLogic(Collider exiting)
+    {
+        return;
     }
 }

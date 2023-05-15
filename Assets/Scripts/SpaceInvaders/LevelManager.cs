@@ -34,7 +34,8 @@ public class LevelManager : MonoBehaviour
         " now the continuum is breaking apart! You, as a member of the GUTSS (Galactic Union for Time-Space Stability), have to bring those devices back to the" +
         " earthlings and fix the stability of life as we know it!";
     private char[] storyTextByChar;
-    public TextMeshPro uiStoryText;
+    public TMP_Text uiStoryText;
+    public GameObject uiStoryWindow;
     public bool storyOver = false;
     public bool story2Over = false;
 
@@ -48,7 +49,8 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         introText.transform.localScale = Vector3.zero;
-        uiStoryText.enabled = true;
+        uiStoryWindow.SetActive(true);
+        //uiStoryText.enabled = true;
 
         //Time.timeScale = 0;
 

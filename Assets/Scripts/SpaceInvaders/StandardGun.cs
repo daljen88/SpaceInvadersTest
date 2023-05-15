@@ -4,30 +4,33 @@ using UnityEngine;
 
 public class StandardGun : WeaponsClass
 {
-    public override float DropLifeTime => dropLifeTime + 1;
-    public override float DropSpeed => dropSpeed + 2;
-    public override float FireRate => fireRate * .2f;
+    public override float DropLifeTime => baseDropLifeTime + 1;
+    public override float DropSpeed => baseDropSpeed + 2;
+    [SerializeField] private float thisFireRate = .2f;
+    public override float FireRate => baseFireRate * thisFireRate;
     public override int DamageMultiplyer => damageMultiplyer * 1;
     public override Vector3 ProjDirectionVector => projDirectionVector * 1/*speedMultiplyer*/;
-    public override float GunRotation => tPlayer.goingRight ? rotazR : rotazS;
+    public override float GunRotation => tPlayer.goingRight ? rotazR : rotazL;
 
 
     public override float Defence { get { return defence; } set { defence = value; } }
     //public override float Defence => defence+1;
 
     //public GameObject bigGunShotTemplate;
+    [Header("Weapon Position on Player")]
     [SerializeField] private float rotazR = 15f;
-    [SerializeField] private float rotazS = -15f;
+    [SerializeField] private float rotazL = -15f;
     [SerializeField] private Vector3 standardGunOffsetR = new Vector3(-0.166f, 0.11f);//offset y=0.155
-    [SerializeField] private Vector3 standardGunOffsetS = new Vector3(0.166f, 0.11f);
+    [SerializeField] private Vector3 standardGunOffsetL = new Vector3(0.166f, 0.11f);
 
     //private SpriteRenderer gunSpriteRenderer;
 
     public StandardGun() : base()
     {
+        IsCollected = true;
         Defence = 0;
         gunOffsetR = standardGunOffsetR;
-        gunOffsetS = standardGunOffsetS;
+        gunOffsetL = standardGunOffsetL;
 
         //myProjectile = gunShotTemplate.GetComponent<WeaponProjectile>();
     }
@@ -44,16 +47,14 @@ public class StandardGun : WeaponsClass
 
     protected override void UpdateRoutine()
     {
-        if (coolDown > 0)
-            coolDown -= Time.deltaTime;
+        base.UpdateRoutine();
 
-        gunSpriteRenderer.flipX = !tPlayer.goingRight;
+        //if (coolDown > 0)
+        //    coolDown -= Time.deltaTime;
 
-        //transform.position = transform.position - bigGunOffset;
-        transform.position = tPlayer.goingRight ? tPlayer.gameObject.transform.position - gunOffsetR : tPlayer.gameObject.transform.position - gunOffsetS;
-
-        //transform.position = tPlayer.gameObject.transform.position - gunOffset;
-        transform.rotation = Quaternion.Euler(0, 0, GunRotation);
+        //gunSpriteRenderer.flipX = !tPlayer.goingRight;
+        //transform.position = tPlayer.goingRight ? tPlayer.gameObject.transform.position - gunOffsetR : tPlayer.gameObject.transform.position - gunOffsetL;
+        //transform.rotation = Quaternion.Euler(0, 0, GunRotation);
     }
     public override void ShootProjectile(/*Vector3 direction*/)
     {

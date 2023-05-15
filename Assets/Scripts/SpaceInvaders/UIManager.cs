@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using TMPro;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UIElements;
 
 public class UIManager : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class UIManager : MonoBehaviour
     public int bringerEnemyKilled;
     public GameObject playerUI;
     public GameObject pauseGO;
+    Tweener twScale;
 
     public float hpOffset=1.1f;
 
@@ -120,7 +122,13 @@ public class UIManager : MonoBehaviour
                 break;
         }
         scorePoints += score;
-        scoreText.transform.DOPunchScale(Vector3.one * .5f, .333f);
+        if (twScale != null && twScale.IsActive())
+        {
+            twScale.Kill();
+            //risistema a dim originale se tween spento a metà
+            scoreText.transform.localScale = Vector3.one; //new vector3 (1,1,1);
+        }
+        twScale =scoreText.transform.DOPunchScale(Vector3.one * .5f, .333f);
         scoreText.text = scorePoints.ToString();
         yield return null;
     }

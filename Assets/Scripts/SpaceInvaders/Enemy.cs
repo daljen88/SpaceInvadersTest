@@ -171,12 +171,18 @@ public class Enemy : MonoBehaviour, IHittable
             //controllo particella da codice
             ps.Emit(60);
             Destroy(ps.gameObject, .5f);
-            if (UIManager.instance.totalEnemiesKilled%3==0&&UIManager.instance.totalEnemiesKilled!=0&&Random.Range(0,11)<7 /*&&GameManager.Instance.typeGunPossessed.name!="BigGun"*/)
+            if (UIManager.instance.totalEnemiesKilled%3==0&&UIManager.instance.totalEnemiesKilled!=0&&Random.Range(0,11)<8 /*&&GameManager.Instance.typeGunPossessed.name!="BigGun"*/)
             {
                 GameObject bigGunz = Instantiate(guns[0], transform.position, Quaternion.identity);
                 WeaponsClass bigGunDropping = bigGunz.GetComponent<BigGun>();
                 bigGunDropping.Drop(Vector3.down);
-            } 
+            }
+            else if(UIManager.instance.totalEnemiesKilled % 7 == 0 && UIManager.instance.totalEnemiesKilled != 0 && Random.Range(0, 11) < 7)
+            {
+                GameObject electricGun = Instantiate(guns[1], transform.position, Quaternion.identity);
+                WeaponsClass electricGunDropping = electricGun.GetComponent<ElectricTriGun>();
+                electricGunDropping.Drop(Vector3.down);
+            }
             //if(UIManager.instance.totalEnemiesKilled % 5 == 0 && UIManager.instance.totalEnemiesKilled != 0&&GameManager.Instance.musicRadioCollected==false)
             //{
             //    GameObject musicRadio = Instantiate(drops[0], transform.position, Quaternion.identity);
@@ -184,7 +190,7 @@ public class Enemy : MonoBehaviour, IHittable
             //    radioScript.Drop(Vector3.down);
             //}
 
-            //Destroy(gameObject);
+                //Destroy(gameObject);
             DestroyThisEnemy();
         }
         else

@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private bool alarmClockCollected = false;
     public bool AlarmClockCollected { get => alarmClockCollected; set => alarmClockCollected = value; }
+
     [SerializeField] private int numberOfAlarmsCollected=0;
     public int NumberOfAlarmsCollected { get => numberOfAlarmsCollected; set => numberOfAlarmsCollected=value; }
 
@@ -40,7 +41,6 @@ public class GameManager : MonoBehaviour
 
     public void SetGameManagerGunPossessed(GameObject gun)
     {
-        NumberOfAlarmsCollected++;
         objectGunPossessed = gun;
         typeGunPossessed = gun?.GetComponent<WeaponsClass>();
     }
@@ -78,7 +78,8 @@ public class GameManager : MonoBehaviour
         enemiesKilledInRun = 0;
         MusicRadioCollected = false;
         AlarmClockCollected = false;
-        musicPlaying=false;
+        NumberOfAlarmsCollected = 0;
+        musicPlaying =false;
         //GetComponent<AudioSource>().loop = false;
         GetComponent<AudioSource>().Stop();
     }

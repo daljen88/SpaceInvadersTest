@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 
 public class SecondEnemy : MonoBehaviour, IHittable
 {
+    public List<GameObject> guns;
     public float shootCooldown = 0.5f;
     public float enemySpeed = 5;
     public int hp = 1;
@@ -46,6 +47,12 @@ public class SecondEnemy : MonoBehaviour, IHittable
             //controllo particella da codice
             ps.Emit(30);
             Destroy(ps.gameObject, .5f);
+            if (UIManager.instance.totalEnemiesKilled > 5 && Random.Range(0, 11) < 10)
+            {
+                GameObject electricGun = Instantiate(guns[0], transform.position, Quaternion.identity);
+                WeaponsClass electricGunDropping = electricGun.GetComponent<ElectricTriGun>();
+                electricGunDropping.Drop(Vector3.down);
+            }
             //Distrugge enemy
             DestroyEnemy();
         }

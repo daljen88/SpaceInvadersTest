@@ -67,7 +67,7 @@ public class ThirdEnemy : MonoBehaviour, IHittable
             ps.Emit(60);
             UIManager.instance.PointsScoredEnemyKilled(enemyPointsValue, "bringerEnemy");
             Destroy(ps.gameObject, .5f);
-            if (UIManager.instance.totalEnemiesKilled % 3 == 0 && UIManager.instance.totalEnemiesKilled != 0 && Random.Range(0, 11) < 7 /*&&GameManager.Instance.typeGunPossessed.name!="BigGun"*/)
+            if (UIManager.instance.totalEnemiesKilled % 3 == 0 && UIManager.instance.totalEnemiesKilled != 0 && Random.Range(0, 11) < 8 /*&&GameManager.Instance.typeGunPossessed.name!="BigGun"*/)
             {
                 GameObject bigGunz = Instantiate(guns[0], transform.position, Quaternion.identity);
                 WeaponsClass bigGunDropping = bigGunz.GetComponent<BigGun>();

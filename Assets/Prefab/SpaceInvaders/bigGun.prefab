@@ -139,9 +139,9 @@ GameObject:
   - component: {fileID: 4733226077795435145}
   - component: {fileID: 4522763984696532815}
   - component: {fileID: 1816102943369857316}
-  - component: {fileID: 2409276523247134078}
   - component: {fileID: -1822970769209171504}
   - component: {fileID: 8790090918804983719}
+  - component: {fileID: 423710700970123352}
   m_Layer: 14
   m_Name: bigGun
   m_TagString: Untagged
@@ -216,19 +216,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &2409276523247134078
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2984454448563473827}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5050574
-  m_Center: {x: -0.24758756, y: -0.029352248, z: 0}
 --- !u!54 &-1822970769209171504
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -257,14 +244,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4353f1634a336eb49a276acf35a6802d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseDropSpeed: 2
+  baseDropLifeTime: 10
   dropWeaponSound: {fileID: 4921022744761636474}
   dropSounds:
   - {fileID: 8300000, guid: 0afa5196e60ff7149a5844e493e3833f, type: 3}
   gunShotTemplate: {fileID: 2543589591953216310, guid: 6f5a055f9f28501498842a7ec2fb7d55, type: 3}
+  hitFxColor: {r: 1, g: 0.18574089, b: 0, a: 1}
+  hitFxDuration: 0.3
+  thisBonusDropLifeTime: 2
+  thisFireRate: 0.33
+  thisDamageMultiplyer: 1
   rotazR: 15
-  rotazS: -15
+  rotazL: -15
   bigGunOffsetR: {x: 0, y: 0.11, z: 0}
-  bigGunOffsetS: {x: 0.175, y: 0.11, z: 0}
+  bigGunOffsetL: {x: 0.166, y: 0.11, z: 0}
+--- !u!136 &423710700970123352
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2984454448563473827}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.32476848
+  m_Height: 1.4903079
+  m_Direction: 0
+  m_Center: {x: 0.029729724, y: -0.051916927, z: 0}
 --- !u!1 &4002864223921592886
 GameObject:
   m_ObjectHideFlags: 0

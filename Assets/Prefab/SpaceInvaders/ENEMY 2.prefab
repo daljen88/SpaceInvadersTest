@@ -257,6 +257,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98bd604bccaf85c4f95c2ce0aa51878a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  guns:
+  - {fileID: 7241568443210256612, guid: 66880bbecd0232143bd6085603f9c7eb, type: 3}
   shootCooldown: 0.5
   enemySpeed: 5
   hp: 1

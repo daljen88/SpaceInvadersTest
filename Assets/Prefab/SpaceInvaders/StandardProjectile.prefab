@@ -109,10 +109,10 @@ GameObject:
   - component: {fileID: 3912386554682083778}
   - component: {fileID: 3912386554682083779}
   - component: {fileID: 3912386554682083788}
-  - component: {fileID: 3912386554682083789}
   - component: {fileID: -4117828486510409134}
+  - component: {fileID: 7357871956444864047}
   m_Layer: 8
-  m_Name: Projectile
+  m_Name: StandardProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,32 +201,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5054127
   m_Center: {x: 0, y: -0.005412797, z: 0}
---- !u!114 &3912386554682083789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3912386554682083790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 428fe484447ea4a429858177d66df9cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseDirectionVector: {x: 0, y: 1, z: 0}
-  audioPlayShot: {fileID: 1373835653790715958}
-  audioClips:
-  - {fileID: 8300000, guid: d7cad924889ec0047ab8910d257351dc, type: 3}
-  - {fileID: 8300000, guid: 008a0601610e3b64683106ba3751b39f, type: 3}
-  - {fileID: 8300000, guid: d43716dc2a944874dadd7a7a54e05284, type: 3}
-  - {fileID: 8300000, guid: ae5ac96e73a4cc942951bc27e7c45ae0, type: 3}
-  - {fileID: 8300000, guid: 1806407cace0c7d4dab1dbaf861f2270, type: 3}
-  - {fileID: 8300000, guid: dc67650b04325464ca5d249cdc94fbb2, type: 3}
-  - {fileID: 8300000, guid: d9e8f329e67a5db4b8946e68eaed0df6, type: 3}
-  - {fileID: 8300000, guid: ea54e34d6f5e7ee48a05a8ea23e39dfe, type: 3}
-  - {fileID: 8300000, guid: 67f6ca0e66bff4c43932c3216521ffc1, type: 3}
-  thisSpeed: 6.6
-  thisShotDamage: 1
 --- !u!54 &-4117828486510409134
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -243,6 +217,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7357871956444864047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3912386554682083790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0444d86a548fb2e418c0d4d4d7656b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDirectionVector: {x: 0, y: 1, z: 0}
+  audioPlayShot: {fileID: 1373835653790715958}
+  audioClips:
+  - {fileID: 8300000, guid: d7cad924889ec0047ab8910d257351dc, type: 3}
+  - {fileID: 8300000, guid: 008a0601610e3b64683106ba3751b39f, type: 3}
+  - {fileID: 8300000, guid: d43716dc2a944874dadd7a7a54e05284, type: 3}
+  - {fileID: 8300000, guid: ae5ac96e73a4cc942951bc27e7c45ae0, type: 3}
+  - {fileID: 8300000, guid: 1806407cace0c7d4dab1dbaf861f2270, type: 3}
+  - {fileID: 8300000, guid: dc67650b04325464ca5d249cdc94fbb2, type: 3}
+  - {fileID: 8300000, guid: d9e8f329e67a5db4b8946e68eaed0df6, type: 3}
+  - {fileID: 8300000, guid: ea54e34d6f5e7ee48a05a8ea23e39dfe, type: 3}
+  - {fileID: 8300000, guid: 67f6ca0e66bff4c43932c3216521ffc1, type: 3}
+  thisSpeed: 6.6
+  thisShotDamage: 1
 --- !u!1 &3992341808722052424
 GameObject:
   m_ObjectHideFlags: 0

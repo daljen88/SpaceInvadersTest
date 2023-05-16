@@ -73,8 +73,4 @@ public class BigGun : WeaponsClass
             //tPlayer.gunPossesed=this;
         }
     }
-    //void Update()
-    //{
-    //    base.Update();
-    //}
 }

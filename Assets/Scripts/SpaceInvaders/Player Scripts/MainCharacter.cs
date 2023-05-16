@@ -17,7 +17,7 @@ public class MainCharacter : MonoBehaviour, IHittable
     public int Hp { get { return hp; } set { hp = value; } }
     public int startingHp=4;
     public GameObject startingGunPrefab;
-    public Projectile myProjectile;
+    //public StandardProjectile myProjectile;
     float moveSpeed = 6;
     private bool isInvulnerable = false;
     public bool IsInvulnerable 

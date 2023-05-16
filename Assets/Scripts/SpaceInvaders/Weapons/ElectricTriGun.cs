@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class ElectricTriGun : WeaponsClass
 {
-    //quando istanzi BigGun accedi direttam alle funzioni virtual o normali definite in classe padre
-    //(anche se la classe è abstract, semplicemnete non potrai istanziare una classe padre)
-    //invece se le funzioni sono definite abstract devi ridefinirle qui nella classe figlia.
-    //lo stesso vale per le variabili: se sono definite nella classe padre quando istanzi la figli si creano
-
     [SerializeField] private float thisBonusDropLifeTime = 2f;
     public override float DropLifeTime => baseDropLifeTime + thisBonusDropLifeTime;
 
@@ -36,8 +31,6 @@ public class ElectricTriGun : WeaponsClass
     [SerializeField] private float electricShotXOffsetL = -0.7f;
     /*[SerializeField]*/ private float electricShotRotation/* = -90f*/;
 
-
-    //[SerializeField] private int bigGunRotation= tPlayer.goingRight ? 15 : -15;
     //private SpriteRenderer gunSpriteRenderer;
 
     public ElectricTriGun() : base()
@@ -48,8 +41,8 @@ public class ElectricTriGun : WeaponsClass
         projXOffsetR = electricShotXOffsetR;
         projXOffsetL = electricShotXOffsetL;
         projRotation=electricShotRotation;
-    //GunRotation = bigGunRotation;
-    //myProjectile = gunShotTemplate.GetComponent<WeaponProjectile>();
+        //GunRotation = bigGunRotation;
+        //myProjectile = gunShotTemplate.GetComponent<WeaponProjectile>();
 }
     protected override void StartRoutine()
     {
@@ -65,10 +58,7 @@ public class ElectricTriGun : WeaponsClass
     {
         base.OnTriggerLogic(entering);
     }
-    //void Update()
-    //{
-    //    base.Update();
-    //}
+
     public override void ShootProjectile(/*Vector3 direction*/)
     {
         if (coolDown <= 0)

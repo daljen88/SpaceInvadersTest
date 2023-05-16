@@ -96,7 +96,6 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
             StartCoroutine(HitColorCoroutine());
         }
 
-
         if (coolDown > 0)
             coolDown -= Time.deltaTime;
 

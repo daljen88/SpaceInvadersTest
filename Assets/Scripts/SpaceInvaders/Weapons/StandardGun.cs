@@ -12,7 +12,6 @@ public class StandardGun : WeaponsClass
     public override Vector3 ProjDirectionVector => projDirectionVector * 1/*speedMultiplyer*/;
     public override float GunRotation => tPlayer.goingRight ? rotazR : rotazL;
 
-
     public override float Defence { get { return defence; } set { defence = value; } }
     //public override float Defence => defence+1;
 
@@ -51,7 +50,6 @@ public class StandardGun : WeaponsClass
 
         //if (coolDown > 0)
         //    coolDown -= Time.deltaTime;
-
         //gunSpriteRenderer.flipX = !tPlayer.goingRight;
         //transform.position = tPlayer.goingRight ? tPlayer.gameObject.transform.position - gunOffsetR : tPlayer.gameObject.transform.position - gunOffsetL;
         //transform.rotation = Quaternion.Euler(0, 0, GunRotation);
@@ -60,7 +58,6 @@ public class StandardGun : WeaponsClass
     {
         if (coolDown <= 0)
         {
-            //float shootOffset=
             GameObject tempProjectile = Instantiate(gunShotTemplate, new Vector3(tPlayer.goingRight ? transform.position.x + 0.4f : transform.position.x - 0.4f, transform.position.y), Quaternion.Euler(0, 0, 0));
             myProjectile = tempProjectile.GetComponent<WeaponProjectile>();
             myProjectile.Shoot(ProjDirectionVector, DamageMultiplyer);

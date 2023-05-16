@@ -226,9 +226,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
+  m_Radius: 0.17988269
+  m_Height: 0.7131728
+  m_Direction: 0
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &8040034051161486555
 Rigidbody:
@@ -258,13 +258,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a76ff4f5656a2498d5c5b449749179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseDropSpeed: 2
+  baseDropLifeTime: 10
   dropWeaponSound: {fileID: 0}
   dropSounds: []
   gunShotTemplate: {fileID: 3912386554682083790, guid: b64412e30a328534d8fb7c791f3881e6, type: 3}
+  hitFxColor: {r: 0, g: 0, b: 0, a: 0}
+  hitFxDuration: 0.3
+  thisFireRate: 0.2
   rotazR: 15
-  rotazS: -15
+  rotazL: -15
   standardGunOffsetR: {x: -0.166, y: 0.11, z: 0}
-  standardGunOffsetS: {x: 0.166, y: 0.11, z: 0}
+  standardGunOffsetL: {x: 0.166, y: 0.11, z: 0}
 --- !u!1 &7284152872432460883
 GameObject:
   m_ObjectHideFlags: 0

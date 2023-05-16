@@ -183,6 +183,12 @@ public class Enemy : MonoBehaviour, IHittable
                 WeaponsClass electricGunDropping = electricGun.GetComponent<ElectricTriGun>();
                 electricGunDropping.Drop(Vector3.down);
             }
+            else if (UIManager.instance.totalEnemiesKilled % 1 == 0 && UIManager.instance.totalEnemiesKilled != 0 && Random.Range(0, 11) < 11)
+            {
+                GameObject eyeCannon = Instantiate(guns[2], transform.position, Quaternion.identity);
+                WeaponsClass eyeCannonDrop = eyeCannon.GetComponent<EyeOrbsCannon>();
+                eyeCannonDrop.Drop(Vector3.down);
+            }
             //if(UIManager.instance.totalEnemiesKilled % 5 == 0 && UIManager.instance.totalEnemiesKilled != 0&&GameManager.Instance.musicRadioCollected==false)
             //{
             //    GameObject musicRadio = Instantiate(drops[0], transform.position, Quaternion.identity);
@@ -190,7 +196,7 @@ public class Enemy : MonoBehaviour, IHittable
             //    radioScript.Drop(Vector3.down);
             //}
 
-                //Destroy(gameObject);
+            //Destroy(gameObject);
             DestroyThisEnemy();
         }
         else

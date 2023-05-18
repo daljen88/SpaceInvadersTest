@@ -55,6 +55,7 @@ public abstract class WeaponProjectile : MonoBehaviour, IShootable
     {
         hittingShotDamage = weaponMulti * ShotDamage;
         shooted = true;
+        //Vettore velocità totale(verso alto => X=0;Y=1)
         movementVector=DirectionVector*Speed;
     }
 

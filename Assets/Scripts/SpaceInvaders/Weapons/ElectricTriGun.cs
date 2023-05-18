@@ -25,8 +25,8 @@ public class ElectricTriGun : WeaponsClass
     [Header("Weapon Position on Player")]
     [SerializeField] private float rotazR = 15f;
     [SerializeField] private float rotazL = -15f;
-    [SerializeField] private Vector3 bigGunOffsetR = new Vector3(-0.166f, -0.2f);
-    [SerializeField] private Vector3 bigGunOffsetL = new Vector3(0.166f, -0.2f);
+    [SerializeField] private Vector3 electricGunOffsetR = new Vector3(-0.166f, -0.2f);
+    [SerializeField] private Vector3 electricGunOffsetL = new Vector3(0.166f, -0.2f);
     [SerializeField] private float electricShotXOffsetR = 0.7f;//offset y=0.155
     [SerializeField] private float electricShotXOffsetL = -0.7f;
     /*[SerializeField]*/ private float electricShotRotation/* = -90f*/;
@@ -36,8 +36,8 @@ public class ElectricTriGun : WeaponsClass
     public ElectricTriGun() : base()
     {
         Defence = Defence + 2;
-        gunOffsetR = bigGunOffsetR;
-        gunOffsetL = bigGunOffsetL;
+        gunOffsetR = electricGunOffsetR;
+        gunOffsetL = electricGunOffsetL;
         projXOffsetR = electricShotXOffsetR;
         projXOffsetL = electricShotXOffsetL;
         projRotation=electricShotRotation;

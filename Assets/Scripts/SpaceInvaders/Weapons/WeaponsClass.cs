@@ -46,6 +46,7 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
     private Vector3 fallingVector;
     protected WeaponProjectile myProjectile;
     protected SpriteRenderer gunSpriteRenderer;
+    //[Header("Weapon Position on Player")]
     protected Vector3 gunOffsetR;
     protected Vector3 gunOffsetL;
     protected float projXOffsetR;

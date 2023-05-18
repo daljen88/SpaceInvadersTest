@@ -7,9 +7,16 @@ public class Enemy_Spawner : MonoBehaviour
     public static Enemy_Spawner Instance;
     public Enemy enemyTemplate;
     public float spawnTime = 2;
-    public int maxEnemies = 3;
+
+    /*[SerializeField]*/ private int maxEnemies;
+    public int MaxEnemies
+    {
+        set =>maxEnemies=value;
+    }
     public List<Enemy> enemyList;
     public bool win = false;
+
+    
 
     //private List<Enemy> enemies;
 

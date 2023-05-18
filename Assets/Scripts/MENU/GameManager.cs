@@ -8,18 +8,37 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public int levelCount = 1;
+
+    [SerializeField] private int levelCount = 1;
+    public int LevelCount { get => levelCount; set => levelCount = value; }
     public int currentScore = 0;
     public int enemiesKilledInRun = 0;
-    [SerializeField] private int playerHp = 4;
+
+    [Header("PLAYER HP FORMULA = (int)[ basePlayerHp + baseHpIncrement + (levelCount / levelsPerHpIncrementRatio) ]")]
+    [SerializeField] private int playerHp;
     public int PlayerHp 
     { 
-        get { return playerHp; } 
+        get 
+        {
+            return LevelCount>1? playerHp:BasePlayerHp; 
+        } 
         set 
         { 
             playerHp = value>9?9:value;
         } 
     }
+    [SerializeField] private int basePlayerHp = 4;
+    public int BasePlayerHp => basePlayerHp;
+    [SerializeField] private int baseHpIncrement=1;
+    public int BaseHpIncrement=>baseHpIncrement;
+    [SerializeField] private int levelsPerHpIncrementRatio = 10;
+    public int LevelsPerHpIncrementRatio => levelsPerHpIncrementRatio;
+
+    public int GetStartingPlayerHP
+    {
+        get => (PlayerHp + BaseHpIncrement + (LevelCount / LevelsPerHpIncrementRatio));
+    }
+
     [SerializeField] private bool musicRadioCollected = false;
     public bool MusicRadioCollected { get => musicRadioCollected; set => musicRadioCollected = value; }
     private bool musicPlaying = false;
@@ -29,6 +48,25 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int numberOfAlarmsCollected=0;
     public int NumberOfAlarmsCollected { get => numberOfAlarmsCollected; set => numberOfAlarmsCollected=value; }
+
+    [Header("MAX ENEMIES FORMULA = (int)[ StartingMaxEnemies + LevelCount * (LevelCount / 10 + 1) - (10 * ( (LevelCount / 10) * (LevelCount / 10 + 1) ) / 2) ]")]
+    [SerializeField] private int startingMaxEnemies = 4;
+    public int StartingMaxEnemies => startingMaxEnemies;
+
+    //[SerializeField] private int maxEnemies;
+    public int MaxEnemies
+    {
+        //per ottenere il numero corretto di nemici, all'aumentare dei nemici per livello,
+        //sottrae la somma dei numeri naturali a cadenze di 10 => formula Gauss: [Sn] = n(n+1)/2  --> con n=LevelCount
+        //for (int i = 1; i<= 50; i++)
+        //{
+        //   Debug.Log($"Level {i} max enemies = {4 + i * (i / 10 + 1) - (10 * ( (i / 10) * (i / 10 + 1) ) / 2)}");
+        //}
+
+        get => StartingMaxEnemies + LevelCount * (LevelCount / 10 + 1) - (10 * ( (LevelCount / 10) * (LevelCount / 10 + 1) ) / 2);
+
+        //set => ;
+    }
 
     public WeaponsClass typeGunPossessed;
     public GameObject objectGunPossessed;

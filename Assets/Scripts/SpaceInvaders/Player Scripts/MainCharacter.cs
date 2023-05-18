@@ -5,6 +5,7 @@ using DG.Tweening;
 using System.ComponentModel.Design;
 using System.Diagnostics.Tracing;
 using Unity.VisualScripting;
+using System;
 
 public class MainCharacter : MonoBehaviour, IHittable
 {
@@ -39,7 +40,19 @@ public class MainCharacter : MonoBehaviour, IHittable
     private float coolDown=0;
     public float powerCoolDown = 16f;
     private float powerCoolDownCounter = 0;
-
+    public float deltaTimeScale;
+    public bool IsSlowingTime = false;
+    //public float UnscaleDeltaTime
+    //{
+    //    get => deltaTimeScale;
+    //    set => deltaTimeScale = Time.unscaledDeltaTime;
+    //}
+    //public float NormalDeltaTime
+    //{
+    //    get => deltaTimeScale;
+    //    set => deltaTimeScale = Time.deltaTime;
+    //}
+    //OUTATTIME
     private float maxPowerDurationCounter;
     [SerializeField] private float maxSlowingPowerDuration = 1.8f;
     public float MaxSlowingPowerDuration=>maxSlowingPowerDuration+.2f* GameManager.Instance.NumberOfAlarmsCollected>5?5: maxSlowingPowerDuration + .2f * GameManager.Instance.NumberOfAlarmsCollected;
@@ -49,7 +62,7 @@ public class MainCharacter : MonoBehaviour, IHittable
 
     private void Awake()
     {
-        
+        deltaTimeScale = Time.deltaTime;
     }
 
     void Start()
@@ -81,7 +94,7 @@ public class MainCharacter : MonoBehaviour, IHittable
             goingRight = false;
             animationName = "playerWalkAnimation";
             tsprite.flipX = !goingRight;
-            transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+            transform.position += Vector3.left * moveSpeed * deltaTimeScale;
 
             //transform.localScale = vectorScaleLeft;
             //tsprite.sprite = gooseleft[1];
@@ -91,7 +104,7 @@ public class MainCharacter : MonoBehaviour, IHittable
             goingRight = true;
             animationName = "playerWalkAnimation";
             tsprite.flipX = !goingRight;
-            transform.position += Vector3.right * moveSpeed * Time.deltaTime;
+            transform.position += Vector3.right * moveSpeed * deltaTimeScale;
 
             //transform.localScale = vectorScaleRight;
             //tsprite.sprite = gooseleft[0];
@@ -104,30 +117,81 @@ public class MainCharacter : MonoBehaviour, IHittable
         }
         Animator.Play(animationName);
 
-        //SLOWING POWER
-        if(GameManager.Instance.AlarmClockCollected /*&& powerCoolDownCounter <= 0*/)
+        if(Input.GetKeyDown(KeyCode.AltGr))
         {
-            if (Input.GetKey(KeyCode.B) && maxPowerDurationCounter >= 0)
+            ShootSecond();
+        }
+
+        //SLOWING POWER
+        if(IsSlowingTime)
+        {
+            deltaTimeScale = Time.unscaledDeltaTime;
+        }
+        else
+        {
+            deltaTimeScale = Time.deltaTime;
+        }
+        if(GameManager.Instance.AlarmClockCollected && !LevelManager.instance.IsPaused /*&& powerCoolDownCounter <= 0*/)
+        {
+            if (Input.GetKey(KeyCode.B) && maxPowerDurationCounter >= 0/*&& !LevelManager.instance.IsPaused*//*&&LevelManager.instance.state==LevelManager.LogicState.RUNNING*/)
             {
+                IsSlowingTime = true;
                 Time.timeScale = 0.1f;
+                //deltaTimeScale = Time.unscaledDeltaTime;
                 maxPowerDurationCounter -= Time.unscaledDeltaTime;
-                moveSpeed = slowingPowerSpeedBoost;
+                //moveSpeed = slowingPowerSpeedBoost;
                 if(maxPowerDurationCounter<0)
                 {
-                    moveSpeed = 6;
-                    Time.timeScale = 1f;
-                    return;
+                    //if (!LevelManager.instance.IsPaused)
+                    //{
+                        //moveSpeed = 6;
+                        IsSlowingTime = false;
+                        //deltaTimeScale = Time.deltaTime;
+                        Time.timeScale = 1f;
+                        return;
+                    //}
+                    //return;
                 }              
             }
-            else if(maxPowerDurationCounter < MaxSlowingPowerDuration)
+            else/* if(!LevelManager.instance.IsPaused)*/
             {
-                maxPowerDurationCounter += (Time.unscaledDeltaTime / EveryThisSecondsPowerReloadsOneSecond);
+                IsSlowingTime = false;
+                //deltaTimeScale = Time.deltaTime;
+                Time.timeScale = 1f;
+                if (maxPowerDurationCounter <= MaxSlowingPowerDuration)
+                {
+                    maxPowerDurationCounter += (Time.unscaledDeltaTime /*Time.deltaTime*/ / EveryThisSecondsPowerReloadsOneSecond);
+                }
             }
+            //else if (!LevelManager.instance.IsPaused)
+            //{
+            //    IsSlowingTime = false;
+
+            //}
             if (Input.GetKeyUp(KeyCode.B))
             {
-                moveSpeed = 6;
-                Time.timeScale = 1f;
+                if (!LevelManager.instance.IsPaused && IsSlowingTime)
+                {
+                    //moveSpeed = 6;
+                    IsSlowingTime = false;
+
+                    //deltaTimeScale = Time.deltaTime;
+                    Time.timeScale = 1f;
+                    //return;
+                }
             }
+        }
+        else
+        {
+            IsSlowingTime = false;
+        }
+    }
+
+    private void ShootSecond()
+    {
+       if(activeGunPrefab.GetComponent<EyeOrbsCannon>()!=null)
+        {
+            activeGunPrefab.GetComponent<EyeOrbsCannon>().SecondShootProjectile();
         }
     }
 
@@ -203,7 +267,7 @@ public class MainCharacter : MonoBehaviour, IHittable
                     activeGunPrefab = Instantiate(startingGunPrefab, transform.position, Quaternion.identity);
                     gunPossesed = activeGunPrefab.GetComponent<StandardGun>();
                     gunPossesed.IsCollected = true;
-                    GameManager.Instance.SetGameManagerGunPossessed(null);
+                    GameManager.Instance.SetGameManagerGunPossessed(startingGunPrefab);
                 }
                 else
                 {

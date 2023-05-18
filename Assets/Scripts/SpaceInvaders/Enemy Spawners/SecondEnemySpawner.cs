@@ -113,7 +113,7 @@ public class SecondEnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        if(/*UIManager.instance.scorePoints!=0&&*/UIManager.instance.totalEnemiesKilled>4/*&& UIManager.instance.scorePoints % 42==0*/)
+        if(/*UIManager.instance.scorePoints!=0&&*/UIManager.instance.totalEnemiesKilled>5/*&& UIManager.instance.scorePoints % 42==0*/)
         {
             if (UIManager.instance.scorePoints % 24 == 0 || UIManager.instance.scorePoints % 30 == 0 || UIManager.instance.scorePoints % 36 == 0)
                 if (Random.Range(0, 11) < 7)
@@ -122,14 +122,14 @@ public class SecondEnemySpawner : MonoBehaviour
                         SpawnOneEnemy("bonusEnemy");
                 }
         }
-        if (UIManager.instance.totalEnemiesKilled != 0 && UIManager.instance.totalEnemiesKilled % 6 == 0)
+        if (UIManager.instance.totalEnemiesKilled != 0 && UIManager.instance.totalEnemiesKilled % 7 == 0)
         {
-            if (UIManager.instance.totalEnemiesKilled<7)
+            if (UIManager.instance.totalEnemiesKilled<8)
             {
                 if (Enemy_Spawner.Instance.CheckPlayerVictory()==false)
                     SpawnOneEnemy("bringerEnemy");
             }
-            else if(Random.Range(0,11)<8+MathF.Pow( MathF.Log10(GameManager.Instance.levelCount),2))
+            else if(Random.Range(0,11)<8+MathF.Pow( MathF.Log10(GameManager.Instance.LevelCount),2))
             {
                 if (Enemy_Spawner.Instance.CheckPlayerVictory() == false)
                     SpawnOneEnemy("bringerEnemy");

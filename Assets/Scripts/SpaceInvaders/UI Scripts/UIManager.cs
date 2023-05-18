@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
-using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UIElements;
 
 public class UIManager : MonoBehaviour
@@ -23,6 +22,7 @@ public class UIManager : MonoBehaviour
     public int bringerEnemyKilled;
     public GameObject playerUI;
     public GameObject pauseGO;
+    public bool SetPause => LevelManager.instance.TogglePause();
     Tweener twScale;
 
     public float hpOffset=1.1f;
@@ -49,7 +49,7 @@ public class UIManager : MonoBehaviour
     }
     public void InitUI()
     {
-        levelText.text = $"LEVEL {GameManager.Instance.levelCount.ToString()}";
+        levelText.text = $"LEVEL {GameManager.Instance.LevelCount.ToString()}";
         //scorePoints = 0;
         //instanzia oggetto, in posizione, rotazione e parent oggetto spawnato
         for (int i =0; i< character.Hp; i++)
@@ -62,7 +62,7 @@ public class UIManager : MonoBehaviour
     }
     public void SetUI()
     {
-        levelText.text = $"LEVEL {GameManager.Instance.levelCount.ToString()}";
+        levelText.text = $"LEVEL {GameManager.Instance.LevelCount.ToString()}";
         if (hpSpritesList.Count < character.Hp)
         {
             int hpRemained = hpSpritesList.Count;
@@ -137,9 +137,9 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape)&&!PlayerTextLogic.instance.routineIsRunning)
         {
-            if(LevelManager.instance.TogglePause())
+            if(SetPause)
             {
                 pauseGO.SetActive(true);
 

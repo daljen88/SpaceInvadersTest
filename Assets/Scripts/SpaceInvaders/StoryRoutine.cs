@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class StoryRoutine : MonoBehaviour
@@ -34,7 +35,7 @@ public class StoryRoutine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.KeypadEnter)||Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.KeypadEnter)||Input.GetKeyDown(KeyCode.J)&&!LevelManager.instance.IsPaused)
         {
             StopCoroutine("WriteByLetterCoroutine");
             LevelManager.instance.storyOver = true;

@@ -19,30 +19,36 @@ public class EyeOrbsCannon : WeaponsClass
     public override float Defence { get { return defence; } set { defence = value; } }
     //public override float Defence => defence+1;
 
-    public override Vector3 ProjDirectionVector => projDirectionVector * 1/*speedMultiplyer*/;
+    public override Vector3 ProjDirectionVector => projDirectionVector/*speedMultiplyer*/;
 
     public override float GunRotation => tPlayer.goingRight ? rotazR : rotazL;
 
     [Header("Weapon Position on Player")]
     [SerializeField] private float rotazR = 15f;
     [SerializeField] private float rotazL = -15f;
-    [SerializeField] private Vector3 bigGunOffsetR = new Vector3(-0.166f, -0.2f);
-    [SerializeField] private Vector3 bigGunOffsetL = new Vector3(0.166f, -0.2f);
-    [SerializeField] private float electricShotXOffsetR = 0.7f;//offset y=0.155
-    [SerializeField] private float electricShotXOffsetL = -0.7f;
+    [SerializeField] private Vector3 eyeOrbCannonOffsetR = new Vector3(-0.166f, -0.2f);
+    [SerializeField] private Vector3 eyeOrbCannonOffsetL = new Vector3(0.166f, -0.2f);
+    [Header("Shot Firing Offset")]
+    [SerializeField] private float eyeOrbShotXOffsetR = 0.7f;//offset y=0.155
+    [SerializeField] private float eyeOrbShotXOffsetL = -0.7f;
     /*[SerializeField]*/
-    private float electricShotRotation/* = -90f*/;
+    private float eyeOrbShotRotation/* = -90f*/;
+
+    public GameObject blackHoleSwoshTemplate;
+    protected BlackHole myBlackHole;
+
 
     //private SpriteRenderer gunSpriteRenderer;
 
     public EyeOrbsCannon() : base()
     {
         Defence = Defence + 2;
-        gunOffsetR = bigGunOffsetR;
-        gunOffsetL = bigGunOffsetL;
-        projXOffsetR = electricShotXOffsetR;
-        projXOffsetL = electricShotXOffsetL;
-        projRotation = electricShotRotation;
+        gunOffsetR = eyeOrbCannonOffsetR;
+        gunOffsetL = eyeOrbCannonOffsetL;
+        projXOffsetR = eyeOrbShotXOffsetR;
+        projXOffsetL = eyeOrbShotXOffsetL;
+        projRotation = eyeOrbShotRotation;
+        projDirectionVector = ProjDirectionVector * 1;
         //GunRotation = bigGunRotation;
         //myProjectile = gunShotTemplate.GetComponent<WeaponProjectile>();
     }
@@ -65,7 +71,7 @@ public class EyeOrbsCannon : WeaponsClass
     {
         if (coolDown <= 0)
         {
-            for (int i = -1; i < 2; i++)
+            for (int i = 1; i < 4; i++)
             {
                 ProjectileInstatiation(i);
             }
@@ -78,11 +84,28 @@ public class EyeOrbsCannon : WeaponsClass
     }
     public void ProjectileInstatiation(int _xCoordinate)
     {
-        projDirectionVector.x = _xCoordinate;
-        electricShotRotation = -90 - (45 * projDirectionVector.x);
-        GameObject tempProjectile = Instantiate(gunShotTemplate, new Vector3(tPlayer.goingRight ? transform.position.x + electricShotXOffsetR : transform.position.x + electricShotXOffsetL, transform.position.y), Quaternion.Euler(0, 0, electricShotRotation));
+        projDirectionVector.x = tPlayer.goingRight ? Mathf.Cos(Mathf.Deg2Rad * (75 - 15 * _xCoordinate)) : -Mathf.Cos(Mathf.Deg2Rad * (75 - 15 * _xCoordinate));
+        projDirectionVector.y = Mathf.Sin(Mathf.Deg2Rad * (75 - 15 * _xCoordinate));
+        eyeOrbShotRotation = tPlayer.goingRight ? 75 - (15 * _xCoordinate):(105+ (15 * _xCoordinate));
+        GameObject tempProjectile = Instantiate(gunShotTemplate, new Vector3(tPlayer.goingRight ? transform.position.x + eyeOrbShotXOffsetR : transform.position.x + eyeOrbShotXOffsetL, transform.position.y), Quaternion.Euler(0, 0, eyeOrbShotRotation));
         myProjectile = tempProjectile.GetComponent<WeaponProjectile>();
         myProjectile.Shoot(ProjDirectionVector, DamageMultiplyer);
+    }
+
+    public void SecondShootProjectile()
+    {
+        if (coolDown <= 0)
+        {
+            GameObject tempBlackHole = Instantiate(blackHoleSwoshTemplate, new Vector3(tPlayer.goingRight ? transform.position.x + eyeOrbShotXOffsetR : transform.position.x + eyeOrbShotXOffsetL, transform.position.y), Quaternion.Euler(0, 0, 0));
+            myBlackHole = tempBlackHole.GetComponent<BlackHole>();
+            myBlackHole.Shoot(Vector3.up, DamageMultiplyer);
+            coolDown = FireRate;
+        }
+        else
+        {
+            return;
+        }
+
     }
 
 }

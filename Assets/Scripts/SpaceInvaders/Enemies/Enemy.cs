@@ -171,19 +171,19 @@ public class Enemy : MonoBehaviour, IHittable
             //controllo particella da codice
             ps.Emit(60);
             Destroy(ps.gameObject, .5f);
-            if (UIManager.instance.totalEnemiesKilled%3==0&&UIManager.instance.totalEnemiesKilled!=0&&Random.Range(0,11)<8 /*&&GameManager.Instance.typeGunPossessed.name!="BigGun"*/)
+            if (UIManager.instance.totalEnemiesKilled%4==0&&UIManager.instance.totalEnemiesKilled!=0&&Random.Range(0,11)<7 /*&&GameManager.Instance.typeGunPossessed.name!="BigGun"*/)
             {
                 GameObject bigGunz = Instantiate(guns[0], transform.position, Quaternion.identity);
                 WeaponsClass bigGunDropping = bigGunz.GetComponent<BigGun>();
                 bigGunDropping.Drop(Vector3.down);
             }
-            else if(UIManager.instance.totalEnemiesKilled % 7 == 0 && UIManager.instance.totalEnemiesKilled != 0 && Random.Range(0, 11) < 7)
+            else if(UIManager.instance.totalEnemiesKilled % 16 == 0 && UIManager.instance.totalEnemiesKilled !=0 && Random.Range(0, 11) < 7)
             {
                 GameObject electricGun = Instantiate(guns[1], transform.position, Quaternion.identity);
                 WeaponsClass electricGunDropping = electricGun.GetComponent<ElectricTriGun>();
                 electricGunDropping.Drop(Vector3.down);
             }
-            else if (UIManager.instance.totalEnemiesKilled % 1 == 0 && UIManager.instance.totalEnemiesKilled != 0 && Random.Range(0, 11) < 11)
+            else if (UIManager.instance.totalEnemiesKilled % 9999 == 0 && UIManager.instance.totalEnemiesKilled != 0 && Random.Range(0, 11) < 11)
             {
                 GameObject eyeCannon = Instantiate(guns[2], transform.position, Quaternion.identity);
                 WeaponsClass eyeCannonDrop = eyeCannon.GetComponent<EyeOrbsCannon>();

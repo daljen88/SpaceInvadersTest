@@ -19,11 +19,20 @@ public class LevelManager : MonoBehaviour
     public enum LogicState { STORY, START, INTRO, RUNNING, OUTRO, DEAD, END }
     public LogicState state = LogicState.START;
     public int playerScore;
-    public bool isPaused = false;
+    private bool isPaused = false;
+    public bool IsPaused=>isPaused;
     public List<AudioClip> menuAudioClips;
-    private int GetStartingPlayerHp 
+    private int GetNewLevelPlayerHp 
     {
-        get=> GameManager.Instance.PlayerHp + 1 + GameManager.Instance.levelCount / 3;
+        get=> GameManager.Instance.GetStartingPlayerHP;
+    }
+    private int SetNewLevelPlayerHp
+    {
+        get=> GetNewLevelPlayerHp > 9 ? 9 : GetNewLevelPlayerHp;
+    }
+    private int SetMaxEnemies
+    {
+        get => GameManager.Instance.MaxEnemies;
     }
     private string[] fightText = new string[] { "GOOSPEED YOU!", "DUCK!!!", "EYES UP, OLD DUCK", "KEEP YOUR EYES ON THE ENEMY!", "WATCH YOUR NECK!", "ACTION IS GO!", "TIME TO GO HONKERS!" };
     private string[] victoryText = new string[] { "HONK HONK HONK!", "YOU GOT THOSE EYES SHUT!", "NICE JOB, OLD GEEZER", "GG GOOSE", "RADUCKAL", "IMPRESSIVE" };
@@ -117,7 +126,7 @@ public class LevelManager : MonoBehaviour
         //ATTIVA PLAYER E SETTA VALORI HP
         character.gameObject.SetActive(true);
         //playerHp = GameManager.Instance.PlayerHp + 1 + GameManager.Instance.levelCount / 3;
-        character.Hp = GetStartingPlayerHp > 9 ? 9 : GetStartingPlayerHp;
+        character.Hp = SetNewLevelPlayerHp;
 
         #region assegna gun e script al player
         //ASSEGNA GAME OBJECT E SCRIPT ARMA PRESI DAL GAMAE MANAGER
@@ -132,13 +141,13 @@ public class LevelManager : MonoBehaviour
         uiManager.scorePoints = GameManager.Instance.currentScore;
         uiManager.totalEnemiesKilled = GameManager.Instance.enemiesKilledInRun;
         uiManager.Show(true);
-        if (GameManager.Instance.levelCount == 1)
+        if (GameManager.Instance.LevelCount == 1)
             uiManager.InitUI();
         else
             uiManager.SetUI();
         //SETTA VALORI SPAWNER
         spawner.win = false;
-        spawner.maxEnemies = 3 + GameManager.Instance.levelCount;
+        spawner.MaxEnemies = SetMaxEnemies;
         SecondEnemySpawner.Instance.maxBonusEnemies = 4;
         SecondEnemySpawner.Instance.maxBringerEnemies = 4;
         //SPOSTA PLAYER IN GIOCO
@@ -162,7 +171,7 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(.5f);
 
         //compare scritta Fight
-        if (GameManager.Instance.levelCount < 10)
+        if (GameManager.Instance.LevelCount < 10)
             introText.text = fightText[Random.Range(0, fightText.Count()-2)];
         else
             introText.text = fightText[Random.Range(0, fightText.Count()-1)];
@@ -199,7 +208,7 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         //TEXT VITTORIA
-        if (GameManager.Instance.levelCount < 10)
+        if (GameManager.Instance.LevelCount < 10)
             introText.text = victoryText[Random.Range(0, victoryText.Count()-2)];
         else
             introText.text = victoryText[Random.Range(0, victoryText.Count()-1)];
@@ -225,7 +234,7 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(2.2f);
 
         //AUMENTA VARIABILI NUOVO LIVELLO DEL GAME MANAGER
-        GameManager.Instance.levelCount++;
+        GameManager.Instance.LevelCount++;
         GameManager.Instance.currentScore = uiManager.scorePoints;
         GameManager.Instance.PlayerHp = character.Hp;
         GameManager.Instance.enemiesKilledInRun = uiManager.totalEnemiesKilled;
@@ -289,21 +298,32 @@ public class LevelManager : MonoBehaviour
     {
         if (!isPaused)
         {
-            Time.timeScale = 0;
             isPaused = true;
+            character.IsSlowingTime = false;
+            character.enabled = false;
+            Time.timeScale = 0;
         }
         else
         {
-            Time.timeScale = 1;
             isPaused = false;
+            character.enabled = true;
+            //character.deltaTimeScale = Time.deltaTime;
+
+            Time.timeScale = 1;
         }
         return isPaused;
     }
 
     public void Unpause()
     {
-        Time.timeScale = 1;
+        //USATA NEL BACK TO GAME BUTTON
         isPaused = false;
+        //character.IsSlowingTime = false;
+
+        Time.timeScale = 1;
+        character.enabled = true;
+        //character.deltaTimeScale = Time.deltaTime;
+
         UIManager.instance.pauseGO.SetActive(false);
     }
 

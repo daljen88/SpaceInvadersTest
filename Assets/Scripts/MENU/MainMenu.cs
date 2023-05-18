@@ -31,7 +31,7 @@ public class MainMenu : MonoBehaviour
     {
         Time.timeScale= 1.0f;
         SceneManager.LoadScene("SpaceInvaders_GameScene");
-        GameManager.Instance.levelCount = 1;
+        GameManager.Instance.LevelCount = 1;
         //if (FindObjectOfType<MainCharacter>() == null) 
         //{
             

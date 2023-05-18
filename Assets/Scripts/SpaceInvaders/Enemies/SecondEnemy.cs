@@ -19,7 +19,7 @@ public class SecondEnemy : MonoBehaviour, IHittable
 
     void Start()
     {
-        enemySpeed = 4 + Mathf.Pow(Mathf.Log10(GameManager.Instance.levelCount + 10), 2);
+        enemySpeed = 4 + Mathf.Pow(Mathf.Log10(GameManager.Instance.LevelCount + 10), 2);
         Invoke("DestroyEnemy",10f);
     }
 
@@ -47,11 +47,17 @@ public class SecondEnemy : MonoBehaviour, IHittable
             //controllo particella da codice
             ps.Emit(30);
             Destroy(ps.gameObject, .5f);
-            if (UIManager.instance.totalEnemiesKilled > 5 && Random.Range(0, 11) < 10)
+            if (UIManager.instance.totalEnemiesKilled > 5 && Random.Range(0, 11) < 8)
             {
                 GameObject electricGun = Instantiate(guns[0], transform.position, Quaternion.identity);
                 WeaponsClass electricGunDropping = electricGun.GetComponent<ElectricTriGun>();
                 electricGunDropping.Drop(Vector3.down);
+            }
+            else
+            {
+                GameObject bigGun = Instantiate(guns[1], transform.position, Quaternion.identity);
+                WeaponsClass bigGunDropping = bigGun.GetComponent<BigGun>();
+                bigGunDropping.Drop(Vector3.down);
             }
             //Distrugge enemy
             DestroyEnemy();

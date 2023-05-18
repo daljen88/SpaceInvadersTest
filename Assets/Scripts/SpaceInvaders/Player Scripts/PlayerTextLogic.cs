@@ -7,6 +7,7 @@ using UnityEngine.Events;
 
 public class PlayerTextLogic : MonoBehaviour
 {
+    public static PlayerTextLogic instance;
     public string[] foundNewGunPhrases = { "GEEZ, that's a GUN!" };
     public string[] foundRadio = { "Now THAT will tune this UP! " };
     public string[] secondLevelOpening = { "WAIT! Don't you also feel something is missing?" };
@@ -22,8 +23,15 @@ public class PlayerTextLogic : MonoBehaviour
     private bool openingDone=false;
     private bool firstAlarm=false;
     private Vector3 startingPos;
+    private bool NormalEnemiesKilledCondition => UIManager.instance.normalEnemyKilled == 6;
+    public bool routineIsRunning = false;
+
     //public UnityEvent foundGun;
 
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +48,7 @@ public class PlayerTextLogic : MonoBehaviour
         else
             TextWindow.transform.localPosition = new Vector3(3.5f, TextWindow.transform.localPosition.y);
 
-        if (!openingDone&&GameManager.Instance.levelCount==2&&LevelManager.instance.state==LevelManager.LogicState.RUNNING&&UIManager.instance.normalEnemyKilled==5)
+        if (!openingDone&&GameManager.Instance.LevelCount==2&&LevelManager.instance.state==LevelManager.LogicState.RUNNING&& NormalEnemiesKilledCondition)
         {
             openingDone = true;
             SecondLevelOpening();
@@ -82,6 +90,7 @@ public class PlayerTextLogic : MonoBehaviour
 
     IEnumerator FoundFirstCoroutine(char[] charsToStamp)
     {
+        routineIsRunning = true;
         Time.timeScale = .7f;
         yield return new WaitForSecondsRealtime(.2f);
         Time.timeScale = .4f;
@@ -107,5 +116,7 @@ public class PlayerTextLogic : MonoBehaviour
         TextWindow.SetActive(false);
         //LevelManager.instance.storyOver = true;
         playerText.text = "";
+        routineIsRunning = false;
+
     }
 }

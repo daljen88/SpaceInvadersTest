@@ -137,19 +137,25 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape)&&!PlayerTextLogic.instance.routineIsRunning)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(SetPause)
+            if (SetPause)
             {
                 pauseGO.SetActive(true);
+                //if(PlayerTextLogic.instance.routinePaused)
+                //{
+                //}
 
             }
             else
             {
                 pauseGO.SetActive(false);
+                //if (PlayerTextLogic.instance. != null)
+                //{
+
+                //}
             }
         }
-
     }
 
     //public void AddScore(int score)

@@ -247,6 +247,7 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator DeathCoroutine()
     {
+        Time.timeScale = 1f;
         //disattiva spawner
         spawner.enabled = false;
         //TEXT SCONFITTA
@@ -305,6 +306,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
+
             isPaused = false;
             character.enabled = true;
             //character.deltaTimeScale = Time.deltaTime;
@@ -316,15 +318,16 @@ public class LevelManager : MonoBehaviour
 
     public void Unpause()
     {
-        //USATA NEL BACK TO GAME BUTTON
-        isPaused = false;
-        //character.IsSlowingTime = false;
-
-        Time.timeScale = 1;
-        character.enabled = true;
-        //character.deltaTimeScale = Time.deltaTime;
-
+        ////USATA NEL BACK TO GAME BUTTON
         UIManager.instance.pauseGO.SetActive(false);
+        TogglePause();
+        //isPaused = false;
+        ////character.IsSlowingTime = false;
+
+        //Time.timeScale = 1;
+        //character.enabled = true;
+        ////character.deltaTimeScale = Time.deltaTime;
+
     }
 
     public void BackToMain()
@@ -337,4 +340,5 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.ResetRun();       
         UnityEngine.SceneManagement.SceneManager.LoadScene("MAIN_MENU");
     }
+
 }

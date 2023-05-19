@@ -131,7 +131,7 @@ public class MainCharacter : MonoBehaviour, IHittable
         {
             deltaTimeScale = Time.deltaTime;
         }
-        if(GameManager.Instance.AlarmClockCollected && !LevelManager.instance.IsPaused /*&& powerCoolDownCounter <= 0*/)
+        if(GameManager.Instance.AlarmClockCollected && !LevelManager.instance.IsPaused&&!PlayerTextLogic.instance.routineIsRunning /*&& powerCoolDownCounter <= 0*/)
         {
             if (Input.GetKey(KeyCode.B) && maxPowerDurationCounter >= 0/*&& !LevelManager.instance.IsPaused*//*&&LevelManager.instance.state==LevelManager.LogicState.RUNNING*/)
             {
@@ -142,15 +142,10 @@ public class MainCharacter : MonoBehaviour, IHittable
                 //moveSpeed = slowingPowerSpeedBoost;
                 if(maxPowerDurationCounter<0)
                 {
-                    //if (!LevelManager.instance.IsPaused)
-                    //{
-                        //moveSpeed = 6;
                         IsSlowingTime = false;
                         //deltaTimeScale = Time.deltaTime;
                         Time.timeScale = 1f;
                         return;
-                    //}
-                    //return;
                 }              
             }
             else/* if(!LevelManager.instance.IsPaused)*/
@@ -160,24 +155,18 @@ public class MainCharacter : MonoBehaviour, IHittable
                 Time.timeScale = 1f;
                 if (maxPowerDurationCounter <= MaxSlowingPowerDuration)
                 {
-                    maxPowerDurationCounter += (Time.unscaledDeltaTime /*Time.deltaTime*/ / EveryThisSecondsPowerReloadsOneSecond);
+                    //unscaledDeltaTie perchè quando c'è intermezzo playerText si carica comunque a velocità normale
+                    //in pausa non si ricarica perchè c'è già condizione IsPaused==false
+                    maxPowerDurationCounter += (Time.unscaledDeltaTime / EveryThisSecondsPowerReloadsOneSecond);
                 }
             }
-            //else if (!LevelManager.instance.IsPaused)
-            //{
-            //    IsSlowingTime = false;
-
-            //}
             if (Input.GetKeyUp(KeyCode.B))
             {
                 if (!LevelManager.instance.IsPaused && IsSlowingTime)
                 {
-                    //moveSpeed = 6;
                     IsSlowingTime = false;
-
                     //deltaTimeScale = Time.deltaTime;
                     Time.timeScale = 1f;
-                    //return;
                 }
             }
         }

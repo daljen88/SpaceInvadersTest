@@ -25,6 +25,8 @@ public class PlayerTextLogic : MonoBehaviour
     private Vector3 startingPos;
     private bool NormalEnemiesKilledCondition => UIManager.instance.normalEnemyKilled == 6;
     public bool routineIsRunning = false;
+    //public Coroutine runningRoutine;
+    public bool routinePaused;
 
     //public UnityEvent foundGun;
 
@@ -43,7 +45,23 @@ public class PlayerTextLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.x>1f)
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    if (UIManager.instance.SetPause)
+        //    {
+        //        StopCoroutine(FoundFirstCoroutine(textStringToChar));
+        //        UIManager.instance.pauseGO.SetActive(true);
+
+        //    }
+        //    else
+        //    {
+        //        StartCoroutine(FoundFirstCoroutine(textStringToChar));
+
+        //        UIManager.instance.pauseGO.SetActive(false);
+        //    }
+        //}
+
+        if (transform.position.x>1f)
             TextWindow.transform.localPosition=new Vector3(-3.7f,TextWindow.transform.localPosition.y);
         else
             TextWindow.transform.localPosition = new Vector3(3.5f, TextWindow.transform.localPosition.y);
@@ -88,35 +106,41 @@ public class PlayerTextLogic : MonoBehaviour
         else { return; }
     }
 
-    IEnumerator FoundFirstCoroutine(char[] charsToStamp)
+    public IEnumerator FoundFirstCoroutine(char[] charsToStamp)
     {
         routineIsRunning = true;
-        Time.timeScale = .7f;
-        yield return new WaitForSecondsRealtime(.2f);
-        Time.timeScale = .4f;
-        yield return new WaitForSecondsRealtime(.2f);
-        Time.timeScale = .2f;
-        yield return new WaitForSecondsRealtime(.1f);
-        TextWindow.SetActive(true);
-        Time.timeScale = .05f;
 
-        foreach (char c in charsToStamp)
+        while (routineIsRunning)
         {
-            /*GetComponent<TextMeshPro>()*/playerText.text += c;
+                Time.timeScale = .7f;
+                yield return new WaitForSecondsRealtime(.2f);
+                Time.timeScale = .4f;
+                yield return new WaitForSecondsRealtime(.2f);
+                Time.timeScale = .2f;
+                yield return new WaitForSecondsRealtime(.1f);
+                TextWindow.SetActive(true);
+                Time.timeScale = .05f;
 
-            yield return new WaitForSecondsRealtime(.04f);
-            TextWindow.GetComponent<AudioSource>().clip = keyHitSounds[Random.Range(0, 2)];
-            TextWindow.GetComponent<AudioSource>().Play();
+                foreach (char c in charsToStamp)
+                {
+                    /*GetComponent<TextMeshPro>()*/
+                    playerText.text += c;
 
+                    yield return new WaitForSecondsRealtime(.04f);
+                    TextWindow.GetComponent<AudioSource>().clip = keyHitSounds[Random.Range(0, 2)];
+                    TextWindow.GetComponent<AudioSource>().Play();
+
+                }
+                yield return new WaitForSecondsRealtime(.5f);
+                Time.timeScale = .5f;
+                yield return new WaitForSecondsRealtime(.3f);
+                Time.timeScale = 1;
+                TextWindow.SetActive(false);
+                //LevelManager.instance.storyOver = true;
+                playerText.text = "";
+                routineIsRunning = false;
         }
-        yield return new WaitForSecondsRealtime(.5f);
-        Time.timeScale = .5f;
-        yield return new WaitForSecondsRealtime(.3f);
-        Time.timeScale = 1;
-        TextWindow.SetActive(false);
-        //LevelManager.instance.storyOver = true;
-        playerText.text = "";
-        routineIsRunning = false;
 
     }
+    
 }

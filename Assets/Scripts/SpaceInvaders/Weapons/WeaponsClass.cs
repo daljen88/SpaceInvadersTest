@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public abstract class WeaponsClass : MonoBehaviour, IDroppable
 {
@@ -57,6 +58,14 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
     public Color hitFxColor;
     public float hitFxDuration=.3f;
     private bool routine = false;
+    private bool vanishRoutine = false;
+    protected Tweener twScale;
+    protected Tweener twColor;
+    protected Coroutine runningRoutine;
+    protected WeaponsClass oldWeapon;
+
+    public virtual bool PlayerIsTriggerCollider => tPlayer != null;
+    public abstract bool IsOlderGunWeakerCondition { get; }
 
     public static UnityEvent dropEvent;
 
@@ -121,6 +130,11 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
             transform.rotation = Quaternion.Euler(0, 0, GunRotation);
 
         }
+        if(dropTimer<=DropLifeTime/5&&!isCollected&& vanishRoutine == false)
+        {
+            vanishRoutine = true;
+            VanishWarn();
+        }
         if (dropTimer <= 0 && !isCollected)
             Destroy(gameObject);
     }
@@ -129,13 +143,30 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
     {
         //METTO TUTTO IN UNA FUZNIONA DA DARE A WEAPONSCLASS
         tPlayer = entering.GetComponent<MainCharacter>();
-        WeaponsClass oldWeapon = tPlayer.gameObject.GetComponentInChildren<WeaponsClass>();
-        if (tPlayer != null)
+        /*WeaponsClass*/ oldWeapon = tPlayer.gameObject.GetComponentInChildren<WeaponsClass>();
+        if (PlayerIsTriggerCollider&& IsOlderGunWeakerCondition)
         {
             if (oldWeapon != null)
             { Destroy(oldWeapon.gameObject); }
             dropTimer = -1;
             IsCollected = true;
+            if (runningRoutine != null)
+            { StopCoroutine(runningRoutine); }
+            if (twScale != null && twScale.IsActive())
+            {
+                twScale.Kill(false);
+                //risistema a dim originale se tween spento a metà
+                gameObject.transform.DOScale(Vector3.one, DropLifeTime / 60);
+                //transform.localScale = Vector3.one; //new vector3 (1,1,1);
+            }
+
+            if(twColor!=null && twColor.IsActive())
+            {
+                twColor.Kill(false);
+                gameObject.GetComponentInChildren<SpriteRenderer>().DOColor(Color.white,0f);
+
+            }
+
             tPlayer.activeGunPrefab = gameObject;
             tPlayer.gunPossesed = gameObject.GetComponent<WeaponsClass>();
             GameManager.Instance.SetGameManagerGunPossessed(gameObject);
@@ -151,7 +182,7 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
     //}
     public virtual void Drop(Vector3 direction)
     {
-        FindObjectOfType<PlayerTextLogic>().FoundNewGun();
+        FindObjectOfType<PlayerTextLogic>()?.FoundNewGun();
         //tPlayer.gameObject.GetComponentInChildren<PlayerTextLogic>().FoundNewGun();
         //dropEvent.Invoke();
         IsDropped = true;
@@ -179,6 +210,11 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
         }
     }
 
+    public void VanishWarn()
+    {
+        runningRoutine=StartCoroutine(VanishWarningCoroutine());
+    }
+
     public void WeaponDefenceGFX()
     {
         //    GetComponent<MeshRenderer>().material = myHitTakenMaterial;
@@ -195,6 +231,28 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
         tsprite.DOColor(Color.white, hitFxDuration / 3);
         yield return new WaitForSeconds(hitFxDuration/ 3);
         routine = false;
+    }
+    public IEnumerator VanishWarningCoroutine()
+    {
+        while (!IsCollected)
+        {
+            SpriteRenderer tsprite = GetComponentInChildren<SpriteRenderer>();
+            twColor=tsprite.DOColor(hitFxColor, DropLifeTime / 30);
+            yield return new WaitForSeconds(DropLifeTime / 30);
+            tsprite.DOColor(Color.white, DropLifeTime / 30);
+            yield return new WaitForSeconds(DropLifeTime / 30);
+            twColor=tsprite.DOColor(hitFxColor, DropLifeTime / 30);
+            yield return new WaitForSeconds(DropLifeTime / 30);
+            tsprite.DOColor(Color.white, DropLifeTime / 30);
+            yield return new WaitForSeconds(DropLifeTime / 30);
+            twScale= gameObject.transform.DOScale(Vector3.zero, DropLifeTime / 15);
+            yield return new WaitForSeconds(DropLifeTime / 15);
+            vanishRoutine = false;
+        }
+    }
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
     }
     //public void SetNormalMaterial()
     //{

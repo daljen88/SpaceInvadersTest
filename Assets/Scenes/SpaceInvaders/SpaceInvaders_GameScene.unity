@@ -1529,6 +1529,8 @@ MonoBehaviour:
   goingRight: 1
   baseFireRate: 0.2
   powerCoolDown: 16
+  deltaTimeScale: 0
+  IsSlowingTime: 0
   maxSlowingPowerDuration: 1.8
   everyThisSecondsPowerReloadsOneSecond: 8.2
   slowingPowerSpeedBoost: 50
@@ -1579,8 +1581,8 @@ MonoBehaviour:
   - Loaed up!
   foundRadio:
   - 'Now THAT will tune this UP! '
-  secondLevelOpening:
-  - 'WAIT! Don''t you also feel something is missing? '
+  thirdLevelOpening:
+  - WAIT! Don't you also feel something is missing?
   foundAlarmClock:
   - Mmm, an Alarm Clock. What if I strike this B..
   playerText: {fileID: 423115265}
@@ -1588,6 +1590,8 @@ MonoBehaviour:
   keyHitSounds:
   - {fileID: 8300000, guid: 202301104331b6b43a5ea0bf401d79e3, type: 3}
   - {fileID: 8300000, guid: cfc7d7fefa15b6d4fa65bec3105c080f, type: 3}
+  routineIsRunning: 0
+  routinePaused: 0
 --- !u!1 &770226753
 GameObject:
   m_ObjectHideFlags: 0
@@ -2059,7 +2063,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1216094433
 GameObject:
@@ -2827,8 +2831,8 @@ Transform:
   m_LocalScale: {x: 3.002737, y: 3.002737, z: 3.002737}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2075333117}
-  m_RootOrder: 5
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1357345652
 SpriteRenderer:
@@ -4588,7 +4592,6 @@ Transform:
   - {fileID: 1643768943}
   - {fileID: 264123604}
   - {fileID: 993965581}
-  - {fileID: 1357345651}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

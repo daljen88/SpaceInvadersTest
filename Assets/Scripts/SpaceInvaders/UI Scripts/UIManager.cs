@@ -111,10 +111,10 @@ public class UIManager : MonoBehaviour
         totalEnemiesKilled++;
         switch (enemy)
         {
-            case "enemy":
+            case "normalEnemy":
                 normalEnemyKilled++;
                 break;
-            case "bomusEnemy":
+            case "bonusEnemy":
                 bonusEnemyKilled++;
                 break;
             case "bringerEnemy":
@@ -133,29 +133,22 @@ public class UIManager : MonoBehaviour
         yield return null;
     }
 
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (SetPause)
-            {
-                pauseGO.SetActive(true);
-                //if(PlayerTextLogic.instance.routinePaused)
-                //{
-                //}
+            LevelManager.instance.TogglePause();
+        }
 
-            }
-            else
+        if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.J))
+        {
+            if (!LevelManager.instance.IsPaused)
             {
-                pauseGO.SetActive(false);
-                //if (PlayerTextLogic.instance. != null)
-                //{
-
-                //}
+                StoryRoutine.instance.StopCoroutineResetText();
+                PlayerTextLogic.instance.StopCoroutineResetTextTime();
             }
         }
+
     }
 
     //public void AddScore(int score)

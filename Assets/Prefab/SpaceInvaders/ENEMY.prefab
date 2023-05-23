@@ -242,27 +242,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myProjectile: {fileID: 8297015083679601677, guid: 85c367d27b7046e4b85e97aac0855222, type: 3}
-  guns:
-  - {fileID: 2984454448563473827, guid: f47154aebf3fd0d44a0799f9b9d01c02, type: 3}
-  - {fileID: 7241568443210256612, guid: 66880bbecd0232143bd6085603f9c7eb, type: 3}
-  - {fileID: 1854602079996264188, guid: f18a1e99be534ea478eb42ca52664f23, type: 3}
-  drops:
-  - {fileID: 2678455731497475791, guid: 3aa99d2f70321a843b2c85bce3a8ad7b, type: 3}
   ExplosionTemplate: {fileID: 7995845328165520501, guid: 6d41d6442e13a3c4f9f5a9add98a25e2, type: 3}
   audioClips:
   - {fileID: 8300000, guid: 0202b4524d979ab43bd2f5caf8959f9a, type: 3}
   - {fileID: 8300000, guid: 23b996802e4066049943b78633493062, type: 3}
   - {fileID: 8300000, guid: 73daf7b17b69ac647a2e1055a392851b, type: 3}
   - {fileID: 8300000, guid: 6924edcf47efb5341b3ac6707884b95d, type: 3}
+  audioSrc: {fileID: 3036990157780442339}
   myMaterial: {fileID: 2100000, guid: 98c4b1214e27d2942b656d4de9a0ebd0, type: 2}
   myHitTakenMaterial: {fileID: 2100000, guid: f14f623b4a38fcb45a01911d8465573d, type: 2}
-  audioSrc: {fileID: 3036990157780442339}
   hitFxColor: {r: 0.7921569, g: 0.4404946, b: 0, a: 1}
-  shootCooldown: 0.5
-  enemySpeed: 3
+  baseShootCooldown: 1
+  baseEnemySpeed: 1
   hp: 3
-  enemyPointsValue: 666
-  enemyDamageMultiplyer: 1
+  baseEnemyDamageMultiplyer: 1
+  hitFxDuration: 0.25
+  drops:
+  - {fileID: 2678455731497475791, guid: 3aa99d2f70321a843b2c85bce3a8ad7b, type: 3}
+  guns:
+  - {fileID: 2984454448563473827, guid: f47154aebf3fd0d44a0799f9b9d01c02, type: 3}
+  - {fileID: 7241568443210256612, guid: 66880bbecd0232143bd6085603f9c7eb, type: 3}
+  - {fileID: 1854602079996264188, guid: f18a1e99be534ea478eb42ca52664f23, type: 3}
 --- !u!54 &-5780585211012120273
 Rigidbody:
   m_ObjectHideFlags: 0

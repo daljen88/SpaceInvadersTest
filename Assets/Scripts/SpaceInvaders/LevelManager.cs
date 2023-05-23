@@ -180,11 +180,11 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(.5f);
 
         //STATE RUNNING: PLAYER AND SPAWNER ENABLE
+        state = LogicState.RUNNING;
         character.enabled = true;
         spawner.enabled = true;
         SecondEnemySpawner.Instance.enabled = true;
 
-        state = LogicState.RUNNING;
         yield return new WaitForSeconds(.5f);
 
         //scompare Fight
@@ -300,6 +300,7 @@ public class LevelManager : MonoBehaviour
         if (!isPaused)
         {
             isPaused = true;
+            uiManager.pauseGO.SetActive(true);
             character.IsSlowingTime = false;
             character.enabled = false;
             Time.timeScale = 0;
@@ -308,8 +309,10 @@ public class LevelManager : MonoBehaviour
         {
 
             isPaused = false;
-            character.enabled = true;
-            //character.deltaTimeScale = Time.deltaTime;
+            uiManager.pauseGO.SetActive(false);
+
+            if (state == LogicState.RUNNING)
+                character.enabled = true;
 
             Time.timeScale = 1;
         }
@@ -318,16 +321,8 @@ public class LevelManager : MonoBehaviour
 
     public void Unpause()
     {
-        ////USATA NEL BACK TO GAME BUTTON
-        UIManager.instance.pauseGO.SetActive(false);
+        //USATA NEL BACK TO GAME BUTTON
         TogglePause();
-        //isPaused = false;
-        ////character.IsSlowingTime = false;
-
-        //Time.timeScale = 1;
-        //character.enabled = true;
-        ////character.deltaTimeScale = Time.deltaTime;
-
     }
 
     public void BackToMain()

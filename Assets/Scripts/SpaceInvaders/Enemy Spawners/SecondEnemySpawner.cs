@@ -115,16 +115,16 @@ public class SecondEnemySpawner : MonoBehaviour
     {
         if(/*UIManager.instance.scorePoints!=0&&*/UIManager.instance.totalEnemiesKilled>5/*&& UIManager.instance.scorePoints % 42==0*/)
         {
-            if (UIManager.instance.scorePoints % 24 == 0 || UIManager.instance.scorePoints % 30 == 0 || UIManager.instance.scorePoints % 36 == 0)
+            if (UIManager.instance.scorePoints % 24 == 0 /*|| UIManager.instance.scorePoints % 30 == 0 *//*|| UIManager.instance.scorePoints % 36 == 0*/)
                 if (Random.Range(0, 11) < 7)
                 {
                     if (!Enemy_Spawner.Instance.CheckPlayerVictory())
                         SpawnOneEnemy("bonusEnemy");
                 }
         }
-        if (UIManager.instance.totalEnemiesKilled != 0 && UIManager.instance.totalEnemiesKilled % 7 == 0)
+        if (UIManager.instance.totalEnemiesKilled > 8 && UIManager.instance.totalEnemiesKilled % 8 == 0)
         {
-            if (UIManager.instance.totalEnemiesKilled<8)
+            if (UIManager.instance.totalEnemiesKilled<17)
             {
                 if (Enemy_Spawner.Instance.CheckPlayerVictory()==false)
                     SpawnOneEnemy("bringerEnemy");

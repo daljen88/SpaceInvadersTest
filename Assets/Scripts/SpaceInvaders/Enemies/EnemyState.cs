@@ -117,7 +117,7 @@ public class EnemyState
 
         if (this.enemyOwner.transform.position.y > this.goalPosition.y)
         {
-            this.enemyOwner.transform.position += Vector3.down * this.enemyOwner.enemySpeed * Time.deltaTime;
+            this.enemyOwner.transform.position += Vector3.down * this.enemyOwner.EnemySpeed * Time.deltaTime;
         }
         else
         {
@@ -140,7 +140,7 @@ public class EnemyState
 
         if (this.enemyOwner.transform.position.x > this.goalPosition.x)
         {
-            this.enemyOwner.transform.position += Vector3.left * this.enemyOwner.enemySpeed * Time.deltaTime;
+            this.enemyOwner.transform.position += Vector3.left * this.enemyOwner.EnemySpeed * Time.deltaTime;
             //RotationCoroutine();
         }
         else
@@ -156,7 +156,7 @@ public class EnemyState
 
         if (this.enemyOwner.transform.position.x < this.goalPosition.x)
         {
-            this.enemyOwner.transform.position += Vector3.right * this.enemyOwner.enemySpeed * Time.deltaTime;
+            this.enemyOwner.transform.position += Vector3.right * this.enemyOwner.EnemySpeed * Time.deltaTime;
         }
         else
         {

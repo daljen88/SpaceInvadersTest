@@ -1,8 +1,10 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class BigGun : WeaponsClass
 {
@@ -40,7 +42,7 @@ public class BigGun : WeaponsClass
 
     public BigGun(): base()
     {
-        Defence=Defence+1;
+        Defence=Defence+1;//CAMBIA IN Defence+thisDefence
         gunOffsetR = bigGunOffsetR;
         gunOffsetL = bigGunOffsetL;
         //GunRotation = bigGunRotation;
@@ -56,16 +58,33 @@ public class BigGun : WeaponsClass
     {
         base.UpdateRoutine();
     }
+    public override bool IsOlderGunWeakerCondition =>  oldWeapon.GetComponent<ElectricTriGun>() == null&& oldWeapon.GetComponent<EyeOrbsCannon>() == null;
     public override void OnTriggerLogic(Collider entering)
     {
         tPlayer = entering.GetComponent<MainCharacter>();
-        WeaponsClass oldWeapon = tPlayer.gameObject.GetComponentInChildren<WeaponsClass>();
-        if (tPlayer != null && oldWeapon.GetComponent<ElectricTriGun>() == null)
+        oldWeapon = tPlayer.gameObject.GetComponentInChildren<WeaponsClass>();
+        if (PlayerIsTriggerCollider&& IsOlderGunWeakerCondition)
         {
             if (oldWeapon != null)
             { Destroy(oldWeapon.gameObject); }
             dropTimer = -1;
             IsCollected = true;
+            if (runningRoutine != null)
+            { StopCoroutine(runningRoutine); }
+            if (twScale != null && twScale.IsActive())
+            {
+                twScale.Kill(false);
+                //risistema a dim originale se tween spento a metà
+                gameObject.transform.DOScale(Vector3.one, DropLifeTime / 60);
+                //transform.localScale = Vector3.one; //new vector3 (1,1,1);
+            }
+
+            if (twColor != null && twColor.IsActive())
+            {
+                twColor.Kill(false);
+                gameObject.GetComponentInChildren<SpriteRenderer>().DOColor(Color.white, 0f);
+
+            }
             tPlayer.activeGunPrefab = gameObject;
             tPlayer.gunPossesed = gameObject.GetComponent<WeaponsClass>();
             GameManager.Instance.SetGameManagerGunPossessed(gameObject);

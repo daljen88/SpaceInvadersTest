@@ -9,34 +9,50 @@ using static TowerDefence_Enemy;
 using System;
 using Random = UnityEngine.Random;
 using UnityEngine.SceneManagement;
+using Newtonsoft.Json.Linq;
 
-public class Enemy : MonoBehaviour, IHittable
+public class Enemy : EnemyClass
 {
-    public GameObject myProjectile;
-    public List<GameObject> guns;
-    public List<GameObject> drops;
-    public ParticleSystem ExplosionTemplate;
-    public List<AudioClip> audioClips;
-    public Material myMaterial, myHitTakenMaterial;
-    public AudioSource audioSrc;
-    public Color hitFxColor;
+    //public List<GameObject> guns;
+    //public List<GameObject> drops;
+
+    //public GameObject myProjectile;
+
+    //public ParticleSystem ExplosionTemplate;
+    //public List<AudioClip> audioClips;
+    //public AudioSource audioSrc;
+
+    //public Material myMaterial, myHitTakenMaterial;
+    //public Color hitFxColor;
     private Vector3 startingScale;
-    Tweener twScale;
 
     private StateMachine SM;
     public List<EnemyState> enemyStates = new List<EnemyState>();
 
-    float hitFxDuration = 0.25f;
-    float shootTimer = 0;
-
     [Header("ENEMY VALUES")]
     [Tooltip("speed = 6, hp = 3, shootCD = 0.5")]
-    public float shootCooldown = 0.5f;
-    public float enemySpeed = 6f;
-    public int hp = 3;
-    public int enemyPointsValue=666;
-    public int enemyDamageMultiplyer=1;
+    private int thisEnemyPointsValue = 666;
+    private float thisShootCooldown = 0.5f;
+    private float thisEnemySpeed = 3;
+    private int thisHp = 3;
+    private int thisEnemyDamageMultiplyer = 1;
+    public override float ShootCooldown => baseShootCooldown*thisShootCooldown;
 
+    public override float EnemySpeed { get { return  baseEnemySpeed* thisEnemySpeed; }set{ thisEnemySpeed = value; } }
+
+    public override int Hp { get { return hp; } set { hp = value; } }
+
+    public override int EnemyDamageMultiplyer => baseEnemyDamageMultiplyer * thisEnemyDamageMultiplyer;
+
+    //float shootTimer = 0;
+    //float hitFxDuration = 0.25f;
+    //Tweener twScale;
+    public Enemy():base()
+    {
+        enemyType = EnemyType.normalEnemy;
+        Hp = thisHp;
+        enemyPointsValue = thisEnemyPointsValue;
+    }
     #region INIT
     private void Awake()
     {
@@ -45,6 +61,14 @@ public class Enemy : MonoBehaviour, IHittable
 
     void Start()
     {
+        StartRoutine();
+        //InizializeStateMachine();
+        //ChangeState(EnemyState.State.IDLE);
+    }
+    public override void StartRoutine()
+    {
+        base.StartRoutine();
+        EnemySpeed = 2 + Mathf.Log10(GameManager.Instance.LevelCount + 10);
         InizializeStateMachine();
         ChangeState(EnemyState.State.IDLE);
     }
@@ -81,7 +105,7 @@ public class Enemy : MonoBehaviour, IHittable
     #endregion
 
     #region UPDATE SM
-    void Update()
+    public void UpdateStateMachine()
     {
         SM.Execute();
 
@@ -112,42 +136,37 @@ public class Enemy : MonoBehaviour, IHittable
 
     }
     #endregion
+    void Update()
+    {
+        UpdateRoutine();
+    }
+    public override void UpdateRoutine()
+    {
+        //base.UpdateRoutine();
+        UpdateStateMachine();
 
+    }
     RaycastHit hit;
 
     private void FixedUpdate()
     {
-        //usiamo overload 15/16, con out dei dati in variabile Raycast "hit"
-        //if(Physics.Raycast(transform.position, Vector3.down, out hit, 100,1<<7))
-        //{
-        //    hit.collider.GetComponent<MainCharacter>().OnHitSuffered();
-        //}
+        FixedUpdateRoutine();
 
-        //ogni 0.5 secondi spara reycast
-        shootTimer += Time.fixedDeltaTime;
-        //Debug.DrawLine(transform.position, transform.position + Vector3.down * 100, Color.red);
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 100, 1 << 7))
-        {
-            //Debug.Log("Raycast Hit");
-            if (shootTimer >= shootCooldown)
-            {
-                //Debug.Log("Shoot");
-                GameObject tempProjectile = Instantiate(myProjectile, transform.position + Vector3.down, transform.rotation);
-                Enemy_Projectile tempProj = tempProjectile.GetComponent<Enemy_Projectile>();
-                tempProj.Shoot(Vector3.down * 4f, enemyDamageMultiplyer);
-
-                shootTimer = 0;
-                //Debug.Break();
-            }
-        }
-        //Mathf.Log10(transform.position+5)
+    }
+    public override void FixedUpdateRoutine()
+    {
+        base.FixedUpdateRoutine();
         transform.localScale = startingScale*.6f * (1+(5-transform.position.y)/10);
 
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        IHittable tPlayer = collision.gameObject.GetComponent<IHittable>();
+        OnCollisionRoutine(collision);     
+    }
+    public override void OnCollisionRoutine(Collision _collision)
+    {
+        IHittable tPlayer = _collision.gameObject.GetComponent<IHittable>();
         if (tPlayer != null)
         {
             //HO COLPITO
@@ -157,86 +176,96 @@ public class Enemy : MonoBehaviour, IHittable
         }
     }
 
-    public void OnHitSuffered(int damage = 1)
+    public override void OnHitSuffered(int damage = 1)
     {
-        hp -= damage;
-        audioSrc.clip = audioClips[Random.Range(0, audioClips.Count)];
-        audioSrc.Play();
-        if (hp <= 0)
-        {
-            //SCORE
-            UIManager.instance.PointsScoredEnemyKilled(enemyPointsValue, "enemy");
-            //FX MORTE
-            ParticleSystem ps = Instantiate(ExplosionTemplate, transform.position, Quaternion.identity);
-            //controllo particella da codice
-            ps.Emit(60);
-            Destroy(ps.gameObject, .5f);
-            if (UIManager.instance.totalEnemiesKilled%4==0&&UIManager.instance.totalEnemiesKilled!=0&&Random.Range(0,11)<7 /*&&GameManager.Instance.typeGunPossessed.name!="BigGun"*/)
-            {
-                GameObject bigGunz = Instantiate(guns[0], transform.position, Quaternion.identity);
-                WeaponsClass bigGunDropping = bigGunz.GetComponent<BigGun>();
-                bigGunDropping.Drop(Vector3.down);
-            }
-            else if(UIManager.instance.totalEnemiesKilled % 16 == 0 && UIManager.instance.totalEnemiesKilled !=0 && Random.Range(0, 11) < 7)
-            {
-                GameObject electricGun = Instantiate(guns[1], transform.position, Quaternion.identity);
-                WeaponsClass electricGunDropping = electricGun.GetComponent<ElectricTriGun>();
-                electricGunDropping.Drop(Vector3.down);
-            }
-            else if (UIManager.instance.totalEnemiesKilled % 9999 == 0 && UIManager.instance.totalEnemiesKilled != 0 && Random.Range(0, 11) < 11)
-            {
-                GameObject eyeCannon = Instantiate(guns[2], transform.position, Quaternion.identity);
-                WeaponsClass eyeCannonDrop = eyeCannon.GetComponent<EyeOrbsCannon>();
-                eyeCannonDrop.Drop(Vector3.down);
-            }
-            //if(UIManager.instance.totalEnemiesKilled % 5 == 0 && UIManager.instance.totalEnemiesKilled != 0&&GameManager.Instance.musicRadioCollected==false)
-            //{
-            //    GameObject musicRadio = Instantiate(drops[0], transform.position, Quaternion.identity);
-            //    RadioDrop radioScript = musicRadio.GetComponent<RadioDrop>();
-            //    radioScript.Drop(Vector3.down);
-            //}
+        base.OnHitSuffered(damage);
 
-            //Destroy(gameObject);
-            DestroyThisEnemy();
-        }
-        else
-        {
-            //FX COLPO SUBITO
-            GetComponent<MeshRenderer>().material = myHitTakenMaterial;
-            //la funzione va chiamata come stringa
-            Invoke("SetNormalMaterial", 0.25f);
-            //se il tween esiste ed è attivo, killa il tween precedente sennò si sovrappongono
-            if (twScale != null && twScale.IsActive())
-            {
-                twScale.Kill();
-                //risistema a dim originale se tween spento a metà
-                transform.localScale = Vector3.one; //new vector3 (1,1,1);
-            }
-            transform.DOPunchPosition(Vector3.up, .25f, 2);
-            twScale = transform.DOPunchScale(Vector3.one * 0.2f, hitFxDuration, 2);
-            StartCoroutine(HitColorCoroutine());
-            //anche la coroutine si sovrappone se viene chiamata più volte, quindi va checkato se è già attiva e nel caso spegnerla
+        #region old hitSuffer
+        //hp -= damage;
+        //audioSrc.clip = audioClips[Random.Range(0, audioClips.Count)];
+        //audioSrc.Play();
+        //if (hp <= 0)
+        //{
+        //    //SCORE
+        //    UIManager.instance.PointsScoredEnemyKilled(enemyPointsValue, "enemy");
+        //    //FX MORTE
+        //    ParticleSystem ps = Instantiate(ExplosionTemplate, transform.position, Quaternion.identity);
+        //    //controllo particella da codice
+        //    ps.Emit(60);
+        //    Destroy(ps.gameObject, .5f);
+        //    if (UIManager.instance.totalEnemiesKilled%3==0&&UIManager.instance.totalEnemiesKilled!=0&&Random.Range(0,11)<11 /*&&GameManager.Instance.typeGunPossessed.name!="BigGun"*/)
+        //    {
+        //        GameObject bigGunz = Instantiate(guns[0], transform.position, Quaternion.identity);
+        //        WeaponsClass bigGunDropping = bigGunz.GetComponent<BigGun>();
+        //        bigGunDropping?.Drop(Vector3.down);
+        //    }
+        //    else if(UIManager.instance.totalEnemiesKilled % 20 == 0 && UIManager.instance.totalEnemiesKilled !=0 && Random.Range(0, 11) < 8)
+        //    {
+        //        GameObject electricGun = Instantiate(guns[1], transform.position, Quaternion.identity);
+        //        WeaponsClass electricGunDropping = electricGun.GetComponent<ElectricTriGun>();
+        //        electricGunDropping?.Drop(Vector3.down);
+        //    }
+        //    else if (UIManager.instance.totalEnemiesKilled % 9999 == 0 && UIManager.instance.totalEnemiesKilled != 0 && Random.Range(0, 11) < 11)
+        //    {
+        //        GameObject eyeCannon = Instantiate(guns[2], transform.position, Quaternion.identity);
+        //        WeaponsClass eyeCannonDrop = eyeCannon.GetComponent<EyeOrbsCannon>();
+        //        eyeCannonDrop?.Drop(Vector3.down);
+        //    }
+        //    //if(UIManager.instance.totalEnemiesKilled % 5 == 0 && UIManager.instance.totalEnemiesKilled != 0&&GameManager.Instance.musicRadioCollected==false)
+        //    //{
+        //    //    GameObject musicRadio = Instantiate(drops[0], transform.position, Quaternion.identity);
+        //    //    RadioDrop radioScript = musicRadio.GetComponent<RadioDrop>();
+        //    //    radioScript.Drop(Vector3.down);
+        //    //}
 
-        }
+        //    //Destroy(gameObject);
+        //    DestroyThisEnemy();
+        //}
+        //else
+        //{
+        //    //FX COLPO SUBITO
+        //    GetComponent<MeshRenderer>().material = myHitTakenMaterial;
+        //    //la funzione va chiamata come stringa
+        //    Invoke("SetNormalMaterial", 0.25f);
+        //    //se il tween esiste ed è attivo, killa il tween precedente sennò si sovrappongono
+        //    if (twScale != null && twScale.IsActive())
+        //    {
+        //        twScale.Kill();
+        //        //risistema a dim originale se tween spento a metà
+        //        transform.localScale = Vector3.one; //new vector3 (1,1,1);
+        //    }
+        //    transform.DOPunchPosition(Vector3.up, .25f, 2);
+        //    twScale = transform.DOPunchScale(Vector3.one * 0.2f, hitFxDuration, 2);
+        //    StartCoroutine(HitColorCoroutine());
+        //    //anche la coroutine si sovrappone se viene chiamata più volte, quindi va checkato se è già attiva e nel caso spegnerla
+
+        //}
+        #endregion
+    }
+    public override void InstantiateGunDrop()
+    {
+        base.InstantiateGunDrop();
+
     }
 
-    IEnumerator HitColorCoroutine()
-    {
-        SpriteRenderer tsprite = GetComponentInChildren<SpriteRenderer>();
-        tsprite.DOColor(hitFxColor, hitFxDuration / 2);
-        yield return new WaitForSeconds(hitFxDuration / 2);
-        tsprite.DOColor(Color.white, hitFxDuration / 2);
-    }
     public void SetNormalMaterial()
     {
         GetComponent<MeshRenderer>().material = myMaterial;
     }
 
-    public void DestroyThisEnemy()
+    public override void DestroyThisEnemy()
     {
         Enemy_Spawner.Instance.enemyList.Remove(gameObject.GetComponent<Enemy>());
-        Destroy(gameObject);
+        base.DestroyThisEnemy();
     }
+
+    //IEnumerator HitColorCoroutine()
+    //{
+    //    SpriteRenderer tsprite = GetComponentInChildren<SpriteRenderer>();
+    //    tsprite.DOColor(hitFxColor, hitFxDuration / 2);
+    //    yield return new WaitForSeconds(hitFxDuration / 2);
+    //    tsprite.DOColor(Color.white, hitFxDuration / 2);
+    //}
 
     #region OLD FUNCTIONS
     ////IEnumerator RotationCoroutine()

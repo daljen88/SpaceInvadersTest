@@ -21,6 +21,7 @@ public class StandardGun : WeaponsClass
     [SerializeField] private float rotazL = -15f;
     [SerializeField] private Vector3 standardGunOffsetR = new Vector3(-0.166f, 0.11f);//offset y=0.155
     [SerializeField] private Vector3 standardGunOffsetL = new Vector3(0.166f, 0.11f);
+    public override bool IsOlderGunWeakerCondition => oldWeapon.GetComponent<WeaponsClass>() == null || oldWeapon.GetComponent<StandardGun>() != null;
 
     //private SpriteRenderer gunSpriteRenderer;
 

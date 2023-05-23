@@ -23,6 +23,9 @@ public abstract class DropsClass : MonoBehaviour, IDroppable
 
     protected Vector3 fallingVector;
     private MainCharacter tPlayer;
+    public Color hitFxColor;
+    private bool vanishRoutine = false;
+
     Tween shake;
 
     public DropsClass()
@@ -82,6 +85,13 @@ public abstract class DropsClass : MonoBehaviour, IDroppable
             shake= transform.DOShakeRotation(.3f, 20, 3, 20, true, ShakeRandomnessMode.Harmonic);
             transform.DORotate(Vector3.zero, .4f, RotateMode.Fast);
         }
+
+        if (dropTimer <= DropLifeTime / 5 && !isCollected && vanishRoutine == false)
+        {
+            vanishRoutine = true;
+            VanishWarn();
+        }
+
         if (dropTimer <= 0 && !isCollected)
             Destroy(gameObject);
     }
@@ -109,6 +119,25 @@ public abstract class DropsClass : MonoBehaviour, IDroppable
         dropTimer = -1;
         IsCollected = true;
         Destroy(gameObject);
+    }
+    public void VanishWarn()
+    {
+        StartCoroutine(VanishWarningCoroutine());
+    }
+    IEnumerator VanishWarningCoroutine()
+    {
+        SpriteRenderer tsprite = GetComponentInChildren<SpriteRenderer>();
+        tsprite.DOColor(hitFxColor, DropLifeTime / 30);
+        yield return new WaitForSeconds(DropLifeTime / 30);
+        tsprite.DOColor(Color.white, DropLifeTime / 30);
+        yield return new WaitForSeconds(DropLifeTime / 30);
+        tsprite.DOColor(hitFxColor, DropLifeTime / 30);
+        yield return new WaitForSeconds(DropLifeTime / 30);
+        tsprite.DOColor(Color.white, DropLifeTime / 30);
+        yield return new WaitForSeconds(DropLifeTime / 30);
+        gameObject.transform.DOScale(Vector3.zero, DropLifeTime / 15);
+        yield return new WaitForSeconds(DropLifeTime / 15);
+        vanishRoutine = false;
     }
 
 }

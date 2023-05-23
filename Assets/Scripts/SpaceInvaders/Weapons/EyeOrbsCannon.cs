@@ -37,6 +37,7 @@ public class EyeOrbsCannon : WeaponsClass
     public GameObject blackHoleSwoshTemplate;
     protected BlackHole myBlackHole;
 
+    public override bool IsOlderGunWeakerCondition => true;
 
     //private SpriteRenderer gunSpriteRenderer;
 

@@ -63,14 +63,15 @@ public class MainCharacter : MonoBehaviour, IHittable
     private void Awake()
     {
         deltaTimeScale = Time.deltaTime;
-    }
-
-    void Start()
-    {
         //ISTANZIA STANDARD GUN
         activeGunPrefab = Instantiate(startingGunPrefab, transform.position, Quaternion.identity);
         gunPossesed = activeGunPrefab.GetComponent<StandardGun>();
         gunPossesed.IsCollected=true;
+        enabled = false;
+    }
+
+    void Start()
+    {
     }
 
     void Update()
@@ -279,7 +280,7 @@ public class MainCharacter : MonoBehaviour, IHittable
         //yield return new WaitForSecondsRealtime(0);
         tsprite.DOColor(Color.white, .05f);
         Time.timeScale = 1;
-        moveSpeed = 6f;
+        //moveSpeed = 6f;
         yield return new WaitForSecondsRealtime(.10f);
         IsInvulnerable = false;
     }
@@ -294,7 +295,7 @@ public class MainCharacter : MonoBehaviour, IHittable
         //yield return new WaitForSecondsRealtime(0);
         tGunSprite.DOColor(Color.white, .05f);
         Time.timeScale = 1;
-        moveSpeed = 6f;
+        //moveSpeed = 6f;
         yield return new WaitForSecondsRealtime(.10f);
         IsInvulnerable = false;
     }

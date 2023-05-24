@@ -7,40 +7,36 @@ using UnityEngine;
 
 public class ThirdEnemy : EnemyClass
 {
-    //public List<GameObject> guns;
-    //public List<GameObject> drops;
-
-
-    //public GameObject myProjectile;
-
-    //public ParticleSystem ExplosionTemplate;
-
-    //public Material myMaterial, myHitTakenMaterial;
-    //public Color hitFxColor;
-
-    //public List<AudioClip> audioClips;
-    //public AudioSource audioSrc;
-
     public GameObject dropSlot;
     public DropsClass bringingDrop;
 
-    [Header("ENEMY VALUES")]
-    private int thisEnemyPointsValue = 4999;
-    private float thisShootCooldown = 1f;
-    private float thisEnemySpeed = 3.5f;
-    private int thisHp = 5;
-    private int thisEnemyDamageMultiplyer = 1;
-    public override float ShootCooldown => baseShootCooldown * thisShootCooldown;
+    [Tooltip("speed = 3.5, hp = 5, shootCD = 1")]
+    [Header("BRINGER ENEMY VALUES")]
+    [SerializeField] private int thisEnemyPointsValue = 4999;
+    [SerializeField] private float thisShootCooldown = 1f;
+    [SerializeField] private float thisEnemySpeed = 3.5f;
+    [SerializeField] private int thisHp = 5;
+    [SerializeField] private int thisEnemyDamageMultiplyer = 1;
 
-    public override float EnemySpeed { get { return baseEnemySpeed * thisEnemySpeed; } set { thisEnemySpeed = value; } }
+    protected override float ShootCooldown => baseShootCooldown * thisShootCooldown;
+    public override float EnemySpeed { get { return baseEnemySpeed * thisEnemySpeed; } protected set { thisEnemySpeed = value; } }
+    protected override int Hp { get { return hp; } set { hp = value; } }
+    protected override int EnemyDamageMultiplyer => baseEnemyDamageMultiplyer * thisEnemyDamageMultiplyer;
 
-    public override int Hp { get { return hp; } set { hp = value; } }
+    private IDictionary<string, int> FirstDropRandomRange = new Dictionary<string, int>() { { "min", 0 }, { "max(excluded)", 11 }, { "IsLessThan", 11 } };
+    //private IDictionary<string, int> SecondDropRandomRange = new Dictionary<string, int>() { { "min", 0 }, { "max(excluded)", 11 }, { "IsLessThan", 8 } };
+    //private IDictionary<string, int> ThirdDropRandomRange = new Dictionary<string, int>() { { "min", 0 }, { "max(excluded)", 11 }, { "IsLessThan", 11 } };
+    protected override bool IsFirstDropRandomTrue => Random.Range(FirstDropRandomRange["min"], FirstDropRandomRange["max(excluded)"]) < FirstDropRandomRange["IsLessThan"];
+    protected override bool IsSecondDropRandomTrue => true /*Random.Range(SecondDropRandomRange["min"], SecondDropRandomRange["max(excluded)"]) < SecondDropRandomRange["IsLessThan"]*/;
+    protected override bool IsThirdDropRandomTrue => true /*Random.Range(ThirdDropRandomRange["min"], ThirdDropRandomRange["max(excluded)"]) < ThirdDropRandomRange["IsLessThan"]*/;
 
-    public override int EnemyDamageMultiplyer => baseEnemyDamageMultiplyer * thisEnemyDamageMultiplyer;
+    protected override bool EnemiesKilledFirstDrop => UIManager.instance.totalEnemiesKilled % enemiesKilledFirstDrop == 0;
+    [SerializeField] private int enemiesKilledFirstDrop = 1;
+    protected override bool EnemiesKilledSecondDrop => true;
+    //[SerializeField] private int enemiesKilledSecondDrop;
+    protected override bool EnemiesKilledThirdDrop => true;
+    //[SerializeField] private int enemiesKilledThirdDrop;
 
-    //float shootTimer = 0;
-    //Tweener twScale;
-    //float hitFxDuration = 0.25f;
     public ThirdEnemy() : base()
     {
         enemyType = EnemyType.bringerEnemy;
@@ -149,7 +145,7 @@ public class ThirdEnemy : EnemyClass
         //    //anche la coroutine si sovrappone se viene chiamata più volte, quindi va checkato se è già attiva e nel caso spegnerla
         //}
         #endregion
-        base.OnHitSuffered();
+        base.OnHitSuffered(damage);
 
     }
     public override void GunDropLogic()
@@ -168,9 +164,9 @@ public class ThirdEnemy : EnemyClass
 
     public override bool FirstGunDropCondition()
     {
-        if (UIManager.instance.totalEnemiesKilled % 1 == 0 && UIManager.instance.totalEnemiesKilled != 0 && Random.Range(0, 11) < 11 /*&&GameManager.Instance.typeGunPossessed.name!="BigGun"*/)
+        if (EnemiesKilledFirstDrop && EnemiesKilledMoreThanZero && IsFirstDropRandomTrue /*&&GameManager.Instance.typeGunPossessed.name!="BigGun"*/)
         {
-            gunToSpawn = "BigGun";
+            gunType = GunDrop.BigGun;
             return true;
         }
         else

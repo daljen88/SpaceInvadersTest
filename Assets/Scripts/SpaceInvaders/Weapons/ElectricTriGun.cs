@@ -30,13 +30,14 @@ public class ElectricTriGun : WeaponsClass
     [SerializeField] private float electricShotXOffsetR = 0.7f;//offset y=0.155
     [SerializeField] private float electricShotXOffsetL = -0.7f;
     /*[SerializeField]*/ private float electricShotRotation/* = -90f*/;
-    public override bool IsOlderGunWeakerCondition => oldWeapon.GetComponent<EyeOrbsCannon>() == null;
+    //public override bool IsOlderGunWeakerCondition => oldWeapon.gunType <= gunType /*oldWeapon.GetComponent<EyeOrbsCannon>() == null*/;
 
 
     //private SpriteRenderer gunSpriteRenderer;
 
     public ElectricTriGun() : base()
     {
+        gunType = GunType.ElectricGun;
         Defence = Defence + 2;
         gunOffsetR = electricGunOffsetR;
         gunOffsetL = electricGunOffsetL;

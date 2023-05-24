@@ -13,40 +13,37 @@ using Newtonsoft.Json.Linq;
 
 public class Enemy : EnemyClass
 {
-    //public List<GameObject> guns;
-    //public List<GameObject> drops;
-
-    //public GameObject myProjectile;
-
-    //public ParticleSystem ExplosionTemplate;
-    //public List<AudioClip> audioClips;
-    //public AudioSource audioSrc;
-
-    //public Material myMaterial, myHitTakenMaterial;
-    //public Color hitFxColor;
     private Vector3 startingScale;
-
     private StateMachine SM;
     public List<EnemyState> enemyStates = new List<EnemyState>();
 
-    [Header("ENEMY VALUES")]
     [Tooltip("speed = 6, hp = 3, shootCD = 0.5")]
-    private int thisEnemyPointsValue = 666;
-    private float thisShootCooldown = 0.5f;
-    private float thisEnemySpeed = 3;
-    private int thisHp = 3;
-    private int thisEnemyDamageMultiplyer = 1;
-    public override float ShootCooldown => baseShootCooldown*thisShootCooldown;
+    [Header("NORMAL ENEMY VALUES")]
+    [SerializeField] private int thisEnemyPointsValue = 666;
+    [SerializeField] private float thisShootCooldown = 0.5f;
+    [SerializeField] private float thisEnemySpeed = 3;
+    [SerializeField] private int thisHp = 3;
+    [SerializeField] private int thisEnemyDamageMultiplyer = 1;
 
-    public override float EnemySpeed { get { return  baseEnemySpeed* thisEnemySpeed; }set{ thisEnemySpeed = value; } }
+    protected override float ShootCooldown => baseShootCooldown*thisShootCooldown;
+    public override float EnemySpeed { get { return  baseEnemySpeed* thisEnemySpeed; }protected set{ thisEnemySpeed = value; } }
+    protected override int Hp { get { return hp; } set { hp = value; } }
+    protected override int EnemyDamageMultiplyer => baseEnemyDamageMultiplyer * thisEnemyDamageMultiplyer;
 
-    public override int Hp { get { return hp; } set { hp = value; } }
+    [SerializeField] private int enemiesKilledFirstDrop=6;
+    protected override bool EnemiesKilledFirstDrop => UIManager.instance.totalEnemiesKilled % enemiesKilledFirstDrop == 0;
+    [SerializeField] private int enemiesKilledSecondDrop=48;
+    protected override bool EnemiesKilledSecondDrop => UIManager.instance.totalEnemiesKilled % enemiesKilledSecondDrop == 0;
+    [SerializeField] private int enemiesKilledThirdDrop=9999;
+    protected override bool EnemiesKilledThirdDrop => UIManager.instance.totalEnemiesKilled % enemiesKilledThirdDrop == 0;
 
-    public override int EnemyDamageMultiplyer => baseEnemyDamageMultiplyer * thisEnemyDamageMultiplyer;
+    private IDictionary<string, int> FirstDropRandomRange  = new Dictionary<string, int>() { { "min", 0 }, { "max(excluded)", 11 }, { "IsLessThan", 8 } };
+    private IDictionary<string, int> SecondDropRandomRange = new Dictionary<string, int>() { { "min", 0 }, { "max(excluded)", 11 }, { "IsLessThan", 8 } };
+    private IDictionary<string, int> ThirdDropRandomRange  = new Dictionary<string, int>() { { "min", 0 }, { "max(excluded)", 11 }, { "IsLessThan", 11 } };
+    protected override bool IsFirstDropRandomTrue => Random.Range(FirstDropRandomRange["min"], FirstDropRandomRange["max(excluded)"]) < FirstDropRandomRange["IsLessThan"];
+    protected override bool IsSecondDropRandomTrue => Random.Range(SecondDropRandomRange["min"], SecondDropRandomRange["max(excluded)"]) < SecondDropRandomRange["IsLessThan"];
+    protected override bool IsThirdDropRandomTrue => Random.Range(ThirdDropRandomRange["min"], ThirdDropRandomRange["max(excluded)"]) < ThirdDropRandomRange["IsLessThan"];
 
-    //float shootTimer = 0;
-    //float hitFxDuration = 0.25f;
-    //Tweener twScale;
     public Enemy():base()
     {
         enemyType = EnemyType.normalEnemy;

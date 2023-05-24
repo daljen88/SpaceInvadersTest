@@ -12,71 +12,74 @@ using static EnemyClass;
 
 public abstract class EnemyClass : MonoBehaviour, IHittable
 {
+    //GAME OBJECTS
     public GameObject myProjectile;
-
     public ParticleSystem ExplosionTemplate;
     public List<AudioClip> audioClips;
     public AudioSource audioSrc;
 
+    [Tooltip("baseSpeed = 1, shootCD = 1, damageMulty = 1")]
+    [Header("BASE CLASS VALUES")]
+    [SerializeField] protected float baseEnemySpeed = 1f;
+    [SerializeField] protected float baseShootCooldown = 1f;
+    [SerializeField] protected int baseEnemyDamageMultiplyer = 1;
+    [SerializeField] protected float hitFxDuration = 0.25f;
+    protected int enemyPointsValue/* = 666*/;
+    protected int hp;
+    public enum EnemyType { normalEnemy, bonusEnemy, bringerEnemy }
     public Material myMaterial, myHitTakenMaterial;
     public Color hitFxColor;
-    //private Vector3 startingScale;
+
+    [Header("ENEMY TYPE")]
+    [SerializeField] protected EnemyType enemyType;
+    [Header("THIS ENEMY TYPE DROPS")]
+    public List<GameObject> drops;
+    public List<GameObject> guns;
+    public enum GunDrop { BigGun, ElectricGun, EyeOrbCannon}
+    protected GunDrop gunType;
+    protected IDictionary<GunDrop, GameObject> gunDrops;
+
+    //CONTROL VARIABLES
+    protected float shootTimer = 0;
+    protected Tweener twScale;
+
+    //ENEMY VALUES PROPERTIES
+    protected abstract float ShootCooldown {get;}
+    public abstract float EnemySpeed { get; protected set; }
+    protected abstract int Hp { get; set; }
+    protected abstract int EnemyDamageMultiplyer { get; }
+    //DROP CONDITION PROPERTIES
+    protected bool EnemiesKilledMoreThanZero => UIManager.instance.totalEnemiesKilled != 0;
+    protected abstract bool EnemiesKilledFirstDrop { get; }
+    protected abstract bool EnemiesKilledSecondDrop { get; }
+    protected abstract bool EnemiesKilledThirdDrop { get; }
+    //RANDOM RANGE DROP CONDITION PROPERTIES
+    protected abstract bool IsFirstDropRandomTrue { get; }
+    protected abstract bool IsSecondDropRandomTrue { get; }
+    protected abstract bool IsThirdDropRandomTrue { get; }
 
     //protected StateMachine SM;
     //public List<EnemyState> enemyStates = new List<EnemyState>();
 
-    [Header("ENEMY VALUES")]
-    [Tooltip("speed = 6, hp = 3, shootCD = 0.5")]
-    protected int enemyPointsValue/* = 666*/;
-    public float baseShootCooldown = 1f;
-    public float baseEnemySpeed = 1f;
-    public int hp;
-    public int baseEnemyDamageMultiplyer = 1;
-
-    public abstract float ShootCooldown {get;}
-    public abstract float EnemySpeed { get; set; }
-    public abstract int Hp { get; set; }
-    public abstract int EnemyDamageMultiplyer { get; }
-
-
-    protected float shootTimer = 0;
-    public float hitFxDuration = 0.25f;
-    Tweener twScale;
-
-    public List<GameObject> drops;
-
-    public List<GameObject> guns;
-    public enum GunDrop { BigGun, ElectricGun, EyeOrbCannon}
-    //protected GunDrop gunTypez;
-
-    public enum EnemyType { normalEnemy, bonusEnemy, bringerEnemy }
-    protected EnemyType enemyType;
-
-    protected IDictionary<string, GameObject> gunDrops/* = new Dictionary<int, GameObject>()*/;
-    protected string gunToSpawn;
-    
     public EnemyClass()
     {
 
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         StartRoutine();
     }
+
     public virtual void StartRoutine()
     {
-        gunDrops = new Dictionary<string, GameObject>();
+        gunDrops = new Dictionary<GunDrop, GameObject>() /*{ { new EnemyType(), new GameObject() }, { new EnemyType(), new GameObject() }, { new EnemyType(), new GameObject() } }*/;
         int i = 0;
-        foreach (string gunType in Enum.GetNames(typeof(GunDrop)))
+        foreach (GunDrop gunDropType in Enum.GetValues(typeof(GunDrop)))
         {
-            //foreach (var gunObj in guns)
-            //{
-
-            if (i<guns.Count)//if i minore di guns count
+            if (i < guns.Count)//if i minore di guns count
             {
-                gunDrops.Add(gunType, guns[i]); //adding a key/value using the Add() method
+                gunDrops.Add(gunDropType, guns[i]); //adding a key/value using the Add() method
                 i++;
             }
             else
@@ -84,13 +87,9 @@ public abstract class EnemyClass : MonoBehaviour, IHittable
                 i++;
                 return;
             }
-                //gunDrops.Add(GunDrop.Electric_Gun, guns[1]);
-                //gunDrops.Add(GunDrop.EyeOrb_Cannon, guns[2]);
-            //}
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         UpdateRoutine();
@@ -100,59 +99,45 @@ public abstract class EnemyClass : MonoBehaviour, IHittable
         transform.position += Vector3.right * EnemySpeed * Time.deltaTime;
     }
 
+    public virtual void OnHitSuffered(int damage = 1)
+    {
+        Hp -= damage;
+
+        HitAudioFX();
+
+        if (Hp <= 0)
+        {
+            //MORTE ENEMY
+            UIManager.instance.PointsScoredEnemyKilled(enemyPointsValue, enemyType.ToString() /*GetType().ToString()*/);
+            //FX MORTE
+            ExplosionFX();
+            //GUN DROP
+            GunDropLogic();
+            DestroyThisEnemy();
+        }
+        else
+        {
+            //FX COLPO SUBITO
+            HitTweenFX();
+            StartCoroutine(HitColorCoroutine());
+            //anche la coroutine si sovrappone se viene chiamata più volte, quindi va checkato se è già attiva e nel caso spegnerla
+
+        }
+    }
+
+    public virtual void HitAudioFX()
+    {
+        audioSrc.clip = audioClips[UnityEngine.Random.Range(0, audioClips.Count)];
+        audioSrc.Play();
+    }
+
     public virtual void ExplosionFX()
     {
         ParticleSystem ps = Instantiate(ExplosionTemplate, transform.position, Quaternion.identity);
-        //controllo particella da codice
         ps.Emit(60);
         Destroy(ps.gameObject, .5f);
     }
 
-    public virtual bool FirstGunDropCondition()
-    {
-        if (UIManager.instance.totalEnemiesKilled % 6 == 0 && UIManager.instance.totalEnemiesKilled != 0 && UnityEngine.Random.Range(0, 11) < 8)
-        {
-            gunToSpawn = "BigGun";
-            return true;
-        }
-        else
-            return false;
-    }
-    public virtual bool SecondGunDropCondition()
-    {
-        if (UIManager.instance.totalEnemiesKilled % 50 == 0 && UIManager.instance.totalEnemiesKilled != 0 && UnityEngine.Random.Range(0, 11) < 8)
-        {
-            gunToSpawn = "ElectricGun";
-            return true;
-        }
-        else
-            return false;
-    }
-    public virtual bool ThirdGunDropCondition()
-    {
-        if (UIManager.instance.totalEnemiesKilled % 9999 == 0 && UIManager.instance.totalEnemiesKilled != 0 && UnityEngine.Random.Range(0, 11) < 11)
-        {
-            gunToSpawn = "EyeOrbCannon";
-            return true;
-        }
-        else
-            return false;
-    }
-    public virtual void InstantiateGunDrop()
-    {
-        GameObject gun = Instantiate(gunDrops[gunToSpawn], transform.position, Quaternion.identity);
-        WeaponsClass gunDropping = gun.GetComponent<WeaponsClass>();
-        gunDropping?.Drop(Vector3.down);
-
-        //Type gunkkk = Assembly.GetAssembly(typeof(WeaponsClass)).GetType("BigGun", false, false);
-        //IEnumerable<Type> gunkkarray= Assembly.GetAssembly(typeof(WeaponsClass)).GetTypes().Where(thisType => !thisType.IsAbstract && thisType.IsSubclassOf(typeof(WeaponsClass)));
-
-        //bigGunDropping.GetType().IsSubclassOf(typeof(WeaponsClass))
-        //Type gunxxxk = bigGunDropping.GetType().IsSubclassOf(typeof(WeaponsClass))
-        //bigGunDropping.GetType();/* .GetType(gunToSpawn,false,false);*/
-        //bigGunz.GetType().GetNestedType()
-
-    }
     public virtual void GunDropLogic()
     {
         if (FirstGunDropCondition() /*&&GameManager.Instance.typeGunPossessed.name!="BigGun"*/)
@@ -167,45 +152,56 @@ public abstract class EnemyClass : MonoBehaviour, IHittable
         {
             InstantiateGunDrop();
         }
-        //if(UIManager.instance.totalEnemiesKilled % 5 == 0 && UIManager.instance.totalEnemiesKilled != 0&&GameManager.Instance.musicRadioCollected==false)
-        //{
-        //    GameObject musicRadio = Instantiate(drops[0], transform.position, Quaternion.identity);
-        //    RadioDrop radioScript = musicRadio.GetComponent<RadioDrop>();
-        //    radioScript.Drop(Vector3.down);
-        //}
     }
-    public virtual void OnHitSuffered(int damage = 1)
+
+    #region <GUN DROP CONDITIONS>
+    public virtual bool FirstGunDropCondition()
     {
-        Hp -= damage;
-
-        HitAudioFX();
-
-        if (Hp <= 0)
+        if (EnemiesKilledFirstDrop && EnemiesKilledMoreThanZero && IsFirstDropRandomTrue)
         {
-            //SCORE
-            UIManager.instance.PointsScoredEnemyKilled(enemyPointsValue, enemyType.ToString() /*GetType().ToString()*/);
-            //FX MORTE
-            ExplosionFX();
-            //GUN DROP
-            GunDropLogic();
-            //Destroy(gameObject);
-            DestroyThisEnemy();
+            gunType = GunDrop.BigGun;
+            return true;
         }
         else
-        {
-            //FX COLPO SUBITO
-            HitTweenFX();
-
-            StartCoroutine(HitColorCoroutine());
-            //anche la coroutine si sovrappone se viene chiamata più volte, quindi va checkato se è già attiva e nel caso spegnerla
-
-        }
+            return false;
     }
-    public virtual void HitAudioFX()
+    public virtual bool SecondGunDropCondition()
     {
-        audioSrc.clip = audioClips[UnityEngine.Random.Range(0, audioClips.Count)];
-        audioSrc.Play();
+        if (EnemiesKilledSecondDrop && EnemiesKilledMoreThanZero && IsSecondDropRandomTrue)
+        {
+            gunType=GunDrop.ElectricGun;
+            return true;
+        }
+        else
+            return false;
     }
+    public virtual bool ThirdGunDropCondition()
+    {
+        if (EnemiesKilledThirdDrop && EnemiesKilledMoreThanZero && IsThirdDropRandomTrue)
+        {
+            gunType=GunDrop.EyeOrbCannon;
+            return true;
+        }
+        else
+            return false;
+    }
+    #endregion
+
+    public virtual void InstantiateGunDrop()
+    {
+        GameObject gun = Instantiate(gunDrops[gunType], transform.position, Quaternion.identity);
+        WeaponsClass gunDropping = gun.GetComponent<WeaponsClass>();
+        gunDropping?.Drop(Vector3.down);
+
+        //IEnumerable<Type> typeArray= Assembly.GetAssembly(typeof(WeaponsClass)).GetTypes().Where(thisType => !thisType.IsAbstract && thisType.IsSubclassOf(typeof(WeaponsClass)));
+        //Type gunType = Assembly.GetAssembly(typeof(WeaponsClass)).GetType("bigGun", false,false);
+    }
+    
+    public virtual void DestroyThisEnemy()
+    {
+        Destroy(gameObject);
+    }
+
     public virtual void HitTweenFX()
     {
         GetComponent<MeshRenderer>().material = myHitTakenMaterial;
@@ -230,28 +226,26 @@ public abstract class EnemyClass : MonoBehaviour, IHittable
         tsprite.DOColor(Color.white, hitFxDuration / 2);
     }
 
-    public virtual void DestroyThisEnemy()
-    {
-        Destroy(gameObject);
-    }
-
 
     private void FixedUpdate()
     {
         FixedUpdateRoutine();
-
     }
+
+    public virtual bool HasRaycastHit => Physics.Raycast(transform.position, Vector3.down, out hit, 100, 1 << 7);
     RaycastHit hit;
+
     public virtual void FixedUpdateRoutine()
     {
+        #region summary
         //usiamo overload 15/16, con out dei dati in variabile Raycast "hit"
         //if(Physics.Raycast(transform.position, Vector3.down, out hit, 100,1<<7))
         //{
         //    hit.collider.GetComponent<MainCharacter>().OnHitSuffered();
         //}
-
         //ogni 0.5 secondi spara reycast
         //Debug.DrawLine(transform.position, transform.position + Vector3.down * 100, Color.red);
+        #endregion
 
         shootTimer += Time.fixedDeltaTime;
         if (HasRaycastHit)
@@ -267,7 +261,7 @@ public abstract class EnemyClass : MonoBehaviour, IHittable
             }
         }
     }
-    public virtual bool HasRaycastHit => Physics.Raycast(transform.position, Vector3.down, out hit, 100, 1 << 7);
+
     public virtual void InstatiateProjectile()
     {
         GameObject tempProjectile = Instantiate(myProjectile, transform.position + Vector3.down, transform.rotation);
@@ -279,9 +273,9 @@ public abstract class EnemyClass : MonoBehaviour, IHittable
     {
         OnCollisionRoutine(collision);
     }
+
     public virtual void OnCollisionRoutine(Collision _collision)
     {
         return;
     }
-
 }

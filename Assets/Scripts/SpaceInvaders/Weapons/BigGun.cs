@@ -42,6 +42,7 @@ public class BigGun : WeaponsClass
 
     public BigGun(): base()
     {
+        gunType=GunType.BigGun;
         Defence=Defence+1;//CAMBIA IN Defence+thisDefence
         gunOffsetR = bigGunOffsetR;
         gunOffsetL = bigGunOffsetL;
@@ -58,7 +59,7 @@ public class BigGun : WeaponsClass
     {
         base.UpdateRoutine();
     }
-    public override bool IsOlderGunWeakerCondition =>  oldWeapon.GetComponent<ElectricTriGun>() == null&& oldWeapon.GetComponent<EyeOrbsCannon>() == null;
+    //public override bool IsOlderGunWeakerCondition => oldWeapon.gunType<=gunType /* oldWeapon.GetComponent<ElectricTriGun>() == null&& oldWeapon.GetComponent<EyeOrbsCannon>() == null*/;
     public override void OnTriggerLogic(Collider entering)
     {
         tPlayer = entering.GetComponent<MainCharacter>();

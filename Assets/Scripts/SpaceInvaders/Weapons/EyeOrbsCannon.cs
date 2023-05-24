@@ -37,12 +37,13 @@ public class EyeOrbsCannon : WeaponsClass
     public GameObject blackHoleSwoshTemplate;
     protected BlackHole myBlackHole;
 
-    public override bool IsOlderGunWeakerCondition => true;
+    //public override bool IsOlderGunWeakerCondition => oldWeapon.gunType <= gunType /*true*/;
 
     //private SpriteRenderer gunSpriteRenderer;
 
     public EyeOrbsCannon() : base()
     {
+        gunType = GunType.EyeOrbCannon;
         Defence = Defence + 2;
         gunOffsetR = eyeOrbCannonOffsetR;
         gunOffsetL = eyeOrbCannonOffsetL;

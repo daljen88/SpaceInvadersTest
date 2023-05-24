@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -65,10 +66,12 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
     protected WeaponsClass oldWeapon;
 
     public virtual bool PlayerIsTriggerCollider => tPlayer != null;
-    public abstract bool IsOlderGunWeakerCondition { get; }
+    public virtual bool IsOlderGunWeakerCondition => oldWeapon.gunType <= gunType;/*{ get; }*/
 
     public static UnityEvent dropEvent;
 
+    public enum GunType {StandardGun, BigGun, ElectricGun, EyeOrbCannon }
+    public GunType gunType;
     //{ get { return projMovementVector; } set { projMovementVector = value; } }
 
     public WeaponsClass()

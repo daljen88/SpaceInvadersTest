@@ -7,30 +7,33 @@ using UnityEngine.UIElements;
 
 public class SecondEnemy : EnemyClass
 {
-    //public List<GameObject> guns;
+    [Tooltip("speed = 6, hp = 3, shootCD = 0.5")]
+    [Header("BONUS ENEMY VALUES")]
+    [SerializeField] private int thisEnemyPointsValue = 6666;
+    [SerializeField] private float thisShootCooldown = 0.5f;
+    [SerializeField] private float thisEnemySpeed = 5;
+    [SerializeField] private int thisHp = 1;
+    [SerializeField] private int thisEnemyDamageMultiplyer = 1;
 
-    //public ParticleSystem ExplosionTemplate;
+    protected override float ShootCooldown => baseShootCooldown * thisShootCooldown;
+    public override float EnemySpeed { get { return baseEnemySpeed* thisEnemySpeed; } protected set { thisEnemySpeed = value; } }
+    protected override int Hp { get { return hp; } set { hp = value; } }
+    protected override int EnemyDamageMultiplyer => baseEnemyDamageMultiplyer * thisEnemyDamageMultiplyer;
 
-    //public Material myMaterial, myHitTakenMaterial;
-    //public Color hitFxColor;
+    private IDictionary<string, int> FirstDropRandomRange = new Dictionary<string, int>() { { "min", 0 }, { "max(excluded)", 11 }, { "IsLessThan", 9 } };
+    //private IDictionary<string, int> SecondDropRandomRange = new Dictionary<string, int>() { { "min", 0 }, { "max(excluded)", 11 }, { "IsLessThan", 8 } };
+    //private IDictionary<string, int> ThirdDropRandomRange = new Dictionary<string, int>() { { "min", 0 }, { "max(excluded)", 11 }, { "IsLessThan", 11 } };
+    protected override bool IsFirstDropRandomTrue => Random.Range(FirstDropRandomRange["min"], FirstDropRandomRange["max(excluded)"]) < FirstDropRandomRange["IsLessThan"];
+    protected override bool IsSecondDropRandomTrue => true /*Random.Range(SecondDropRandomRange["min"], SecondDropRandomRange["max(excluded)"]) < SecondDropRandomRange["IsLessThan"]*/;
+    protected override bool IsThirdDropRandomTrue => true /*Random.Range(ThirdDropRandomRange["min"], ThirdDropRandomRange["max(excluded)"]) < ThirdDropRandomRange["IsLessThan"]*/;
 
-    [Header("ENEMY VALUES")]
-    private int thisEnemyPointsValue = 6666;
-    private float thisShootCooldown = 0.5f;
-    private float thisEnemySpeed = 5;
-    private int thisHp = 1;
-    private int thisEnemyDamageMultiplyer = 1;
-    public override float ShootCooldown => baseShootCooldown * thisShootCooldown;
+    protected override bool EnemiesKilledFirstDrop => UIManager.instance.totalEnemiesKilled > enemiesKilledFirstDrop;
+    [SerializeField] private int enemiesKilledFirstDrop = 5;
+    protected override bool EnemiesKilledSecondDrop => true;
+    //[SerializeField] private int enemiesKilledSecondDrop;
+    protected override bool EnemiesKilledThirdDrop => true;
+    //[SerializeField] private int enemiesKilledThirdDrop;
 
-    public override float EnemySpeed { get { return baseEnemySpeed* thisEnemySpeed; } set { thisEnemySpeed = value; } }
-
-    public override int Hp { get { return hp; } set { hp = value; } }
-
-    public override int EnemyDamageMultiplyer => baseEnemyDamageMultiplyer * thisEnemyDamageMultiplyer;
-
-    //Tweener twScale;
-    //float hitFxDuration = 0.25f;
-    //float shootTimer=0f;
     public SecondEnemy() : base()
     {
         enemyType = EnemyType.bonusEnemy;
@@ -65,7 +68,7 @@ public class SecondEnemy : EnemyClass
         base.UpdateRoutine();
     }
 
-    public override void OnHitSuffered(int damage = 1)
+    public override void OnHitSuffered(int damage = default)
     {
         #region old hitSuffer
         //hp -= damage;
@@ -116,7 +119,7 @@ public class SecondEnemy : EnemyClass
         //}
         #endregion
 
-        base.OnHitSuffered();
+        base.OnHitSuffered(damage);
 
     }
     public override void GunDropLogic()
@@ -132,13 +135,13 @@ public class SecondEnemy : EnemyClass
     }
     public override bool FirstGunDropCondition()
     {
-        if (UIManager.instance.totalEnemiesKilled > 5 && Random.Range(0, 11) < 9)
+        if (EnemiesKilledFirstDrop && IsFirstDropRandomTrue)
         {
-            gunToSpawn = "ElectricGun";
+            gunType = GunDrop.ElectricGun;
             return true;
         }
         else
-            gunToSpawn = "BigGun";
+            gunType = GunDrop.BigGun;
             return false;
     }
     public override bool SecondGunDropCondition()

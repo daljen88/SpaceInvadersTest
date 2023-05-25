@@ -131,7 +131,7 @@ MonoBehaviour:
   baseDirectionVector: {x: 0, y: 1, z: 0}
   thisSpeed: 1
   thisShotDamage: 1
-  explosionDamage: 5
+  explosionDamage: 8
 --- !u!1 &5293985112467015423
 GameObject:
   m_ObjectHideFlags: 0

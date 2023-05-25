@@ -664,7 +664,7 @@ MonoBehaviour:
   musicRadioCollected: 0
   alarmClockCollected: 0
   numberOfAlarmsCollected: 0
-  startingMaxEnemies: 4
+  startingMaxEnemies: 9
   typeGunPossessed: {fileID: 0}
   objectGunPossessed: {fileID: 0}
 --- !u!82 &414029231

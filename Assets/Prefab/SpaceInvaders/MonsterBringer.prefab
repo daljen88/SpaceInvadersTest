@@ -139,14 +139,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 73daf7b17b69ac647a2e1055a392851b, type: 3}
   - {fileID: 8300000, guid: 6924edcf47efb5341b3ac6707884b95d, type: 3}
   audioSrc: {fileID: 3600642468606479327}
-  myMaterial: {fileID: 2100000, guid: 98c4b1214e27d2942b656d4de9a0ebd0, type: 2}
-  myHitTakenMaterial: {fileID: 2100000, guid: f14f623b4a38fcb45a01911d8465573d, type: 2}
-  hitFxColor: {r: 1, g: 0.3275637, b: 0, a: 1}
   baseEnemySpeed: 1
   baseShootCooldown: 1
   baseEnemyDamageMultiplyer: 1
-  hp: 1
   hitFxDuration: 0.25
+  myMaterial: {fileID: 2100000, guid: 98c4b1214e27d2942b656d4de9a0ebd0, type: 2}
+  myHitTakenMaterial: {fileID: 2100000, guid: f14f623b4a38fcb45a01911d8465573d, type: 2}
+  hitFxColor: {r: 1, g: 0.3275637, b: 0, a: 1}
+  enemyType: 2
   drops:
   - {fileID: 2678455731497475791, guid: 3aa99d2f70321a843b2c85bce3a8ad7b, type: 3}
   - {fileID: 5740781786587684057, guid: 257ec655b12b3bb4397052bfc2a2cb3d, type: 3}
@@ -154,6 +154,11 @@ MonoBehaviour:
   - {fileID: 2984454448563473827, guid: f47154aebf3fd0d44a0799f9b9d01c02, type: 3}
   dropSlot: {fileID: 2676047769025116565}
   bringingDrop: {fileID: 0}
+  thisEnemyPointsValue: 4999
+  thisShootCooldown: 1
+  thisEnemySpeed: 3.5
+  thisHp: 5
+  thisEnemyDamageMultiplyer: 1
   enemiesKilledFirstDrop: 1
 --- !u!1 &2676047769025116565
 GameObject:

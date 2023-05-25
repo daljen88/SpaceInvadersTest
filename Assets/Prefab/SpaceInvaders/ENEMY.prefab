@@ -227,8 +227,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.54609096
+  m_Center: {x: 0, y: -0.007647395, z: 0}
 --- !u!114 &2515414618375621303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,20 +249,28 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 73daf7b17b69ac647a2e1055a392851b, type: 3}
   - {fileID: 8300000, guid: 6924edcf47efb5341b3ac6707884b95d, type: 3}
   audioSrc: {fileID: 3036990157780442339}
+  baseEnemySpeed: 1
+  baseShootCooldown: 1
+  baseEnemyDamageMultiplyer: 1
+  hitFxDuration: 0.25
   myMaterial: {fileID: 2100000, guid: 98c4b1214e27d2942b656d4de9a0ebd0, type: 2}
   myHitTakenMaterial: {fileID: 2100000, guid: f14f623b4a38fcb45a01911d8465573d, type: 2}
   hitFxColor: {r: 0.7921569, g: 0.4404946, b: 0, a: 1}
-  baseShootCooldown: 1
-  baseEnemySpeed: 1
-  hp: 3
-  baseEnemyDamageMultiplyer: 1
-  hitFxDuration: 0.25
+  enemyType: 0
   drops:
   - {fileID: 2678455731497475791, guid: 3aa99d2f70321a843b2c85bce3a8ad7b, type: 3}
   guns:
   - {fileID: 2984454448563473827, guid: f47154aebf3fd0d44a0799f9b9d01c02, type: 3}
   - {fileID: 7241568443210256612, guid: 66880bbecd0232143bd6085603f9c7eb, type: 3}
   - {fileID: 1854602079996264188, guid: f18a1e99be534ea478eb42ca52664f23, type: 3}
+  thisEnemyPointsValue: 666
+  thisShootCooldown: 0.5
+  thisEnemySpeed: 3
+  thisHp: 3
+  thisEnemyDamageMultiplyer: 1
+  enemiesKilledFirstDrop: 6
+  enemiesKilledSecondDrop: 48
+  enemiesKilledThirdDrop: 9999
 --- !u!54 &-5780585211012120273
 Rigidbody:
   m_ObjectHideFlags: 0

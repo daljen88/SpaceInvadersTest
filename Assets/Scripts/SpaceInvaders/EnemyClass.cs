@@ -73,7 +73,7 @@ public abstract class EnemyClass : MonoBehaviour, IHittable
 
     public virtual void StartRoutine()
     {
-        gunDrops = new Dictionary<GunDrop, GameObject>() /*{ { new EnemyType(), new GameObject() }, { new EnemyType(), new GameObject() }, { new EnemyType(), new GameObject() } }*/;
+        gunDrops = new Dictionary<GunDrop, GameObject>();
         int i = 0;
         foreach (GunDrop gunDropType in Enum.GetValues(typeof(GunDrop)))
         {

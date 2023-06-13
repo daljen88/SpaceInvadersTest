@@ -71,18 +71,6 @@ public class GameManager : MonoBehaviour
     public WeaponsClass typeGunPossessed;
     public GameObject objectGunPossessed;
     
-    public void CollectAlarmClock()
-    {
-        AlarmClockCollected = true;
-        numberOfAlarmsCollected++;
-    }
-
-    public void SetGameManagerGunPossessed(GameObject gun)
-    {
-        objectGunPossessed = gun;
-        typeGunPossessed = gun?.GetComponent<WeaponsClass>();
-    }
-
     private void Awake()
     {
         if (Instance != null)
@@ -95,6 +83,18 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+    public void CollectAlarmClock()
+    {
+        AlarmClockCollected = true;
+        numberOfAlarmsCollected++;
+    }
+
+    public void SetGameManagerGunPossessed(GameObject gun)
+    {
+        objectGunPossessed = gun;
+        typeGunPossessed = gun?.GetComponent<WeaponsClass>();
+    }
+
 
     void Start()
     {

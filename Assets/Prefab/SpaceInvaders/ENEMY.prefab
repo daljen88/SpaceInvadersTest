@@ -41,7 +41,7 @@ AudioSource:
   m_GameObject: {fileID: 2395827921833959650}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -2314477771467083469, guid: 8f9e7f5f2d45ef842b96d2ab542afc64, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -269,8 +269,8 @@ MonoBehaviour:
   thisHp: 3
   thisEnemyDamageMultiplyer: 1
   enemiesKilledFirstDrop: 6
-  enemiesKilledSecondDrop: 48
-  enemiesKilledThirdDrop: 9999
+  enemiesKilledSecondDrop: 45
+  enemiesKilledThirdDrop: 6666
 --- !u!54 &-5780585211012120273
 Rigidbody:
   m_ObjectHideFlags: 0

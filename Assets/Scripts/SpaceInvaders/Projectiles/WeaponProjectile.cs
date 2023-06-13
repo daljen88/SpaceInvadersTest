@@ -70,6 +70,17 @@ public abstract class WeaponProjectile : MonoBehaviour, IShootable
         //distrugge dopo 10 secondi
         //Destroy(gameObject, 10);
     }
+    public virtual void Shoot(Vector3 weaponDirVector, WeaponsClass shootingWeapon, int weaponMulti = 1)
+    {
+        hittingShotDamage = weaponMulti * ShotDamage;
+        shooted = true;
+        movementVector = weaponDirVector * Speed;
+        //audioClips.Clear();
+        //audioPlayShot.clip = audioClips[Random.Range(0, audioClips.Count)];
+        //audioPlayShot.Play();
+        //distrugge dopo 10 secondi
+        //Destroy(gameObject, 10);
+    }
 
     public virtual void OnTriggerLogic(Collider entering)
     {

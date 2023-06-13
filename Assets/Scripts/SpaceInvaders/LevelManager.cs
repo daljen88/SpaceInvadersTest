@@ -301,18 +301,19 @@ public class LevelManager : MonoBehaviour
         {
             isPaused = true;
             uiManager.pauseGO.SetActive(true);
-            character.IsSlowingTime = false;
-            character.enabled = false;
+            character.PausePlayer();
+            PlayerTextLogic.instance.PauseRoutine();
             Time.timeScale = 0;
         }
         else
         {
 
             isPaused = false;
+            uiManager.pauseVolumeSettingsWindow.SetActive(false);
             uiManager.pauseGO.SetActive(false);
-
             if (state == LogicState.RUNNING)
-                character.enabled = true;
+                character.UnpausePlayer();
+            PlayerTextLogic.instance.ResumeRoutine();
 
             Time.timeScale = 1;
         }
@@ -321,7 +322,7 @@ public class LevelManager : MonoBehaviour
 
     public void Unpause()
     {
-        //USATA NEL BACK TO GAME BUTTON
+        //CHIAMATA DA INTERFACE NEL BACK TO GAME BUTTON
         TogglePause();
     }
 

@@ -125,12 +125,7 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
         }
         else if (IsCollected == true)
         {
-            //gunRotation = GunRotation/*tPlayer.goingRight ? 15 : -15*/;
-            gunSpriteRenderer.flipX = !tPlayer.goingRight;
-
-            transform.position = tPlayer.goingRight ? tPlayer.gameObject.transform.position - gunOffsetR : tPlayer.gameObject.transform.position - gunOffsetL;
-
-            transform.rotation = Quaternion.Euler(0, 0, GunRotation);
+            CollectedUpdateLogic();
 
         }
         if(dropTimer<=DropLifeTime/5&&!isCollected&& vanishRoutine == false)
@@ -140,6 +135,15 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
         }
         if (dropTimer <= 0 && !isCollected)
             Destroy(gameObject);
+    }
+    public virtual void CollectedUpdateLogic()
+    {
+        //gunRotation = GunRotation/*tPlayer.goingRight ? 15 : -15*/;
+        gunSpriteRenderer.flipX = !tPlayer.goingRight;
+
+        transform.position = tPlayer.goingRight ? tPlayer.gameObject.transform.position - gunOffsetR : tPlayer.gameObject.transform.position - gunOffsetL;
+
+        transform.rotation = Quaternion.Euler(0, 0, GunRotation);
     }
 
     public virtual void OnTriggerLogic(Collider entering)

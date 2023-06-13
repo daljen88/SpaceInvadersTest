@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EyeOrbsCannon : WeaponsClass
 {
@@ -10,7 +11,7 @@ public class EyeOrbsCannon : WeaponsClass
 
     public override float DropSpeed => baseDropSpeed + 2;
 
-    [SerializeField] private float thisFireRate = .66f;
+    [SerializeField] private float thisFireRate = .8f;
     public override float FireRate => baseFireRate * thisFireRate;
 
     [SerializeField] private int thisDamageMultiplyer = 1;
@@ -34,6 +35,8 @@ public class EyeOrbsCannon : WeaponsClass
     /*[SerializeField]*/
     private float eyeOrbShotRotation/* = -90f*/;
 
+    public GameObject blackHoleLoaderFill;
+    public Image fillImage;
     public GameObject blackHoleSwoshTemplate;
     protected BlackHole myBlackHole;
 
@@ -57,12 +60,19 @@ public class EyeOrbsCannon : WeaponsClass
     protected override void StartRoutine()
     {
         base.StartRoutine();
+        fillImage = blackHoleLoaderFill.GetComponent<Image>();
         // gunSpriteRenderer =  gameObject.GetComponentInChildren<SpriteRenderer>();
     }
 
     protected override void UpdateRoutine()
     {
         base.UpdateRoutine();
+    }
+    public override void CollectedUpdateLogic()
+    {
+        blackHoleLoaderFill.transform.localPosition = tPlayer.goingRight? new Vector3(-0.72f, blackHoleLoaderFill.transform.localPosition.y) : new Vector3(0.72f, blackHoleLoaderFill.transform.localPosition.y);
+
+        base.CollectedUpdateLogic();
     }
     public override void OnTriggerLogic(Collider entering)
     {
@@ -84,24 +94,30 @@ public class EyeOrbsCannon : WeaponsClass
             return;
         }
     }
+
     public void ProjectileInstatiation(int _xCoordinate)
     {
+        WeaponsClass thisWeapon=gameObject.GetComponent<EyeOrbsCannon>();
         projDirectionVector.x = tPlayer.goingRight ? Mathf.Cos(Mathf.Deg2Rad * (75 - 15 * _xCoordinate)) : -Mathf.Cos(Mathf.Deg2Rad * (75 - 15 * _xCoordinate));
         projDirectionVector.y = Mathf.Sin(Mathf.Deg2Rad * (75 - 15 * _xCoordinate));
         eyeOrbShotRotation = tPlayer.goingRight ? 75 - (15 * _xCoordinate):(105+ (15 * _xCoordinate));
         GameObject tempProjectile = Instantiate(gunShotTemplate, new Vector3(tPlayer.goingRight ? transform.position.x + eyeOrbShotXOffsetR : transform.position.x + eyeOrbShotXOffsetL, transform.position.y), Quaternion.Euler(0, 0, eyeOrbShotRotation));
-        myProjectile = tempProjectile.GetComponent<WeaponProjectile>();
-        myProjectile.Shoot(ProjDirectionVector, DamageMultiplyer);
+        //myProjectile = tempProjectile.GetComponent<WeaponProjectile>();
+        myProjectile = tempProjectile.GetComponent<EyeOrbProjectile>();
+
+        myProjectile.Shoot(ProjDirectionVector, thisWeapon, DamageMultiplyer);
     }
 
     public void SecondShootProjectile()
     {
-        if (coolDown <= 0)
+        if (coolDown <= 0 && fillImage.fillAmount == 1)
         {
             GameObject tempBlackHole = Instantiate(blackHoleSwoshTemplate, new Vector3(tPlayer.goingRight ? transform.position.x + eyeOrbShotXOffsetR : transform.position.x + eyeOrbShotXOffsetL, transform.position.y), Quaternion.Euler(0, 0, 0));
             myBlackHole = tempBlackHole.GetComponent<BlackHole>();
             myBlackHole.Shoot(Vector3.up, DamageMultiplyer);
             coolDown = FireRate;
+            fillImage.fillAmount = 0f;
+            //blackHoleLoaderFill.GetComponent<Image>().fillAmount = 0f;
         }
         else
         {

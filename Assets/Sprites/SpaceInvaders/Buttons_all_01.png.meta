@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -8281,11 +8281,11 @@ TextureImporter:
       Buttons_all_01_204: 132812108
       Buttons_all_01_35: 1443544024
       Buttons_all_01_116: 545615577
-      Buttons_all_01_168: -1986701330
       Buttons_all_01_271: 1555010843
       Buttons_all_01_354: 1094276231
-      Buttons_all_01_236: -1525961018
+      Buttons_all_01_168: -1986701330
       Buttons_all_01_22: 1585882962
+      Buttons_all_01_236: -1525961018
       Buttons_all_01_295: -1217611746
       Buttons_all_01_347: 432917418
       Buttons_all_01_345: 1671017467
@@ -8324,8 +8324,8 @@ TextureImporter:
       Buttons_all_01_375: 1405868699
       Buttons_all_01_20: -757586364
       Buttons_all_01_41: -315490268
-      Buttons_all_01_1: 762479899
       Buttons_all_01_276: -2145698846
+      Buttons_all_01_1: 762479899
       Buttons_all_01_279: -1178236289
       Buttons_all_01_296: 1869397855
       Buttons_all_01_351: -36760243
@@ -8356,11 +8356,11 @@ TextureImporter:
       Buttons_all_01_344: 1579808900
       Buttons_all_01_118: -1074270003
       Buttons_all_01_71: -1927086290
-      Buttons_all_01_107: 1171096111
       Buttons_all_01_352: 772424121
-      Buttons_all_01_357: 1165008384
+      Buttons_all_01_107: 1171096111
       Buttons_all_01_56: 578742283
       Buttons_all_01_28: 1792529556
+      Buttons_all_01_357: 1165008384
       Buttons_all_01_355: -913313184
       Buttons_all_01_220: 1093553073
       Buttons_all_01_243: -184002643
@@ -8396,8 +8396,8 @@ TextureImporter:
       Buttons_all_01_40: -1752677676
       Buttons_all_01_255: -2126550915
       Buttons_all_01_230: -678627077
-      Buttons_all_01_314: -1246053771
       Buttons_all_01_380: -1088252835
+      Buttons_all_01_314: -1246053771
       Buttons_all_01_183: 1865608566
       Buttons_all_01_251: -892966654
       Buttons_all_01_225: 1733360171
@@ -8409,11 +8409,11 @@ TextureImporter:
       Buttons_all_01_25: -1712277993
       Buttons_all_01_237: 912859040
       Buttons_all_01_307: 785024114
-      Buttons_all_01_331: -1535532833
+      Buttons_all_01_349: -1563297281
       Buttons_all_01_150: 1637604335
       Buttons_all_01_11: 1433934907
       Buttons_all_01_353: -1708827497
-      Buttons_all_01_349: -1563297281
+      Buttons_all_01_331: -1535532833
       Buttons_all_01_240: -569015267
       Buttons_all_01_325: 545975597
       Buttons_all_01_33: 247392919

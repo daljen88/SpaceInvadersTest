@@ -27,17 +27,17 @@ public class Enemy : EnemyClass
 
     protected override float ShootCooldown => baseShootCooldown*thisShootCooldown;
     public override float EnemySpeed { get { return  baseEnemySpeed* thisEnemySpeed; }protected set{ thisEnemySpeed = value; } }
-    protected override int Hp { get { return hp; } set { hp = value; } }
+    public override int Hp { get { return hp; } set { hp = value; } }
     protected override int EnemyDamageMultiplyer => baseEnemyDamageMultiplyer * thisEnemyDamageMultiplyer;
 
     [SerializeField] private int enemiesKilledFirstDrop=6;
     protected override bool EnemiesKilledFirstDrop => UIManager.instance.totalEnemiesKilled % enemiesKilledFirstDrop == 0;
-    [SerializeField] private int enemiesKilledSecondDrop=48;
+    [SerializeField] private int enemiesKilledSecondDrop=45;
     protected override bool EnemiesKilledSecondDrop => UIManager.instance.totalEnemiesKilled % enemiesKilledSecondDrop == 0;
-    [SerializeField] private int enemiesKilledThirdDrop=9999;
+    [SerializeField] private int enemiesKilledThirdDrop=6666;
     protected override bool EnemiesKilledThirdDrop => UIManager.instance.totalEnemiesKilled % enemiesKilledThirdDrop == 0;
 
-    private IDictionary<string, int> FirstDropRandomRange  = new Dictionary<string, int>() { { "min", 0 }, { "max(excluded)", 11 }, { "IsLessThan", 8 } };
+    private IDictionary<string, int> FirstDropRandomRange  = new Dictionary<string, int>() { { "min", 0 }, { "max(excluded)", 11 }, { "IsLessThan", 7 } };
     private IDictionary<string, int> SecondDropRandomRange = new Dictionary<string, int>() { { "min", 0 }, { "max(excluded)", 11 }, { "IsLessThan", 8 } };
     private IDictionary<string, int> ThirdDropRandomRange  = new Dictionary<string, int>() { { "min", 0 }, { "max(excluded)", 11 }, { "IsLessThan", 11 } };
     protected override bool IsFirstDropRandomTrue => Random.Range(FirstDropRandomRange["min"], FirstDropRandomRange["max(excluded)"]) < FirstDropRandomRange["IsLessThan"];

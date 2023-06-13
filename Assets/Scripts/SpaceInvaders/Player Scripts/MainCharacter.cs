@@ -6,6 +6,7 @@ using System.ComponentModel.Design;
 using System.Diagnostics.Tracing;
 using Unity.VisualScripting;
 using System;
+using UnityEngine.TextCore.Text;
 
 public class MainCharacter : MonoBehaviour, IHittable
 {
@@ -42,21 +43,14 @@ public class MainCharacter : MonoBehaviour, IHittable
     private float powerCoolDownCounter = 0;
     public float deltaTimeScale;
     public bool IsSlowingTime = false;
-    //public float UnscaleDeltaTime
-    //{
-    //    get => deltaTimeScale;
-    //    set => deltaTimeScale = Time.unscaledDeltaTime;
-    //}
-    //public float NormalDeltaTime
-    //{
-    //    get => deltaTimeScale;
-    //    set => deltaTimeScale = Time.deltaTime;
-    //}
+    public IEnumerator hitCoroutineRunning;
+    private bool hitSufferedRoutineIsRunning = false;
+
     //OUTATTIME
     private float maxPowerDurationCounter;
     [SerializeField] private float maxSlowingPowerDuration = 1.8f;
     public float MaxSlowingPowerDuration=>maxSlowingPowerDuration+.2f* GameManager.Instance.NumberOfAlarmsCollected>5?5: maxSlowingPowerDuration + .2f * GameManager.Instance.NumberOfAlarmsCollected;
-    [SerializeField] private float everyThisSecondsPowerReloadsOneSecond = 8.2f;
+    [SerializeField] private float everyThisSecondsPowerReloadsOneSecond = 6.2f;
     public float EveryThisSecondsPowerReloadsOneSecond => everyThisSecondsPowerReloadsOneSecond - .2f * GameManager.Instance.NumberOfAlarmsCollected < 4 ? 4 : everyThisSecondsPowerReloadsOneSecond - .2f * GameManager.Instance.NumberOfAlarmsCollected;
     [SerializeField] private float slowingPowerSpeedBoost = 50f;
 
@@ -213,6 +207,19 @@ public class MainCharacter : MonoBehaviour, IHittable
             //gun possesses.shoot
         }
     }
+    public void PausePlayer()
+    {
+        IsSlowingTime = false;
+        enabled = false;
+        if(hitSufferedRoutineIsRunning)
+            StopCoroutine(hitCoroutineRunning);
+    }
+    public void UnpausePlayer()
+    {
+        enabled = true;
+        if (hitCoroutineRunning != null)
+            StartCoroutine(hitCoroutineRunning);
+    }
     public void OnHitSuffered(int damage = 1)
     {
         if (IsInvulnerable)
@@ -244,7 +251,8 @@ public class MainCharacter : MonoBehaviour, IHittable
                 else
                 {
                     //fx colpo subito
-                    StartCoroutine(HitSufferedCoroutine());
+                    hitCoroutineRunning = HitSufferedCoroutine();
+                    StartCoroutine(hitCoroutineRunning);
                     UIManager.instance.OnPlayerHitUpdateLives(damage);
                 }
             }
@@ -271,6 +279,7 @@ public class MainCharacter : MonoBehaviour, IHittable
 
     IEnumerator HitSufferedCoroutine()
     {
+        hitSufferedRoutineIsRunning = true;
         Time.timeScale = 0.1f;
         IsInvulnerable = true;
         SpriteRenderer tsprite = GetComponentInChildren<SpriteRenderer>();
@@ -283,6 +292,8 @@ public class MainCharacter : MonoBehaviour, IHittable
         //moveSpeed = 6f;
         yield return new WaitForSecondsRealtime(.10f);
         IsInvulnerable = false;
+        hitSufferedRoutineIsRunning = false;
+
     }
     IEnumerator WeaponHitSufferedCoroutine()
     {

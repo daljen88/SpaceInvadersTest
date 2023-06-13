@@ -22,6 +22,8 @@ public class UIManager : MonoBehaviour
     public int bringerEnemyKilled;
     public GameObject playerUI;
     public GameObject pauseGO;
+    public GameObject pauseVolumeSettingsWindow;
+
     public bool SetPause => LevelManager.instance.TogglePause();
     Tweener twScale;
 

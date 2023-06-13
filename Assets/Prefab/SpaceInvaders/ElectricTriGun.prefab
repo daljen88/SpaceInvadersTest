@@ -125,7 +125,7 @@ AudioSource:
   m_GameObject: {fileID: 6163552214305296454}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3939591465619142048, guid: 8f9e7f5f2d45ef842b96d2ab542afc64, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -350,12 +350,13 @@ MonoBehaviour:
   gunShotTemplate: {fileID: 4550253995811082965, guid: 7069db26f62d1d747aa4f4d21bbe1069, type: 3}
   hitFxColor: {r: 1, g: 0.50414574, b: 0, a: 1}
   hitFxDuration: 0.3
+  gunType: 2
   thisBonusDropLifeTime: 2
   thisFireRate: 0.66
   thisDamageMultiplyer: 1
   rotazR: 15
   rotazL: -15
-  bigGunOffsetR: {x: -0.166, y: -0.2, z: 0}
-  bigGunOffsetL: {x: 0.166, y: -0.2, z: 0}
+  electricGunOffsetR: {x: -0.166, y: -0.2, z: 0}
+  electricGunOffsetL: {x: 0.166, y: -0.2, z: 0}
   electricShotXOffsetR: 0.7
   electricShotXOffsetL: -0.7

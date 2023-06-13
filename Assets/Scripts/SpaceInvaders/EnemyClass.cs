@@ -46,7 +46,7 @@ public abstract class EnemyClass : MonoBehaviour, IHittable
     //ENEMY VALUES PROPERTIES
     protected abstract float ShootCooldown {get;}
     public abstract float EnemySpeed { get; protected set; }
-    protected abstract int Hp { get; set; }
+    public abstract int Hp { get; set; }
     protected abstract int EnemyDamageMultiplyer { get; }
     //DROP CONDITION PROPERTIES
     protected bool EnemiesKilledMoreThanZero => UIManager.instance.totalEnemiesKilled != 0;
@@ -135,7 +135,7 @@ public abstract class EnemyClass : MonoBehaviour, IHittable
     {
         ParticleSystem ps = Instantiate(ExplosionTemplate, transform.position, Quaternion.identity);
         ps.Emit(60);
-        Destroy(ps.gameObject, .5f);
+        Destroy(ps.gameObject, .55f);
     }
 
     public virtual void GunDropLogic()

@@ -25,12 +25,6 @@ public class StoryRoutine : MonoBehaviour
         LevelManager.instance.uiStoryText.text = "";
         storyTextByChar = storyText.ToCharArray();
 
-        //int i = 0;
-        //foreach (char c in introText)
-        //{
-        //    introTextByChar[i] = c;
-        //    i++;
-        //}
     }
     private void OnEnable()
     {

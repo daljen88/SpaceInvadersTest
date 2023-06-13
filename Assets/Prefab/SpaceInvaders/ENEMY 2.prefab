@@ -41,7 +41,7 @@ AudioSource:
   m_GameObject: {fileID: 2395827921833959650}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -2314477771467083469, guid: 8f9e7f5f2d45ef842b96d2ab542afc64, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -266,18 +266,24 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 73daf7b17b69ac647a2e1055a392851b, type: 3}
   - {fileID: 8300000, guid: 6924edcf47efb5341b3ac6707884b95d, type: 3}
   audioSrc: {fileID: 3036990157780442339}
+  baseEnemySpeed: 1
+  baseShootCooldown: 1
+  baseEnemyDamageMultiplyer: 1
+  hitFxDuration: 0.25
   myMaterial: {fileID: 2100000, guid: 98c4b1214e27d2942b656d4de9a0ebd0, type: 2}
   myHitTakenMaterial: {fileID: 2100000, guid: f14f623b4a38fcb45a01911d8465573d, type: 2}
   hitFxColor: {r: 0.7924528, g: 0.22380424, b: 0.08522601, a: 1}
-  baseShootCooldown: 1
-  baseEnemySpeed: 1
-  hp: 1
-  baseEnemyDamageMultiplyer: 1
-  hitFxDuration: 0.25
+  enemyType: 1
   drops: []
   guns:
   - {fileID: 2984454448563473827, guid: f47154aebf3fd0d44a0799f9b9d01c02, type: 3}
   - {fileID: 7241568443210256612, guid: 66880bbecd0232143bd6085603f9c7eb, type: 3}
+  thisEnemyPointsValue: 6666
+  thisShootCooldown: 0.5
+  thisEnemySpeed: 5
+  thisHp: 1
+  thisEnemyDamageMultiplyer: 1
+  enemiesKilledFirstDrop: 5
 --- !u!82 &-4906858294135460499
 AudioSource:
   m_ObjectHideFlags: 0
@@ -285,7 +291,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2515414618375621290}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ffa36c66748216b4ca9e42d5442c6349, type: 3}

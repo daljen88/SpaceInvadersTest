@@ -56,6 +56,7 @@ public class SecondEnemySpawner : MonoBehaviour
     }
     public void SpawnBringerEnemy()
     {
+        //SPOSTO DROP GENERATION DENTRO NEMICO
         if (maxBringerEnemies > 0)
         {
             maxBringerEnemies--;
@@ -113,9 +114,9 @@ public class SecondEnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        if(/*UIManager.instance.scorePoints!=0&&*/UIManager.instance.totalEnemiesKilled>5/*&& UIManager.instance.scorePoints % 42==0*/)
+        if(/*UIManager.instance.scorePoints!=0&&*/UIManager.instance.totalEnemiesKilled>5)
         {
-            if (UIManager.instance.scorePoints % 24 == 0 /*|| UIManager.instance.scorePoints % 30 == 0 *//*|| UIManager.instance.scorePoints % 36 == 0*/)
+            if (UIManager.instance.scorePoints % 48 == 0 /*|| UIManager.instance.scorePoints % 60 == 0*/ /*|| UIManager.instance.scorePoints % 36 == 0*/)
                 if (Random.Range(0, 11) < 7)
                 {
                     if (!Enemy_Spawner.Instance.CheckPlayerVictory())

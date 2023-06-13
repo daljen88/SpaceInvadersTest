@@ -41,7 +41,7 @@ AudioSource:
   m_GameObject: {fileID: 679003826209004212}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -2314477771467083469, guid: 8f9e7f5f2d45ef842b96d2ab542afc64, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -265,6 +265,7 @@ MonoBehaviour:
   gunShotTemplate: {fileID: 3912386554682083790, guid: b64412e30a328534d8fb7c791f3881e6, type: 3}
   hitFxColor: {r: 0, g: 0, b: 0, a: 0}
   hitFxDuration: 0.3
+  gunType: 0
   thisFireRate: 0.2
   rotazR: 15
   rotazL: -15

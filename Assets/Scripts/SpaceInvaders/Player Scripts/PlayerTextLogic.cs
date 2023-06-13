@@ -25,8 +25,9 @@ public class PlayerTextLogic : MonoBehaviour
     private Vector3 startingPos;
     private bool NormalEnemiesKilledCondition => UIManager.instance.normalEnemyKilled == 12;
     public bool routineIsRunning = false;
-    public Coroutine runningRoutine;
     public bool routinePaused;
+    //public Coroutine runningRoutine;
+    public IEnumerator textRoutineRunning;
 
     //public UnityEvent foundGun;
 
@@ -52,7 +53,7 @@ public class PlayerTextLogic : MonoBehaviour
         if (!openingDone && GameManager.Instance.LevelCount == 3 && LevelManager.instance.state == LevelManager.LogicState.RUNNING && NormalEnemiesKilledCondition)
         {
             openingDone = true;
-            SecondLevelOpening();
+            ThirdLevelOpening();
         }
     }
 
@@ -60,7 +61,7 @@ public class PlayerTextLogic : MonoBehaviour
     {
         if (routineIsRunning == true /*&& runningRoutine != null*/ )
         {
-            StopCoroutine(runningRoutine);
+            StopCoroutine(textRoutineRunning);
             routineIsRunning = false;
             Time.timeScale = 1;
             TextWindow.SetActive(false);
@@ -69,11 +70,12 @@ public class PlayerTextLogic : MonoBehaviour
         else { return; }
     }
 
-    private void SecondLevelOpening()
+    private void ThirdLevelOpening()
     {
         textStringToChar = thirdLevelOpening[0].ToCharArray();
-        runningRoutine=StartCoroutine(FoundFirstCoroutine(textStringToChar));
-
+        //runningRoutine=StartCoroutine(FoundFirstCoroutine(textStringToChar));
+        textRoutineRunning = TypingTextCoroutine(textStringToChar);
+        StartCoroutine(textRoutineRunning);
     }
 
     public void FoundFirstRadio()
@@ -82,7 +84,11 @@ public class PlayerTextLogic : MonoBehaviour
         {
             firstRadio = true;
             textStringToChar = foundRadio[0].ToCharArray();
-            runningRoutine=StartCoroutine(FoundFirstCoroutine(textStringToChar));
+            //runningRoutine=StartCoroutine(FoundFirstCoroutine(textStringToChar));
+            textRoutineRunning = TypingTextCoroutine(textStringToChar);
+
+            StartCoroutine(textRoutineRunning);
+
         }
         else { return; }
     }
@@ -91,7 +97,10 @@ public class PlayerTextLogic : MonoBehaviour
         //COONTROLLO IF QUA DENTRO
         firstAlarm = true;
         textStringToChar = foundAlarmClock[0].ToCharArray();
-        runningRoutine=StartCoroutine(FoundFirstCoroutine(textStringToChar));
+        //runningRoutine=StartCoroutine(FoundFirstCoroutine(textStringToChar));
+        textRoutineRunning = TypingTextCoroutine(textStringToChar);
+        StartCoroutine(textRoutineRunning);
+
     }
     public void FoundNewGun()
     {
@@ -99,55 +108,58 @@ public class PlayerTextLogic : MonoBehaviour
         {
             firstGun = true;
             textStringToChar = foundNewGunPhrases[0].ToCharArray();
-            runningRoutine=StartCoroutine(FoundFirstCoroutine(textStringToChar));
+            //runningRoutine=StartCoroutine(FoundFirstCoroutine(textStringToChar));
+            textRoutineRunning = TypingTextCoroutine(textStringToChar);
+            StartCoroutine(textRoutineRunning);
+
         }
         else { return; }
     }
 
-    public IEnumerator FoundFirstCoroutine(char[] charsToStamp)
+    public IEnumerator TypingTextCoroutine(char[] charsToStamp)
     {
         routineIsRunning = true;
 
         while (routineIsRunning)
         {
             Time.timeScale = .7f;
-            yield return new WaitForSecondsRealtime(.2f);
-            yield return new WaitUntil(() => !LevelManager.instance.IsPaused);
-
-            Time.timeScale = .4f;
-            yield return new WaitForSecondsRealtime(.2f);
-            yield return new WaitUntil(() => !LevelManager.instance.IsPaused);
-
-            Time.timeScale = .2f;
             yield return new WaitForSecondsRealtime(.1f);
-            yield return new WaitUntil(() => !LevelManager.instance.IsPaused);
-
+            //yield return new WaitUntil(() => !LevelManager.instance.IsPaused);
+            Time.timeScale = .4f;
+            yield return new WaitForSecondsRealtime(.1f);
+            Time.timeScale = .2f;
+            yield return new WaitForSecondsRealtime(.05f);
             Time.timeScale = .05f;
             TextWindow.SetActive(true);
 
             foreach (char c in charsToStamp)
             {
                 /*GetComponent<TextMeshPro>()*/
-                yield return new WaitForSecondsRealtime(.04f);
-                yield return new WaitUntil(()=>!LevelManager.instance.IsPaused);
                 Time.timeScale = .05f;
+                yield return new WaitForSecondsRealtime(.04f);
                 playerText.text += c;
                 TextWindow.GetComponent<AudioSource>().clip = keyHitSounds[Random.Range(0, 2)];
                 TextWindow.GetComponent<AudioSource>().Play();
 
             }
-            yield return new WaitForSecondsRealtime(.5f);
-            yield return new WaitUntil(() => !LevelManager.instance.IsPaused);
-
+            yield return new WaitForSecondsRealtime(.7f);
             Time.timeScale = .5f;
             yield return new WaitForSecondsRealtime(.3f);
-            yield return new WaitUntil(() => !LevelManager.instance.IsPaused);
-
             Time.timeScale = 1;
             TextWindow.SetActive(false);
             //LevelManager.instance.storyOver = true;
             playerText.text = "";
             routineIsRunning = false;
         }
-    }    
+    }   
+    public void PauseRoutine()
+    {
+        if(routineIsRunning)
+            StopCoroutine(textRoutineRunning);
+    }
+    public void ResumeRoutine()
+    {
+        if(textRoutineRunning!=null)
+            StartCoroutine(textRoutineRunning);
+    }
 }

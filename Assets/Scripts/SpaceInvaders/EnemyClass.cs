@@ -35,9 +35,17 @@ public abstract class EnemyClass : MonoBehaviour, IHittable
     [Header("THIS ENEMY TYPE DROPS")]
     public List<GameObject> drops;
     public List<GameObject> guns;
-    public enum GunDrop { BigGun, ElectricGun, EyeOrbCannon}
-    protected GunDrop gunType;
-    protected IDictionary<GunDrop, GameObject> gunDrops;
+    protected WeaponsClass.GunType gunType_toDrop;
+    protected IDictionary<WeaponsClass.GunType, GameObject> gunDrops_data;
+
+    //public enum GunDropType 
+    //{ 
+    //    BigGun,
+    //    ElectricGun, 
+    //    EyeOrbCannon
+    //}
+    //protected GunDropType gunType_toDrop;
+
 
     //CONTROL VARIABLES
     protected float shootTimer = 0;
@@ -71,23 +79,39 @@ public abstract class EnemyClass : MonoBehaviour, IHittable
         StartRoutine();
     }
 
+    public void PopulateGunsDropData()
+    {
+        foreach (GameObject gun in guns)
+        {
+            gunDrops_data.Add(gun.GetComponent<WeaponsClass>().gunType, gun);
+            //gunDrops_data.gunTypes.Add(GunDropType)gun.GetComponent<WeaponsClass>().gunType);
+            //gunDrops_data.gunPrefabs.Add(gun);
+        }
+
+        #region old
+        //int j = 0;
+        //foreach (GunDropType _gunDropType in Enum.GetValues(typeof(GunDropType)))
+        //{
+        //    if (j < guns.Count)//if i minore di guns count
+        //    {
+        //        //gunDrops.gunTypes.Add(gunDropType);
+        //        //gunDrops.gunPrefabs.Add(guns[i]);
+        //        gunDrops_data.Add(_gunDropType, guns[j]); //adding a key/value using the Add() method
+        //        j++;
+        //    }
+        //    else
+        //    {
+        //        j++;
+        //        return;
+        //    }
+        //}
+        #endregion
+    }
     public virtual void StartRoutine()
     {
-        gunDrops = new Dictionary<GunDrop, GameObject>();
-        int i = 0;
-        foreach (GunDrop gunDropType in Enum.GetValues(typeof(GunDrop)))
-        {
-            if (i < guns.Count)//if i minore di guns count
-            {
-                gunDrops.Add(gunDropType, guns[i]); //adding a key/value using the Add() method
-                i++;
-            }
-            else
-            {
-                i++;
-                return;
-            }
-        }
+        gunDrops_data = new Dictionary<WeaponsClass.GunType, GameObject>();
+
+        PopulateGunsDropData();
     }
 
     void Update()
@@ -159,7 +183,7 @@ public abstract class EnemyClass : MonoBehaviour, IHittable
     {
         if (EnemiesKilledFirstDrop && EnemiesKilledMoreThanZero && IsFirstDropRandomTrue)
         {
-            gunType = GunDrop.BigGun;
+            gunType_toDrop/*toDrop*/ = WeaponsClass.GunType.BigGun;
             return true;
         }
         else
@@ -169,7 +193,7 @@ public abstract class EnemyClass : MonoBehaviour, IHittable
     {
         if (EnemiesKilledSecondDrop && EnemiesKilledMoreThanZero && IsSecondDropRandomTrue)
         {
-            gunType=GunDrop.ElectricGun;
+            gunType_toDrop = WeaponsClass.GunType.ElectricGun;
             return true;
         }
         else
@@ -179,7 +203,7 @@ public abstract class EnemyClass : MonoBehaviour, IHittable
     {
         if (EnemiesKilledThirdDrop && EnemiesKilledMoreThanZero && IsThirdDropRandomTrue)
         {
-            gunType=GunDrop.EyeOrbCannon;
+            gunType_toDrop = WeaponsClass.GunType.EyeOrbCannon;
             return true;
         }
         else
@@ -189,7 +213,7 @@ public abstract class EnemyClass : MonoBehaviour, IHittable
 
     public virtual void InstantiateGunDrop()
     {
-        GameObject gun = Instantiate(gunDrops[gunType], transform.position, Quaternion.identity);
+        GameObject gun = Instantiate(gunDrops_data[gunType_toDrop], transform.position, Quaternion.identity);
         WeaponsClass gunDropping = gun.GetComponent<WeaponsClass>();
         gunDropping?.Drop(Vector3.down);
 

@@ -110,6 +110,7 @@ public class MainCharacter : MonoBehaviour, IHittable
         {
             Shoot();
         }
+
         Animator.Play(animationName);
 
         if(Input.GetKeyDown(KeyCode.AltGr))

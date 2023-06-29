@@ -37,12 +37,21 @@ public class Enemy : EnemyClass
     [SerializeField] private int enemiesKilledThirdDrop=6666;
     protected override bool EnemiesKilledThirdDrop => UIManager.instance.totalEnemiesKilled % enemiesKilledThirdDrop == 0;
 
-    private IDictionary<string, int> FirstDropRandomRange  = new Dictionary<string, int>() { { "min", 0 }, { "max(excluded)", 11 }, { "IsLessThan", 7 } };
-    private IDictionary<string, int> SecondDropRandomRange = new Dictionary<string, int>() { { "min", 0 }, { "max(excluded)", 11 }, { "IsLessThan", 8 } };
-    private IDictionary<string, int> ThirdDropRandomRange  = new Dictionary<string, int>() { { "min", 0 }, { "max(excluded)", 11 }, { "IsLessThan", 11 } };
-    protected override bool IsFirstDropRandomTrue => Random.Range(FirstDropRandomRange["min"], FirstDropRandomRange["max(excluded)"]) < FirstDropRandomRange["IsLessThan"];
-    protected override bool IsSecondDropRandomTrue => Random.Range(SecondDropRandomRange["min"], SecondDropRandomRange["max(excluded)"]) < SecondDropRandomRange["IsLessThan"];
-    protected override bool IsThirdDropRandomTrue => Random.Range(ThirdDropRandomRange["min"], ThirdDropRandomRange["max(excluded)"]) < ThirdDropRandomRange["IsLessThan"];
+    public struct DropRandomRange
+    {
+        public int min;
+        public int max_excluded;
+        public int isLessThan;
+
+    }
+    DropRandomRange FirstDropRandomRange = new DropRandomRange { min = 0, max_excluded = 11, isLessThan = 7 };
+    DropRandomRange SecondDropRandomRange = new DropRandomRange { min = 0, max_excluded = 11, isLessThan = 8 };
+    DropRandomRange ThirdDropRandomRange = new DropRandomRange { min = 0, max_excluded = 11, isLessThan = 11 };
+
+    protected override bool IsFirstDropRandomTrue => Random.Range(FirstDropRandomRange.min, FirstDropRandomRange.max_excluded) < FirstDropRandomRange.isLessThan;
+    protected override bool IsSecondDropRandomTrue => Random.Range(SecondDropRandomRange.min, SecondDropRandomRange.max_excluded) < SecondDropRandomRange.isLessThan;
+    protected override bool IsThirdDropRandomTrue => Random.Range(ThirdDropRandomRange.min, ThirdDropRandomRange.max_excluded) < ThirdDropRandomRange.isLessThan;
+    //private IDictionary<string, int> FirstDropRandomRange  = new Dictionary<string, int>() { { "min", 0 }, { "max(excluded)", 11 }, { "IsLessThan", 7 } };
 
     public Enemy():base()
     {

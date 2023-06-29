@@ -70,7 +70,13 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
 
     public static UnityEvent dropEvent;
 
-    public enum GunType {StandardGun, BigGun, ElectricGun, EyeOrbCannon }
+    public enum GunType 
+    {
+        StandardGun, 
+        BigGun, 
+        ElectricGun, 
+        EyeOrbCannon 
+    }
     public GunType gunType;
     //{ get { return projMovementVector; } set { projMovementVector = value; } }
 

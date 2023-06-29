@@ -166,7 +166,7 @@ public class ThirdEnemy : EnemyClass
     {
         if (EnemiesKilledFirstDrop && EnemiesKilledMoreThanZero && IsFirstDropRandomTrue /*&&GameManager.Instance.typeGunPossessed.name!="BigGun"*/)
         {
-            gunType = GunDrop.BigGun;
+            gunType_toDrop = WeaponsClass.GunType.BigGun;
             return true;
         }
         else

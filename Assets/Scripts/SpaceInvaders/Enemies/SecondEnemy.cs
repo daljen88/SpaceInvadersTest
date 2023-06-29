@@ -137,11 +137,11 @@ public class SecondEnemy : EnemyClass
     {
         if (EnemiesKilledFirstDrop && IsFirstDropRandomTrue)
         {
-            gunType = GunDrop.ElectricGun;
+            gunType_toDrop = WeaponsClass.GunType.ElectricGun;
             return true;
         }
         else
-            gunType = GunDrop.BigGun;
+            gunType_toDrop = WeaponsClass.GunType.BigGun;
             return false;
     }
     public override bool SecondGunDropCondition()

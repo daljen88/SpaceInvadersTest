@@ -39,7 +39,7 @@ public class MainCharacter : MonoBehaviour, IHittable
     public bool goingRight=true;
     public float baseFireRate = 0.2f;
     private float coolDown=0;
-    public float powerCoolDown = 16f;
+    private float powerCoolDown = 10;
     private float powerCoolDownCounter = 0;
     public float deltaTimeScale;
     public bool IsSlowingTime = false;
@@ -50,7 +50,7 @@ public class MainCharacter : MonoBehaviour, IHittable
     private float maxPowerDurationCounter;
     [SerializeField] private float maxSlowingPowerDuration = 1.8f;
     public float MaxSlowingPowerDuration=>maxSlowingPowerDuration+.2f* GameManager.Instance.NumberOfAlarmsCollected>5?5: maxSlowingPowerDuration + .2f * GameManager.Instance.NumberOfAlarmsCollected;
-    [SerializeField] private float everyThisSecondsPowerReloadsOneSecond = 6.2f;
+    [SerializeField] private float everyThisSecondsPowerReloadsOneSecond = 4.2f;
     public float EveryThisSecondsPowerReloadsOneSecond => everyThisSecondsPowerReloadsOneSecond - .2f * GameManager.Instance.NumberOfAlarmsCollected < 4 ? 4 : everyThisSecondsPowerReloadsOneSecond - .2f * GameManager.Instance.NumberOfAlarmsCollected;
     [SerializeField] private float slowingPowerSpeedBoost = 50f;
 

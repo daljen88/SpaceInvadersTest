@@ -269,7 +269,7 @@ MonoBehaviour:
   thisHp: 3
   thisEnemyDamageMultiplyer: 1
   enemiesKilledFirstDrop: 6
-  enemiesKilledSecondDrop: 45
+  enemiesKilledSecondDrop: 40
   enemiesKilledThirdDrop: 6666
 --- !u!54 &-5780585211012120273
 Rigidbody:

@@ -2991,11 +2991,10 @@ MonoBehaviour:
   gunPossesed: {fileID: 0}
   goingRight: 1
   baseFireRate: 0.2
-  powerCoolDown: 16
   deltaTimeScale: 0
   IsSlowingTime: 0
   maxSlowingPowerDuration: 1.8
-  everyThisSecondsPowerReloadsOneSecond: 8.2
+  everyThisSecondsPowerReloadsOneSecond: 4.2
   slowingPowerSpeedBoost: 50
 --- !u!54 &744026565
 Rigidbody:

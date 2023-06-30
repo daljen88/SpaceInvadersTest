@@ -32,7 +32,7 @@ public class Enemy : EnemyClass
 
     [SerializeField] private int enemiesKilledFirstDrop=6;
     protected override bool EnemiesKilledFirstDrop => UIManager.instance.totalEnemiesKilled % enemiesKilledFirstDrop == 0;
-    [SerializeField] private int enemiesKilledSecondDrop=45;
+    [SerializeField] private int enemiesKilledSecondDrop=40;
     protected override bool EnemiesKilledSecondDrop => UIManager.instance.totalEnemiesKilled % enemiesKilledSecondDrop == 0;
     [SerializeField] private int enemiesKilledThirdDrop=6666;
     protected override bool EnemiesKilledThirdDrop => UIManager.instance.totalEnemiesKilled % enemiesKilledThirdDrop == 0;
@@ -45,7 +45,7 @@ public class Enemy : EnemyClass
 
     }
     DropRandomRange FirstDropRandomRange = new DropRandomRange { min = 0, max_excluded = 11, isLessThan = 7 };
-    DropRandomRange SecondDropRandomRange = new DropRandomRange { min = 0, max_excluded = 11, isLessThan = 8 };
+    DropRandomRange SecondDropRandomRange = new DropRandomRange { min = 0, max_excluded = 11, isLessThan = 10 };
     DropRandomRange ThirdDropRandomRange = new DropRandomRange { min = 0, max_excluded = 11, isLessThan = 11 };
 
     protected override bool IsFirstDropRandomTrue => Random.Range(FirstDropRandomRange.min, FirstDropRandomRange.max_excluded) < FirstDropRandomRange.isLessThan;

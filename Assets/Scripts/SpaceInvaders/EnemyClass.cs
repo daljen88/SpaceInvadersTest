@@ -183,7 +183,7 @@ public abstract class EnemyClass : MonoBehaviour, IHittable
     {
         if (EnemiesKilledFirstDrop && EnemiesKilledMoreThanZero && IsFirstDropRandomTrue)
         {
-            gunType_toDrop/*toDrop*/ = WeaponsClass.GunType.BigGun;
+            gunType_toDrop = WeaponsClass.GunType.BigGun;
             return true;
         }
         else

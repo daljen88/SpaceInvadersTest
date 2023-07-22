@@ -22,14 +22,17 @@ public class LevelManager : MonoBehaviour
     private bool isPaused = false;
     public bool IsPaused=>isPaused;
     public List<AudioClip> menuAudioClips;
-    private int GetNewLevelPlayerHp 
-    {
-        get=> GameManager.Instance.GetStartingPlayerHP;
-    }
+
     private int SetNewLevelPlayerHp
     {
-        get=> GetNewLevelPlayerHp > 9 ? 9 : GetNewLevelPlayerHp;
+        get=> GameManager.Instance.GetNewLevelPlayerHP > 9 ? 9 : GameManager.Instance.GetNewLevelPlayerHP;
     }
+
+    //private int GetNewLevelPlayerHp 
+    //{
+    //    get=> GameManager.Instance.GetNewLevelPlayerHP;
+    //}
+
     private int SetMaxEnemies
     {
         get => GameManager.Instance.MaxEnemies;

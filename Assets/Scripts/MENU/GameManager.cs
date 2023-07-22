@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public int enemiesKilledInRun = 0;
 
     [Header("PLAYER HP FORMULA = (int)[ basePlayerHp + baseHpIncrement + (levelCount / levelsPerHpIncrementRatio) ]")]
-    [SerializeField] private int playerHp;
+    [SerializeField] private int playerHp;      //this is variable of player Hp left, updated at the end of each level
     public int PlayerHp 
     { 
         get 
@@ -27,14 +27,14 @@ public class GameManager : MonoBehaviour
             playerHp = value>9?9:value;
         } 
     }
-    [SerializeField] private int basePlayerHp = 4;
+    [SerializeField] private int basePlayerHp = 4;  //this is variable of first level base Hp
     public int BasePlayerHp => basePlayerHp;
     [SerializeField] private int baseHpIncrement=1;
     public int BaseHpIncrement=>baseHpIncrement;
     [SerializeField] private int levelsPerHpIncrementRatio = 10;
     public int LevelsPerHpIncrementRatio => levelsPerHpIncrementRatio;
 
-    public int GetStartingPlayerHP
+    public int GetNewLevelPlayerHP              //here you get new level starting Hp
     {
         get => (PlayerHp + BaseHpIncrement + (LevelCount / LevelsPerHpIncrementRatio));
     }

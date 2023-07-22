@@ -1351,7 +1351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hiScoreText: {fileID: 621469299}
-  key: SpaceInvaders_Score
+  hi_score_key: SpaceInvaders_Score
 --- !u!1 &812245922
 GameObject:
   m_ObjectHideFlags: 0

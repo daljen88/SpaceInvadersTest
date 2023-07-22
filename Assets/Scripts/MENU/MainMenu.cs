@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
 {
     static public MainMenu instance;
     public TextMeshProUGUI hiScoreText;
-    public string key;
+    public string hi_score_key;
     private void Awake()
     {
         instance = this;
@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         
-        int score = GameManager.Instance.LoadData(key);
+        int score = GameManager.Instance.LoadData(hi_score_key);
         hiScoreText.text = score.ToString();
     }
 

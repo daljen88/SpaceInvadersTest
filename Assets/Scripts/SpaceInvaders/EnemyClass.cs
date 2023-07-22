@@ -33,8 +33,8 @@ public abstract class EnemyClass : MonoBehaviour, IHittable
     [Header("ENEMY TYPE")]
     [SerializeField] protected EnemyType enemyType;
     [Header("THIS ENEMY TYPE DROPS")]
-    public List<GameObject> drops;
-    public List<GameObject> guns;
+    public List<GameObject> objectDrops;
+    public List<GameObject> gunDrops;
     protected WeaponsClass.GunType gunType_toDrop;
     protected IDictionary<WeaponsClass.GunType, GameObject> gunDrops_data;
 
@@ -81,7 +81,7 @@ public abstract class EnemyClass : MonoBehaviour, IHittable
 
     public void PopulateGunsDropData()
     {
-        foreach (GameObject gun in guns)
+        foreach (GameObject gun in gunDrops)
         {
             gunDrops_data.Add(gun.GetComponent<WeaponsClass>().gunType, gun);
             //gunDrops_data.gunTypes.Add(GunDropType)gun.GetComponent<WeaponsClass>().gunType);
@@ -92,11 +92,11 @@ public abstract class EnemyClass : MonoBehaviour, IHittable
         //int j = 0;
         //foreach (GunDropType _gunDropType in Enum.GetValues(typeof(GunDropType)))
         //{
-        //    if (j < guns.Count)//if i minore di guns count
+        //    if (j < gunDrops.Count)//if i minore di gunDrops count
         //    {
         //        //gunDrops.gunTypes.Add(gunDropType);
-        //        //gunDrops.gunPrefabs.Add(guns[i]);
-        //        gunDrops_data.Add(_gunDropType, guns[j]); //adding a key/value using the Add() method
+        //        //gunDrops.gunPrefabs.Add(gunDrops[i]);
+        //        gunDrops_data.Add(_gunDropType, gunDrops[j]); //adding a key/value using the Add() method
         //        j++;
         //    }
         //    else
@@ -184,6 +184,8 @@ public abstract class EnemyClass : MonoBehaviour, IHittable
         if (EnemiesKilledFirstDrop && EnemiesKilledMoreThanZero && IsFirstDropRandomTrue)
         {
             gunType_toDrop = WeaponsClass.GunType.BigGun;
+            //gunType_toDrop = gunDrops[0].GetComponent<WeaponsClass>().gunType;
+
             return true;
         }
         else

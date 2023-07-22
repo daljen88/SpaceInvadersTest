@@ -107,7 +107,7 @@ public class ThirdEnemy : EnemyClass
         //    {
         //        if (UIManager.instance.totalEnemiesKilled % 1 == 0 && UIManager.instance.totalEnemiesKilled != 0 && Random.Range(0, 11) < 11 /*&&GameManager.Instance.typeGunPossessed.name!="BigGun"*/)
         //        {
-        //            GameObject bigGunz = Instantiate(guns[0], transform.position, Quaternion.identity);
+        //            GameObject bigGunz = Instantiate(gunDrops[0], transform.position, Quaternion.identity);
         //            WeaponsClass bigGunDropping = bigGunz.GetComponent<BigGun>();
         //            bigGunDropping?.Drop(Vector3.down);
         //        }
@@ -118,7 +118,7 @@ public class ThirdEnemy : EnemyClass
 
         //    //if (UIManager.instance.totalEnemiesKilled % 5 == 0 && UIManager.instance.totalEnemiesKilled != 0 && GameManager.Instance.musicRadioCollected == false)
         //    //{
-        //    //    GameObject musicRadio = Instantiate(drops[0], transform.position, Quaternion.identity);
+        //    //    GameObject musicRadio = Instantiate(objectDrops[0], transform.position, Quaternion.identity);
         //    //    RadioDrop radioScript = musicRadio.GetComponent<RadioDrop>();
         //    //    radioScript.Drop(Vector3.down);
         //    //}

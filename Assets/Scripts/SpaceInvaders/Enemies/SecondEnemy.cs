@@ -85,13 +85,13 @@ public class SecondEnemy : EnemyClass
         //    Destroy(ps.gameObject, .5f);
         //    if (UIManager.instance.totalEnemiesKilled > 5 && Random.Range(0, 11) < 9)
         //    {
-        //        GameObject electricGun = Instantiate(guns[0], transform.position, Quaternion.identity);
+        //        GameObject electricGun = Instantiate(gunDrops[0], transform.position, Quaternion.identity);
         //        WeaponsClass electricGunDropping = electricGun.GetComponent<ElectricTriGun>();
         //        electricGunDropping?.Drop(Vector3.down);
         //    }
         //    else
         //    {
-        //        GameObject bigGun = Instantiate(guns[1], transform.position, Quaternion.identity);
+        //        GameObject bigGun = Instantiate(gunDrops[1], transform.position, Quaternion.identity);
         //        WeaponsClass bigGunDropping = bigGun.GetComponent<BigGun>();
         //        bigGunDropping?.Drop(Vector3.down);
         //    }

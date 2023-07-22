@@ -201,25 +201,25 @@ public class Enemy : EnemyClass
         //    Destroy(ps.gameObject, .5f);
         //    if (UIManager.instance.totalEnemiesKilled%3==0&&UIManager.instance.totalEnemiesKilled!=0&&Random.Range(0,11)<11 /*&&GameManager.Instance.typeGunPossessed.name!="BigGun"*/)
         //    {
-        //        GameObject bigGunz = Instantiate(guns[0], transform.position, Quaternion.identity);
+        //        GameObject bigGunz = Instantiate(gunDrops[0], transform.position, Quaternion.identity);
         //        WeaponsClass bigGunDropping = bigGunz.GetComponent<BigGun>();
         //        bigGunDropping?.Drop(Vector3.down);
         //    }
         //    else if(UIManager.instance.totalEnemiesKilled % 20 == 0 && UIManager.instance.totalEnemiesKilled !=0 && Random.Range(0, 11) < 8)
         //    {
-        //        GameObject electricGun = Instantiate(guns[1], transform.position, Quaternion.identity);
+        //        GameObject electricGun = Instantiate(gunDrops[1], transform.position, Quaternion.identity);
         //        WeaponsClass electricGunDropping = electricGun.GetComponent<ElectricTriGun>();
         //        electricGunDropping?.Drop(Vector3.down);
         //    }
         //    else if (UIManager.instance.totalEnemiesKilled % 9999 == 0 && UIManager.instance.totalEnemiesKilled != 0 && Random.Range(0, 11) < 11)
         //    {
-        //        GameObject eyeCannon = Instantiate(guns[2], transform.position, Quaternion.identity);
+        //        GameObject eyeCannon = Instantiate(gunDrops[2], transform.position, Quaternion.identity);
         //        WeaponsClass eyeCannonDrop = eyeCannon.GetComponent<EyeOrbsCannon>();
         //        eyeCannonDrop?.Drop(Vector3.down);
         //    }
         //    //if(UIManager.instance.totalEnemiesKilled % 5 == 0 && UIManager.instance.totalEnemiesKilled != 0&&GameManager.Instance.musicRadioCollected==false)
         //    //{
-        //    //    GameObject musicRadio = Instantiate(drops[0], transform.position, Quaternion.identity);
+        //    //    GameObject musicRadio = Instantiate(objectDrops[0], transform.position, Quaternion.identity);
         //    //    RadioDrop radioScript = musicRadio.GetComponent<RadioDrop>();
         //    //    radioScript.Drop(Vector3.down);
         //    //}

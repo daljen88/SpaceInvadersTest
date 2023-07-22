@@ -63,18 +63,18 @@ public class SecondEnemySpawner : MonoBehaviour
             /*enemies.Add(*/
             ThirdEnemy activeBringerEnemy = Instantiate(bringerEnemyTemplate, transform.position, transform.rotation);
             bringerEnemyList.Add(activeBringerEnemy)/*)*/;
-            //GameObject dropToEnemy=  Instantiate(activeBringerEnemy.drops[0], activeBringerEnemy.dropSlot.transform.position, activeBringerEnemy.dropSlot.transform.rotation);
+            //GameObject dropToEnemy=  Instantiate(activeBringerEnemy.objectDrops[0], activeBringerEnemy.dropSlot.transform.position, activeBringerEnemy.dropSlot.transform.rotation);
             //ISTANZIA RADIO SE NON GIA PRESA
             if (GameManager.Instance.MusicRadioCollected == false)
             {
-                GameObject dropToEnemy = Instantiate(activeBringerEnemy.drops[0], activeBringerEnemy.dropSlot.transform.position, activeBringerEnemy.dropSlot.transform.rotation);
+                GameObject dropToEnemy = Instantiate(activeBringerEnemy.objectDrops[0], activeBringerEnemy.dropSlot.transform.position, activeBringerEnemy.dropSlot.transform.rotation);
                 dropToEnemy.transform.parent = activeBringerEnemy.gameObject.transform;
                 activeBringerEnemy.bringingDrop = dropToEnemy.GetComponent<DropsClass>();
             }
             //ISTANZIA ALARM CLOCKS
             else if(/*GameManager.Instance.AlarmClockCollected == false&&*/UIManager.instance.bringerEnemyKilled>3&&UIManager.instance.bringerEnemyKilled%4==0)
             {
-                GameObject dropToEnemy = Instantiate(activeBringerEnemy.drops[1], activeBringerEnemy.dropSlot.transform.position, activeBringerEnemy.dropSlot.transform.rotation);
+                GameObject dropToEnemy = Instantiate(activeBringerEnemy.objectDrops[1], activeBringerEnemy.dropSlot.transform.position, activeBringerEnemy.dropSlot.transform.rotation);
                 dropToEnemy.transform.parent = activeBringerEnemy.gameObject.transform;
                 activeBringerEnemy.bringingDrop = dropToEnemy.GetComponent<DropsClass>();
             }

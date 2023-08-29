@@ -134,6 +134,11 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
             CollectedUpdateLogic();
 
         }
+        else if (transform.position.y < -4.1f)
+        {
+            transform.position = new Vector2 (transform.position.x, -4.1f);
+        }
+
         if(dropTimer<=DropLifeTime/5&&!isCollected&& vanishRoutine == false)
         {
             vanishRoutine = true;

@@ -147,10 +147,10 @@ MonoBehaviour:
   myHitTakenMaterial: {fileID: 2100000, guid: f14f623b4a38fcb45a01911d8465573d, type: 2}
   hitFxColor: {r: 1, g: 0.3275637, b: 0, a: 1}
   enemyType: 2
-  drops:
+  objectDrops:
   - {fileID: 2678455731497475791, guid: 3aa99d2f70321a843b2c85bce3a8ad7b, type: 3}
   - {fileID: 5740781786587684057, guid: 257ec655b12b3bb4397052bfc2a2cb3d, type: 3}
-  guns:
+  gunDrops:
   - {fileID: 2984454448563473827, guid: f47154aebf3fd0d44a0799f9b9d01c02, type: 3}
   dropSlot: {fileID: 2676047769025116565}
   bringingDrop: {fileID: 0}

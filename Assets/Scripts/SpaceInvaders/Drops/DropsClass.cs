@@ -68,6 +68,11 @@ public abstract class DropsClass : MonoBehaviour, IDroppable
 
         if (IsDropped && !IsCollected && transform.position.y > -4.1f)
             transform.position += fallingVector * Time.deltaTime;
+        else if (transform.position.y < -4.1f)
+        {
+            transform.position = new Vector2(transform.position.x, -4.1f);
+            shake.Kill(false);
+        }
         else
         {
             shake.Kill(false);

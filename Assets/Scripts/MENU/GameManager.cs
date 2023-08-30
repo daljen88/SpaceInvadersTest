@@ -71,6 +71,9 @@ public class GameManager : MonoBehaviour
     public WeaponsClass typeGunPossessed;
     public GameObject objectGunPossessed;
     
+    public AudioSource dropSoundSource;
+    public AudioClip[] dropSoundsClips;
+
     private void Awake()
     {
         if (Instance != null)
@@ -131,6 +134,13 @@ public class GameManager : MonoBehaviour
     public int LoadData(string key)
     {
         return PlayerPrefs.GetInt(key);
+    }
+
+    public void PlayRadioDropSound()
+    {
+        dropSoundSource.clip = dropSoundsClips[0];
+        dropSoundSource.Play();
+
     }
 
     void Update()

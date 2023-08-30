@@ -37,10 +37,15 @@ public abstract class DropsClass : MonoBehaviour, IDroppable
     {
         IsDropped = true;
         fallingVector = direction*DropSpeed;
-        GetComponentInChildren<AudioSource>().Play();
+
+        GameManager.Instance.PlayRadioDropSound();
+
+        //GetComponentInChildren<AudioSource>().Play();
+
         //dropWeaponSound.clip = dropSounds[0/*Random.Range(0, dropSounds.Count)*/];
         //dropWeaponSound.Play();
     }
+
 
     // Start is called before the first frame update
     void Start()
@@ -62,7 +67,7 @@ public abstract class DropsClass : MonoBehaviour, IDroppable
         //    coolDown -= Time.deltaTime;
 
         //debug
-        Debug.LogWarning(dropTimer);
+        //Debug.LogWarning(dropTimer);
         //Debug.LogWarning(coolDown);
 
 

@@ -40,7 +40,7 @@ public class Enemy_Projectile : MonoBehaviour, IShootable
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("eh la madòna, go tocào " + other.name);
+        //Debug.Log("eh la madòna, go tocào " + other.name);
         IHittable tPlayer = other.GetComponent<IHittable>();
         if (tPlayer!=null)
         {

@@ -122,8 +122,11 @@ public abstract class WeaponsClass : MonoBehaviour, IDroppable
             dropTimer -= Time.deltaTime;
 
         //debug
+
+#if UNITY_EDITOR
         Debug.LogWarning(dropTimer);
         Debug.LogWarning(coolDown);
+#endif
 
         if (IsDropped && IsCollected == false && transform.position.y > -4.1f)
         {

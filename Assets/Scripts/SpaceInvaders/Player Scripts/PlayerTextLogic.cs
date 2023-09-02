@@ -23,7 +23,7 @@ public class PlayerTextLogic : MonoBehaviour
     private bool openingDone = false;
     private bool firstAlarm = false;
     private Vector3 startingPos;
-    private bool NormalEnemiesKilledCondition => UIManager.instance.normalEnemyKilled == 12;
+    private bool NormalEnemiesKilledCondition => UIManager.instance.normalEnemyKilled >= 12;
     public bool routineIsRunning = false;
     public bool routinePaused;
     //public Coroutine runningRoutine;
@@ -50,7 +50,8 @@ public class PlayerTextLogic : MonoBehaviour
         else
             TextWindow.transform.localPosition = new Vector3(3.5f, TextWindow.transform.localPosition.y);
 
-        if (!openingDone && GameManager.Instance.LevelCount == 3 && LevelManager.instance.state == LevelManager.LogicState.RUNNING && NormalEnemiesKilledCondition)
+        if (!openingDone && !routineIsRunning && GameManager.Instance.LevelCount == 3 
+            && NormalEnemiesKilledCondition && LevelManager.instance.state == LevelManager.LogicState.RUNNING)
         {
             openingDone = true;
             ThirdLevelOpening();

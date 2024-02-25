@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -9,6 +10,8 @@ public class MainMenu : MonoBehaviour
 {
     static public MainMenu instance;
     public TextMeshProUGUI hiScoreText;
+    public TextMeshProUGUI resolutionTextMessage;
+
     public string hi_score_key;
     private void Awake()
     {
@@ -63,6 +66,7 @@ public class MainMenu : MonoBehaviour
             {
                 listaRisoluzioni.Add(res);
                 Debug.Log("Resolution compatible with the game");
+                MoveResolutionMessage();
             }
         }
 
@@ -72,5 +76,30 @@ public class MainMenu : MonoBehaviour
         //creare un componente nel menu che permetta la scelta della risoluzione
         //applicare la risoluzione
 
+    }
+    public IEnumerator resolutionMessageRoutineRunning;
+    private Coroutine running;
+
+    public void MoveResolutionMessage()
+    {
+        resolutionMessageRoutineRunning = resolutionMessageMove();
+        if (running == null)
+        {
+            running = StartCoroutine(resolutionMessageRoutineRunning);
+        }
+
+        IEnumerator resolutionMessageMove()
+        {
+            resolutionTextMessage.enabled = true;
+            float duration = 3.5f /*(resolutionTextMessage.transform.position.x - 880f) / 500f*/;
+            resolutionTextMessage.rectTransform.DOMoveX(2600f, duration, false);
+            yield return new WaitForSeconds(duration);
+            resolutionTextMessage.enabled = false;
+            resolutionTextMessage.rectTransform.DOMoveX(-900f, 0.01f, false);
+            yield return new WaitForSeconds(0.01f);
+
+
+            running = null;
+        }
     }
 }

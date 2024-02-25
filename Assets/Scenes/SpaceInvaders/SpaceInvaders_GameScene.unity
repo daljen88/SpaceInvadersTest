@@ -801,7 +801,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 20439
+    m_Bits: 28663
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 527a8e74bc12e454098411a49b61fbbd, type: 2}
   m_TargetDisplay: 0
@@ -1214,7 +1214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 321747364}
   - component: {fileID: 321747363}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: levelArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1986,7 +1986,7 @@ GameObject:
   - component: {fileID: 461434571}
   - component: {fileID: 461434573}
   - component: {fileID: 461434572}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3564,7 +3564,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 32
+    m_Bits: 0
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 527a8e74bc12e454098411a49b61fbbd, type: 2}
   m_TargetDisplay: 0
@@ -3587,7 +3587,7 @@ GameObject:
   - component: {fileID: 993965581}
   - component: {fileID: 993965580}
   - component: {fileID: 993965582}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: StoryWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4778,7 +4778,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1284561564}
   - component: {fileID: 1284561563}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: scoreArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4863,7 +4863,7 @@ GameObject:
   - component: {fileID: 1415877484}
   - component: {fileID: 1415877486}
   - component: {fileID: 1415877485}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: StoryText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5147,7 +5147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1450878569}
   - component: {fileID: 1450878570}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Audio Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5480,7 +5480,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 32
+    m_Bits: 32800
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -7343,7 +7343,7 @@ GameObject:
   - component: {fileID: 2068020061}
   - component: {fileID: 2068020060}
   - component: {fileID: 2068020059}
-  m_Layer: 5
+  m_Layer: 15
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

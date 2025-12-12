@@ -50,7 +50,7 @@ public class PlayerTextLogic : MonoBehaviour
         else
             TextWindow.transform.localPosition = new Vector3(3.5f, TextWindow.transform.localPosition.y);
 
-        if (!openingDone && !routineIsRunning && GameManager.Instance.LevelCount == 3 
+        if (!openingDone && !routineIsRunning && GameManager.Instance.LevelCount == 3
             && NormalEnemiesKilledCondition && LevelManager.instance.state == LevelManager.LogicState.RUNNING)
         {
             openingDone = true;

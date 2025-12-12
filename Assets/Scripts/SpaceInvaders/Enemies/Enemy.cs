@@ -9,7 +9,7 @@ using static TowerDefence_Enemy;
 using System;
 using Random = UnityEngine.Random;
 using UnityEngine.SceneManagement;
-using Newtonsoft.Json.Linq;
+//using Newtonsoft.Json.Linq;
 
 public class Enemy : EnemyClass
 {
